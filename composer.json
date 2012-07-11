@@ -1,6 +1,6 @@
 {
     "name": "zendframework/zend-i18n",
-    "description": "Zend\\I18n component",
+    "description": " ",
     "license": "BSD-3-Clause",
     "keywords": [
         "zf2",
@@ -9,11 +9,11 @@
     "homepage": "https://github.com/zendframework/zend-i18n",
     "autoload": {
         "psr-4": {
-            "Zend\\I18n\\": "src/"
+            "Zend\\I18n": "src/"
         }
     },
     "require": {
-        "php": ">=5.3.23",
+        "php": ">=5.3.3",
         "zendframework/zend-stdlib": "self.version"
     },
     "require-dev": {
