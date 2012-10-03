@@ -9,7 +9,7 @@
     "homepage": "https://github.com/zendframework/zend-i18n",
     "autoload": {
         "psr-4": {
-            "Zend\\I18n": "src/"
+            "Zend\\I18n\\": "src/"
         }
     },
     "require": {
