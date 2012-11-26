@@ -1,4 +1,12 @@
 <?php
+/**
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @link      http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @package   Zend_I18n
+ */
 
 namespace ZendTest\I18n\Translator;
 
@@ -100,7 +108,56 @@ class TranslatorTest extends TestCase
         $loader->textDomain = new TextDomain(array('foo' => 'bar'));
         $this->translator->getPluginManager()->setService('test', $loader);
         $this->translator->addTranslationFile('test', null);
-        
+
         $this->assertEquals('bar', $this->translator->translate('foo'));
+    }
+
+    public function testTranslationsLoadedFromCache()
+    {
+        $cache = \Zend\Cache\StorageFactory::factory(array('adapter' => 'memory'));
+        $this->translator->setCache($cache);
+
+        $cache->addItem(
+            'Zend_I18n_Translator_Messages_' . md5('default' . 'en_EN'),
+            new TextDomain(array('foo' => 'bar'))
+        );
+
+        $this->assertEquals('bar', $this->translator->translate('foo'));
+    }
+
+    public function testTranslationsAreStoredInCache()
+    {
+        $cache = \Zend\Cache\StorageFactory::factory(array('adapter' => 'memory'));
+        $this->translator->setCache($cache);
+
+        $loader = new TestLoader();
+        $loader->textDomain = new TextDomain(array('foo' => 'bar'));
+        $this->translator->getPluginManager()->setService('test', $loader);
+        $this->translator->addTranslationFile('test', null);
+
+        $this->assertEquals('bar', $this->translator->translate('foo'));
+
+        $item = $cache->getItem('Zend_I18n_Translator_Messages_' . md5('default' . 'en_EN'));
+        $this->assertInstanceOf('Zend\I18n\Translator\TextDomain', $item);
+        $this->assertEquals('bar', $item['foo']);
+    }
+
+    public function testTranslatePlurals()
+    {
+        $this->translator->setLocale('en_EN');
+        $this->translator->addTranslationFile(
+            'phparray',
+            $this->testFilesDir . '/translation_en.php',
+            'default',
+            'en_EN'
+        );
+
+        $pl0 = $this->translator->translatePlural('Message 5', 'Message 5 Plural', 1);
+        $pl1 = $this->translator->translatePlural('Message 5', 'Message 5 Plural', 2);
+        $pl2 = $this->translator->translatePlural('Message 5', 'Message 5 Plural', 10);
+
+        $this->assertEquals('Message 5 (en) Plural 0', $pl0);
+        $this->assertEquals('Message 5 (en) Plural 1', $pl1);
+        $this->assertEquals('Message 5 (en) Plural 2', $pl2);
     }
 }

@@ -1,22 +1,11 @@
 <?php
 /**
- * Zend Framework
+ * Zend Framework (http://framework.zend.com/)
  *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_View
- * @subpackage UnitTests
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @link      http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @package   Zend_I18n
  */
 
 namespace ZendTest\I18n\View\Helper;
@@ -32,8 +21,6 @@ use Zend\I18n\View\Helper\DateFormat as DateFormatHelper;
  * @category   Zend
  * @package    Zend_View
  * @subpackage UnitTests
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
@@ -66,7 +53,7 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
         unset($this->helper);
     }
 
-    public function currencyTestsDataProvider()
+    public function dateTestsDataProvider()
     {
         $date = new DateTime('2012-07-02T22:44:03Z');
         return array(
@@ -173,19 +160,62 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function dateTestsDataProviderWithPattern()
+    {
+        $date = new DateTime('2012-07-02T22:44:03Z');
+        return array(
+            // FULL format varies based on OS
+            // array(
+            //     'de_DE',
+            //     'Europe/Berlin',
+            //     IntlDateFormatter::FULL,
+            //     IntlDateFormatter::FULL,
+            //     $date,
+            //     'Dienstag, 3. Juli 2012 00:44:03 Deutschland',
+            // ),
+            array(
+                'de_DE',
+                'Europe/Berlin',
+                null,
+                null,
+                'MMMM',
+                $date,
+                'Juli',
+            ),
+            array(
+                'de_DE',
+                'Europe/Berlin',
+                null,
+                null,
+                'MMMM.Y',
+                $date,
+                'Juli.2012',
+            ),
+            array(
+                'de_DE',
+                'Europe/Berlin',
+                null,
+                null,
+                'dd/Y',
+                $date,
+                '03/2012',
+            ),
+        );
+    }
+
     /**
-     * @dataProvider currencyTestsDataProvider
+     * @dataProvider dateTestsDataProvider
      */
     public function testBasic($locale, $timezone, $timeType, $dateType, $date, $expected)
     {
         $this->helper->setTimezone($timezone);
         $this->assertMbStringEquals($expected, $this->helper->__invoke(
-            $date, $dateType, $timeType, $locale
+            $date, $dateType, $timeType, $locale, null
         ));
     }
 
     /**
-     * @dataProvider currencyTestsDataProvider
+     * @dataProvider dateTestsDataProvider
      */
     public function testSettersProvideDefaults($locale, $timezone, $timeType, $dateType, $date, $expected)
     {
@@ -198,9 +228,30 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
         ));
     }
 
+    /**
+     * @dataProvider dateTestsDataProviderWithPattern
+     */
+    public function testUseCustomPattern($locale, $timezone, $timeType, $dateType, $pattern, $date, $expected)
+    {
+        $this->helper->setTimezone($timezone);
+        $this->assertMbStringEquals($expected, $this->helper->__invoke(
+            $date, $dateType, $timeType, $locale, $pattern
+        ));
+    }
+
     public function testDefaultLocale()
     {
         $this->assertEquals(Locale::getDefault(), $this->helper->getLocale());
+    }
+
+    public function testBugTwoPatternOnSameHelperInstance()
+    {
+        $date = new DateTime('2012-07-02T22:44:03Z');
+
+        $helper = new DateFormatHelper();
+        $helper->setTimezone('Europe/Berlin');
+        $this->assertEquals('03/2012', $helper->__invoke($date, null, null, 'it_IT', 'dd/Y'));
+        $this->assertEquals('03-2012', $helper->__invoke($date, null, null, 'it_IT', 'dd-Y'));
     }
 
     public function assertMbStringEquals($expected, $test, $message = '')
