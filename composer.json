@@ -9,12 +9,14 @@
     "homepage": "https://github.com/zendframework/zend-i18n",
     "autoload": {
         "psr-4": {
-            "Zend\\I18n": "src/"
+            "Zend\\I18n\\": "src/"
         }
     },
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zend-stdlib": "self.version"
+        "zendframework/zend-stdlib": "self.version",
+        "ext-intl": "*",
+        "zendframework/zend-filter": "self.version"
     },
     "require-dev": {
         "zendframework/zend-cache": "self.version",

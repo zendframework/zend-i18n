@@ -8,13 +8,23 @@
  * @package   Zend_I18n
  */
 
-namespace Zend\I18n\Exception;
+namespace Zend\I18n\Translator\Loader;
 
 /**
+ * File loader interface.
+ *
  * @category   Zend
  * @package    Zend_I18n
- * @subpackage Exception
+ * @subpackage Translator
  */
-class InvalidArgumentException extends \InvalidArgumentException implements
-    ExceptionInterface
-{}
+interface FileLoaderInterface
+{
+    /**
+     * Load translations from a file.
+     *
+     * @param  string $locale
+     * @param  string $filename
+     * @return \Zend\I18n\Translator\TextDomain|null
+     */
+    public function load($locale, $filename);
+}

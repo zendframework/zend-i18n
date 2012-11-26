@@ -8,13 +8,23 @@
  * @package   Zend_I18n
  */
 
-namespace Zend\I18n\Exception;
+namespace Zend\I18n\Translator\Loader;
 
 /**
+ * Remote loader interface.
+ *
  * @category   Zend
  * @package    Zend_I18n
- * @subpackage Exception
+ * @subpackage Translator
  */
-class InvalidArgumentException extends \InvalidArgumentException implements
-    ExceptionInterface
-{}
+interface RemoteLoaderInterface
+{
+    /**
+     * Load translations from a remote source.
+     *
+     * @param  string $locale
+     * @param  string $textDomain
+     * @return \Zend\I18n\Translator\TextDomain|null
+     */
+    public function load($locale, $textDomain);
+}
