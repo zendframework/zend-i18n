@@ -1,6 +1,6 @@
 {
     "name": "zendframework/zend-i18n",
-    "description": "Zend\\I18n component",
+    "description": " ",
     "license": "BSD-3-Clause",
     "keywords": [
         "zf2",
@@ -13,8 +13,10 @@
         }
     },
     "require": {
-        "php": ">=5.3.23",
-        "zendframework/zend-stdlib": "self.version"
+        "php": ">=5.3.3",
+        "zendframework/zend-stdlib": "self.version",
+        "ext-intl": "*",
+        "zendframework/zend-filter": "self.version"
     },
     "require-dev": {
         "zendframework/zend-cache": "self.version",
