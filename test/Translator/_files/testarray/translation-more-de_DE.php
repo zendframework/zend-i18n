@@ -5,9 +5,10 @@
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
  * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @package   Zend_I18n
  */
 
-namespace Zend\I18n\Exception;
-
-interface ExceptionInterface
-{}
+return array(
+    'Message 2' => 'Nachricht 2',
+    'Message 9' => 'Nachricht 9'
+);
