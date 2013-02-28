@@ -9,14 +9,15 @@
 
 namespace Zend\I18n\Translator\Loader;
 
+use Zend\Config\Reader\Ini as IniReader;
 use Zend\I18n\Exception;
 use Zend\I18n\Translator\Plural\Rule as PluralRule;
 use Zend\I18n\Translator\TextDomain;
 
 /**
- * PHP array loader.
+ * PHP INI format loader.
  */
-class PhpArray implements FileLoaderInterface
+class Ini implements FileLoaderInterface
 {
     /**
      * load(): defined by FileLoaderInterface.
@@ -36,7 +37,27 @@ class PhpArray implements FileLoaderInterface
             ));
         }
 
-        $messages = include $filename;
+        $messages           = array();
+        $iniReader          = new IniReader();
+        $messagesNamespaced = $iniReader->fromFile($filename);
+
+        $list = $messagesNamespaced;
+        if (isset($messagesNamespaced['translation'])) {
+           $list = $messagesNamespaced['translation'];
+        }
+
+        foreach ($list as $message) {
+            if (!is_array($message) || count($message) < 2) {
+                throw new Exception\InvalidArgumentException(
+                    'Each INI row must be an array with message and translation'
+                );
+            }
+            if (isset($message['message']) && isset($message['translation'])) {
+                $messages[$message['message']] = $message['translation'];
+                continue;
+            }
+            $messages[array_shift($message)] = array_shift($message);
+        }
 
         if (!is_array($messages)) {
             throw new Exception\InvalidArgumentException(sprintf(
@@ -47,14 +68,12 @@ class PhpArray implements FileLoaderInterface
 
         $textDomain = new TextDomain($messages);
 
-        if (array_key_exists('', $textDomain)) {
-            if (isset($textDomain['']['plural_forms'])) {
-                $textDomain->setPluralRule(
-                    PluralRule::fromString($textDomain['']['plural_forms'])
-                );
-            }
-
-            unset($textDomain['']);
+        if (array_key_exists('plural', $messagesNamespaced)
+            && isset($messagesNamespaced['plural']['plural_forms'])
+        ) {
+            $textDomain->setPluralRule(
+                PluralRule::fromString($messagesNamespaced['plural']['plural_forms'])
+            );
         }
 
         return $textDomain;
