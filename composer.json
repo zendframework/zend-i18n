@@ -16,7 +16,9 @@
         "php": ">=5.3.3",
         "zendframework/zend-stdlib": "self.version",
         "ext-intl": "*",
-        "zendframework/zend-filter": "self.version"
+        "zendframework/zend-filter": "self.version",
+        "zendframework/zend-validator": "self.version",
+        "zendframework/zend-view": "self.version"
     },
     "require-dev": {
         "zendframework/zend-cache": "self.version",
