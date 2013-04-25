@@ -14,8 +14,7 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zend-stdlib": "self.version",
-        "ext-intl": "*"
+        "zendframework/zend-stdlib": "self.version"
     },
     "require-dev": {
         "zendframework/zend-cache": "self.version",
