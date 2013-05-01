@@ -32,7 +32,7 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
     protected $translatorTextDomain = 'default';
 
     /**
-     * @throws Exception\InvalidArgumentException if ext/intl is not present
+     * @throws Exception\ExtensionsNotLoadedException if ext/intl is not present
      */
     public function __construct()
     {
@@ -66,6 +66,7 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
         if (null !== $textDomain) {
             $this->setTranslatorTextDomain($textDomain);
         }
+
         return $this;
     }
 
@@ -96,8 +97,7 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
     /**
      * Sets whether translator is enabled and should be used
      *
-     * @param  bool $enabled [optional] whether translator should be used.
-     *                       Default is true.
+     * @param  bool $enabled
      * @return AbstractTranslatorHelper
      */
     public function setTranslatorEnabled($enabled = true)
