@@ -28,13 +28,13 @@ class PhoneNumber extends AbstractValidator
     protected $messageTemplates = array(
         self::NO_MATCH    => 'The input does not match a phone number format',
         self::UNSUPPORTED => 'The country provided is currently unsupported',
-        self::INVALID     => 'Invalid type given.  String expected',
+        self::INVALID     => 'Invalid type given. String expected',
     );
 
     /**
      * Phone Number Patterns
      *
-     * @link http://libphonenumber.googlecode.com/svn/trunk/resources/PhoneNumberMetaData.xml
+     * @link http://code.google.com/p/libphonenumber/source/browse/trunk/resources/PhoneNumberMetadata.xml
      * @var array
      */
     protected static $phone = array();
