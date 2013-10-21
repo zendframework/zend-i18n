@@ -212,17 +212,18 @@ class PhoneNumber extends AbstractValidator
 
         $codeLength = strlen($countryPattern['code']);
 
-        /*
-         * Check for existence of either:
-         *   1) E.123/E.164 international prefix
-         *   2) International double-O prefix
-         *   3) Bare country prefix
-         */
+        // Check for existence of E.123/E.164 prefix
         if (('+' . $countryPattern['code']) == substr($value, 0, $codeLength + 1)) {
             $valueNoCountry = substr($value, $codeLength + 1);
-        } elseif (('00' . $countryPattern['code']) == substr($value, 0, $codeLength + 2)) {
+        }
+
+        // Check for existence of international double-O prefix
+        elseif (('00' . $countryPattern['code']) == substr($value, 0, $codeLength + 2)) {
             $valueNoCountry = substr($value, $codeLength + 2);
-        } elseif ($countryPattern['code'] == substr($value, 0, $codeLength)) {
+        }
+
+        // Check for existence of bare country prefix
+        elseif ($countryPattern['code'] == substr($value, 0, $codeLength)) {
             $valueNoCountry = substr($value, $codeLength);
         }
 
