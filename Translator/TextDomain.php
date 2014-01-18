@@ -26,13 +26,6 @@ class TextDomain extends ArrayObject
     protected $pluralRule;
 
     /**
-     * Default plural rule shared between instances.
-     *
-     * @var PluralRule
-     */
-    protected static $defaultPluralRule;
-
-    /**
      * Set the plural rule
      *
      * @param  PluralRule $rule
@@ -47,40 +40,17 @@ class TextDomain extends ArrayObject
     /**
      * Get the plural rule.
      *
-     * @param  bool $fallbackToDefaultRule
-     * @return PluralRule|null
-     */
-    public function getPluralRule($fallbackToDefaultRule = true)
-    {
-        if ($this->pluralRule === null && $fallbackToDefaultRule) {
-            return static::getDefaultPluralRule();
-        }
-
-        return $this->pluralRule;
-    }
-
-    /**
-     * Checks whether the text domain has a plural rule.
-     *
-     * @return bool
-     */
-    public function hasPluralRule()
-    {
-        return ($this->pluralRule !== null);
-    }
-
-    /**
-     * Returns a shared default plural rule.
+     * Lazy loads a default rule if none already registered
      *
      * @return PluralRule
      */
-    public static function getDefaultPluralRule()
+    public function getPluralRule()
     {
-        if (static::$defaultPluralRule === null) {
-            static::$defaultPluralRule = PluralRule::fromString('nplurals=2; plural=n != 1;');
+        if ($this->pluralRule === null) {
+            $this->setPluralRule(PluralRule::fromString('nplurals=2; plural=n != 1;'));
         }
 
-        return static::$defaultPluralRule;
+        return $this->pluralRule;
     }
 
     /**
@@ -96,12 +66,8 @@ class TextDomain extends ArrayObject
      */
     public function merge(TextDomain $textDomain)
     {
-        if ($this->hasPluralRule() && $textDomain->hasPluralRule()) {
-            if ($this->getPluralRule()->getNumPlurals() !== $textDomain->getPluralRule()->getNumPlurals()) {
-                throw new Exception\RuntimeException('Plural rule of merging text domain is not compatible with the current one');
-            }
-        } elseif ($textDomain->hasPluralRule()) {
-            $this->setPluralRule($textDomain->getPluralRule());
+        if ($this->getPluralRule()->getNumPlurals() !== $textDomain->getPluralRule()->getNumPlurals()) {
+            throw new Exception\RuntimeException('Plural rule of merging text domain is not compatible with the current one');
         }
 
         $this->exchangeArray(
