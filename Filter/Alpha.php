@@ -3,7 +3,7 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -18,15 +18,11 @@ class Alpha extends Alnum
      *
      * Returns the string $value, removing all but alphabetic characters
      *
-     * @param  string|array $value
-     * @return string|array
+     * @param  string $value
+     * @return string
      */
     public function filter($value)
     {
-        if (!is_scalar($value) && !is_array($value)) {
-            return $value;
-        }
-
         $whiteSpace = $this->options['allow_white_space'] ? '\s' : '';
         $language   = Locale::getPrimaryLanguage($this->getLocale());
 
@@ -41,6 +37,6 @@ class Alpha extends Alnum
             $pattern = '/[^\p{L}' . $whiteSpace . ']/u';
         }
 
-        return preg_replace($pattern, '', $value);
+        return preg_replace($pattern, '', (string) $value);
     }
 }

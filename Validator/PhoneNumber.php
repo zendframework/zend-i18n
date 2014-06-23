@@ -3,13 +3,12 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace Zend\I18n\Validator;
 
-use Locale;
 use Traversable;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Validator\AbstractValidator;
@@ -35,7 +34,7 @@ class PhoneNumber extends AbstractValidator
     /**
      * Phone Number Patterns
      *
-     * @link http://code.google.com/p/libphonenumber/source/browse/trunk/resources/PhoneNumberMetadata.xml
+     * @link http://libphonenumber.googlecode.com/svn/trunk/resources/PhoneNumberMetaData.xml
      * @var array
      */
     protected static $phone = array();
@@ -87,9 +86,6 @@ class PhoneNumber extends AbstractValidator
 
         if (array_key_exists('country', $options)) {
             $this->setCountry($options['country']);
-        } else {
-            $country = Locale::getRegion(Locale::getDefault());
-            $this->setCountry($country);
         }
 
         if (array_key_exists('allowed_types', $options)) {
@@ -155,7 +151,7 @@ class PhoneNumber extends AbstractValidator
      */
     public function setCountry($country)
     {
-        $this->country = strtoupper($country);
+        $this->country = $country;
 
         return $this;
     }
@@ -168,7 +164,7 @@ class PhoneNumber extends AbstractValidator
      */
     protected function loadPattern($code)
     {
-        if (!isset(static::$phone[$code])) {
+        if (!isset(self::$phone[$code])) {
             if (!preg_match('/^[A-Z]{2}$/D', $code)) {
                 return false;
             }
@@ -178,10 +174,10 @@ class PhoneNumber extends AbstractValidator
                 return false;
             }
 
-            static::$phone[$code] = include $file;
+            self::$phone[$code] = include $file;
         }
 
-        return static::$phone[$code];
+        return self::$phone[$code];
     }
 
     /**
@@ -214,20 +210,8 @@ class PhoneNumber extends AbstractValidator
             }
         }
 
-        $codeLength = strlen($countryPattern['code']);
-
-        /*
-         * Check for existence of either:
-         *   1) E.123/E.164 international prefix
-         *   2) International double-O prefix
-         *   3) Bare country prefix
-         */
-        if (('+' . $countryPattern['code']) == substr($value, 0, $codeLength + 1)) {
-            $valueNoCountry = substr($value, $codeLength + 1);
-        } elseif (('00' . $countryPattern['code']) == substr($value, 0, $codeLength + 2)) {
-            $valueNoCountry = substr($value, $codeLength + 2);
-        } elseif ($countryPattern['code'] == substr($value, 0, $codeLength)) {
-            $valueNoCountry = substr($value, $codeLength);
+        if ($countryPattern['code'] == substr($value, 0, strlen($countryPattern['code']))) {
+            $valueNoCountry = substr($value, strlen($countryPattern['code']));
         }
 
         // check against allowed types strict match:
