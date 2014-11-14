@@ -13,5 +13,4 @@ use DomainException;
 
 class ExtensionNotLoadedException extends DomainException implements
     ExceptionInterface
-{
-}
+{}
