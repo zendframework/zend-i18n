@@ -3,16 +3,17 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace Zend\I18n\Translator;
 
+
 trait TranslatorAwareTrait
 {
     /**
-     * @var TranslatorInterface
+     * @var Translator
      */
     protected $translator = null;
 
@@ -29,15 +30,15 @@ trait TranslatorAwareTrait
     /**
      * Sets translator to use in helper
      *
-     * @param TranslatorInterface $translator
-     * @param string              $textDomain
+     * @param Translator $translator
+     * @param string $textDomain
      * @return mixed
      */
-    public function setTranslator(TranslatorInterface $translator = null, $textDomain = null)
+    public function setTranslator(Translator $translator = null, $textDomain = null)
     {
         $this->translator = $translator;
 
-        if (null !== $textDomain) {
+        if (!is_null($textDomain)) {
             $this->setTranslatorTextDomain($textDomain);
         }
 
@@ -47,7 +48,7 @@ trait TranslatorAwareTrait
     /**
      * Returns translator used in object
      *
-     * @return TranslatorInterface
+     * @return Translator
      */
     public function getTranslator()
     {
@@ -61,7 +62,7 @@ trait TranslatorAwareTrait
      */
     public function hasTranslator()
     {
-        return (null !== $this->translator);
+        return !is_null($this->translator);
     }
 
     /**

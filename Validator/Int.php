@@ -3,7 +3,7 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -12,12 +12,10 @@ namespace Zend\I18n\Validator;
 use Locale;
 use NumberFormatter;
 use Traversable;
-use IntlException;
 use Zend\I18n\Exception as I18nException;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
-
 
 class Int extends AbstractValidator
 {
@@ -109,22 +107,13 @@ class Int extends AbstractValidator
         $this->setValue($value);
 
         $locale = $this->getLocale();
-        try {
-            $format = new NumberFormatter($locale, NumberFormatter::DECIMAL);
-            if (intl_is_failure($format->getErrorCode())) {
-                throw new Exception\InvalidArgumentException("Invalid locale string given");
-            }
-        } catch (IntlException $intlException) {
-            throw new Exception\InvalidArgumentException("Invalid locale string given", 0, $intlException);
+        $format = new NumberFormatter($locale, NumberFormatter::DECIMAL);
+        if (intl_is_failure($format->getErrorCode())) {
+            throw new Exception\InvalidArgumentException("Invalid locale string given");
         }
 
-        try {
-            $parsedInt = $format->parse($value, NumberFormatter::TYPE_INT64);
-            if (intl_is_failure($format->getErrorCode())) {
-                $this->error(self::NOT_INT);
-                return false;
-            }
-        } catch (IntlException $intlException) {
+        $parsedInt = $format->parse($value, NumberFormatter::TYPE_INT64);
+        if (intl_is_failure($format->getErrorCode())) {
             $this->error(self::NOT_INT);
             return false;
         }
