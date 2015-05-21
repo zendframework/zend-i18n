@@ -403,7 +403,7 @@ class TranslatorTest extends TestCase
         $this->assertEquals('Message 1 (en)', $allMessages['Message 1']);
     }
 
-    public function testGetAllMessagesLoadedInTranslatorWithNotFoundTextDomain()
+    public function testTranslatorReturnsNullWhenGivenTextDomainIsNotFound()
     {
         $this->translator->setLocale('en_EN');
         $this->translator->addTranslationFile(
@@ -417,7 +417,7 @@ class TranslatorTest extends TestCase
         $this->assertNull($allMessages);
     }
 
-    public function testGetAllMessagesLoadedInTranslatorWithNonExistantLocale()
+    public function testTranslatorReturnsNullWhenGivenLocaleNotExist()
     {
         $this->translator->setLocale('en_EN');
         $this->translator->addTranslationFile(
