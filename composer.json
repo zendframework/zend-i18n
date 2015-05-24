@@ -39,6 +39,8 @@
         "zendframework/zend-view": "You should install this package to use the provided view helpers",
         "zendframework/zend-resources": "Translation resources"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "extra": {
         "branch-alias": {
             "dev-master": "2.4-dev",
