@@ -386,4 +386,48 @@ class TranslatorTest extends TestCase
         $this->assertNull($doNotTrigger);
         $this->assertEquals('BOOYAH', $result);
     }
+
+    public function testGetAllMessagesLoadedInTranslator()
+    {
+        $this->translator->setLocale('en_EN');
+        $this->translator->addTranslationFile(
+            'phparray',
+            $this->testFilesDir . '/translation_en.php',
+            'default',
+            'en_EN'
+        );
+
+        $allMessages = $this->translator->getAllMessages();
+        $this->assertInstanceOf('\Zend\I18n\Translator\TextDomain', $allMessages);
+        $this->assertEquals(7, count($allMessages));
+        $this->assertEquals('Message 1 (en)', $allMessages['Message 1']);
+    }
+
+    public function testTranslatorReturnsNullWhenGivenTextDomainIsNotFound()
+    {
+        $this->translator->setLocale('en_EN');
+        $this->translator->addTranslationFile(
+            'phparray',
+            $this->testFilesDir . '/translation_en.php',
+            'default',
+            'en_EN'
+        );
+
+        $allMessages = $this->translator->getAllMessages('foo_domain');
+        $this->assertNull($allMessages);
+    }
+
+    public function testTranslatorReturnsNullWhenGivenLocaleNotExist()
+    {
+        $this->translator->setLocale('en_EN');
+        $this->translator->addTranslationFile(
+            'phparray',
+            $this->testFilesDir . '/translation_en.php',
+            'default',
+            'en_EN'
+        );
+
+        $allMessages = $this->translator->getAllMessages('default', 'es_ES');
+        $this->assertNull($allMessages);
+    }
 }
