@@ -140,7 +140,7 @@ class PostCode extends AbstractValidator
         'MY' => '\d{5}',
         'MV' => '\d{5}',
         'MT' => '[A-Z]{3}[ ]?\d{2,4}',
-        'MU' => '(\d{3}[A-Z]{2}\d{3})?',
+        'MU' => '\d{5}',
         'MX' => '\d{5}',
         'MD' => '\d{4}',
         'MC' => '980\d{2}',
