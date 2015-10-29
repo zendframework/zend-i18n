@@ -36,5 +36,4 @@ class TranslatorServiceFactory implements FactoryInterface
         $translator = Translator::factory($trConfig);
         return $translator;
     }
-
 }
