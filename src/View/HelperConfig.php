@@ -36,12 +36,12 @@ class HelperConfig implements ConfigInterface
      * in this class.
      *
      * @param  ServiceManager $serviceManager
-     * @return void
+     * @return ServiceManager
      */
     public function configureServiceManager(ServiceManager $serviceManager)
     {
-        foreach ($this->invokables as $name => $service) {
-            $serviceManager->setInvokableClass($name, $service);
-        }
+        return $serviceManager->withConfig(
+            [ 'invokables' => $this->invokables ]
+        );
     }
 }

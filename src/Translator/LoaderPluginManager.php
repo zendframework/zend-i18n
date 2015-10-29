@@ -11,6 +11,7 @@ namespace Zend\I18n\Translator;
 
 use Zend\I18n\Exception;
 use Zend\ServiceManager\AbstractPluginManager;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 /**
  * Plugin manager implementation for translation loaders.
@@ -54,15 +55,16 @@ use Zend\ServiceManager\AbstractPluginManager;
  */
 class LoaderPluginManager extends AbstractPluginManager
 {
-    /**
-     * Default set of loaders.
-     *
-     * @var array
-     */
-    protected $invokableClasses = [
-        'gettext'  => 'Zend\I18n\Translator\Loader\Gettext',
-        'ini'      => 'Zend\I18n\Translator\Loader\Ini',
-        'phparray' => 'Zend\I18n\Translator\Loader\PhpArray',
+    protected $aliases = [
+        'gettext'  => Loader\Gettext::class,
+        'ini'      => Loader\Ini::class,
+        'phparray' => Loader\PhpArray::class
+    ];
+
+    protected $factories = [
+        Loader\Gettext::class  => InvokableFactory::class,
+        Loader\Ini::class      => InvokableFactory::class,
+        Loader\PhpArray::class => InvokableFactory::class
     ];
 
     /**

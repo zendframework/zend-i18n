@@ -23,7 +23,7 @@ class TranslatorServiceFactoryTest extends TestCase
                        ->will($this->returnValueMap($slContents));
 
         $factory = new TranslatorServiceFactory();
-        $translator = $factory->createService($serviceLocator);
+        $translator = $factory($serviceLocator, 'Zend\I18n\Translator\Translator');
         $this->assertInstanceOf('Zend\I18n\Translator\Translator', $translator);
     }
 }

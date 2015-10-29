@@ -19,6 +19,7 @@ use Zend\I18n\Exception;
 use Zend\I18n\Translator\Loader\FileLoaderInterface;
 use Zend\I18n\Translator\Loader\RemoteLoaderInterface;
 use Zend\Stdlib\ArrayUtils;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * Translator.
@@ -334,7 +335,7 @@ class Translator implements TranslatorInterface
     public function getPluginManager()
     {
         if (!$this->pluginManager instanceof LoaderPluginManager) {
-            $this->setPluginManager(new LoaderPluginManager());
+            $this->setPluginManager(new LoaderPluginManager(new ServiceManager));
         }
 
         return $this->pluginManager;
