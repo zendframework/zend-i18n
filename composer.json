@@ -17,7 +17,7 @@
         "zendframework/zend-stdlib": "~2.5"
     },
     "require-dev": {
-        "zendframework/zend-cache": "~2.5",
+        "zendframework/zend-cache": "dev-develop as 2.6.0",
         "zendframework/zend-config": "~2.5",
         "zendframework/zend-eventmanager": "dev-develop as 2.7.0",
         "zendframework/zend-filter": "~2.5",
@@ -43,7 +43,7 @@
     "extra": {
         "branch-alias": {
             "dev-master": "2.5-dev",
-            "dev-develop": "2.6-dev"
+            "dev-develop": "3.0-dev"
         }
     },
     "autoload-dev": {
