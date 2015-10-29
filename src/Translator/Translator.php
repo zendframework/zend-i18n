@@ -446,17 +446,18 @@ class Translator implements TranslatorInterface
         }
 
         if ($this->isEventManagerEnabled()) {
-            $results = $this->getEventManager()->trigger(
+            $until = function ($r) {
+                return is_string($r);
+            };
+            $results = $this->getEventManager()->triggerUntil(
+                $until,
                 self::EVENT_MISSING_TRANSLATION,
                 $this,
                 [
                     'message'     => $message,
                     'locale'      => $locale,
                     'text_domain' => $textDomain,
-                ],
-                function ($r) {
-                    return is_string($r);
-                }
+                ]
             );
             $last = $results->last();
             if (is_string($last)) {
@@ -575,16 +576,17 @@ class Translator implements TranslatorInterface
         if (!$messagesLoaded) {
             $discoveredTextDomain = null;
             if ($this->isEventManagerEnabled()) {
-                $results = $this->getEventManager()->trigger(
+                $until = function ($r) {
+                    return ($r instanceof TextDomain);
+                };
+                $results = $this->getEventManager()->triggerUntil(
+                    $until,
                     self::EVENT_NO_MESSAGES_LOADED,
                     $this,
                     [
                         'locale'      => $locale,
                         'text_domain' => $textDomain,
-                    ],
-                    function ($r) {
-                        return ($r instanceof TextDomain);
-                    }
+                    ]
                 );
                 $last = $results->last();
                 if ($last instanceof TextDomain) {
