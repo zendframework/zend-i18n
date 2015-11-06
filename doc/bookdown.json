@@ -1,0 +1,14 @@
+{
+    "title": "Zend\\I18n",
+    "target": "html/",
+    "content": [
+        "book/zend.i18n.translating.md",
+        "book/zend.i18n.view.helpers.md",
+        "book/zend.i18n.filters.md",
+        "book/zend.i18n.validators.md",
+        "book/zend.i18n.validator.alnum.md",
+        "book/zend.i18n.validator.alpha.md",
+        "book/zend.i18n.validator.float.md",
+        "book/zend.i18n.validator.int.md"
+    ]
+}
