@@ -68,6 +68,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::DECIMAL,
                 NumberFormatter::TYPE_DOUBLE,
                 null,
+                [],
                 1234567.891234567890000,
                 '1.234.567,891'
             ],
@@ -76,6 +77,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::DECIMAL,
                 NumberFormatter::TYPE_DOUBLE,
                 6,
+                [],
                 1234567.891234567890000,
                 '1.234.567,891235',
             ],
@@ -84,6 +86,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::PERCENT,
                 NumberFormatter::TYPE_DOUBLE,
                 null,
+                [],
                 1234567.891234567890000,
                 '123.456.789 %'
             ],
@@ -92,6 +95,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::PERCENT,
                 NumberFormatter::TYPE_DOUBLE,
                 1,
+                [],
                 1234567.891234567890000,
                 '123.456.789,1 %'
             ],
@@ -100,6 +104,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::SCIENTIFIC,
                 NumberFormatter::TYPE_DOUBLE,
                 null,
+                [],
                 1234567.891234567890000,
                 '1,23456789123457E6'
             ],
@@ -108,6 +113,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::DECIMAL,
                 NumberFormatter::TYPE_DOUBLE,
                 null,
+                [],
                 1234567.891234567890000,
                 '1 234 567,891'
             ],
@@ -116,6 +122,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::PERCENT,
                 NumberFormatter::TYPE_DOUBLE,
                 null,
+                [],
                 1234567.891234567890000,
                 '123 456 789 %'
             ],
@@ -124,6 +131,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::SCIENTIFIC,
                 NumberFormatter::TYPE_DOUBLE,
                 null,
+                [],
                 1234567.891234567890000,
                 '1,23456789123457E6'
             ],
@@ -132,6 +140,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::DECIMAL,
                 NumberFormatter::TYPE_DOUBLE,
                 null,
+                [],
                 1234567.891234567890000,
                 '1,234,567.891'
             ],
@@ -140,6 +149,7 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::PERCENT,
                 NumberFormatter::TYPE_DOUBLE,
                 null,
+                [],
                 1234567.891234567890000,
                 '123,456,789%'
             ],
@@ -148,8 +158,20 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
                 NumberFormatter::SCIENTIFIC,
                 NumberFormatter::TYPE_DOUBLE,
                 null,
+                [],
                 1234567.891234567890000,
                 '1.23456789123457E6'
+            ],
+            [
+                'en_US',
+                NumberFormatter::PERCENT,
+                NumberFormatter::TYPE_DOUBLE,
+                null,
+                [
+                    NumberFormatter::NEGATIVE_PREFIX => 'MINUS'
+                ],
+                -1234567.891234567890000,
+                'MINUS123,456,789%'
             ],
         ];
     }
@@ -157,23 +179,31 @@ class NumberFormatTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider currencyTestsDataProvider
      */
-    public function testBasic($locale, $formatStyle, $formatType, $decimals, $number, $expected)
+    public function testBasic($locale, $formatStyle, $formatType, $decimals, $textAttributes, $number, $expected)
     {
         $this->assertMbStringEquals($expected, $this->helper->__invoke(
-            $number, $formatStyle, $formatType, $locale, $decimals
+            $number, $formatStyle, $formatType, $locale, $decimals, $textAttributes
         ));
     }
 
     /**
      * @dataProvider currencyTestsDataProvider
      */
-    public function testSettersProvideDefaults($locale, $formatStyle, $formatType, $decimals, $number, $expected)
-    {
+    public function testSettersProvideDefaults(
+        $locale,
+        $formatStyle,
+        $formatType,
+        $decimals,
+        $textAttributes,
+        $number,
+        $expected
+    ) {
         $this->helper
              ->setLocale($locale)
              ->setFormatStyle($formatStyle)
              ->setDecimals($decimals)
-             ->setFormatType($formatType);
+             ->setFormatType($formatType)
+             ->setTextAttributes($textAttributes);
 
         $this->assertMbStringEquals($expected, $this->helper->__invoke($number));
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -48,6 +49,13 @@ class NumberFormat extends AbstractHelper
     protected $formatters = [];
 
     /**
+     * Text attributes.
+     *
+     * @var array
+     */
+    protected $textAttributes = [];
+
+    /**
      * Locale to use instead of the default
      *
      * @var string
@@ -82,7 +90,8 @@ class NumberFormat extends AbstractHelper
         $formatStyle = null,
         $formatType = null,
         $locale = null,
-        $decimals = null
+        $decimals = null,
+        array $textAttributes = null
     ) {
         if (null === $locale) {
             $locale = $this->getLocale();
@@ -96,22 +105,33 @@ class NumberFormat extends AbstractHelper
         if (!is_int($decimals) || $decimals < 0) {
             $decimals = $this->getDecimals();
         }
-
-        $formatterId = md5($formatStyle . "\0" . $locale . "\0" . $decimals);
-
-        if (!isset($this->formatters[$formatterId])) {
-            $this->formatters[$formatterId] = new NumberFormatter(
-                $locale,
-                $formatStyle
-            );
-
-            if ($decimals !== null) {
-                $this->formatters[$formatterId]->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, $decimals);
-                $this->formatters[$formatterId]->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, $decimals);
-            }
+        if (!is_array($textAttributes)) {
+            $textAttributes = $this->getTextAttributes();
         }
 
-        return $this->formatters[$formatterId]->format($number, $formatType);
+        $formatterId = md5(
+            $formatStyle . "\0" . $locale . "\0" . $decimals . "\0"
+            . md5(serialize($textAttributes))
+        );
+
+        if (isset($this->formatters[$formatterId])) {
+            $formatter = $this->formatters[$formatterId];
+        } else {
+            $formatter = new NumberFormatter($locale, $formatStyle);
+
+            if ($decimals !== null) {
+                $formatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, $decimals);
+                $formatter->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, $decimals);
+            }
+
+            foreach ($textAttributes as $textAttribute => $value) {
+                $formatter->setTextAttribute($textAttribute, $value);
+            }
+
+            $this->formatters[$formatterId] = $formatter;
+        }
+
+        return $formatter->format($number, $formatType);
     }
 
     /**
@@ -211,5 +231,23 @@ class NumberFormat extends AbstractHelper
         }
 
         return $this->locale;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTextAttributes()
+    {
+        return $this->textAttributes;
+    }
+
+    /**
+     * @param array $textAttributes
+     * @return NumberFormat
+     */
+    public function setTextAttributes(array $textAttributes)
+    {
+        $this->textAttributes = $textAttributes;
+        return $this;
     }
 }
