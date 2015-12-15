@@ -304,13 +304,15 @@ class DateTime extends AbstractValidator
                 $this->getLocale(),
                 $this->getDateType(),
                 $this->getTimeType(),
-                $this->getTimezone(),
-                $this->getCalendar(),
+                $this->timezone,
+                $this->calendar,
                 $this->pattern
             );
 
             $this->formatter->setLenient(false);
 
+            $this->setTimezone($this->formatter->getTimezone());
+            $this->setCalendar($this->formatter->getCalendar());
             $this->setPattern($this->formatter->getPattern());
 
             $this->invalidateFormatter = false;
