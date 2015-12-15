@@ -201,4 +201,18 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->validator->isValid('02:00'));
         $this->assertEquals('hh:mm', $this->validator->getPattern());
     }
+
+    public function testMultipleIsValidCalls()
+    {
+        $this->validator
+            ->setLocale('pt_BR')
+            ->setDateType(IntlDateFormatter::MEDIUM)
+            ->setTimeType(IntlDateFormatter::MEDIUM);
+
+        $this->assertTrue($this->validator->isValid('31/12/2015 23:59:59'));
+        $this->assertFalse($this->validator->isValid('31/12/2015'));
+        $this->assertFalse($this->validator->isValid('23:59:59'));
+        $this->assertFalse($this->validator->isValid('does not matter'));
+        $this->assertTrue($this->validator->isValid('31/12/2015 23:59:59'));
+    }
 }

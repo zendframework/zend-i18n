@@ -275,16 +275,17 @@ class DateTime extends AbstractValidator
             throw new ValidatorException\InvalidArgumentException($intlException->getMessage(), 0, $intlException);
         }
 
-
         try {
             $timestamp = $formatter->parse($value);
 
             if (intl_is_failure($formatter->getErrorCode()) || $timestamp === false) {
                 $this->error(self::INVALID_DATETIME);
+                $this->invalidateFormatter = true;
                 return false;
             }
         } catch (IntlException $intlException) {
             $this->error(self::INVALID_DATETIME);
+            $this->invalidateFormatter = true;
             return false;
         }
 
@@ -305,10 +306,12 @@ class DateTime extends AbstractValidator
                 $this->getTimeType(),
                 $this->getTimezone(),
                 $this->getCalendar(),
-                $this->getPattern()
+                $this->pattern
             );
 
             $this->formatter->setLenient(false);
+
+            $this->setPattern($this->formatter->getPattern());
 
             $this->invalidateFormatter = false;
         }
