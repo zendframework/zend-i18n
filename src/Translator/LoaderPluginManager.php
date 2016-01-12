@@ -90,4 +90,17 @@ class LoaderPluginManager extends AbstractPluginManager
             __NAMESPACE__
         ));
     }
+
+    /**
+     * Validate the plugin is of the expected type (v2).
+     *
+     * Proxies to `validate()`.
+     *
+     * @param mixed $instance
+     * @throws InvalidServiceException
+     */
+    public function validatePlugin($instance)
+    {
+        $this->validate($instance);
+    }
 }

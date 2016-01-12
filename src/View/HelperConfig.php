@@ -10,6 +10,7 @@
 namespace Zend\I18n\View;
 
 use Zend\ServiceManager\ConfigInterface;
+use Zend\ServiceManager\Factory\InvokableFactory;
 use Zend\ServiceManager\ServiceManager;
 
 /**
@@ -18,17 +19,39 @@ use Zend\ServiceManager\ServiceManager;
 class HelperConfig implements ConfigInterface
 {
     /**
-     * Pre-aliased view helpers
-     *
+     * Common aliases for helpers
      * @var array
      */
-    protected $invokables = [
-        'currencyformat'  => 'Zend\I18n\View\Helper\CurrencyFormat',
-        'dateformat'      => 'Zend\I18n\View\Helper\DateFormat',
-        'numberformat'    => 'Zend\I18n\View\Helper\NumberFormat',
-        'plural'          => 'Zend\I18n\View\Helper\Plural',
-        'translate'       => 'Zend\I18n\View\Helper\Translate',
-        'translateplural' => 'Zend\I18n\View\Helper\TranslatePlural',
+    protected $aliases = [
+        'currencyformat' => Helper\CurrencyFormat::class,
+        'currencyFormat' => Helper\CurrencyFormat::class,
+        'CurrencyFormat' => Helper\CurrencyFormat::class,
+        'dateformat' => Helper\DateFormat::class,
+        'dateFormat' => Helper\DateFormat::class,
+        'DateFormat' => Helper\DateFormat::class,
+        'numberformat' => Helper\NumberFormat::class,
+        'numberFormat' => Helper\NumberFormat::class,
+        'NumberFormat' => Helper\NumberFormat::class,
+        'plural' => Helper\Plural::class,
+        'Plural' => Helper\Plural::class,
+        'translate' => Helper\Translate::class,
+        'Translate' => Helper\Translate::class,
+        'translateplural' => Helper\TranslatePlural::class,
+        'translatePlural' => Helper\TranslatePlural::class,
+        'TranslatePlural' => Helper\TranslatePlural::class,
+    ];
+
+    /**
+     * Factories for included helpers.
+     * @var array
+     */
+    protected $factories = [
+        Helper\CurrencyFormat::class => InvokableFactory::class,
+        Helper\DateFormat::class => InvokableFactory::class,
+        Helper\NumberFormat::class => InvokableFactory::class,
+        Helper\Plural::class => InvokableFactory::class,
+        Helper\Translate::class => InvokableFactory::class,
+        Helper\TranslatePlural::class => InvokableFactory::class,
     ];
 
     /**
@@ -40,8 +63,27 @@ class HelperConfig implements ConfigInterface
      */
     public function configureServiceManager(ServiceManager $serviceManager)
     {
-        return $serviceManager->withConfig(
-            [ 'invokables' => $this->invokables ]
-        );
+        foreach ($this->factories as $name => $factory) {
+            $serviceManager->setFactory($name, $factory);
+        }
+        foreach ($this->aliases as $alias => $target) {
+            $serviceManager->setAlias($alias, $target);
+        }
+        return $serviceManager;
+    }
+
+    /**
+     * Cast configuration to an array.
+     *
+     * Provided for v3 compatibility
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'aliases' => $this->aliases,
+            'factories' => $this->factories,
+        ];
     }
 }

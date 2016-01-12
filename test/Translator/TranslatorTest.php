@@ -14,6 +14,7 @@ use Locale;
 use Zend\EventManager\EventInterface;
 use Zend\I18n\Translator\Translator;
 use Zend\I18n\Translator\TextDomain;
+use Zend\ServiceManager\Config;
 use ZendTest\I18n\Translator\TestAsset\Loader as TestLoader;
 
 class TranslatorTest extends TestCase
@@ -165,14 +166,14 @@ class TranslatorTest extends TestCase
     {
         $loader = new TestLoader();
         $loader->textDomain = new TextDomain(['foo' => 'bar']);
+        $config = new Config([
+            'services' => [
+                'test' => $loader
+            ]
+        ]);
         $pm = $this->translator->getPluginManager();
-        $this->translator->setPluginManager(
-            $pm->configure([
-                'services' => [
-                    'test' => $loader
-                ]
-            ])
-        );
+        $config->configureServiceManager($pm);
+        $this->translator->setPluginManager($pm);
         $this->translator->addTranslationFile('test', null);
 
         $this->assertEquals('bar', $this->translator->translate('foo'));
@@ -198,7 +199,9 @@ class TranslatorTest extends TestCase
 
         $loader = new TestLoader();
         $loader->textDomain = new TextDomain(['foo' => 'bar']);
-        $plugins = $this->translator->getPluginManager()->configure(['services' => ['test' => $loader]]);
+        $config = new Config(['services' => ['test' => $loader]]);
+        $plugins = $this->translator->getPluginManager();
+        $config->configureServiceManager($plugins);
         $this->translator->setPluginManager($plugins);
         $this->translator->addTranslationFile('test', null);
 

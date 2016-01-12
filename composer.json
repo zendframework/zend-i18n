@@ -13,15 +13,15 @@
         }
     },
     "require": {
-        "php": ">=5.5",
-        "zendframework/zend-stdlib": "~2.5"
+        "php": "^5.5 || ^7.0",
+        "zendframework/zend-stdlib": "^2.5"
     },
     "require-dev": {
         "zendframework/zend-cache": "dev-develop as 2.6.0",
         "zendframework/zend-config": "~2.5",
         "zendframework/zend-eventmanager": "dev-develop as 2.7.0",
         "zendframework/zend-filter": "~2.5",
-        "zendframework/zend-servicemanager": "dev-develop as 2.7.0",
+        "zendframework/zend-servicemanager": "^2.7.2 || ^3.0",
         "zendframework/zend-validator": "~2.5",
         "zendframework/zend-view": "dev-develop as 2.6.0",
         "fabpot/php-cs-fixer": "1.7.*",
@@ -43,7 +43,7 @@
     "extra": {
         "branch-alias": {
             "dev-master": "2.5-dev",
-            "dev-develop": "3.0-dev"
+            "dev-develop": "2.6-dev"
         }
     },
     "autoload-dev": {
