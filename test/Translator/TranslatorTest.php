@@ -167,7 +167,7 @@ class TranslatorTest extends TestCase
         $loader->textDomain = new TextDomain(['foo' => 'bar']);
         $pm = $this->translator->getPluginManager();
         $this->translator->setPluginManager(
-            $pm->withConfig([
+            $pm->configure([
                 'services' => [
                     'test' => $loader
                 ]
@@ -198,7 +198,7 @@ class TranslatorTest extends TestCase
 
         $loader = new TestLoader();
         $loader->textDomain = new TextDomain(['foo' => 'bar']);
-        $plugins = $this->translator->getPluginManager()->withConfig(['services' => ['test' => $loader]]);
+        $plugins = $this->translator->getPluginManager()->configure(['services' => ['test' => $loader]]);
         $this->translator->setPluginManager($plugins);
         $this->translator->addTranslationFile('test', null);
 
