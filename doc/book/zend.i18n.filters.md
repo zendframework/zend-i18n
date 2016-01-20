@@ -38,7 +38,7 @@ echo $filter->filter("This is (my) content: 123");
 // Returns "This is my content 123"
 ```
 
-> ## Note
+> ### Note
 `Alnum` works on almost all languages, except: Chinese, Japanese and Korean. Within these languages
 the english alphabet is used instead of the characters from these languages. The language itself is
 detected using the `Locale`.
@@ -79,7 +79,7 @@ echo $filter->filter("This is (my) content: 123");
 // Returns "This is my content "
 ```
 
-> ## Note
+> ### Note
 `Alpha` works on almost all languages, except: Chinese, Japanese and Korean. Within these languages
 the english alphabet is used instead of the characters from these languages. The language itself is
 detected using the `Locale`.

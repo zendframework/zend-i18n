@@ -31,7 +31,7 @@ the translations. If the text domain is omitted, it will default to the "default
 specifies which language the translated strings are from and is only required for formats which
 contain translations for a single locale.
 
-> ## Note
+> ### Note
 For each text domain and locale combination, there can only be one file loaded. Every successive
 file would override the translations which were loaded prior.
 
