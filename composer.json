@@ -21,7 +21,7 @@
         "zendframework/zend-config": "~2.5",
         "zendframework/zend-eventmanager": "^2.6.2 || ^3.0",
         "zendframework/zend-filter": "~2.5",
-        "zendframework/zend-servicemanager": "^2.7.2 || ^3.0",
+        "zendframework/zend-servicemanager": "^2.7.3 || ^3.0",
         "zendframework/zend-validator": "~2.5",
         "zendframework/zend-view": "dev-develop as 2.6.0",
         "fabpot/php-cs-fixer": "1.7.*",
