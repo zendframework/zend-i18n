@@ -311,8 +311,6 @@ Public methods for setting a `Zend\I18n\Translator\Translator` and a default tex
 inherited from  
 \[Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper\](zend.i18n.view.helper.abstract-translator-helper.methods).
 
-<!-- -->
-
 orphan  
 
 ## TranslatePlural Helper
@@ -348,8 +346,6 @@ echo $this->translatePlural("locale", "locales", $num, "default", "de_DE");
 Public methods for setting a `Zend\I18n\Translator\Translator` and a default text domain are
 inherited from  
 \[Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper\](zend.i18n.view.helper.abstract-translator-helper.methods).
-
-<!-- -->
 
 orphan  
 
