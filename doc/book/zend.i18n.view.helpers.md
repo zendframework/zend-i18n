@@ -8,8 +8,6 @@ plugin, classes to perform these behaviors for you.
 
 See the section on \[view helpers\](zend.view.helpers) for more information.
 
-orphan  
-
 ## CurrencyFormat Helper
 
 The `CurrencyFormat` view helper can be used to simplify rendering of localized currency values. It
@@ -80,8 +78,6 @@ echo $this->currencyFormat(12345678.90, 'EUR', null, 'de_DE');
 // This returns: "12345678,90 kg"
 ```
 
-orphan  
-
 ## DateFormat Helper
 
 The `DateFormat` view helper can be used to simplify rendering of localized date/time values. It
@@ -138,8 +134,6 @@ echo $this->dateFormat(new DateTime(), IntlDateFormatter::MEDIUM);  // "Jul 2, 2
 echo $this->dateFormat(new DateTime(), IntlDateFormatter::SHORT);   // "7/2/12"
 ```
 
-orphan  
-
 ## NumberFormat Helper
 
 The `NumberFormat` view helper can be used to simplify rendering of locale-specific number and
@@ -194,8 +188,6 @@ $this->plugin("numberformat")
 echo $this->numberFormat(0.56);  // "56%"
 echo $this->numberFormat(0.90);  // "90%"
 ```
-
-orphan  
 
 ## Plural Helper
 
@@ -267,8 +259,6 @@ Now that we have defined the rule, we can use it in our views:
 ?>
 ```
 
-orphan  
-
 ## Translate Helper
 
 The `Translate` view helper can be used to translate content. It acts as a wrapper for the
@@ -313,8 +303,6 @@ inherited from
 
 <!-- -->
 
-orphan  
-
 ## TranslatePlural Helper
 
 The `TranslatePlural` view helper can be used to translate words which take into account numeric
@@ -350,8 +338,6 @@ inherited from
 \[Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper\](zend.i18n.view.helper.abstract-translator-helper.methods).
 
 <!-- -->
-
-orphan  
 
 ## Abstract Translator Helper
 
