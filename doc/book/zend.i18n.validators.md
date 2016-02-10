@@ -60,13 +60,13 @@ characters. There is no length limitation for the input you want to validate. Th
 related to the `Zend\I18n\Validator\Alnum` validator with the exception that it does not accept
 digits.
 
-### Supported options for Zend\\I18n\\Validator\\Alpha
+## Supported options for Zend\\I18n\\Validator\\Alpha
 
 The following options are supported for `Zend\I18n\Validator\Alpha`:
 
 - **allowWhiteSpace**: If whitespace characters are allowed. This option defaults to `FALSE`
 
-### Basic usage
+## Basic usage
 
 A basic example is the following one:
 
@@ -79,7 +79,7 @@ if ($validator->isValid('Abcd')) {
 }
 ```
 
-### Using whitespaces
+## Using whitespaces
 
 Per default whitespaces are not accepted because they are not part of the alphabet. Still, there is
 a way to accept them as input. This allows to validate complete sentences or phrases.
@@ -97,7 +97,7 @@ if ($validator->isValid('Abcd and efg')) {
 }
 ```
 
-### Using different languages
+## Using different languages
 
 When using `Zend\I18n\Validator\Alpha` then the language which the user sets within his browser will
 be used to set the allowed characters. This means when your user sets **de** for german then he can
@@ -119,13 +119,13 @@ alphabet.
 `Zend\I18n\Validator\IsFloat` allows you to validate if a given value contains a floating-point
 value. This validator validates also localized input.
 
-### Supported options for Zend\\I18n\\Validator\\IsFloat
+## Supported options for Zend\\I18n\\Validator\\IsFloat
 
 The following options are supported for `Zend\I18n\Validator\IsFloat`:
 
 - **locale**: Sets the locale which will be used to validate localized float values.
 
-### Simple float validation
+## Simple float validation
 
 The simplest way to validate a float is by using the system settings. When no option is used, the
 environment locale is used for validation:
@@ -140,7 +140,7 @@ $validator->isValid('1,234.5'); // returns true
 
 In the above example we expected that our environment is set to "en" as locale.
 
-### Localized float validation
+## Localized float validation
 
 Often it's useful to be able to validate also localized values. Float values are often written
 different in other countries. For example using english you will write "1.5". In german you may
@@ -172,7 +172,7 @@ receive an `E_USER_DEPRECATED` notice on instantiation. Please update your code 
 Users pulling their `Float` validator instance from the validator plugin manager receive an
 `IsFloat` instance instead starting in 2.4.0.
 
-### IsInt
+# IsInt
 
 `Zend\I18n\Validator\IsInt` validates if a given value is an integer. Also localized integer values
 are recognised and can be validated.

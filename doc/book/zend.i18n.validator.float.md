@@ -46,7 +46,7 @@ get a `FALSE` when the locale forces a different notation.
 
 The locale can also be set afterwards by using `setLocale()` and retrieved by using `getLocale()`.
 
-### Migration from 2.0-2.3 to 2.4+
+## Migration from 2.0-2.3 to 2.4+
 
 Version 2.4 adds support for PHP 7. In PHP 7, `float` is a reserved keyword, which required renaming
 the `Float` validator. If you were using the `Float` validator directly previously, you will now
