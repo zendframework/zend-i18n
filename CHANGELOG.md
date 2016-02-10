@@ -6,7 +6,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#8](https://github.com/zendframework/zend-i18n/pull/8) adds support for
+  Vietnamese postal codes.
 
 ### Deprecated
 
@@ -23,3 +24,5 @@ All notable changes to this project will be documented in this file, in reverse 
   [#22](https://github.com/zendframework/zend-i18n/pull/22) update the
   component to be forwards compatible with the v3 versions of zend-stdlib,
   zend-servicemanager, and zend-eventmanager.
+- [#8](https://github.com/zendframework/zend-i18n/pull/8) updates the regex for
+  the Mauritius postal code to follow the currently adopted format.
