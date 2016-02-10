@@ -35,6 +35,13 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+        if (! interface_exists('Zend\View\Helper\HelperInterface')) {
+            $this->markTestSkipped(
+                'Skipping tests that utilize zend-view until that component is '
+                . 'forwards-compatible with zend-stdlib and zend-servicemanager v3'
+            );
+        }
+
         if (!extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
@@ -213,7 +220,11 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
                          ->format($date->getTimestamp());
 
         $this->assertMbStringEquals($expected, $this->helper->__invoke(
-            $date, $dateType, $timeType, $locale, null
+            $date,
+            $dateType,
+            $timeType,
+            $locale,
+            null
         ));
     }
 
@@ -230,7 +241,9 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
                          ->format($date->getTimestamp());
 
         $this->assertMbStringEquals($expected, $this->helper->__invoke(
-            $date, $dateType, $timeType
+            $date,
+            $dateType,
+            $timeType
         ));
     }
 
@@ -246,7 +259,11 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
                          ->format($date->getTimestamp());
 
         $this->assertMbStringEquals($expected, $this->helper->__invoke(
-            $date, $dateType, $timeType, $locale, $pattern
+            $date,
+            $dateType,
+            $timeType,
+            $locale,
+            $pattern
         ));
     }
 
@@ -272,7 +289,7 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $test, $message);
     }
 
-    public function getIntlDateFormatter($locale, $dateType, $timeType, $timezone, $pattern=null)
+    public function getIntlDateFormatter($locale, $dateType, $timeType, $timezone, $pattern = null)
     {
         return new IntlDateFormatter($locale, $dateType, $timeType, $timezone, null, $pattern);
     }

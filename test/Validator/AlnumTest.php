@@ -28,6 +28,13 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+        if (! interface_exists('Zend\Validator\ValidatorInterface')) {
+            $this->markTestSkipped(
+                'Skipping tests that utilize zend-validator until that component is '
+                . 'forwards-compatible with zend-stdlib and zend-servicemanager v3'
+            );
+        }
+
         if (!extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
@@ -94,7 +101,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
                 $result,
                 $this->validator->isValid($input),
                 "Expected '$input' to be considered " . ($result ? '' : 'in') . "valid"
-                );
+            );
         }
     }
 
@@ -144,7 +151,10 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     public function testEqualsMessageTemplates()
     {
         $validator = $this->validator;
-        $this->assertAttributeEquals($validator->getOption('messageTemplates'),
-                                     'messageTemplates', $validator);
+        $this->assertAttributeEquals(
+            $validator->getOption('messageTemplates'),
+            'messageTemplates',
+            $validator
+        );
     }
 }

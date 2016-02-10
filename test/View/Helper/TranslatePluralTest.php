@@ -30,6 +30,13 @@ class TranslatePluralTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+        if (! interface_exists('Zend\View\Helper\HelperInterface')) {
+            $this->markTestSkipped(
+                'Skipping tests that utilize zend-view until that component is '
+                . 'forwards-compatible with zend-stdlib and zend-servicemanager v3'
+            );
+        }
+
         $this->helper = new TranslatePluralHelper();
     }
 
@@ -98,7 +105,11 @@ class TranslatePluralTest extends \PHPUnit_Framework_TestCase
         $this->helper->setTranslator($translatorMock);
 
         $this->assertEquals($expected, $this->helper->__invoke(
-            $singularInput, $pluralInput, $numberInput, $textDomain, $locale
+            $singularInput,
+            $pluralInput,
+            $numberInput,
+            $textDomain,
+            $locale
         ));
     }
 }
