@@ -2,14 +2,20 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.6.0 - TBD
+## 2.6.0 - 2016-02-10
 
 ### Added
 
 - [#8](https://github.com/zendframework/zend-i18n/pull/8) adds support for
   Vietnamese postal codes.
-- [#18](https://github.com/zendframework/zend-i118n/pull/18) adds support for
+- [#18](https://github.com/zendframework/zend-i18n/pull/18) adds support for
   `NumberFormatter` text attributes to the `NumberFormat` view helper.
+- [#28](https://github.com/zendframework/zend-i18n/pull/28),
+  [#29](https://github.com/zendframework/zend-i18n/pull/29),
+  [#30](https://github.com/zendframework/zend-i18n/pull/30),
+  [#31](https://github.com/zendframework/zend-i18n/pull/31), and
+  [#34](https://github.com/zendframework/zend-i18n/pull/34) prepared the
+  documentation for publication at https://zendframework.github.io/zend-i18n/
 
 ### Deprecated
 
