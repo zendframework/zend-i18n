@@ -52,6 +52,15 @@ class HelperConfig implements ConfigInterface
         Helper\Plural::class => InvokableFactory::class,
         Helper\Translate::class => InvokableFactory::class,
         Helper\TranslatePlural::class => InvokableFactory::class,
+        // Legacy (v2) due to alias resolution; canonical form of resolved
+        // alias is used to look up the factory, while the non-normalized
+        // resolved alias is used as the requested name passed to the factory.
+        'zendi18nviewhelpercurrencyformat' => InvokableFactory::class,
+        'zendi18nviewhelperdateformat' => InvokableFactory::class,
+        'zendi18nviewhelpernumberformat' => InvokableFactory::class,
+        'zendi18nviewhelperplural' => InvokableFactory::class,
+        'zendi18nviewhelpertranslate' => InvokableFactory::class,
+        'zendi18nviewhelpertranslateplural' => InvokableFactory::class,
     ];
 
     /**
