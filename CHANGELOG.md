@@ -30,3 +30,6 @@ All notable changes to this project will be documented in this file, in reverse 
   the Mauritius postal code to follow the currently adopted format.
 - [#13](https://github.com/zendframework/zend-i113n/pull/13) updates the regex for
   Serbian postal codes to only accept 5 digits.
+- [#19](https://github.com/zendframework/zend-i119n/pull/19) fixes the behavior
+  of the DateTime validator to ensure it can be called multiple times with
+  multiple values.
