@@ -83,6 +83,7 @@ class NumberFormat extends AbstractHelper
      * @param  int       $formatType
      * @param  string    $locale
      * @param  int       $decimals
+     * @param  array|null $textAttributes
      * @return string
      */
     public function __invoke(
