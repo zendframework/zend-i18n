@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - [#8](https://github.com/zendframework/zend-i18n/pull/8) adds support for
   Vietnamese postal codes.
+- [#18](https://github.com/zendframework/zend-i118n/pull/18) adds support for
+  `NumberFormatter` text attributes to the `NumberFormat` view helper.
 
 ### Deprecated
 

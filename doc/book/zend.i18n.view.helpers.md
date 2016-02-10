@@ -179,20 +179,40 @@ echo $this->numberFormat(
 // This returns: "1,23456789E-3"
 ```
 
+The arguments to the helper, in order, are:
+
+- `$number` (`int|float`; required): the number to format.
+- `$formatStyle` (`int`; optional): one of the `NumberFormatter` styles:
+  `NumberFormatter::DECIMAL`, `NumberFormatter::CURRENCY`, etc.
+- `$formatType` (`int`; optional): one of the `NumberFormatter` types:
+  `NumberFormatter::TYPE_DEFAULT` (basic numeric),
+  `NumberFormatter::TYPE_CURRENCY`, etc.
+- `$locale` (`string`; optional): a valid locale to use when formatting the number.
+- `$decimals` (`int`; optional): the number of digits beyond the decimal point
+  to display.
+- `$textAttributes` (`array`; optional): text attributes to use with the number
+  (e.g., prefix and/or suffix for positive/negative numbers, currency code):
+  `NumberFormatter::POSITIVE_PREFIX`, `NumberFormatter::NEGATIVE_PREFIX`, etc.
+
 ### Public Methods
 
-The `$formatStyle`, `$formatType`, and `$locale` options can be set prior to formatting and will be
-applied each time the helper is used.
+Each of the `$formatStyle`, `$formatType`, `$locale`, and `$textAttributes`
+options can be set prior to formatting and will be applied each time the helper
+is used.
 
 ```php
 // Within your view
 $this->plugin("numberformat")
             ->setFormatStyle(NumberFormatter::PERCENT)
             ->setFormatType(NumberFormatter::TYPE_DOUBLE)
-            ->setLocale("en_US");
+            ->setLocale("en_US")
+            ->setTextAttributes([
+                NumberFormatter::POSITIVE_PREFIX => '^ ',
+                NumberFormatter::NEGATIVE_PREFIX => 'v ',
+            ]);
 
-echo $this->numberFormat(0.56);  // "56%"
-echo $this->numberFormat(0.90);  // "90%"
+echo $this->numberFormat(0.56);   // "^ 56%"
+echo $this->numberFormat(-0.90);  // "v 90%"
 ```
 
 orphan  
