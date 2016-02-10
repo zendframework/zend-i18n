@@ -13,12 +13,14 @@ use Locale;
 use Traversable;
 use Zend\Cache;
 use Zend\Cache\Storage\StorageInterface as CacheStorage;
+use Zend\EventManager\Event;
 use Zend\EventManager\EventManager;
 use Zend\EventManager\EventManagerInterface;
 use Zend\I18n\Exception;
 use Zend\I18n\Translator\Loader\FileLoaderInterface;
 use Zend\I18n\Translator\Loader\RemoteLoaderInterface;
 use Zend\Stdlib\ArrayUtils;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * Translator.
@@ -334,7 +336,7 @@ class Translator implements TranslatorInterface
     public function getPluginManager()
     {
         if (!$this->pluginManager instanceof LoaderPluginManager) {
-            $this->setPluginManager(new LoaderPluginManager());
+            $this->setPluginManager(new LoaderPluginManager(new ServiceManager));
         }
 
         return $this->pluginManager;
@@ -432,7 +434,7 @@ class Translator implements TranslatorInterface
         $locale,
         $textDomain = 'default'
     ) {
-        if ($message === '') {
+        if ($message === '' || $message === null) {
             return '';
         }
 
@@ -445,18 +447,18 @@ class Translator implements TranslatorInterface
         }
 
         if ($this->isEventManagerEnabled()) {
-            $results = $this->getEventManager()->trigger(
-                self::EVENT_MISSING_TRANSLATION,
-                $this,
-                [
-                    'message'     => $message,
-                    'locale'      => $locale,
-                    'text_domain' => $textDomain,
-                ],
-                function ($r) {
-                    return is_string($r);
-                }
-            );
+            $until = function ($r) {
+                return is_string($r);
+            };
+
+            $event = new Event(self::EVENT_MISSING_TRANSLATION, $this, [
+                'message'     => $message,
+                'locale'      => $locale,
+                'text_domain' => $textDomain,
+            ]);
+
+            $results = $this->getEventManager()->triggerEventUntil($until, $event);
+
             $last = $results->last();
             if (is_string($last)) {
                 return $last;
@@ -574,17 +576,17 @@ class Translator implements TranslatorInterface
         if (!$messagesLoaded) {
             $discoveredTextDomain = null;
             if ($this->isEventManagerEnabled()) {
-                $results = $this->getEventManager()->trigger(
-                    self::EVENT_NO_MESSAGES_LOADED,
-                    $this,
-                    [
-                        'locale'      => $locale,
-                        'text_domain' => $textDomain,
-                    ],
-                    function ($r) {
-                        return ($r instanceof TextDomain);
-                    }
-                );
+                $until = function ($r) {
+                    return ($r instanceof TextDomain);
+                };
+
+                $event = new Event(self::EVENT_NO_MESSAGES_LOADED, $this, [
+                    'locale'      => $locale,
+                    'text_domain' => $textDomain,
+                ]);
+
+                $results = $this->getEventManager()->triggerEventUntil($until, $event);
+
                 $last = $results->last();
                 if ($last instanceof TextDomain) {
                     $discoveredTextDomain = $last;

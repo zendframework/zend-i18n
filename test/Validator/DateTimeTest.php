@@ -35,6 +35,13 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        if (! interface_exists('Zend\Validator\ValidatorInterface')) {
+            $this->markTestSkipped(
+                'Skipping tests that utilize zend-validator until that component is '
+                . 'forwards-compatible with zend-stdlib and zend-servicemanager v3'
+            );
+        }
+
         if (!extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
@@ -200,5 +207,21 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
 
         $this->assertTrue($this->validator->isValid('02:00'));
         $this->assertEquals('hh:mm', $this->validator->getPattern());
+    }
+
+    public function testMultipleIsValidCalls()
+    {
+        $validValue = IntlDateFormatter::create('en', IntlDateFormatter::FULL, IntlDateFormatter::FULL)
+            ->format(new DateTime());
+        $this->validator
+            ->setLocale('en')
+            ->setDateType(IntlDateFormatter::FULL)
+            ->setTimeType(IntlDateFormatter::FULL);
+
+        $this->assertTrue($this->validator->isValid($validValue));
+        $this->assertFalse($this->validator->isValid('12/31/2015'));
+        $this->assertFalse($this->validator->isValid('23:59:59'));
+        $this->assertFalse($this->validator->isValid('does not matter'));
+        $this->assertTrue($this->validator->isValid($validValue));
     }
 }
