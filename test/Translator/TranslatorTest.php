@@ -465,4 +465,22 @@ class TranslatorTest extends TestCase
         $allMessages = $this->translator->getAllMessages('default', 'es_ES');
         $this->assertNull($allMessages);
     }
+
+    /**
+     * @group 33
+     */
+    public function testNullMessageArgumentShouldReturnAnEmptyString()
+    {
+        $loader = new TestLoader();
+        $loader->textDomain = new TextDomain(['foo' => 'bar']);
+        $config = new Config(['services' => [
+            'test' => $loader
+        ]]);
+        $pm = $this->translator->getPluginManager();
+        $config->configureServiceManager($pm);
+        $this->translator->setPluginManager($pm);
+        $this->translator->addTranslationFile('test', null);
+
+        $this->assertEquals('', $this->translator->translate(null));
+    }
 }

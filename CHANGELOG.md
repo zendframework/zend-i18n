@@ -28,8 +28,11 @@ All notable changes to this project will be documented in this file, in reverse 
   zend-servicemanager, and zend-eventmanager.
 - [#8](https://github.com/zendframework/zend-i18n/pull/8) updates the regex for
   the Mauritius postal code to follow the currently adopted format.
-- [#13](https://github.com/zendframework/zend-i113n/pull/13) updates the regex for
+- [#13](https://github.com/zendframework/zend-i18n/pull/13) updates the regex for
   Serbian postal codes to only accept 5 digits.
-- [#19](https://github.com/zendframework/zend-i119n/pull/19) fixes the behavior
+- [#19](https://github.com/zendframework/zend-i18n/pull/19) fixes the behavior
   of the DateTime validator to ensure it can be called multiple times with
   multiple values.
+- [#33](https://github.com/zendframework/zend-i18n/pull/33) adds a check for
+  null messages in `Translator::getTranslatedMessage()` to prevent illegal
+  offset warnings.
