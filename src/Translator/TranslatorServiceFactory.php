@@ -9,31 +9,42 @@
 
 namespace Zend\I18n\Translator;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Translator.
  */
 class TranslatorServiceFactory implements FactoryInterface
 {
-    /*
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    /**
+     * Create a Translator instance.
+     *
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param null|array $options
+     * @return Translator
+     */
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         // Configure the translator
-        $config = $serviceLocator->get('Config');
+        $config = $container->get('config');
         $trConfig = isset($config['translator']) ? $config['translator'] : [];
         $translator = Translator::factory($trConfig);
         return $translator;
     }
-    */
 
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    /**
+     * zend-servicemanager v2 factory for creating Translator instance.
+     *
+     * Proxies to `__invoke()`.
+     *
+     * @param ServiceLocatorInterface $serviceLocator
+     * @returns Translator
+     */
+    public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        // Configure the translator
-        $config = $container->get('Config');
-        $trConfig = isset($config['translator']) ? $config['translator'] : [];
-        $translator = Translator::factory($trConfig);
-        return $translator;
+        return $this($serviceLocator, Translator::class);
     }
 }

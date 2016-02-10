@@ -13,6 +13,7 @@ use Locale;
 use Traversable;
 use Zend\Cache;
 use Zend\Cache\Storage\StorageInterface as CacheStorage;
+use Zend\EventManager\Event;
 use Zend\EventManager\EventManager;
 use Zend\EventManager\EventManagerInterface;
 use Zend\I18n\Exception;
@@ -449,16 +450,15 @@ class Translator implements TranslatorInterface
             $until = function ($r) {
                 return is_string($r);
             };
-            $results = $this->getEventManager()->triggerUntil(
-                $until,
-                self::EVENT_MISSING_TRANSLATION,
-                $this,
-                [
-                    'message'     => $message,
-                    'locale'      => $locale,
-                    'text_domain' => $textDomain,
-                ]
-            );
+
+            $event = new Event(self::EVENT_MISSING_TRANSLATION, $this, [
+                'message'     => $message,
+                'locale'      => $locale,
+                'text_domain' => $textDomain,
+            ]);
+
+            $results = $this->getEventManager()->triggerEventUntil($until, $event);
+
             $last = $results->last();
             if (is_string($last)) {
                 return $last;
@@ -579,15 +579,14 @@ class Translator implements TranslatorInterface
                 $until = function ($r) {
                     return ($r instanceof TextDomain);
                 };
-                $results = $this->getEventManager()->triggerUntil(
-                    $until,
-                    self::EVENT_NO_MESSAGES_LOADED,
-                    $this,
-                    [
-                        'locale'      => $locale,
-                        'text_domain' => $textDomain,
-                    ]
-                );
+
+                $event = new Event(self::EVENT_NO_MESSAGES_LOADED, $this, [
+                    'locale'      => $locale,
+                    'text_domain' => $textDomain,
+                ]);
+
+                $results = $this->getEventManager()->triggerEventUntil($until, $event);
+
                 $last = $results->last();
                 if ($last instanceof TextDomain) {
                     $discoveredTextDomain = $last;
