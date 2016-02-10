@@ -434,7 +434,7 @@ class Translator implements TranslatorInterface
         $locale,
         $textDomain = 'default'
     ) {
-        if ($message === '' || is_null($message)) {
+        if ($message === '' || $message === null) {
             return '';
         }
 
