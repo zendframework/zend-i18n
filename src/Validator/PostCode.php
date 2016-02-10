@@ -178,7 +178,7 @@ class PostCode extends AbstractValidator
         'AS' => '96799',
         'CC' => '6799',
         'CK' => '\d{4}',
-        'RS' => '\d{6}',
+        'RS' => '\d{5}',
         'ME' => '8\d{4}',
         'CS' => '\d{5}',
         'YU' => '\d{5}',

@@ -26,3 +26,5 @@ All notable changes to this project will be documented in this file, in reverse 
   zend-servicemanager, and zend-eventmanager.
 - [#8](https://github.com/zendframework/zend-i18n/pull/8) updates the regex for
   the Mauritius postal code to follow the currently adopted format.
+- [#13](https://github.com/zendframework/zend-i113n/pull/13) updates the regex for
+  Serbian postal codes to only accept 5 digits.
