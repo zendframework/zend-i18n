@@ -321,7 +321,7 @@ Public methods for setting a `Zend\I18n\Translator\Translator` and a default tex
 inherited from  
 \[Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper\](zend.i18n.view.helper.abstract-translator-helper.methods).
 
-<!-- -->
+orphan  
 
 ## TranslatePlural Helper
 
@@ -357,7 +357,7 @@ Public methods for setting a `Zend\I18n\Translator\Translator` and a default tex
 inherited from  
 \[Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper\](zend.i18n.view.helper.abstract-translator-helper.methods).
 
-<!-- -->
+orphan  
 
 ## Abstract Translator Helper
 
