@@ -29,7 +29,7 @@ class TranslatorServiceFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         // Configure the translator
-        $config = $container->get('Config');
+        $config = $container->get('config');
         $trConfig = isset($config['translator']) ? $config['translator'] : [];
         $translator = Translator::factory($trConfig);
         return $translator;

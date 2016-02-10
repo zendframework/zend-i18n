@@ -104,17 +104,18 @@ class LoaderPluginManager extends AbstractPluginManager
      *
      * Proxies to `validate()`.
      *
-     * @param mixed $instance
+     * @param mixed $plugin
      * @throws Exception\RuntimeException
      */
-    public function validatePlugin($instance)
+    public function validatePlugin($plugin)
     {
         try {
-            $this->validate($instance);
+            $this->validate($plugin);
         } catch (InvalidServiceException $e) {
             throw new Exception\RuntimeException(sprintf(
                 'Plugin of type %s is invalid; must implement %s\Loader\FileLoaderInterface or %s\Loader\RemoteLoaderInterface',
                 (is_object($plugin) ? get_class($plugin) : gettype($plugin)),
+                __NAMESPACE__,
                 __NAMESPACE__
             ));
         }
