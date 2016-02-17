@@ -133,13 +133,6 @@ class TranslatorTest extends TestCase
 
     public function testFactoryCreatesTranslatorWithCache()
     {
-        if (! interface_exists('Zend\Cache\Storage\StorageInterface')) {
-            $this->markTestSkipped(
-                'Skipping tests that utilize zend-cache until that component is '
-                . 'forwards-compatible with zend-stdlib and zend-servicemanager v3'
-            );
-        }
-
         $translator = Translator::factory([
             'locale' => 'de_DE',
             'patterns' => [
@@ -188,13 +181,6 @@ class TranslatorTest extends TestCase
 
     public function testTranslationsLoadedFromCache()
     {
-        if (! interface_exists('Zend\Cache\Storage\StorageInterface')) {
-            $this->markTestSkipped(
-                'Skipping tests that utilize zend-cache until that component is '
-                . 'forwards-compatible with zend-stdlib and zend-servicemanager v3'
-            );
-        }
-
         $cache = \Zend\Cache\StorageFactory::factory(['adapter' => 'memory']);
         $this->translator->setCache($cache);
 
@@ -208,13 +194,6 @@ class TranslatorTest extends TestCase
 
     public function testTranslationsAreStoredInCache()
     {
-        if (! interface_exists('Zend\Cache\Storage\StorageInterface')) {
-            $this->markTestSkipped(
-                'Skipping tests that utilize zend-cache until that component is '
-                . 'forwards-compatible with zend-stdlib and zend-servicemanager v3'
-            );
-        }
-
         $cache = \Zend\Cache\StorageFactory::factory(['adapter' => 'memory']);
         $this->translator->setCache($cache);
 
