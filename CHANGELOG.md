@@ -36,7 +36,10 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#35](https://github.com/zendframework/zend-i18n/pull/35) updates the
+  dependencies for zend-validator and zend-cache to use versions that are
+  forwards-compatible with zend-servicemanager v3, and re-enables their tests
+  during continuous integration.
 
 ## 2.6.0 - 2016-02-10
 
