@@ -11,6 +11,10 @@
         "branch-alias": {
             "dev-master": "2.6-dev",
             "dev-develop": "2.7-dev"
+        },
+        "zf": {
+            "component": "Zend\\I18n",
+            "config-provider": "Zend\\I18n\\ConfigProvider"
         }
     },
     "require": {
