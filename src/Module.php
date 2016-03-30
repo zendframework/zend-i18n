@@ -24,4 +24,23 @@ class Module
             'view_helpers'    => $provider->getViewHelperConfig(),
         ];
     }
+
+    /**
+     * Register a specification for the TranslatorPluginManager with the ServiceListener.
+     *
+     * @param \Zend\ModuleManager\ModuleEvent
+     * @return void
+     */
+    public function init($event)
+    {
+        $container = $event->getParam('ServiceManager');
+        $serviceListener = $container->get('ServiceListener');
+
+        $serviceListener->addServiceManager(
+            'TranslatorPluginManager',
+            'translator_plugins',
+            'Zend\ModuleManager\Feature\TranslatorPluginProviderInterface',
+            'getTranslatorPluginConfig'
+        );
+    }
 }
