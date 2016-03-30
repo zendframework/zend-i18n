@@ -2,11 +2,13 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.7.1 - TBD
+## 2.7.1 - 2016-03-30
 
 ### Added
 
-- Nothing.
+- [#41](https://github.com/zendframework/zend-i18n/pull/41) adds
+  `Zend\I18n\Module::init()`, which registers a specification for the translator
+  loader plugin manager with `Zend\ModuleManager\Listener\ServiceListener`.
 
 ### Deprecated
 
