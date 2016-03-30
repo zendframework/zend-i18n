@@ -6,11 +6,22 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#40](https://github.com/zendframework/zend-i18n/pull/40) adds:
+  - `Zend\I18n\Translator\LoaderPluginManagerFactory`, which provides a factory
+    for container-interop-compatible containers (including zend-servicemanager)
+    for creating and returning a `LoaderPluginManager` instance.
+  - `Zend\I18n\ConfigProvider` (which provides an invokable configuration
+    provider class; this could be used with zend-expressive) and
+    `Zend\I18n\Module` (which provides a zend-mvc/zend-modulemanager module
+    providing service configuration for ZF applications); these provide
+    configuration for zend-i18n services, including filters, validators, and
+    view helpers.
 
 ### Deprecated
 
-- Nothing.
+- [#40](https://github.com/zendframework/zend-i18n/pull/40) deprecates
+  `Zend\I18n\View\HelperConfig`, as the functionality is made obsolete by the
+  new `Module` class. The class will be removed with the 3.0 release.
 
 ### Removed
 
