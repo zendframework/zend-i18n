@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.7.0 - TBD
+## 2.7.0 - 2016-03-30
 
 ### Added
 
@@ -22,24 +22,6 @@ All notable changes to this project will be documented in this file, in reverse 
 - [#40](https://github.com/zendframework/zend-i18n/pull/40) deprecates
   `Zend\I18n\View\HelperConfig`, as the functionality is made obsolete by the
   new `Module` class. The class will be removed with the 3.0 release.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
-
-## 2.6.1 - TBD
-
-### Added
-
-- Nothing.
-
-### Deprecated
-
-- Nothing.
 
 ### Removed
 
