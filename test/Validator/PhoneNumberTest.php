@@ -3202,4 +3202,14 @@ class PhoneNumberTest extends \PHPUnit_Framework_TestCase
             }
         }
     }
+
+    public function testCanSpecifyCountryWithContext()
+    {
+        Locale::setDefault('ZW');
+        $validator = new PhoneNumber([
+            'country' => 'country-code',
+        ]);
+
+        $this->assertTrue($validator->isValid('+37067811268', ['country-code' => 'LT']));
+    }
 }
