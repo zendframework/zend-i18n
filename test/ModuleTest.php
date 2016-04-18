@@ -44,6 +44,9 @@ class ModuleTest extends TestCase
         $event = $this->prophesize(TestAsset\ModuleEventInterface::class);
         $event->getParam('ServiceManager')->willReturn($container->reveal());
 
-        $this->assertNull($this->module->init($event->reveal()));
+        $moduleManager = $this->prophesize(TestAsset\ModuleManagerInterface::class);
+        $moduleManager->getEvent()->willReturn($event->reveal());
+
+        $this->assertNull($this->module->init($moduleManager->reveal()));
     }
 }
