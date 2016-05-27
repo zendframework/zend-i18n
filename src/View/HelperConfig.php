@@ -76,7 +76,7 @@ class HelperConfig implements ConfigInterface
     {
         if (method_exists($serviceManager, 'configure')) {
             $serviceManager->configure($this->toArray());
-        } else {        
+        } else {
             foreach ($this->factories as $name => $factory) {
                 $serviceManager->setFactory($name, $factory);
             }
