@@ -23,6 +23,9 @@ All notable changes to this project will be documented in this file, in reverse 
   provided, but validate based on the uppercased country value. This ensures
   the same validation behavior, and prevents the value from being transformed,
   potentially breaking later retrieval.
+- [#47](https://github.com/zendframework/zend-i18n/pull/47) provides a
+  performance improvement to the `Zend\I18n\View\HelperConfig` implementation
+  when operating under zend-servicemanager v3.
 
 ## 2.7.2 - 2016-04-18
 
