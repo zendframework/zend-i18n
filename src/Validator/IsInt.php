@@ -17,8 +17,9 @@ use Zend\I18n\Exception as I18nException;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
+use Zend\Validator\LocaleAwareValidatorInterface;
 
-class IsInt extends AbstractValidator
+class IsInt extends AbstractValidator implements LocaleAwareValidatorInterface
 {
     const INVALID = 'intInvalid';
     const NOT_INT = 'notInt';

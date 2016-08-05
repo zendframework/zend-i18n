@@ -21,6 +21,12 @@
         "php": "^7.0 || ^5.6",
         "zendframework/zend-stdlib": "^2.7 || ^3.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:fabiang/zend-validator.git"
+        }
+    ],
     "require-dev": {
         "phpunit/PHPUnit": "^6.0.8 || ^5.7.15",
         "zendframework/zend-cache": "^2.6.1",
@@ -29,7 +35,7 @@
         "zendframework/zend-eventmanager": "^2.6.2 || ^3.0",
         "zendframework/zend-filter": "^2.6.1",
         "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
-        "zendframework/zend-validator": "^2.6",
+        "zendframework/zend-validator": "dev-locale-interface",
         "zendframework/zend-view": "^2.6.3"
     },
     "suggest": {

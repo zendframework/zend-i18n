@@ -16,8 +16,9 @@ use IntlException;
 use Zend\I18n\Exception as I18nException;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception as ValidatorException;
+use Zend\Validator\LocaleAwareValidatorInterface;
 
-class DateTime extends AbstractValidator
+class DateTime extends AbstractValidator implements LocaleAwareValidatorInterface
 {
     const INVALID          = 'datetimeInvalid';
     const INVALID_DATETIME = 'datetimeInvalidDateTime';
