@@ -58,8 +58,12 @@ class LoaderPluginManager extends AbstractPluginManager
 {
     protected $aliases = [
         'gettext'  => Loader\Gettext::class,
+        'getText'  => Loader\Gettext::class,
+        'GetText'  => Loader\Gettext::class,
         'ini'      => Loader\Ini::class,
-        'phparray' => Loader\PhpArray::class
+        'phparray' => Loader\PhpArray::class,
+        'phpArray' => Loader\PhpArray::class,
+        'PhpArray' => Loader\PhpArray::class,
     ];
 
     protected $factories = [
