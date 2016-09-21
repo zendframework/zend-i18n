@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Filters - zend-i18n</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/zf-web.css" rel="stylesheet">
+    <link href="../css/zf.css" rel="stylesheet">
+    <link href="../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
+              <a href="..">zend-i18n</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../translation/">Translation</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../view-helpers/">View Helpers</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Filters</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../validators/">Validators</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="component-toggle" data-toggle="tooltip" data-placement="bottom" title="Show component list">
+                        <i class="fa fa-book"></i> Components
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-i18n">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div id="page-top" class="container docs">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#filters">Filters</a></li>
+        
+            <li><a href="#alnum">Alnum</a></li>
+        
+            <li><a href="#alpha">Alpha</a></li>
+        
+            <li><a href="#numberformat">NumberFormat</a></li>
+        
+            <li><a href="#numberparse">NumberParse</a></li>
+        
+    
+    </ul>
+
+    
+    <ul class="pager hidden-print">
+      <li class="previous">
+        <a rel="prev" href="../view-helpers/"><i class="fa fa-arrow-left"></i> Previous</a>
+      </li>
+      <li class="next">
+        <a rel="next" href="../validators/">Next <i class="fa fa-arrow-right"></i></a>
+      </li>
+    </ul>
+    
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="..">zend-i18n</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+  
+  <li class="active">Filters</li>
+</ol>
+
+<h1 id="filters">Filters</h1>
+<p>zend-i18n ships with a set of internationalization-related filters.</p>
+<h2 id="alnum">Alnum</h2>
+<p>The <code>Alnum</code> filter can be used to return only alphabetic characters and digits in the unicode
+"letter" and "number" categories, respectively. All other characters are suppressed.</p>
+<h3 id="supported-options">Supported Options</h3>
+<p>The following options are supported for <code>Alnum</code>:</p>
+<pre class="codehilite"><code class="language-php">Alnum([ boolean $allowWhiteSpace [, string $locale ]])</code></pre>
+
+
+<ul>
+<li><code>$allowWhiteSpace</code>: If set to true, whitespace characters are allowed;
+  otherwise they are suppressed. Default is <code>false</code> (whitespace is not allowed).
+  Methods for getting/setting the allowWhiteSpace option are also available
+  (<code>getAllowWhiteSpace()</code> and <code>setAllowWhiteSpace()</code>).</li>
+<li><code>$locale</code>: The locale string used in identifying the characters to filter
+  (locale name, e.g.  <code>en_US</code>). If unset, it will use the default locale
+  (<code>Locale::getDefault()</code>). Methods for getting/setting the locale are also
+  available (<code>getLocale()</code> and <code>setLocale()</code>).</li>
+</ul>
+<h3 id="basic-usage">Basic Usage</h3>
+<pre class="codehilite"><code class="language-php">// Default settings, deny whitespace
+$filter = new \Zend\I18n\Filter\Alnum();
+echo $filter-&gt;filter(&quot;This is (my) content: 123&quot;);
+// Returns &quot;Thisismycontent123&quot;
+
+// First param in constructor is $allowWhiteSpace
+$filter = new \Zend\I18n\Filter\Alnum(true);
+echo $filter-&gt;filter(&quot;This is (my) content: 123&quot;);
+// Returns &quot;This is my content 123&quot;</code></pre>
+
+
+<blockquote>
+<h3 id="supported-languages">Supported languages</h3>
+<p><code>Alnum</code> works for most languages, except Chinese, Japanese and Korean. Within
+these languages, the English alphabet is used instead of the characters from
+these languages. The language itself is detected using the <code>Locale</code> class.</p>
+</blockquote>
+<h2 id="alpha">Alpha</h2>
+<p>The <code>Alpha</code> filter can be used to return only alphabetic characters in the unicode "letter"
+category. All other characters are suppressed.</p>
+<h3 id="supported-options_1">Supported Options</h3>
+<p>The following options are supported for <code>Alpha</code>:</p>
+<pre class="codehilite"><code class="language-php">Alpha([ boolean $allowWhiteSpace [, string $locale ]])</code></pre>
+
+
+<ul>
+<li><code>$allowWhiteSpace</code>: If set to true, whitespace characters are allowed;
+  otherwise they are suppressed. Default is <code>false</code> (whitespace is not allowed).
+  Methods for getting/setting the allowWhiteSpace option are also available
+  (<code>getAllowWhiteSpace()</code> and <code>setAllowWhiteSpace()</code>).</li>
+<li><code>$locale</code>: The locale string used in identifying the characters to filter
+  (locale name, e.g.  <code>en_US</code>). If unset, it will use the default locale
+  (<code>Locale::getDefault()</code>). Methods for getting/setting the locale are also
+  available (<code>getLocale()</code> and <code>setLocale()</code>).</li>
+</ul>
+<h3 id="basic-usage_1">Basic Usage</h3>
+<pre class="codehilite"><code class="language-php">// Default settings, deny whitespace
+$filter = new \Zend\I18n\Filter\Alpha();
+echo $filter-&gt;filter(&quot;This is (my) content: 123&quot;);
+// Returns &quot;Thisismycontent&quot;
+
+// Allow whitespace
+$filter = new \Zend\I18n\Filter\Alpha(true);
+echo $filter-&gt;filter(&quot;This is (my) content: 123&quot;);
+// Returns &quot;This is my content &quot;</code></pre>
+
+
+<blockquote>
+<h3 id="supported-languages_1">Supported languages</h3>
+<p><code>Alnum</code> works for most languages, except Chinese, Japanese and Korean. Within
+these languages, the English alphabet is used instead of the characters from
+these languages. The language itself is detected using the <code>Locale</code> class.</p>
+</blockquote>
+<h2 id="numberformat">NumberFormat</h2>
+<p>The <code>NumberFormat</code> filter can be used to return locale-specific number and
+percentage strings. It extends the <code>NumberParse</code> filter, which acts as wrapper
+for the <code>NumberFormatter</code> class within ext/intl.</p>
+<h3 id="supported-options_2">Supported Options</h3>
+<p>The following options are supported for <code>NumberFormat</code>:</p>
+<pre class="codehilite"><code class="language-php">NumberFormat([ string $locale [, int $style [, int $type ]]])</code></pre>
+
+
+<ul>
+<li><code>$locale</code>: The locale string used in identifying the characters to filter
+  (locale name, e.g.  <code>en_US</code>). If unset, it will use the default locale
+  (<code>Locale::getDefault()</code>). Methods for getting/setting the locale are also
+  available (<code>getLocale()</code> and <code>setLocale()</code>).</li>
+<li><code>$style</code>: (Optional) Style of the formatting, one of the <a href="http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle"><code>NumberFormatter</code>
+  format style constants</a>.
+  If unset, it will use <code>NumberFormatter::DEFAULT_STYLE</code> as the default style.
+  Methods for getting/setting the format style are also available (<code>getStyle()</code>
+  and <code>setStyle()</code>).</li>
+<li><code>$type</code>: (Optional) The <a href="http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.types"><code>NumberFormatter</code> formatting type</a>
+  to use. If unset, it will use <code>NumberFormatter::TYPE_DOUBLE</code> as the default
+  type.  Methods for getting/setting the format type are also available
+  (<code>getType()</code> and <code>setType()</code>).</li>
+</ul>
+<h3 id="basic-usage_2">Basic Usage</h3>
+<pre class="codehilite"><code class="language-php">$filter = new \Zend\I18n\Filter\NumberFormat('de_DE');
+echo $filter-&gt;filter(1234567.8912346);
+// Returns &quot;1.234.567,891&quot;
+
+$filter = new \Zend\I18n\Filter\NumberFormat('en_US', NumberFormatter::PERCENT);
+echo $filter-&gt;filter(0.80);
+// Returns &quot;80%&quot;
+
+$filter = new \Zend\I18n\Filter\NumberFormat('fr_FR', NumberFormatter::SCIENTIFIC);
+echo $filter-&gt;filter(0.00123456789);
+// Returns &quot;1,23456789E-3&quot;</code></pre>
+
+
+<h2 id="numberparse">NumberParse</h2>
+<p>The <code>NumberParse</code> filter can be used to parse a number from a string. It acts as
+a wrapper for the <code>NumberFormatter</code> class within ext/intl.</p>
+<h3 id="supported-options_3">Supported Options</h3>
+<p>The following options are supported for <code>NumberParse</code>:</p>
+<pre class="codehilite"><code class="language-php">NumberParse([ string $locale [, int $style [, int $type ]]])</code></pre>
+
+
+<ul>
+<li><code>$locale</code>: The locale string used in identifying the characters to filter
+  (locale name, e.g.  <code>en_US</code>). If unset, it will use the default locale
+  (<code>Locale::getDefault()</code>). Methods for getting/setting the locale are also
+  available (<code>getLocale()</code> and <code>setLocale()</code>).</li>
+<li><code>$style</code>: (Optional) Style of the parsing, one of the <a href="http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle"><code>NumberFormatter</code> format style constants</a>.
+  If unset, it will use <code>NumberFormatter::DEFAULT_STYLE</code> as the default style.
+  Methods for getting/setting the parse style are also available (<code>getStyle()</code>
+  and <code>setStyle()</code>).</li>
+<li><code>$type</code>: (Optional) The <a href="http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.types"><code>NumberFormatter</code> parsing type</a>
+  to use. If unset, it will use <code>NumberFormatter::TYPE_DOUBLE</code> as the default
+  type.  Methods for getting/setting the parse type are also available
+  (<code>getType()</code> and <code>setType()</code>).</li>
+</ul>
+<h3 id="basic-usage_3">Basic Usage</h3>
+<pre class="codehilite"><code class="language-php">$filter = new \Zend\I18n\Filter\NumberParse('de_DE');
+echo $filter-&gt;filter('1.234.567,891');
+// Returns 1234567.8912346
+
+$filter = new \Zend\I18n\Filter\NumberParse('en_US', NumberFormatter::PERCENT);
+echo $filter-&gt;filter('80%');
+// Returns 0.80
+
+$filter = new \Zend\I18n\Filter\NumberParse('fr_FR', NumberFormatter::SCIENTIFIC);
+echo $filter-&gt;filter('1,23456789E-3');
+// Returns 0.00123456789</code></pre>
+
+<hr />
+
+
+<nav>
+  <ul class="pager hidden-print">
+    <li class="previous">
+      <a rel="prev" href="../view-helpers/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../validators/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+</div>
+        
+    </div>
+    <!-- content:end -->
+
+    <div id="footerwrap">
+    <div class="container">
+        <div class="row site-map">
+            <div class="col-lg-3">
+              <p>
+                <strong>Zend Framework</strong><br />
+                <a href="http://framework.zend.com/">framework.zend.com</a><br />
+                <a href="https://docs.zendframework.com">docs.zendframework.com</a><br />
+                <a href="https://packages.zendframework.com">packages.zendframework.com</a><br />
+                <a href="https://apigility.org">apigility.org</a><br />
+              </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 centered">
+                <a class="back-to-top" href="#page-top"><i class="fa fa-chevron-circle-up fa-4" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="spacing"></div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h4>Copyright</h4>
+                <div class="hline-w"></div>
+
+                <p>&copy; 2006-2016 by <a href="http://www.zend.com">Zend</a>, a <a href="http://www.roguewave.com/">Rogue Wave Company</a>.</p>
+            </div>
+
+            <div class="col-lg-4">
+                <h4>Contacts</h4>
+                <div class="hline-w"></div>
+                <p>
+                    <a href="irc://irc.freenode.net/zftalk" class="btn-social btn-outline" alt="IRC" title="IRC"><i class="fa fa-comment"></i></a>
+                    <a href="https://github.com/zendframework" class="btn-social btn-outline" alt="Github" title="Github"><i class="fa fa-github"></i></a>
+                    <a href="https://twitter.com/zfdevteam" class="btn-social btn-outline" alt="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prism-zf.js"></script>
+
+    <script>var base_url = '..';</script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zf-components">
+  <div class="zf-components-grid">
+    <div class="zf-logo">
+      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
+    </div>
+
+    <div class="component-list"></div>
+
+    <p class="zf-components-rollup"><a href="#">Hide list</a></p>
+  </div>
+</div>
+
+    <script>
+  // Prepare the component list dropdown for display
+  $(function () {
+    var components = $(".zf-components"),
+        componentList = components.find(".component-list"),
+        sidebar = $(".bs-sidebar.affix"),
+        sidebarInitialPos = sidebar.css("position"),
+        hidden,
+        componentToggle = $(".component-toggle"),
+        navbar = $(".navbar-fixed-top"),
+        rollUpLink = $(".zf-components-rollup a");
+
+    // Initial setup on document load
+    components.insertBefore(navbar);
+    $(".zf-logo a").tooltip();
+    componentToggle.tooltip();
+    rollUpLink.attr({ href: "#", alt: "Hide component list" });
+
+    // Cast initial sidebar position value
+    if (undefined === sidebarInitialPos) {
+      sidebarInitialPos = "fixed";
+    }
+
+    // Setup onclick events to toggle list
+    componentToggle.click(toggleComponentList);
+    rollUpLink.click(toggleComponentList);
+
+    // Toggle the component list display
+    function toggleComponentList(event) {
+      event.preventDefault();
+
+      if (hidden === undefined) {
+        // Not loaded yet; load and display.
+        loadComponentList();
+        return;
+      }
+
+      if (hidden) {
+        // Hidden; display.
+        showComponentList();
+        return;
+      }
+
+      // Currently visible; hide
+      hideComponentList();
+    }
+
+    // Show the component list
+    function showComponentList() {
+      navbar.css({position: "relative"});
+      sidebar.css({position: "relative"});
+      components
+        .css({"margin-top": "-" + components.outerHeight() + "px"})
+        .show()
+        .animate({"margin-top": 0}, {
+          complete: function () {
+            componentToggle
+              .data("placement", "top")
+              .attr("data-original-title", "Hide component list");
+            hidden = false;
+          },
+          queue: false
+        });
+    }
+
+    // Hide the component list
+    function hideComponentList() {
+      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
+        complete: function () {
+          navbar.css({position: "fixed"});
+          sidebar.css({position: sidebarInitialPos});
+          componentToggle
+            .data("placement", "bottom")
+            .attr("data-original-title", "Show component list");
+          components.hide();
+          hidden = true;
+        },
+        queue: false
+      });
+      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
+    }
+
+    // Inject a component into the componet list DOM.
+    function injectComponent(index, component) {
+      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
+    }
+
+    // Parse the component list, build the DOM, and display it.
+    function parseComponentList(components) {
+      $.each(components, injectComponent);
+      showComponentList();
+    }
+
+    // Fetch the component list and display it.
+    function loadComponentList () {
+      $.ajax({
+        url: "//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json",
+        dataType: "text json",
+        success: parseComponentList,
+        error: function (e) {
+          console.log("Error occurred with XHR call", e);
+        }
+      });
+    }
+  });
+</script>
+    </body>
+
+</html>

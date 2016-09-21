@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Translation - zend-i18n</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/zf-web.css" rel="stylesheet">
+    <link href="../css/zf.css" rel="stylesheet">
+    <link href="../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
+              <a href="..">zend-i18n</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">Translation</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../view-helpers/">View Helpers</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../filters/">Filters</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../validators/">Validators</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="component-toggle" data-toggle="tooltip" data-placement="bottom" title="Show component list">
+                        <i class="fa fa-book"></i> Components
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-i18n">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div id="page-top" class="container docs">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#translation">Translation</a></li>
+        
+            <li><a href="#adding-translations">Adding translations</a></li>
+        
+            <li><a href="#supported-formats">Supported formats</a></li>
+        
+            <li><a href="#setting-a-locale">Setting a locale</a></li>
+        
+            <li><a href="#translating-messages">Translating messages</a></li>
+        
+            <li><a href="#caching">Caching</a></li>
+        
+    
+    </ul>
+
+    
+    <ul class="pager hidden-print">
+      <li class="previous">
+        <a rel="prev" href=".."><i class="fa fa-arrow-left"></i> Previous</a>
+      </li>
+      <li class="next">
+        <a rel="next" href="../view-helpers/">Next <i class="fa fa-arrow-right"></i></a>
+      </li>
+    </ul>
+    
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="..">zend-i18n</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+  
+  <li class="active">Translation</li>
+</ol>
+
+<h1 id="translation">Translation</h1>
+<p>zend-i18n comes with a complete translation suite supporting all major formats
+and including popular features such as plural translations and text domains. The
+Translator subcomponent is mostly dependency free, except for the fallback to a
+default locale, where it relies on the PHP's intl extension.</p>
+<p>The translator itself is initialized without any parameters, as any
+configuration to it is optional. A translator without any translations will do
+nothing but return all messages verbatim.</p>
+<h2 id="adding-translations">Adding translations</h2>
+<p>To options exist for adding translations to the translator:</p>
+<ul>
+<li>Add every translation file individually; use this for translation formats that
+  store multiple locales in the same file.</li>
+<li>Add translation files based on a pattern; use this for formats that use one
+  file per locale.</li>
+</ul>
+<p>To add a single file to the translator, use the <code>addTranslationFile()</code> method:</p>
+<pre class="codehilite"><code class="language-php">use Zend\I18n\Translator\Translator;
+
+$translator = new Translator();
+$translator-&gt;addTranslationFile($type, $filename, $textDomain, $locale);</code></pre>
+
+
+<p>where the arguments are:</p>
+<ul>
+<li><code>$type</code>: the name of the format loader to use; see the next section for
+  details.</li>
+<li><code>$filename</code>: the file containing translations.</li>
+<li><code>$textDomain</code>: a "category" name for translations. If this is omitted, it
+  defaults to "default". Use text domains to segregate translations by context.</li>
+<li><code>$locale</code>: the language strings are translated from; this argument is only
+  required for formats which contain translations for single locales.</li>
+</ul>
+<blockquote>
+<h3 id="text-domain-and-locale-are-related">Text domain and locale are related</h3>
+<p>For each text domain and locale combination, there can only be one file
+loaded. Every successive file would override the translations which were
+loaded prior.</p>
+</blockquote>
+<p>When storing one locale per file, you should specify those files via a pattern.
+This allows you to add new translations to the file system, without touching
+your code. Patterns are added with the <code>addTranslationFilePattern()</code> method:</p>
+<pre class="codehilite"><code class="language-php">use Zend\I18n\Translator\Translator;
+
+$translator = new Translator();
+$translator-&gt;addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);</code></pre>
+
+
+<p>where the arguments are roughly the same as for <code>addTranslationFile()</code>, with a
+few differences:</p>
+<ul>
+<li><code>$baseDir</code> is a directory containing translation files.</li>
+<li><code>$pattern</code> is an <code>sprintf()</code>-formatted string describing a pattern for
+  locating files under <code>$baseDir</code>. The <code>$pattern</code> should contain a substitution
+  character for the <code>$locale</code> &mdash; which is omitted from the
+  <code>addTranslationFilePattern()</code> call, but passed whenever a translation is
+  requested. Use either <code>%s</code> or <code>%1$s</code> in the <code>$pattern</code> as a placeholder for
+  the locale. As an example, if your translation files are located in
+  <code>/var/messages/&lt;LOCALE&gt;/messages.mo</code>, your pattern would be
+  <code>/var/messages/%s/messages.mo</code>.</li>
+</ul>
+<h2 id="supported-formats">Supported formats</h2>
+<p>The translator supports the following major translation formats:</p>
+<ul>
+<li>PHP arrays</li>
+<li>Gettext</li>
+<li>INI</li>
+</ul>
+<p>Additionally, you can use custom formats by implementing one or more of
+<code>Zend\I18n\Translator\Loader\FileLoaderInterface</code> or
+<code>Zend\I18n\Translator\Loader\RemoteLoaderInterface</code>, and registering your loader
+with the <code>Translator</code> instance's composed plugin manager.</p>
+<h2 id="setting-a-locale">Setting a locale</h2>
+<p>By default, the translator will get the locale to use from ext/intl's <code>Locale</code>
+class. If you want to set an alternative locale explicitly, you can do so by
+passing it to the <code>setLocale()</code> method.</p>
+<p>When there is no translation for a specific message identifier in a locale, the
+message identifier itself will be returned by default. Alternately, you can set
+a fallback locale which is used to retrieve a fallback translation. To do so,
+pass it to the <code>setFallbackLocale()</code> method.</p>
+<h2 id="translating-messages">Translating messages</h2>
+<p>Translating messages is accomplished by calling the <code>translate()</code> method of the
+translator:</p>
+<pre class="codehilite"><code class="language-php">$translator-&gt;translate($message, $textDomain, $locale);</code></pre>
+
+
+<p>The message is the message identifier to translate. If it does not exist in the
+loader, or is empty, the original message ID will be returned. The text domain
+parameter is the one you specified when adding translations. If omitted, the
+"default" text domain will be used. The locale parameter will usually not be
+used in this context, as by default the locale is taken from the locale set in
+the translator.</p>
+<p>To translate plural messages, you can use the <code>translatePlural()</code> method. It
+works similarly to <code>translate()</code>, but instead of a single message, it takes a
+singular value, a plural value, and an additional integer number on which the
+returned plural form is based:</p>
+<pre class="codehilite"><code class="language-php">$translator-&gt;translatePlural($singular, $plural, $number, $textDomain, $locale);</code></pre>
+
+
+<p>Plural translations are only available if the underlying format supports the
+translation of plural messages and plural rule definitions.</p>
+<h2 id="caching">Caching</h2>
+<p>In production, it makes sense to cache your translations. This not only saves
+you from loading and parsing the individual formats each time, but also
+guarantees an optimized loading procedure. To enable caching, pass a
+<code>Zend\Cache\Storage\Adapter</code> to the <code>setCache()</code> method. To disable the cache,
+pass a <code>null</code> value to the method.</p>
+
+<hr />
+
+
+<nav>
+  <ul class="pager hidden-print">
+    <li class="previous">
+      <a rel="prev" href=".."><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../view-helpers/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+</div>
+        
+    </div>
+    <!-- content:end -->
+
+    <div id="footerwrap">
+    <div class="container">
+        <div class="row site-map">
+            <div class="col-lg-3">
+              <p>
+                <strong>Zend Framework</strong><br />
+                <a href="http://framework.zend.com/">framework.zend.com</a><br />
+                <a href="https://docs.zendframework.com">docs.zendframework.com</a><br />
+                <a href="https://packages.zendframework.com">packages.zendframework.com</a><br />
+                <a href="https://apigility.org">apigility.org</a><br />
+              </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 centered">
+                <a class="back-to-top" href="#page-top"><i class="fa fa-chevron-circle-up fa-4" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="spacing"></div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h4>Copyright</h4>
+                <div class="hline-w"></div>
+
+                <p>&copy; 2006-2016 by <a href="http://www.zend.com">Zend</a>, a <a href="http://www.roguewave.com/">Rogue Wave Company</a>.</p>
+            </div>
+
+            <div class="col-lg-4">
+                <h4>Contacts</h4>
+                <div class="hline-w"></div>
+                <p>
+                    <a href="irc://irc.freenode.net/zftalk" class="btn-social btn-outline" alt="IRC" title="IRC"><i class="fa fa-comment"></i></a>
+                    <a href="https://github.com/zendframework" class="btn-social btn-outline" alt="Github" title="Github"><i class="fa fa-github"></i></a>
+                    <a href="https://twitter.com/zfdevteam" class="btn-social btn-outline" alt="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prism-zf.js"></script>
+
+    <script>var base_url = '..';</script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zf-components">
+  <div class="zf-components-grid">
+    <div class="zf-logo">
+      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
+    </div>
+
+    <div class="component-list"></div>
+
+    <p class="zf-components-rollup"><a href="#">Hide list</a></p>
+  </div>
+</div>
+
+    <script>
+  // Prepare the component list dropdown for display
+  $(function () {
+    var components = $(".zf-components"),
+        componentList = components.find(".component-list"),
+        sidebar = $(".bs-sidebar.affix"),
+        sidebarInitialPos = sidebar.css("position"),
+        hidden,
+        componentToggle = $(".component-toggle"),
+        navbar = $(".navbar-fixed-top"),
+        rollUpLink = $(".zf-components-rollup a");
+
+    // Initial setup on document load
+    components.insertBefore(navbar);
+    $(".zf-logo a").tooltip();
+    componentToggle.tooltip();
+    rollUpLink.attr({ href: "#", alt: "Hide component list" });
+
+    // Cast initial sidebar position value
+    if (undefined === sidebarInitialPos) {
+      sidebarInitialPos = "fixed";
+    }
+
+    // Setup onclick events to toggle list
+    componentToggle.click(toggleComponentList);
+    rollUpLink.click(toggleComponentList);
+
+    // Toggle the component list display
+    function toggleComponentList(event) {
+      event.preventDefault();
+
+      if (hidden === undefined) {
+        // Not loaded yet; load and display.
+        loadComponentList();
+        return;
+      }
+
+      if (hidden) {
+        // Hidden; display.
+        showComponentList();
+        return;
+      }
+
+      // Currently visible; hide
+      hideComponentList();
+    }
+
+    // Show the component list
+    function showComponentList() {
+      navbar.css({position: "relative"});
+      sidebar.css({position: "relative"});
+      components
+        .css({"margin-top": "-" + components.outerHeight() + "px"})
+        .show()
+        .animate({"margin-top": 0}, {
+          complete: function () {
+            componentToggle
+              .data("placement", "top")
+              .attr("data-original-title", "Hide component list");
+            hidden = false;
+          },
+          queue: false
+        });
+    }
+
+    // Hide the component list
+    function hideComponentList() {
+      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
+        complete: function () {
+          navbar.css({position: "fixed"});
+          sidebar.css({position: sidebarInitialPos});
+          componentToggle
+            .data("placement", "bottom")
+            .attr("data-original-title", "Show component list");
+          components.hide();
+          hidden = true;
+        },
+        queue: false
+      });
+      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
+    }
+
+    // Inject a component into the componet list DOM.
+    function injectComponent(index, component) {
+      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
+    }
+
+    // Parse the component list, build the DOM, and display it.
+    function parseComponentList(components) {
+      $.each(components, injectComponent);
+      showComponentList();
+    }
+
+    // Fetch the component list and display it.
+    function loadComponentList () {
+      $.ajax({
+        url: "//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json",
+        dataType: "text json",
+        success: parseComponentList,
+        error: function (e) {
+          console.log("Error occurred with XHR call", e);
+        }
+      });
+    }
+  });
+</script>
+    </body>
+
+</html>

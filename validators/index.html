@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Validators - zend-i18n</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/zf-web.css" rel="stylesheet">
+    <link href="../css/zf.css" rel="stylesheet">
+    <link href="../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
+              <a href="..">zend-i18n</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../translation/">Translation</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../view-helpers/">View Helpers</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../filters/">Filters</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Validators</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="component-toggle" data-toggle="tooltip" data-placement="bottom" title="Show component list">
+                        <i class="fa fa-book"></i> Components
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-i18n">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div id="page-top" class="container docs">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#validators">Validators</a></li>
+        
+            <li><a href="#alnum">Alnum</a></li>
+        
+            <li><a href="#alpha">Alpha</a></li>
+        
+            <li><a href="#isfloat">IsFloat</a></li>
+        
+            <li><a href="#isint">IsInt</a></li>
+        
+    
+    </ul>
+
+    
+    <ul class="pager hidden-print">
+      <li class="previous">
+        <a rel="prev" href="../filters/"><i class="fa fa-arrow-left"></i> Previous</a>
+      </li>
+      <li class="next disabled ">
+        <a rel="next" >Next <i class="fa fa-arrow-right"></i></a>
+      </li>
+    </ul>
+    
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="..">zend-i18n</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+  
+  <li class="active">Validators</li>
+</ol>
+
+<h1 id="validators">Validators</h1>
+<p>zend-i18n provides a set of validators that use internationalization
+capabilities.</p>
+<h2 id="alnum">Alnum</h2>
+<p><code>Zend\I18n\Validator\Alnum</code> allows you to validate if a given value contains
+only alphabetical characters and digits. There is no length limitation for the
+input you want to validate.</p>
+<h3 id="supported-options">Supported options</h3>
+<p>The following options are supported for <code>Zend\I18n\Validator\Alnum</code>:</p>
+<ul>
+<li><code>allowWhiteSpace</code>: Whether or not whitespace characters are allowed. This
+  option defaults to <code>FALSE</code>.</li>
+</ul>
+<h3 id="basic-usage">Basic usage</h3>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\Alnum();
+if ($validator-&gt;isValid('Abcd12')) {
+    // value contains only allowed chars
+} else {
+    // false
+}</code></pre>
+
+
+<h3 id="using-whitespace">Using whitespace</h3>
+<p>By default, whitespace is not accepted as it is not part of the alphabet.
+However, if you want to validate complete sentences or phrases, you may need to
+allow whitespace; this can be done via the <code>allowWhiteSpace</code> option, either at
+instantiation or afterwards via the <code>setAllowWhiteSpace()</code> method.</p>
+<p>To get the current state of the flag, use the <code>getAllowWhiteSpace()</code> method.</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\Alnum(['allowWhiteSpace' =&gt; true]);
+
+// or set it via method call:
+$validator-&gt;setAllowWhiteSpace(true);
+
+if ($validator-&gt;isValid('Abcd and 12')) {
+    // value contains only allowed chars
+} else {
+    // false
+}</code></pre>
+
+
+<h3 id="using-different-languages">Using different languages</h3>
+<p>Several languages supported by ext/intl use alphabets where characters are
+formed from multiple bytes, including <em>Korean</em>, <em>Japanese</em>, and <em>Chinese</em>. Such
+languages therefore are unsupported with regards to the <code>Alnum</code> validator.</p>
+<p>When using the <code>Alnum</code> validator with these langauges, the input will be validated
+using the English alphabet.</p>
+<h2 id="alpha">Alpha</h2>
+<p><code>Zend\I18n\Validator\Alpha</code> allows you to validate if a given value contains
+only alphabetical characters. There is no length limitation for the input you
+want to validate. This validator is identical to the <code>Zend\I18n\Validator\Alnum</code>
+validator with the exception that it does not accept digits.</p>
+<h3 id="supported-options_1">Supported options</h3>
+<p>The following options are supported for <code>Zend\I18n\Validator\Alpha</code>:</p>
+<ul>
+<li><code>allowWhiteSpace</code>: Whether or not whitespace characters are allowed. This
+  option defaults to <code>FALSE</code>.</li>
+</ul>
+<h3 id="basic-usage_1">Basic usage</h3>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\Alpha();
+if ($validator-&gt;isValid('Abcd')) {
+    // value contains only allowed chars
+} else {
+    // false
+}</code></pre>
+
+
+<h3 id="using-whitespace_1">Using whitespace</h3>
+<p>By default, whitespace is not accepted as it is not part of the alphabet.
+However, if you want to validate complete sentences or phrases, you may need to
+allow whitespace; this can be done via the <code>allowWhiteSpace</code> option, either at
+instantiation or afterwards via the <code>setAllowWhiteSpace()</code> method.</p>
+<p>To get the current state of the flag, use the <code>getAllowWhiteSpace()</code> method.</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\Alpha(['allowWhiteSpace' =&gt; true]);
+
+// or set it via method call:
+$validator-&gt;setAllowWhiteSpace(true);
+
+if ($validator-&gt;isValid('Abcd and efg')) {
+    // value contains only allowed chars
+} else {
+    // false
+}</code></pre>
+
+
+<h3 id="using-different-languages_1">Using different languages</h3>
+<p>When using <code>Zend\I18n\Validator\Alpha</code>, the language provided by the user's
+browser will be used to set the allowed characters. For locales outside of
+English, this means that additional alphabetic characters may be used
+&mdash; such as <code>ä</code>, <code>ö</code> and <code>ü</code> from the German alphabet.</p>
+<p>Which characters are allowed depends completely on the language, as every
+language defines its own set of characters.</p>
+<p>Three languages supported by ext/intl, however, define multibyte characters,
+which cannot be matched as alphabetic characters using normal string or regular
+expression options. These include <em>Korean</em>, <em>Japanese</em>, and <em>Chinese</em>.</p>
+<p>As a result, when using the <code>Alpha</code> validator with these langauges, the input
+will be validated using the English alphabet.</p>
+<h2 id="isfloat">IsFloat</h2>
+<p><code>Zend\I18n\Validator\IsFloat</code> allows you to validate if a given value contains a
+floating-point value. This validator takes into account localized input.</p>
+<h3 id="supported-options_2">Supported options</h3>
+<p>The following options are supported for <code>Zend\I18n\Validator\IsFloat</code>:</p>
+<ul>
+<li><code>locale</code>: Sets the locale to use when validating localized float values.</li>
+</ul>
+<h3 id="basic-float-validation">Basic float validation</h3>
+<p>By default, if no locale is provided, <code>IsFloat</code> will use the system locale.</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsFloat();
+
+$validator-&gt;isValid(1234.5);    // returns true
+$validator-&gt;isValid('10a01');   // returns false
+$validator-&gt;isValid('1,234.5'); // returns true</code></pre>
+
+
+<p>(The above example assumes that the environment locale is set to <code>en</code>.)</p>
+<h3 id="localized-float-validation">Localized float validation</h3>
+<p>Float values are often written differently based on the country or region. For
+example, using English, you might write <code>1.5</code>, whereas in german you would write
+<code>1,5</code>, and in other languages you might use grouping.</p>
+<p><code>Zend\I18n\Validator\IsFloat</code> is able to validate such notations. However, it is
+limited to the locale you set. See the following code:</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsFloat(['locale' =&gt; 'de']);
+
+$validator-&gt;isValid(1234.5);    // returns true
+$validator-&gt;isValid(&quot;1 234,5&quot;); // returns false
+$validator-&gt;isValid(&quot;1.234&quot;);   // returns true</code></pre>
+
+
+<p>By using a locale, your input is validated based on the locale provided. Using a
+notation not specific to the locale results in a <code>false</code> evaulation.</p>
+<p>The default validation locale can also be set after instantiation using
+<code>setLocale()</code>, and retrieved using <code>getLocale()</code>.</p>
+<h3 id="migration-from-20-23-to-24">Migration from 2.0-2.3 to 2.4+</h3>
+<p>Version 2.4 adds support for PHP 7. In PHP 7, <code>float</code> is a reserved keyword,
+which required renaming the <code>Float</code> validator. If you were using the <code>Float</code>
+validator directly previously, you will now receive an <code>E_USER_DEPRECATED</code>
+notice on instantiation. Please update your code to refer to the <code>IsFloat</code> class
+instead.</p>
+<p>Users pulling their <code>Float</code> validator instance from the validator plugin manager
+receive an <code>IsFloat</code> instance instead starting in 2.4.0.</p>
+<h2 id="isint">IsInt</h2>
+<p><code>Zend\I18n\Validator\IsInt</code> validates if a given value is an integer, using the
+locale provided.</p>
+<h3 id="supported-options_3">Supported Options</h3>
+<p>The following options are supported for <code>Zend\I18n\Validator\IsInt</code>:</p>
+<ul>
+<li><code>locale</code>: Sets the locale to use when validating localized integers.</li>
+</ul>
+<h3 id="basic-integer-validation">Basic integer validation</h3>
+<p>When no locale is provided to the validator, it uses the system locale:</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsInt();
+
+$validator-&gt;isValid(1234);    // returns true
+$validator-&gt;isValid(1234.5);  // returns false
+$validator-&gt;isValid('1,234'); // returns true</code></pre>
+
+
+<p>(The above example assumes that the environment locale is set to <code>en</code>.)</p>
+<h3 id="localized-integer-validation">Localized integer validation</h3>
+<p>Integer values are often written differently based on country or region. For
+example, using English, you may write "1234" or "1,234"; both are integer
+values, but the grouping is optional. In German, you'd write "1.234", and in
+French, "1 234".</p>
+<p><code>Zend\I18n\Validator\IsInt</code> will use a provided locale when evaluating the
+validity of an integer value. In such cases, it doesn't simply strip the
+validator, but instead validates that the correct separator as defined by the
+locale is used.</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsInt(['locale' =&gt; 'de']);
+
+$validator-&gt;isValid(1234);    // returns true
+$validator-&gt;isValid(&quot;1,234&quot;); // returns false
+$validator-&gt;isValid(&quot;1.234&quot;); // returns true</code></pre>
+
+
+<p>By using a locale, your input is validated based on the locale provided. Using a
+notation not specific to the locale results in a <code>false</code> evaulation.</p>
+<p>The default validation locale can also be set after instantiation using
+<code>setLocale()</code>, and retrieved using <code>getLocale()</code>.</p>
+<h3 id="migration-from-20-23-to-24_1">Migration from 2.0-2.3 to 2.4+</h3>
+<p>Version 2.4 adds support for PHP 7. In PHP 7, <code>int</code> is a reserved keyword, which
+required renaming the <code>Int</code> validator. If you were using the <code>Int</code> validator
+directly previously, you will now receive an <code>E_USER_DEPRECATED</code> notice on
+instantiation. Please update your code to refer to the <code>IsInt</code> class instead.</p>
+<p>Users pulling their <code>Int</code> validator instance from the validator plugin manager
+receive an <code>IsInt</code> instance instead starting in 2.4.0.</p>
+
+<hr />
+
+
+<nav>
+  <ul class="pager hidden-print">
+    <li class="previous">
+      <a rel="prev" href="../filters/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next disabled ">
+      <a rel="next" >Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+</div>
+        
+    </div>
+    <!-- content:end -->
+
+    <div id="footerwrap">
+    <div class="container">
+        <div class="row site-map">
+            <div class="col-lg-3">
+              <p>
+                <strong>Zend Framework</strong><br />
+                <a href="http://framework.zend.com/">framework.zend.com</a><br />
+                <a href="https://docs.zendframework.com">docs.zendframework.com</a><br />
+                <a href="https://packages.zendframework.com">packages.zendframework.com</a><br />
+                <a href="https://apigility.org">apigility.org</a><br />
+              </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 centered">
+                <a class="back-to-top" href="#page-top"><i class="fa fa-chevron-circle-up fa-4" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="spacing"></div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h4>Copyright</h4>
+                <div class="hline-w"></div>
+
+                <p>&copy; 2006-2016 by <a href="http://www.zend.com">Zend</a>, a <a href="http://www.roguewave.com/">Rogue Wave Company</a>.</p>
+            </div>
+
+            <div class="col-lg-4">
+                <h4>Contacts</h4>
+                <div class="hline-w"></div>
+                <p>
+                    <a href="irc://irc.freenode.net/zftalk" class="btn-social btn-outline" alt="IRC" title="IRC"><i class="fa fa-comment"></i></a>
+                    <a href="https://github.com/zendframework" class="btn-social btn-outline" alt="Github" title="Github"><i class="fa fa-github"></i></a>
+                    <a href="https://twitter.com/zfdevteam" class="btn-social btn-outline" alt="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prism-zf.js"></script>
+
+    <script>var base_url = '..';</script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zf-components">
+  <div class="zf-components-grid">
+    <div class="zf-logo">
+      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
+    </div>
+
+    <div class="component-list"></div>
+
+    <p class="zf-components-rollup"><a href="#">Hide list</a></p>
+  </div>
+</div>
+
+    <script>
+  // Prepare the component list dropdown for display
+  $(function () {
+    var components = $(".zf-components"),
+        componentList = components.find(".component-list"),
+        sidebar = $(".bs-sidebar.affix"),
+        sidebarInitialPos = sidebar.css("position"),
+        hidden,
+        componentToggle = $(".component-toggle"),
+        navbar = $(".navbar-fixed-top"),
+        rollUpLink = $(".zf-components-rollup a");
+
+    // Initial setup on document load
+    components.insertBefore(navbar);
+    $(".zf-logo a").tooltip();
+    componentToggle.tooltip();
+    rollUpLink.attr({ href: "#", alt: "Hide component list" });
+
+    // Cast initial sidebar position value
+    if (undefined === sidebarInitialPos) {
+      sidebarInitialPos = "fixed";
+    }
+
+    // Setup onclick events to toggle list
+    componentToggle.click(toggleComponentList);
+    rollUpLink.click(toggleComponentList);
+
+    // Toggle the component list display
+    function toggleComponentList(event) {
+      event.preventDefault();
+
+      if (hidden === undefined) {
+        // Not loaded yet; load and display.
+        loadComponentList();
+        return;
+      }
+
+      if (hidden) {
+        // Hidden; display.
+        showComponentList();
+        return;
+      }
+
+      // Currently visible; hide
+      hideComponentList();
+    }
+
+    // Show the component list
+    function showComponentList() {
+      navbar.css({position: "relative"});
+      sidebar.css({position: "relative"});
+      components
+        .css({"margin-top": "-" + components.outerHeight() + "px"})
+        .show()
+        .animate({"margin-top": 0}, {
+          complete: function () {
+            componentToggle
+              .data("placement", "top")
+              .attr("data-original-title", "Hide component list");
+            hidden = false;
+          },
+          queue: false
+        });
+    }
+
+    // Hide the component list
+    function hideComponentList() {
+      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
+        complete: function () {
+          navbar.css({position: "fixed"});
+          sidebar.css({position: sidebarInitialPos});
+          componentToggle
+            .data("placement", "bottom")
+            .attr("data-original-title", "Show component list");
+          components.hide();
+          hidden = true;
+        },
+        queue: false
+      });
+      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
+    }
+
+    // Inject a component into the componet list DOM.
+    function injectComponent(index, component) {
+      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
+    }
+
+    // Parse the component list, build the DOM, and display it.
+    function parseComponentList(components) {
+      $.each(components, injectComponent);
+      showComponentList();
+    }
+
+    // Fetch the component list and display it.
+    function loadComponentList () {
+      $.ajax({
+        url: "//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json",
+        dataType: "text json",
+        success: parseComponentList,
+        error: function (e) {
+          console.log("Error occurred with XHR call", e);
+        }
+      });
+    }
+  });
+</script>
+    </body>
+
+</html>
