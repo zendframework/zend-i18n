@@ -307,7 +307,7 @@ $validator->setFormat('AT-\d{5}');
 > When using self defined formats, you should omit the regex delimiters and
 > anchors (`'/^'` and  `'$/'`). They are attached automatically.
 >
-> You should also be aware that postcode values are always be validated in a
+> You should also be aware that postcode values will always be validated in a
 > strict way. This means that they have to be written standalone without
 > additional characters when they are not covered by the format.
 
@@ -318,7 +318,6 @@ to the constructor of `Zend\I18n\Validator\PostCode`.
 
 ```php
 $validator = new Zend\I18n\Validator\PostCode('de_AT');
-$validator = new Zend\I18n\Validator\PostCode($locale);
 ```
 
 Additionally, you may pass either an array or a `Traversable` instance to the
