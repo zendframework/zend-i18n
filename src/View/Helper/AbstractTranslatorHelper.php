@@ -28,7 +28,7 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
      *
      * @var string
      */
-    protected $translatorTextDomain = 'default';
+    protected $translatorTextDomain = null;
 
     /**
      * Whether translator should be used
@@ -36,6 +36,18 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
      * @var bool
      */
     protected $translatorEnabled = true;
+
+    /**
+     * Default translation object for all view helpers
+     * @var Translator
+     */
+    protected static $defaultTranslator;
+
+    /**
+     * Default text domain to be used with translator
+     * @var string
+     */
+    protected static $defaultTranslatorTextDomain = 'default';
 
     /**
      * Sets translator to use in helper
@@ -65,6 +77,10 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
     {
         if (! $this->isTranslatorEnabled()) {
             return;
+        }
+
+        if (self::hasDefaultTranslator()) {
+            $this->translator = self::getDefaultTranslator();
         }
 
         return $this->translator;
@@ -121,6 +137,65 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
      */
     public function getTranslatorTextDomain()
     {
+        if ($this->translatorTextDomain === null) {
+            $this->translatorTextDomain = self::getDefaultTranslatorTextDomain();
+        }
         return $this->translatorTextDomain;
+    }
+
+    /**
+     * Set default translation object for all view helpers
+     *
+     * @param  Translator|null $translator
+     * @param  string          $textDomain (optional)
+     * @return void
+     */
+    public static function setDefaultTranslator(Translator $translator = null, $textDomain = null)
+    {
+        static::$defaultTranslator = $translator;
+        if (null !== $textDomain) {
+            self::setDefaultTranslatorTextDomain($textDomain);
+        }
+    }
+
+    /**
+     * Get default translation object for all view helpers
+     *
+     * @return Translator|null
+     */
+    public static function getDefaultTranslator()
+    {
+        return static::$defaultTranslator;
+    }
+
+    /**
+     * Is there a default translation object set?
+     *
+     * @return bool
+     */
+    public static function hasDefaultTranslator()
+    {
+        return (bool) static::$defaultTranslator;
+    }
+
+    /**
+     * Set default translation text domain for all view helpers
+     *
+     * @param  string $textDomain
+     * @return void
+     */
+    public static function setDefaultTranslatorTextDomain($textDomain = 'default')
+    {
+        static::$defaultTranslatorTextDomain = $textDomain;
+    }
+
+    /**
+     * Get default translation text domain for all view helpers
+     *
+     * @return string
+     */
+    public static function getDefaultTranslatorTextDomain()
+    {
+        return static::$defaultTranslatorTextDomain;
     }
 }
