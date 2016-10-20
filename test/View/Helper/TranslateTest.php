@@ -9,6 +9,7 @@
 
 namespace ZendTest\I18n\View\Helper;
 
+use Zend\I18n\View\Helper\AbstractTranslatorHelper;
 use Zend\I18n\View\Helper\Translate as TranslateHelper;
 
 /**
@@ -82,5 +83,25 @@ class TranslateTest extends \PHPUnit_Framework_TestCase
         $this->helper->setTranslator($translatorMock);
 
         $this->assertEquals($expected, $this->helper->__invoke($input, $textDomain, $locale));
+    }
+
+    public function testCustomInvokeArgumentsUsingDefaultTranslator()
+    {
+        $input      = 'input';
+        $expected   = 'translated';
+        $textDomain = 'textDomain';
+        $locale     = 'en_US';
+
+        $translatorMock = $this->getMock('Zend\I18n\Translator\Translator');
+        $translatorMock->expects($this->once())
+            ->method('translate')
+            ->with($this->equalTo($input), $this->equalTo($textDomain), $this->equalTo($locale))
+            ->will($this->returnValue($expected));
+
+        AbstractTranslatorHelper::setDefaultTranslator($translatorMock, $textDomain);
+
+        $this->assertEquals($expected, $this->helper->__invoke($input, $textDomain, $locale));
+
+        AbstractTranslatorHelper::setDefaultTranslator(null, 'default');
     }
 }
