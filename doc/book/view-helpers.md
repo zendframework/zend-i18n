@@ -563,3 +563,46 @@ getTranslatorTextDomain() : string
 ```
 
 Returns the current text domain used by the helper.
+
+#### AbstractValidator::setDefaultTranslator()
+
+```php
+AbstractValidator::setDefaultTranslator(
+    Translator $translator = null,
+    $textDomain = null
+) : void
+```
+
+Set default translation object for all view helpers
+
+#### AbstractValidator::getDefaultTranslator()
+
+```php
+AbstractValidator::getDefaultTranslator() : Translator
+```
+
+Get default translation object for all view helpers
+
+#### AbstractValidator::hasDefaultTranslator()
+
+```php
+AbstractValidator::hasDefaultTranslator() : bool
+```
+
+Returns true if there is a default translation object set.
+
+#### AbstractValidator::setDefaultTranslatorTextDomain()
+
+```php
+AbstractValidator::setDefaultTranslatorTextDomain($textDomain = 'default') : void
+```
+
+Set default translation text domain for all view helpers
+
+#### AbstractValidator::getDefaultTranslatorTextDomain()
+
+```php
+AbstractValidator::getDefaultTranslatorTextDomain() : string
+```
+
+Get default translation text domain for all view helpers
