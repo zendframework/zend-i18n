@@ -86,7 +86,7 @@ class DateTime extends AbstractValidator
      */
     public function __construct($options = [])
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             throw new I18nException\ExtensionNotLoadedException(
                 sprintf('%s component requires the intl PHP extension', __NAMESPACE__)
             );
@@ -127,7 +127,7 @@ class DateTime extends AbstractValidator
      */
     public function getCalendar()
     {
-        return ($this->formatter && !$this->invalidateFormatter) ? $this->getIntlDateFormatter()->getCalendar() : $this->calendar;
+        return ($this->formatter && ! $this->invalidateFormatter) ? $this->getIntlDateFormatter()->getCalendar() : $this->calendar;
     }
 
     /**
@@ -174,7 +174,7 @@ class DateTime extends AbstractValidator
      */
     public function getPattern()
     {
-        return ($this->formatter && !$this->invalidateFormatter) ? $this->getIntlDateFormatter()->getPattern() : $this->pattern;
+        return ($this->formatter && ! $this->invalidateFormatter) ? $this->getIntlDateFormatter()->getPattern() : $this->pattern;
     }
 
     /**
@@ -221,7 +221,7 @@ class DateTime extends AbstractValidator
      */
     public function getTimezone()
     {
-        return ($this->formatter && !$this->invalidateFormatter) ? $this->getIntlDateFormatter()->getTimeZoneId() : $this->timezone;
+        return ($this->formatter && ! $this->invalidateFormatter) ? $this->getIntlDateFormatter()->getTimeZoneId() : $this->timezone;
     }
 
     /**
@@ -257,7 +257,7 @@ class DateTime extends AbstractValidator
      */
     public function isValid($value)
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             $this->error(self::INVALID);
 
             return false;

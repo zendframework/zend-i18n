@@ -73,14 +73,14 @@ class Alnum extends AbstractLocale
      */
     public function filter($value)
     {
-        if (!is_scalar($value) && !is_array($value)) {
+        if (! is_scalar($value) && ! is_array($value)) {
             return $value;
         }
 
         $whiteSpace = $this->options['allow_white_space'] ? '\s' : '';
         $language   = Locale::getPrimaryLanguage($this->getLocale());
 
-        if (!static::hasPcreUnicodeSupport()) {
+        if (! static::hasPcreUnicodeSupport()) {
             // POSIX named classes are not supported, use alternative a-zA-Z0-9 match
             $pattern = '/[^a-zA-Z0-9' . $whiteSpace . ']/';
         } elseif ($language == 'ja'|| $language == 'ko' || $language == 'zh') {

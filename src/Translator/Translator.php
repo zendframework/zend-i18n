@@ -118,7 +118,7 @@ class Translator implements TranslatorInterface
     {
         if ($options instanceof Traversable) {
             $options = ArrayUtils::iteratorToArray($options);
-        } elseif (!is_array($options)) {
+        } elseif (! is_array($options)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects an array or Traversable object; received "%s"',
                 __METHOD__,
@@ -139,7 +139,7 @@ class Translator implements TranslatorInterface
 
         // file patterns
         if (isset($options['translation_file_patterns'])) {
-            if (!is_array($options['translation_file_patterns'])) {
+            if (! is_array($options['translation_file_patterns'])) {
                 throw new Exception\InvalidArgumentException(
                     '"translation_file_patterns" should be an array'
                 );
@@ -148,7 +148,7 @@ class Translator implements TranslatorInterface
             $requiredKeys = ['type', 'base_dir', 'pattern'];
             foreach ($options['translation_file_patterns'] as $pattern) {
                 foreach ($requiredKeys as $key) {
-                    if (!isset($pattern[$key])) {
+                    if (! isset($pattern[$key])) {
                         throw new Exception\InvalidArgumentException(
                             "'{$key}' is missing for translation pattern options"
                         );
@@ -166,7 +166,7 @@ class Translator implements TranslatorInterface
 
         // files
         if (isset($options['translation_files'])) {
-            if (!is_array($options['translation_files'])) {
+            if (! is_array($options['translation_files'])) {
                 throw new Exception\InvalidArgumentException(
                     '"translation_files" should be an array'
                 );
@@ -175,7 +175,7 @@ class Translator implements TranslatorInterface
             $requiredKeys = ['type', 'filename'];
             foreach ($options['translation_files'] as $file) {
                 foreach ($requiredKeys as $key) {
-                    if (!isset($file[$key])) {
+                    if (! isset($file[$key])) {
                         throw new Exception\InvalidArgumentException(
                             "'{$key}' is missing for translation file options"
                         );
@@ -193,7 +193,7 @@ class Translator implements TranslatorInterface
 
         // remote
         if (isset($options['remote_translation'])) {
-            if (!is_array($options['remote_translation'])) {
+            if (! is_array($options['remote_translation'])) {
                 throw new Exception\InvalidArgumentException(
                     '"remote_translation" should be an array'
                 );
@@ -202,7 +202,7 @@ class Translator implements TranslatorInterface
             $requiredKeys = ['type'];
             foreach ($options['remote_translation'] as $remote) {
                 foreach ($requiredKeys as $key) {
-                    if (!isset($remote[$key])) {
+                    if (! isset($remote[$key])) {
                         throw new Exception\InvalidArgumentException(
                             "'{$key}' is missing for remote translation options"
                         );
@@ -255,7 +255,7 @@ class Translator implements TranslatorInterface
     public function getLocale()
     {
         if ($this->locale === null) {
-            if (!extension_loaded('intl')) {
+            if (! extension_loaded('intl')) {
                 throw new Exception\ExtensionNotLoadedException(sprintf(
                     '%s component requires the intl PHP extension',
                     __NAMESPACE__
@@ -335,7 +335,7 @@ class Translator implements TranslatorInterface
      */
     public function getPluginManager()
     {
-        if (!$this->pluginManager instanceof LoaderPluginManager) {
+        if (! $this->pluginManager instanceof LoaderPluginManager) {
             $this->setPluginManager(new LoaderPluginManager(new ServiceManager));
         }
 
@@ -411,7 +411,7 @@ class Translator implements TranslatorInterface
                       ->getPluralRule()
                       ->evaluate($number);
 
-        if (!isset($translation[$index])) {
+        if (! isset($translation[$index])) {
             throw new Exception\OutOfBoundsException(
                 sprintf('Provided index %d does not exist in plural array', $index)
             );
@@ -438,7 +438,7 @@ class Translator implements TranslatorInterface
             return '';
         }
 
-        if (!isset($this->messages[$textDomain][$locale])) {
+        if (! isset($this->messages[$textDomain][$locale])) {
             $this->loadMessages($textDomain, $locale);
         }
 
@@ -485,7 +485,7 @@ class Translator implements TranslatorInterface
     ) {
         $locale = $locale ?: '*';
 
-        if (!isset($this->files[$textDomain])) {
+        if (! isset($this->files[$textDomain])) {
             $this->files[$textDomain] = [];
         }
 
@@ -512,7 +512,7 @@ class Translator implements TranslatorInterface
         $pattern,
         $textDomain = 'default'
     ) {
-        if (!isset($this->patterns[$textDomain])) {
+        if (! isset($this->patterns[$textDomain])) {
             $this->patterns[$textDomain] = [];
         }
 
@@ -534,7 +534,7 @@ class Translator implements TranslatorInterface
      */
     public function addRemoteTranslations($type, $textDomain = 'default')
     {
-        if (!isset($this->remote[$textDomain])) {
+        if (! isset($this->remote[$textDomain])) {
             $this->remote[$textDomain] = [];
         }
 
@@ -554,7 +554,7 @@ class Translator implements TranslatorInterface
      */
     protected function loadMessages($textDomain, $locale)
     {
-        if (!isset($this->messages[$textDomain])) {
+        if (! isset($this->messages[$textDomain])) {
             $this->messages[$textDomain] = [];
         }
 
@@ -573,7 +573,7 @@ class Translator implements TranslatorInterface
         $messagesLoaded |= $this->loadMessagesFromPatterns($textDomain, $locale);
         $messagesLoaded |= $this->loadMessagesFromFiles($textDomain, $locale);
 
-        if (!$messagesLoaded) {
+        if (! $messagesLoaded) {
             $discoveredTextDomain = null;
             if ($this->isEventManagerEnabled()) {
                 $until = function ($r) {
@@ -618,7 +618,7 @@ class Translator implements TranslatorInterface
             foreach ($this->remote[$textDomain] as $loaderType) {
                 $loader = $this->getPluginManager()->get($loaderType);
 
-                if (!$loader instanceof RemoteLoaderInterface) {
+                if (! $loader instanceof RemoteLoaderInterface) {
                     throw new Exception\RuntimeException('Specified loader is not a remote loader');
                 }
 
@@ -654,7 +654,7 @@ class Translator implements TranslatorInterface
                 if (is_file($filename)) {
                     $loader = $this->getPluginManager()->get($pattern['type']);
 
-                    if (!$loader instanceof FileLoaderInterface) {
+                    if (! $loader instanceof FileLoaderInterface) {
                         throw new Exception\RuntimeException('Specified loader is not a file loader');
                     }
 
@@ -685,14 +685,14 @@ class Translator implements TranslatorInterface
         $messagesLoaded = false;
 
         foreach ([$locale, '*'] as $currentLocale) {
-            if (!isset($this->files[$textDomain][$currentLocale])) {
+            if (! isset($this->files[$textDomain][$currentLocale])) {
                 continue;
             }
 
             foreach ($this->files[$textDomain][$currentLocale] as $file) {
                 $loader = $this->getPluginManager()->get($file['type']);
 
-                if (!$loader instanceof FileLoaderInterface) {
+                if (! $loader instanceof FileLoaderInterface) {
                     throw new Exception\RuntimeException('Specified loader is not a file loader');
                 }
 
@@ -723,7 +723,7 @@ class Translator implements TranslatorInterface
     {
         $locale = $locale ?: $this->getLocale();
 
-        if (!isset($this->messages[$textDomain][$locale])) {
+        if (! isset($this->messages[$textDomain][$locale])) {
             $this->loadMessages($textDomain, $locale);
         }
 
@@ -737,7 +737,7 @@ class Translator implements TranslatorInterface
      */
     public function getEventManager()
     {
-        if (!$this->events instanceof EventManagerInterface) {
+        if (! $this->events instanceof EventManagerInterface) {
             $this->setEventManager(new EventManager());
         }
 

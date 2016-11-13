@@ -48,16 +48,20 @@ class IniTest extends TestCase
     public function testLoaderFailsToLoadNonArray()
     {
         $loader = new IniLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException',
-                                    'Each INI row must be an array with message and translation');
+        $this->setExpectedException(
+            'Zend\I18n\Exception\InvalidArgumentException',
+            'Each INI row must be an array with message and translation'
+        );
         $loader->load('en_EN', $this->testFilesDir . '/failed.ini');
     }
 
     public function testLoaderFailsToLoadBadSyntax()
     {
         $loader = new IniLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException',
-                                    'Each INI row must be an array with message and translation');
+        $this->setExpectedException(
+            'Zend\I18n\Exception\InvalidArgumentException',
+            'Each INI row must be an array with message and translation'
+        );
         $loader->load('en_EN', $this->testFilesDir . '/failed_syntax.ini');
     }
 

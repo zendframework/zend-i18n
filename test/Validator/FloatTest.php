@@ -33,7 +33,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Cannot test Float validator under PHP 7; reserved keyword');
         }
 
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 

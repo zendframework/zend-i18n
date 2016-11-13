@@ -55,7 +55,7 @@ class IsFloat extends AbstractValidator
      */
     public function __construct($options = [])
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             throw new I18nException\ExtensionNotLoadedException(
                 sprintf('%s component requires the intl PHP extension', __NAMESPACE__)
             );
@@ -109,7 +109,7 @@ class IsFloat extends AbstractValidator
      */
     public function isValid($value)
     {
-        if (!is_scalar($value) || is_bool($value)) {
+        if (! is_scalar($value) || is_bool($value)) {
             $this->error(self::INVALID);
             return false;
         }
@@ -139,7 +139,7 @@ class IsFloat extends AbstractValidator
             $search = '/' . $exponentialSymbols . '/';
         }
 
-        if (!preg_match($search, $value)) {
+        if (! preg_match($search, $value)) {
             $formatter = new NumberFormatter($this->getLocale(), NumberFormatter::DECIMAL);
         }
 

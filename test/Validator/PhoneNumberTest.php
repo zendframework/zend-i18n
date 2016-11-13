@@ -3182,7 +3182,7 @@ class PhoneNumberTest extends \PHPUnit_Framework_TestCase
     public function testInvalidTypes($country, $code, $patterns)
     {
         $this->validator->setCountry($country);
-        if (!isset($patterns['invalid'])) {
+        if (! isset($patterns['invalid'])) {
             return;
         }
         foreach ($patterns['invalid'] as $type => $values) {
