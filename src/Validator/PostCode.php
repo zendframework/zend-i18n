@@ -55,6 +55,7 @@ class PostCode extends AbstractValidator
      */
     protected $service;
 
+    // @codingStandardsIgnoreStart
     /**
      * Postal Code regexes by territory
      *
@@ -221,6 +222,7 @@ class PostCode extends AbstractValidator
         'YT' => '976\d{2}',
         'VN' => '\d{6}',
     ];
+    // @codingStandardsIgnoreEnd
 
     /**
      * Constructor for the PostCode validator
