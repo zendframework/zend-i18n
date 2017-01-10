@@ -446,6 +446,24 @@ class Translator implements TranslatorInterface
             return $this->messages[$textDomain][$locale][$message];
         }
 
+
+        /**
+         * issue https://github.com/zendframework/zend-i18n/issues/53
+         *
+         * storage: array:8 [▼
+         *   "default\x04Welcome" => "Cześć"
+         *   "default\x04Top %s Product" => array:3 [▼
+         *     0 => "Top %s Produkt"
+         *     1 => "Top %s Produkty"
+         *     2 => "Top %s Produktów"
+         *   ]
+         *   "Top %s Products" => ""
+         * ]
+         */
+        if (isset($this->messages[$textDomain][$locale][$textDomain . "\x04" . $message])) {
+            return $this->messages[$textDomain][$locale][$textDomain . "\x04" . $message];
+        }
+
         if ($this->isEventManagerEnabled()) {
             $until = function ($r) {
                 return is_string($r);
