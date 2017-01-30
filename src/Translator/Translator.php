@@ -544,6 +544,18 @@ class Translator implements TranslatorInterface
     }
 
     /**
+     * Get the cache identifier for the specific textDomain and locale.
+     *
+     * @param    string $textDomain
+     * @param    string $locale
+     * @return   string
+     */
+    protected function getCacheId($textDomain, $locale)
+    {
+        return 'Zend_I18n_Translator_Messages_' . md5($textDomain . $locale);
+    }
+
+    /**
      * Load messages for a given language and domain.
      *
      * @triggers loadMessages.no-messages-loaded
@@ -559,7 +571,7 @@ class Translator implements TranslatorInterface
         }
 
         if (null !== ($cache = $this->getCache())) {
-            $cacheId = 'Zend_I18n_Translator_Messages_' . md5($textDomain . $locale);
+            $cacheId = $this->getCacheId($textDomain, $locale);
 
             if (null !== ($result = $cache->getItem($cacheId))) {
                 $this->messages[$textDomain][$locale] = $result;
