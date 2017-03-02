@@ -9,13 +9,14 @@
 
 namespace ZendTest\I18n\View\Helper;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\View\Helper\Plural as PluralHelper;
 
 /**
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class PluralTest extends \PHPUnit_Framework_TestCase
+class PluralTest extends TestCase
 {
     /**
      * @var PluralHelper

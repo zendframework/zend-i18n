@@ -9,7 +9,7 @@
 
 namespace ZendTest\I18n\Translator\Loader;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Locale;
 use Zend\I18n\Translator\Loader\PhpArray as PhpArrayLoader;
 
@@ -45,15 +45,16 @@ class PhpArrayTest extends TestCase
     public function testLoaderFailsToLoadMissingFile()
     {
         $loader = new PhpArrayLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException', 'Could not find or open file');
+        $this->expectException('Zend\I18n\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Could not find or open file');
         $loader->load('en_EN', 'missing');
     }
 
     public function testLoaderFailsToLoadNonArray()
     {
         $loader = new PhpArrayLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException',
-                                    'Expected an array, but received');
+        $this->expectException('Zend\I18n\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Expected an array, but received');
         $loader->load('en_EN', $this->testFilesDir . '/failed.php');
     }
 

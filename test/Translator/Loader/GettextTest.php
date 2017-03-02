@@ -9,7 +9,7 @@
 
 namespace ZendTest\I18n\Translator\Loader;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Locale;
 use Zend\I18n\Translator\Loader\Gettext as GettextLoader;
 
@@ -45,15 +45,16 @@ class GettextTest extends TestCase
     public function testLoaderFailsToLoadMissingFile()
     {
         $loader = new GettextLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException', 'Could not find or open file');
+        $this->expectException('Zend\I18n\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Could not find or open file');
         $loader->load('en_EN', 'missing');
     }
 
     public function testLoaderFailsToLoadBadFile()
     {
         $loader = new GettextLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException',
-                                    'is not a valid gettext file');
+        $this->expectException('Zend\I18n\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('is not a valid gettext file');
         $loader->load('en_EN', $this->testFilesDir . '/failed.mo');
     }
 

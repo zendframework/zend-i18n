@@ -9,7 +9,7 @@
 
 namespace ZendTest\I18n\Translator\Plural;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Translator\Plural\Rule;
 
 class RuleTest extends TestCase

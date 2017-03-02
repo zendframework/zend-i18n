@@ -10,13 +10,14 @@
 namespace ZendTest\I18n\View\Helper;
 
 use Locale;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\View\Helper\CurrencyFormat as CurrencyFormatHelper;
 
 /**
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class CurrencyFormatTest extends \PHPUnit_Framework_TestCase
+class CurrencyFormatTest extends TestCase
 {
     /**
      * @var CurrencyFormatHelper

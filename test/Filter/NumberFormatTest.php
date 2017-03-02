@@ -9,7 +9,7 @@
 
 namespace ZendTest\I18n\Filter;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Filter\NumberFormat as NumberFormatFilter;
 use NumberFormatter;
 

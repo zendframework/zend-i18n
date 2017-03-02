@@ -12,11 +12,10 @@ namespace ZendTest\I18n\Validator;
 use DateTime;
 use IntlDateFormatter;
 use Locale;
-use PHPUnit_Framework_TestCase;
-use PHPUnit_Runner_Version;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\DateTime as DateTimeValidator;
 
-class DateTimeTest extends PHPUnit_Framework_TestCase
+class DateTimeTest extends TestCase
 {
     /**
      * @var DateTimeValidator
@@ -85,13 +84,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     public function basicProvider()
     {
         if (!extension_loaded('intl')) {
-            if (version_compare(PHPUnit_Runner_Version::id(), '3.8.0-dev') === 1) {
-                $this->markTestSkipped('ext/intl not enabled');
-            } else {
-                return [
-                    []
-                ];
-            }
+            $this->markTestSkipped('ext/intl not enabled');
         }
 
         $trueArray      = [];

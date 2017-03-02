@@ -10,7 +10,7 @@
 namespace ZendTest\I18n\Translator;
 
 use Interop\Container\ContainerInterface;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Translator\TranslatorServiceFactory;
 
 class TranslatorServiceFactoryTest extends TestCase
@@ -18,7 +18,7 @@ class TranslatorServiceFactoryTest extends TestCase
     public function testCreateServiceWithNoTranslatorKeyDefined()
     {
         $slContents = [['config', []]];
-        $serviceLocator = $this->getMock(ContainerInterface::class);
+        $serviceLocator = $this->createMock(ContainerInterface::class);
         $serviceLocator->expects($this->once())
                        ->method('get')
                        ->will($this->returnValueMap($slContents));

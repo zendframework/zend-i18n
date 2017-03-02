@@ -9,12 +9,13 @@
 
 namespace ZendTest\I18n\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\Alnum as AlnumValidator;
 
 /**
  * @group      Zend_Validator
  */
-class AlnumTest extends \PHPUnit_Framework_TestCase
+class AlnumTest extends TestCase
 {
     /**
      * @var AlnumValidator

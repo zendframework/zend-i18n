@@ -9,7 +9,7 @@
 
 namespace ZendTest\I18n\Translator\Loader;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Translator\Loader\Ini as IniLoader;
 
 class IniTest extends TestCase
@@ -34,7 +34,8 @@ class IniTest extends TestCase
     public function testLoaderFailsToLoadMissingFile()
     {
         $loader = new IniLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException', 'Could not find or open file');
+        $this->expectException('Zend\I18n\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Could not find or open file');
         $loader->load('en_EN', 'missing');
     }
 
@@ -48,16 +49,16 @@ class IniTest extends TestCase
     public function testLoaderFailsToLoadNonArray()
     {
         $loader = new IniLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException',
-                                    'Each INI row must be an array with message and translation');
+        $this->expectException('Zend\I18n\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Each INI row must be an array with message and translation');
         $loader->load('en_EN', $this->testFilesDir . '/failed.ini');
     }
 
     public function testLoaderFailsToLoadBadSyntax()
     {
         $loader = new IniLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException',
-                                    'Each INI row must be an array with message and translation');
+        $this->expectException('Zend\I18n\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Each INI row must be an array with message and translation');
         $loader->load('en_EN', $this->testFilesDir . '/failed_syntax.ini');
     }
 
