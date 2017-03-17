@@ -238,7 +238,7 @@ class PostCodeTest extends TestCase
         $validator->setLocale('en_NO');
 
         $this->assertTrue($validator->isValid('0301')); // OSLO
-        $this->assertTrue($validator->isValid('9910')); // BJ�RNEVATN
+        $this->assertTrue($validator->isValid('9910')); // BJØRNEVATN
         $this->assertFalse($validator->isValid('0000')); // Postal code 0000
     }
 }
