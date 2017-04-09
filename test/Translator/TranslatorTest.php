@@ -251,7 +251,7 @@ class TranslatorTest extends TestCase
         $this->assertEquals('Message 9 (ja)', $pl2);
     }
 
-    public function testTranslateNonExistentLocale()
+    public function testTranslateNonExistantLocale()
     {
         $this->translator->addTranslationFilePattern(
             'phparray',
