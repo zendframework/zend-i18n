@@ -41,7 +41,7 @@ class IsFloat extends AbstractValidator
     protected $locale;
 
     /**
-     * UTF-8 compatable wrapper for string functions
+     * UTF-8 compatible wrapper for string functions
      *
      * @var StringWrapperInterface
      */
@@ -144,8 +144,8 @@ class IsFloat extends AbstractValidator
         }
 
         /**
-         * @desc There are seperator "look-alikes" for decimal and group seperators that are more commonly used than the
-         *       official unicode chracter. We need to replace those with the real thing - or remove it.
+         * @desc There are separator "look-alikes" for decimal and group separators that are more commonly used than the
+         *       official unicode character. We need to replace those with the real thing - or remove it.
          */
         $groupSeparator = $formatter->getSymbol(NumberFormatter::GROUPING_SEPARATOR_SYMBOL);
         $decSeparator   = $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
@@ -166,7 +166,7 @@ class IsFloat extends AbstractValidator
         $groupSeparatorPosition = $this->wrapper->strpos($value, $groupSeparator);
         $decSeparatorPosition   = $this->wrapper->strpos($value, $decSeparator);
 
-        //We have seperators, and they are flipped. i.e. 2.000,000 for en-US
+        //We have separators, and they are flipped. i.e. 2.000,000 for en-US
         if ($groupSeparatorPosition && $decSeparatorPosition && $groupSeparatorPosition > $decSeparatorPosition) {
             $this->error(self::NOT_FLOAT);
 
