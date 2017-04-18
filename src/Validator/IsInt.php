@@ -23,6 +23,9 @@ class IsInt extends AbstractValidator
     const INVALID = 'intInvalid';
     const NOT_INT = 'notInt';
 
+    const COMPARE_STRICT = 1;
+    const COMPARE_NOT_STRICT = 0;
+
     /**
      * @var array
      */
@@ -37,6 +40,13 @@ class IsInt extends AbstractValidator
      * @var string|null
      */
     protected $locale;
+
+    /**
+     * Type of strict check to be used.  "123" == 123
+     *
+     * @var int
+     */
+    protected $strict = self::COMPARE_NOT_STRICT;
 
     /**
      * Constructor for the integer validator
@@ -88,6 +98,33 @@ class IsInt extends AbstractValidator
     }
 
     /**
+     * Returns the strict option
+     *
+     * @return int
+     */
+    public function getStrict()
+    {
+        return $this->strict;
+    }
+
+    /**
+     * Sets the strict option mode
+     *
+     * @param $strict
+     * @return $this
+     * @throws Exception\InvalidArgumentException
+     */
+    public function setStrict($strict)
+    {
+        if($strict !== self::COMPARE_NOT_STRICT && $strict !== self::COMPARE_STRICT){
+            throw new Exception\InvalidArgumentException('Strict option must be one of the COMPARE_ constants');
+        }
+
+        $this->strict = $strict;
+        return $this;
+    }
+
+    /**
      * Returns true if and only if $value is a valid integer
      *
      * @param  string|int $value
@@ -103,6 +140,9 @@ class IsInt extends AbstractValidator
 
         if (is_int($value)) {
             return true;
+        }elseif(self::COMPARE_STRICT == $this->strict){
+            $this->error(self::INVALID);
+            return false;
         }
 
         $this->setValue($value);

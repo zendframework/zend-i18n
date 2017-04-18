@@ -12,6 +12,7 @@ namespace ZendTest\I18n\Validator;
 use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\IsInt as IsIntValidator;
 use Locale;
+use Zend\Validator\Exception;
 
 /**
  * @group      Zend_Validator
@@ -131,5 +132,58 @@ class IsIntTest extends TestCase
             'messageTemplates',
             $validator
         );
+    }
+
+    public function testGetStrict()
+    {
+        $this->assertSame(
+            IsIntValidator::COMPARE_NOT_STRICT,
+            $this->validator->getStrict()
+        );
+
+        $this->validator->setStrict(IsIntValidator::COMPARE_STRICT);
+        $this->assertSame(
+            IsIntValidator::COMPARE_STRICT,
+            $this->validator->getStrict()
+        );
+    }
+
+    public function testSetStrictThrowsInvalidArgumentException()
+    {
+        $this->setExpectedException(Exception\InvalidArgumentException::class);
+
+        $this->validator->setStrict(-1);
+    }
+
+    public function strictIntDataProvider()
+    {
+        return [
+            [1,            true],
+            [0,            true],
+            [1.00,         false],
+            [0.00,         false],
+            [0.01,         false],
+            [-0.1,         false],
+            [-1,           true],
+            ['10',         false],
+            ['1',          false],
+            ['not an int', false],
+            [true,         false],
+            [false,        false],
+        ];
+    }
+
+    /**
+     * @dataProvider strictIntDataProvider()
+     * @param $intVal
+     * @param $expected
+     * @return void
+     */
+    public function testStrictComparison($intVal, $expected)
+    {
+        $this->validator->setLocale('en');
+        $this->validator->setStrict(IsIntValidator::COMPARE_STRICT);
+
+        $this->assertSame($expected, $this->validator->isValid($intVal));
     }
 }
