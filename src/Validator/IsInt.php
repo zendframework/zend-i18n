@@ -116,7 +116,7 @@ class IsInt extends AbstractValidator
      */
     public function setStrict($strict)
     {
-        if($strict !== self::COMPARE_NOT_STRICT && $strict !== self::COMPARE_STRICT){
+        if ($strict !== self::COMPARE_NOT_STRICT && $strict !== self::COMPARE_STRICT) {
             throw new Exception\InvalidArgumentException('Strict option must be one of the COMPARE_ constants');
         }
 
@@ -140,7 +140,7 @@ class IsInt extends AbstractValidator
 
         if (is_int($value)) {
             return true;
-        }elseif(self::COMPARE_STRICT == $this->strict){
+        } elseif (self::COMPARE_STRICT == $this->strict) {
             $this->error(self::INVALID);
             return false;
         }
