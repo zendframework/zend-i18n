@@ -71,6 +71,10 @@ class IsInt extends AbstractValidator
             $this->setLocale($options['locale']);
         }
 
+        if (array_key_exists('strict', $options)) {
+            $this->setStrict($options['strict']);
+        }
+
         parent::__construct($options);
     }
 
