@@ -136,25 +136,46 @@ class IsIntTest extends TestCase
 
     public function testGetStrict()
     {
-        $this->assertSame(
-            IsIntValidator::COMPARE_NOT_STRICT,
+        $this->assertFalse(
             $this->validator->getStrict()
         );
 
-        $this->validator->setStrict(IsIntValidator::COMPARE_STRICT);
-        $this->assertSame(
-            IsIntValidator::COMPARE_STRICT,
+        $this->validator->setStrict(true);
+        $this->assertTrue(
             $this->validator->getStrict()
         );
     }
 
-    public function testSetStrictThrowsInvalidArgumentException()
+    /**
+     * @return array
+     */
+    public function setStrictInvalidParameterDataProvider()
+    {
+        return [
+            [null],
+            ['true'],
+            ['1'],
+            ['1.0'],
+            ['false'],
+            ['0'],
+            ['0.0'],
+        ];
+    }
+
+    /**
+     * @dataProvider setStrictInvalidParameterDataProvider
+     * @param mixed $strict
+     */
+    public function testSetStrictThrowsInvalidArgumentException($strict)
     {
         $this->setExpectedException(Exception\InvalidArgumentException::class);
 
-        $this->validator->setStrict(-1);
+        $this->validator->setStrict($strict);
     }
 
+    /**
+     * @return array
+     */
     public function strictIntDataProvider()
     {
         return [
@@ -174,15 +195,15 @@ class IsIntTest extends TestCase
     }
 
     /**
-     * @dataProvider strictIntDataProvider()
-     * @param $intVal
-     * @param $expected
+     * @dataProvider strictIntDataProvider
+     * @param mixed $intVal
+     * @param bool $expected
      * @return void
      */
     public function testStrictComparison($intVal, $expected)
     {
         $this->validator->setLocale('en');
-        $this->validator->setStrict(IsIntValidator::COMPARE_STRICT);
+        $this->validator->setStrict(true);
 
         $this->assertSame($expected, $this->validator->isValid($intVal));
     }

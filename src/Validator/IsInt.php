@@ -22,9 +22,7 @@ class IsInt extends AbstractValidator
 {
     const INVALID = 'intInvalid';
     const NOT_INT = 'notInt';
-
-    const COMPARE_STRICT = 1;
-    const COMPARE_NOT_STRICT = 0;
+    const NOT_INT_STRICT = 'notIntStrict';
 
     /**
      * @var array
@@ -32,6 +30,7 @@ class IsInt extends AbstractValidator
     protected $messageTemplates = [
         self::INVALID => "Invalid type given. String or integer expected",
         self::NOT_INT => "The input does not appear to be an integer",
+        self::NOT_INT_STRICT => "The input is not strictly an integer",
     ];
 
     /**
@@ -42,11 +41,12 @@ class IsInt extends AbstractValidator
     protected $locale;
 
     /**
-     * Type of strict check to be used.  "123" == 123
+     * Data type is not enforced by default, so the string '123' is considered an integer.
+     * Setting strict to true will enforce the integer data type.
      *
-     * @var int
+     * @var bool
      */
-    protected $strict = self::COMPARE_NOT_STRICT;
+    protected $strict = false;
 
     /**
      * Constructor for the integer validator
@@ -104,7 +104,7 @@ class IsInt extends AbstractValidator
     /**
      * Returns the strict option
      *
-     * @return int
+     * @return bool
      */
     public function getStrict()
     {
@@ -114,14 +114,14 @@ class IsInt extends AbstractValidator
     /**
      * Sets the strict option mode
      *
-     * @param $strict
-     * @return $this
+     * @param bool $strict
+     * @return self
      * @throws Exception\InvalidArgumentException
      */
     public function setStrict($strict)
     {
-        if ($strict !== self::COMPARE_NOT_STRICT && $strict !== self::COMPARE_STRICT) {
-            throw new Exception\InvalidArgumentException('Strict option must be one of the COMPARE_ constants');
+        if (!is_bool($strict)) {
+            throw new Exception\InvalidArgumentException('Strict option must be a boolean');
         }
 
         $this->strict = $strict;
@@ -144,8 +144,10 @@ class IsInt extends AbstractValidator
 
         if (is_int($value)) {
             return true;
-        } elseif (self::COMPARE_STRICT == $this->strict) {
-            $this->error(self::INVALID);
+        }
+
+        if ($this->strict) {
+            $this->error(self::NOT_INT_STRICT);
             return false;
         }
 
