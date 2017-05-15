@@ -63,6 +63,8 @@ class CurrencyFormatTest extends \PHPUnit_Framework_TestCase
             //array('en_US', 'EUR',     false,             1234567.891234567890000,  null, '€1,234,568'),
             //array('en_US', 'EUR',     false,             1234567.891234567890000,  null, '€1,234,568'),
             ['en_US', 'USD',       false, 1234567.891234567890000, null,                       '$1,234,568'],
+            /* @see http://bugs.icu-project.org/trac/ticket/10997 */
+            ['en_US', 'EUR',       false, 1234567.891234567890000, null,                       '€1,234,567'],
         ];
     }
 
