@@ -8,6 +8,7 @@
 namespace Zend\I18n\Translator;
 
 use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Config;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -31,7 +32,30 @@ class LoaderPluginManagerFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $name, array $options = null)
     {
         $options = $options ?: [];
-        return new LoaderPluginManager($container, $options);
+        $pluginManager = new LoaderPluginManager($container, $options);
+
+        // If this is in a zend-mvc application, the ServiceListener will inject
+        // merged configuration during bootstrap.
+        if ($container->has('ServiceListener')) {
+            return $pluginManager;
+        }
+
+        // If we do not have a config service, nothing more to do
+        if (! $container->has('config')) {
+            return $pluginManager;
+        }
+
+        $config = $container->get('config');
+
+        // If we do not have translator_plugins configuration, nothing more to do
+        if (! isset($config['translator_plugins']) || ! is_array($config['translator_plugins'])) {
+            return $pluginManager;
+        }
+
+        // Wire service configuration for translator_plugins
+        (new Config($config['translator_plugins']))->configureServiceManager($pluginManager);
+
+        return $pluginManager;
     }
 
     /**
