@@ -18,7 +18,12 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#74](https://github.com/zendframework/zend-i18n/pull/74) fixes how the
+  `LoaderPluginManagerFactory` factory initializes the plugin manager instance,
+  ensuring it is injecting the relevant configuration from the `config` service
+  and thus seeding it with configured translator loader services. This means
+  that the `translator_plugins` configuration will now be honored in
+  non-zend-mvc contexts.
 
 ## 2.7.3 - 2016-06-07
 
