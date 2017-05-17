@@ -9,12 +9,13 @@
 
 namespace ZendTest\I18n\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\Alpha as AlphaValidator;
 
 /**
  * @group      Zend_Validator
  */
-class AlphaTest extends \PHPUnit_Framework_TestCase
+class AlphaTest extends TestCase
 {
     /**
      * @var AlphaValidator
@@ -23,7 +24,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 

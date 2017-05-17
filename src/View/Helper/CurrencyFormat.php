@@ -59,7 +59,7 @@ class CurrencyFormat extends AbstractHelper
      */
     public function __construct()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             throw new Exception\ExtensionNotLoadedException(sprintf(
                 '%s component requires the intl PHP extension',
                 __NAMESPACE__
@@ -119,7 +119,7 @@ class CurrencyFormat extends AbstractHelper
     ) {
         $formatterId = md5($locale);
 
-        if (!isset($this->formatters[$formatterId])) {
+        if (! isset($this->formatters[$formatterId])) {
             $this->formatters[$formatterId] = new NumberFormatter(
                 $locale,
                 NumberFormatter::CURRENCY

@@ -9,13 +9,14 @@
 
 namespace ZendTest\I18n\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\IsInt as IsIntValidator;
 use Locale;
 
 /**
  * @group      Zend_Validator
  */
-class IsIntTest extends \PHPUnit_Framework_TestCase
+class IsIntTest extends TestCase
 {
     /**
      * @var Int
@@ -29,7 +30,7 @@ class IsIntTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 

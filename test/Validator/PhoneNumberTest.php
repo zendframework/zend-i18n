@@ -10,9 +10,10 @@
 namespace ZendTest\I18n\Validator;
 
 use Locale;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\PhoneNumber;
 
-class PhoneNumberTest extends \PHPUnit_Framework_TestCase
+class PhoneNumberTest extends TestCase
 {
     /**
      * @var PhoneNumber
@@ -3182,7 +3183,8 @@ class PhoneNumberTest extends \PHPUnit_Framework_TestCase
     public function testInvalidTypes($country, $code, $patterns)
     {
         $this->validator->setCountry($country);
-        if (!isset($patterns['invalid'])) {
+        if (! isset($patterns['invalid'])) {
+            $this->addToAssertionCount(1);
             return;
         }
         foreach ($patterns['invalid'] as $type => $values) {

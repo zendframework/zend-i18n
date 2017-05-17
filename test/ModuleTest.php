@@ -8,7 +8,7 @@
 namespace ZendTest\I18n;
 
 use Interop\Container\ContainerInterface;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Module;
 
 class ModuleTest extends TestCase

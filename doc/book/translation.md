@@ -11,7 +11,7 @@ nothing but return all messages verbatim.
 
 ## Adding translations
 
-To options exist for adding translations to the translator:
+Two options exist for adding translations to the translator:
 
 - Add every translation file individually; use this for translation formats that
   store multiple locales in the same file.

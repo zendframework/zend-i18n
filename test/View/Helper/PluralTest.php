@@ -9,13 +9,14 @@
 
 namespace ZendTest\I18n\View\Helper;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\View\Helper\Plural as PluralHelper;
 
 /**
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class PluralTest extends \PHPUnit_Framework_TestCase
+class PluralTest extends TestCase
 {
     /**
      * @var PluralHelper
@@ -29,7 +30,7 @@ class PluralTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 

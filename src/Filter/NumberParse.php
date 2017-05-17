@@ -43,7 +43,7 @@ class NumberParse extends AbstractLocale
                 $localeOrOptions = iterator_to_array($localeOrOptions);
             }
 
-            if (!is_array($localeOrOptions)) {
+            if (! is_array($localeOrOptions)) {
                 $this->setLocale($localeOrOptions);
                 $this->setStyle($style);
                 $this->setType($type);
@@ -119,7 +119,7 @@ class NumberParse extends AbstractLocale
     {
         if ($this->formatter === null) {
             $formatter = NumberFormatter::create($this->getLocale(), $this->getStyle());
-            if (!$formatter) {
+            if (! $formatter) {
                 throw new Exception\RuntimeException(
                     'Can not create NumberFormatter instance; ' . intl_get_error_message()
                 );
@@ -140,8 +140,8 @@ class NumberParse extends AbstractLocale
      */
     public function filter($value)
     {
-        if (!is_int($value)
-            && !is_float($value)
+        if (! is_int($value)
+            && ! is_float($value)
         ) {
             ErrorHandler::start();
 

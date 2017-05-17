@@ -9,13 +9,14 @@
 
 namespace ZendTest\I18n\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\Float as FloatValidator;
 use Locale;
 
 /**
  * @group      Zend_Validator
  */
-class FloatTest extends \PHPUnit_Framework_TestCase
+class FloatTest extends TestCase
 {
     /**
      * @var FloatValidator
@@ -33,7 +34,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Cannot test Float validator under PHP 7; reserved keyword');
         }
 
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 

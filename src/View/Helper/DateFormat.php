@@ -46,7 +46,7 @@ class DateFormat extends AbstractHelper
      */
     public function __construct()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             throw new Exception\ExtensionNotLoadedException(sprintf(
                 '%s component requires the intl PHP extension',
                 __NAMESPACE__
@@ -78,7 +78,7 @@ class DateFormat extends AbstractHelper
         $timezone    = $this->getTimezone();
         $formatterId = md5($dateType . "\0" . $timeType . "\0" . $locale ."\0" . $pattern);
 
-        if (!isset($this->formatters[$formatterId])) {
+        if (! isset($this->formatters[$formatterId])) {
             $this->formatters[$formatterId] = new IntlDateFormatter(
                 $locale,
                 $dateType,
@@ -145,7 +145,7 @@ class DateFormat extends AbstractHelper
      */
     public function getTimezone()
     {
-        if (!$this->timezone) {
+        if (! $this->timezone) {
             return date_default_timezone_get();
         }
 

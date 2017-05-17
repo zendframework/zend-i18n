@@ -9,6 +9,7 @@
 
 namespace ZendTest\I18n\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\IsFloat as IsFloatValidator;
 use Locale;
 use NumberFormatter;
@@ -16,7 +17,7 @@ use NumberFormatter;
 /**
  * @group      Zend_Validator
  */
-class IsFloatTest extends \PHPUnit_Framework_TestCase
+class IsFloatTest extends TestCase
 {
     /**
      * @var IsFloatValidator
@@ -30,7 +31,7 @@ class IsFloatTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 
@@ -46,7 +47,7 @@ class IsFloatTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test float and interger type variables. Includes decimal and scientific notation NumberFormatter-formatted
+     * Test float and integer type variables. Includes decimal and scientific notation NumberFormatter-formatted
      * versions. Should return true for all locales.
      *
      * @param string  $value    that will be tested

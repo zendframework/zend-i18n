@@ -9,13 +9,14 @@
 
 namespace ZendTest\I18n\View\Helper;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\View\Helper\TranslatePlural as TranslatePluralHelper;
 
 /**
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class TranslatePluralTest extends \PHPUnit_Framework_TestCase
+class TranslatePluralTest extends TestCase
 {
     /**
      * @var TranslatePluralHelper
@@ -46,7 +47,7 @@ class TranslatePluralTest extends \PHPUnit_Framework_TestCase
 
     public function testInvokingWithoutTranslatorWillRaiseException()
     {
-        $this->setExpectedException('Zend\I18n\Exception\RuntimeException');
+        $this->expectException('Zend\I18n\Exception\RuntimeException');
         $this->helper->__invoke('singular', 'plural', 1);
     }
 
@@ -57,7 +58,7 @@ class TranslatePluralTest extends \PHPUnit_Framework_TestCase
         $numberInput   = 1;
         $expected      = 'translated';
 
-        $translatorMock = $this->getMock('Zend\I18n\Translator\Translator');
+        $translatorMock = $this->createMock('Zend\I18n\Translator\Translator');
         $translatorMock->expects($this->once())
                        ->method('translatePlural')
                        ->with(
@@ -83,7 +84,7 @@ class TranslatePluralTest extends \PHPUnit_Framework_TestCase
         $textDomain    = 'textDomain';
         $locale        = 'en_US';
 
-        $translatorMock = $this->getMock('Zend\I18n\Translator\Translator');
+        $translatorMock = $this->createMock('Zend\I18n\Translator\Translator');
         $translatorMock->expects($this->once())
                        ->method('translatePlural')
                        ->with(
