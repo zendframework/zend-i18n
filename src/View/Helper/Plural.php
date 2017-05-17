@@ -39,7 +39,7 @@ class Plural extends AbstractHelper
      */
     public function __construct()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             throw new Exception\ExtensionNotLoadedException(sprintf(
                 '%s component requires the intl PHP extension',
                 __NAMESPACE__
@@ -64,7 +64,7 @@ class Plural extends AbstractHelper
             ));
         }
 
-        if (!is_array($strings)) {
+        if (! is_array($strings)) {
             $strings = (array) $strings;
         }
 
@@ -81,7 +81,7 @@ class Plural extends AbstractHelper
      */
     public function setPluralRule($pluralRule)
     {
-        if (!$pluralRule instanceof PluralRule) {
+        if (! $pluralRule instanceof PluralRule) {
             $pluralRule = PluralRule::fromString($pluralRule);
         }
 

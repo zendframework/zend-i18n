@@ -67,7 +67,7 @@ class NumberFormat extends AbstractHelper
      */
     public function __construct()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             throw new Exception\ExtensionNotLoadedException(sprintf(
                 '%s component requires the intl PHP extension',
                 __NAMESPACE__
@@ -103,10 +103,10 @@ class NumberFormat extends AbstractHelper
         if (null === $formatType) {
             $formatType = $this->getFormatType();
         }
-        if (!is_int($decimals) || $decimals < 0) {
+        if (! is_int($decimals) || $decimals < 0) {
             $decimals = $this->getDecimals();
         }
-        if (!is_array($textAttributes)) {
+        if (! is_array($textAttributes)) {
             $textAttributes = $this->getTextAttributes();
         }
 

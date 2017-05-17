@@ -12,6 +12,7 @@ namespace ZendTest\I18n\View\Helper;
 use DateTime;
 use Locale;
 use IntlDateFormatter;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\View\Helper\DateFormat as DateFormatHelper;
 
 /**
@@ -20,7 +21,7 @@ use Zend\I18n\View\Helper\DateFormat as DateFormatHelper;
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class DateFormatTest extends \PHPUnit_Framework_TestCase
+class DateFormatTest extends TestCase
 {
     /**
      * @var DateFormatHelper
@@ -42,7 +43,7 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
             );
         }
 
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 
@@ -62,7 +63,7 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
 
     public function dateTestsDataProvider()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             if (version_compare(\PHPUnit_Runner_Version::id(), '3.8.0-dev') === 1) {
                 $this->markTestSkipped('ext/intl not enabled');
             } else {
@@ -162,7 +163,7 @@ class DateFormatTest extends \PHPUnit_Framework_TestCase
 
     public function dateTestsDataProviderWithPattern()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             if (version_compare(\PHPUnit_Runner_Version::id(), '3.8.0-dev') === 1) {
                 $this->markTestSkipped('ext/intl not enabled');
             } else {

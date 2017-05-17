@@ -161,7 +161,7 @@ class Rule
                        ? 1 : 0;
 
             case '!':
-                return !$this->evaluateAstPart($ast['arguments'][0], $number)
+                return ! $this->evaluateAstPart($ast['arguments'][0], $number)
                        ? 1 : 0;
 
             case '?':
@@ -190,7 +190,7 @@ class Rule
             static::$parser = new Parser();
         }
 
-        if (!preg_match('(nplurals=(?P<nplurals>\d+))', $string, $match)) {
+        if (! preg_match('(nplurals=(?P<nplurals>\d+))', $string, $match)) {
             throw new Exception\ParseException(sprintf(
                 'Unknown or invalid parser rule: %s',
                 $string
@@ -199,7 +199,7 @@ class Rule
 
         $numPlurals = (int) $match['nplurals'];
 
-        if (!preg_match('(plural=(?P<plural>[^;\n]+))', $string, $match)) {
+        if (! preg_match('(plural=(?P<plural>[^;\n]+))', $string, $match)) {
             throw new Exception\ParseException(sprintf(
                 'Unknown or invalid parser rule: %s',
                 $string

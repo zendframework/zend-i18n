@@ -32,7 +32,7 @@ class Ini extends AbstractFileLoader
     {
         $resolvedIncludePath = stream_resolve_include_path($filename);
         $fromIncludePath = ($resolvedIncludePath !== false) ? $resolvedIncludePath : $filename;
-        if (!$fromIncludePath || !is_file($fromIncludePath) || !is_readable($fromIncludePath)) {
+        if (! $fromIncludePath || ! is_file($fromIncludePath) || ! is_readable($fromIncludePath)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'Could not find or open file %s for reading',
                 $filename
@@ -49,7 +49,7 @@ class Ini extends AbstractFileLoader
         }
 
         foreach ($list as $message) {
-            if (!is_array($message) || count($message) < 2) {
+            if (! is_array($message) || count($message) < 2) {
                 throw new Exception\InvalidArgumentException(
                     'Each INI row must be an array with message and translation'
                 );
@@ -61,7 +61,7 @@ class Ini extends AbstractFileLoader
             $messages[array_shift($message)] = array_shift($message);
         }
 
-        if (!is_array($messages)) {
+        if (! is_array($messages)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'Expected an array, but received %s',
                 gettype($messages)

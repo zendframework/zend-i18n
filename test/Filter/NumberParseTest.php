@@ -9,7 +9,7 @@
 
 namespace ZendTest\I18n\Filter;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Filter\NumberParse as NumberParseFilter;
 use NumberFormatter;
 
@@ -17,7 +17,7 @@ class NumberParseTest extends TestCase
 {
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
     }

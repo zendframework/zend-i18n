@@ -46,7 +46,7 @@ class IsInt extends AbstractValidator
      */
     public function __construct($options = [])
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             throw new I18nException\ExtensionNotLoadedException(sprintf(
                 '%s component requires the intl PHP extension',
                 __NAMESPACE__
@@ -96,7 +96,7 @@ class IsInt extends AbstractValidator
      */
     public function isValid($value)
     {
-        if (!is_string($value) && !is_int($value) && !is_float($value)) {
+        if (! is_string($value) && ! is_int($value) && ! is_float($value)) {
             $this->error(self::INVALID);
             return false;
         }

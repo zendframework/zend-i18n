@@ -9,7 +9,7 @@
 
 namespace ZendTest\I18n\Translator;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Translator\TextDomain;
 use Zend\I18n\Translator\Plural\Rule as PluralRule;
 
@@ -56,7 +56,8 @@ class TextDomainTest extends TestCase
 
     public function testMergingIncompatibleTextDomains()
     {
-        $this->setExpectedException('Zend\I18n\Exception\RuntimeException', 'is not compatible');
+        $this->expectException('Zend\I18n\Exception\RuntimeException');
+        $this->expectExceptionMessage('is not compatible');
 
         $domainA = new TextDomain();
         $domainB = new TextDomain();

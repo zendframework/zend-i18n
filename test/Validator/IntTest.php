@@ -9,13 +9,14 @@
 
 namespace ZendTest\I18n\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\Int as IntValidator;
 use Locale;
 
 /**
  * @group      Zend_Validator
  */
-class IntTest extends \PHPUnit_Framework_TestCase
+class IntTest extends TestCase
 {
     /**
      * @var Int
@@ -33,7 +34,7 @@ class IntTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Cannot test Int validator under PHP 7; reserved keyword');
         }
 
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 

@@ -98,7 +98,9 @@ class TextDomain extends ArrayObject
     {
         if ($this->hasPluralRule() && $textDomain->hasPluralRule()) {
             if ($this->getPluralRule()->getNumPlurals() !== $textDomain->getPluralRule()->getNumPlurals()) {
-                throw new Exception\RuntimeException('Plural rule of merging text domain is not compatible with the current one');
+                throw new Exception\RuntimeException(
+                    'Plural rule of merging text domain is not compatible with the current one'
+                );
             }
         } elseif ($textDomain->hasPluralRule()) {
             $this->setPluralRule($textDomain->getPluralRule());

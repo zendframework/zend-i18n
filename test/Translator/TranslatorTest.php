@@ -9,7 +9,7 @@
 
 namespace ZendTest\I18n\Translator;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Locale;
 use Zend\EventManager\EventInterface;
 use Zend\I18n\Translator\Translator;
@@ -36,7 +36,7 @@ class TranslatorTest extends TestCase
 
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 
@@ -299,9 +299,12 @@ class TranslatorTest extends TestCase
         $actualEvent = null;
 
         $this->translator->enableEventManager();
-        $this->translator->getEventManager()->attach(Translator::EVENT_MISSING_TRANSLATION, function (EventInterface $event) use (&$actualEvent) {
-            $actualEvent = $event;
-        });
+        $this->translator->getEventManager()->attach(
+            Translator::EVENT_MISSING_TRANSLATION,
+            function (EventInterface $event) use (&$actualEvent) {
+                $actualEvent = $event;
+            }
+        );
 
         $this->translator->translate('foo', 'bar', 'baz');
 
