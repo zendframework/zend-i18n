@@ -9,13 +9,14 @@
 
 namespace ZendTest\I18n\Filter;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Filter\Alpha as AlphaFilter;
 use Locale;
 
 /**
  * @group      Zend_Filter
  */
-class AlphaTest extends \PHPUnit_Framework_TestCase
+class AlphaTest extends TestCase
 {
     /**
      * AlphaFilter object

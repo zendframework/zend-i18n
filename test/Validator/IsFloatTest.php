@@ -9,6 +9,7 @@
 
 namespace ZendTest\I18n\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\IsFloat as IsFloatValidator;
 use Locale;
 use NumberFormatter;
@@ -16,7 +17,7 @@ use NumberFormatter;
 /**
  * @group      Zend_Validator
  */
-class IsFloatTest extends \PHPUnit_Framework_TestCase
+class IsFloatTest extends TestCase
 {
     /**
      * @var IsFloatValidator

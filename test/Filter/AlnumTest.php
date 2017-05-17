@@ -9,13 +9,14 @@
 
 namespace ZendTest\I18n\Filter;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Filter\Alnum as AlnumFilter;
 use Locale;
 
 /**
  * @group      Zend_Filter
  */
-class AlnumTest extends \PHPUnit_Framework_TestCase
+class AlnumTest extends TestCase
 {
     /**
      * AlnumFilter object

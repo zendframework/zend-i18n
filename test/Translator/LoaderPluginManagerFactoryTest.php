@@ -8,7 +8,7 @@
 namespace ZendTest\I18n\Translator;
 
 use Interop\Container\ContainerInterface;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Translator\LoaderPluginManager;
 use Zend\I18n\Translator\LoaderPluginManagerFactory;
 use Zend\I18n\Translator\Loader\FileLoaderInterface;

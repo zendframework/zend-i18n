@@ -9,7 +9,7 @@
 
 namespace ZendTest\I18n\Translator;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Exception\RuntimeException;
 use Zend\I18n\Translator\LoaderPluginManager;
 use Zend\ServiceManager\ServiceManager;

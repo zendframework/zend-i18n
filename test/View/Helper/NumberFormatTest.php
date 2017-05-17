@@ -11,6 +11,7 @@ namespace ZendTest\I18n\View\Helper;
 
 use Locale;
 use NumberFormatter;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\View\Helper\NumberFormat as NumberFormatHelper;
 
 /**
@@ -19,7 +20,7 @@ use Zend\I18n\View\Helper\NumberFormat as NumberFormatHelper;
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class NumberFormatTest extends \PHPUnit_Framework_TestCase
+class NumberFormatTest extends TestCase
 {
     /**
      * @var NumberFormatHelper

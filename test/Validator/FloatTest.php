@@ -9,13 +9,14 @@
 
 namespace ZendTest\I18n\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\Validator\Float as FloatValidator;
 use Locale;
 
 /**
  * @group      Zend_Validator
  */
-class FloatTest extends \PHPUnit_Framework_TestCase
+class FloatTest extends TestCase
 {
     /**
      * @var FloatValidator

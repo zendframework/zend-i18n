@@ -12,6 +12,7 @@ namespace ZendTest\I18n\View\Helper;
 use DateTime;
 use Locale;
 use IntlDateFormatter;
+use PHPUnit\Framework\TestCase;
 use Zend\I18n\View\Helper\DateFormat as DateFormatHelper;
 
 /**
@@ -20,7 +21,7 @@ use Zend\I18n\View\Helper\DateFormat as DateFormatHelper;
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class DateFormatTest extends \PHPUnit_Framework_TestCase
+class DateFormatTest extends TestCase
 {
     /**
      * @var DateFormatHelper
