@@ -55,7 +55,7 @@ Several languages supported by ext/intl use alphabets where characters are
 formed from multiple bytes, including *Korean*, *Japanese*, and *Chinese*. Such
 languages therefore are unsupported with regards to the `Alnum` validator.
 
-When using the `Alnum` validator with these langauges, the input will be validated
+When using the `Alnum` validator with these languages, the input will be validated
 using the English alphabet.
 
 ## Alpha
@@ -119,7 +119,7 @@ Three languages supported by ext/intl, however, define multibyte characters,
 which cannot be matched as alphabetic characters using normal string or regular
 expression options. These include *Korean*, *Japanese*, and *Chinese*.
 
-As a result, when using the `Alpha` validator with these langauges, the input
+As a result, when using the `Alpha` validator with these languages, the input
 will be validated using the English alphabet.
 
 ## IsFloat

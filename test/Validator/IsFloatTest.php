@@ -47,7 +47,7 @@ class IsFloatTest extends TestCase
     }
 
     /**
-     * Test float and interger type variables. Includes decimal and scientific notation NumberFormatter-formatted
+     * Test float and integer type variables. Includes decimal and scientific notation NumberFormatter-formatted
      * versions. Should return true for all locales.
      *
      * @param string  $value    that will be tested
