@@ -47,7 +47,6 @@ matrix:
         - DEPS=lowest
     - php: 7
       env:
-<<<<<<< HEAD
         - DEPS=latest
     - php: 7.1
       env:
@@ -58,11 +57,6 @@ matrix:
     - php: hhvm
       env:
         - DEPS=lowest
-=======
-        - SERVICE_MANAGER_VERSION="^2.7.5"
-        - EVENT_MANAGER_VERSION="^2.6.2"
-    - php: hhvm
->>>>>>> xtreamwayz/hotfix/slack-notifications
     - php: hhvm
       env:
         - DEPS=latest
