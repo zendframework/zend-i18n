@@ -45,6 +45,9 @@ All notable changes to this project will be documented in this file, in reverse 
 - [#56](https://github.com/zendframework/zend-i18n/pull/56) adds more aliases to
   the `LoaderPluginManager` to ensure different cAsIng strategies will still
   resolve translation loaders under zend-servicemanager v3.
+- [#62](https://github.com/zendframework/zend-i18n/pull/62) fixes an issue with
+  how the gettext adapter resolves `PoEdit` source keywords when a text_domain is
+  defined.
 
 ## 2.7.3 - 2016-06-07
 
