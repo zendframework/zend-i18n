@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+### Changes
+
+- [#65](https://github.com/zendframework/zend-i18n/pull/65) updates the
+  `PostCode` validation for Ireland to support Eircode
+  (https://www.eircode.ie/what-is-eircode)
+
 ### Deprecated
 
 - Nothing.

@@ -125,7 +125,7 @@ class PostCode extends AbstractValidator
         'IS' => '\d{3}',
         'IN' => '\d{6}',
         'ID' => '\d{5}',
-        'IE' => '((D|DUBLIN)?([1-9]|6[wW]|1[0-8]|2[024]))?',
+        'IE' => '[\dA-Z]{3} ?[\dA-Z]{4}',
         'IL' => '\d{5}',
         'JO' => '\d{5}',
         'KZ' => '\d{6}',
