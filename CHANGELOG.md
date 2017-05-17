@@ -42,6 +42,9 @@ All notable changes to this project will be documented in this file, in reverse 
   and thus seeding it with configured translator loader services. This means
   that the `translator_plugins` configuration will now be honored in
   non-zend-mvc contexts.
+- [#56](https://github.com/zendframework/zend-i18n/pull/56) adds more aliases to
+  the `LoaderPluginManager` to ensure different cAsIng strategies will still
+  resolve translation loaders under zend-servicemanager v3.
 
 ## 2.7.3 - 2016-06-07
 
