@@ -52,7 +52,7 @@ class Alpha extends Alnum
      */
     public function isValid($value)
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             $this->error(self::INVALID);
             return false;
         }

@@ -21,7 +21,7 @@ class GettextTest extends TestCase
 
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 
@@ -52,8 +52,10 @@ class GettextTest extends TestCase
     public function testLoaderFailsToLoadBadFile()
     {
         $loader = new GettextLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException',
-                                    'is not a valid gettext file');
+        $this->setExpectedException(
+            'Zend\I18n\Exception\InvalidArgumentException',
+            'is not a valid gettext file'
+        );
         $loader->load('en_EN', $this->testFilesDir . '/failed.mo');
     }
 

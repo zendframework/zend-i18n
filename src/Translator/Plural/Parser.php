@@ -211,7 +211,7 @@ class Parser
      */
     protected function getSymbol($id)
     {
-        if (!isset($this->symbolTable[$id])) {
+        if (! isset($this->symbolTable[$id])) {
             // Unkown symbol exception
         }
 

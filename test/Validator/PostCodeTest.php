@@ -28,7 +28,7 @@ class PostCodeTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 
@@ -104,7 +104,10 @@ class PostCodeTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingLocalesWithoutRegion()
     {
-        $this->setExpectedException('Zend\Validator\Exception\InvalidArgumentException', 'Locale must contain a region');
+        $this->setExpectedException(
+            'Zend\Validator\Exception\InvalidArgumentException',
+            'Locale must contain a region'
+        );
         $this->validator->setLocale('de')->isValid('1000');
     }
 
@@ -113,7 +116,10 @@ class PostCodeTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingLocalesWithoutPostalCodes()
     {
-        $this->setExpectedException('Zend\Validator\Exception\InvalidArgumentException', 'A postcode-format string has to be given for validation');
+        $this->setExpectedException(
+            'Zend\Validator\Exception\InvalidArgumentException',
+            'A postcode-format string has to be given for validation'
+        );
         $this->validator->setLocale('gez_ER')->isValid('1000');
     }
 
@@ -136,13 +142,19 @@ class PostCodeTest extends \PHPUnit_Framework_TestCase
 
     public function testSetGetFormatThrowsExceptionOnNullFormat()
     {
-        $this->setExpectedException('Zend\Validator\Exception\InvalidArgumentException', 'A postcode-format string has to be given');
+        $this->setExpectedException(
+            'Zend\Validator\Exception\InvalidArgumentException',
+            'A postcode-format string has to be given'
+        );
         $this->validator->setLocale(null)->setFormat(null)->isValid('1000');
     }
 
     public function testSetGetFormatThrowsExceptionOnEmptyFormat()
     {
-        $this->setExpectedException('Zend\Validator\Exception\InvalidArgumentException', 'A postcode-format string has to be given');
+        $this->setExpectedException(
+            'Zend\Validator\Exception\InvalidArgumentException',
+            'A postcode-format string has to be given'
+        );
         $this->validator->setLocale(null)->setFormat('')->isValid('1000');
     }
 
@@ -233,7 +245,7 @@ class PostCodeTest extends \PHPUnit_Framework_TestCase
         $validator->setLocale('en_NO');
 
         $this->assertTrue($validator->isValid('0301')); // OSLO
-        $this->assertTrue($validator->isValid('9910')); // BJØRNEVATN
+        $this->assertTrue($validator->isValid('9910')); // BJï¿½RNEVATN
         $this->assertFalse($validator->isValid('0000')); // Postal code 0000
     }
 }

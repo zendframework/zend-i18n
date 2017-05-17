@@ -17,7 +17,7 @@ class NumberFormatTest extends TestCase
 {
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
     }
@@ -72,7 +72,7 @@ class NumberFormatTest extends TestCase
 
     public function numberToFormattedProvider()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             if (version_compare(\PHPUnit_Runner_Version::id(), '3.8.0-dev') === 1) {
                 $this->markTestSkipped('ext/intl not enabled');
             } else {
@@ -107,7 +107,7 @@ class NumberFormatTest extends TestCase
 
     public function formattedToNumberProvider()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             if (version_compare(\PHPUnit_Runner_Version::id(), '3.8.0-dev') === 1) {
                 $this->markTestSkipped('ext/intl not enabled');
             } else {

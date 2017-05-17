@@ -52,7 +52,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 
@@ -71,7 +71,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
      */
     public function testBasic()
     {
-        if (!static::$unicodeEnabled) {
+        if (! static::$unicodeEnabled) {
             // POSIX named classes are not supported, use alternative a-zA-Z match
             $valuesExpected = [
                 'abc123'  => 'abc123',
@@ -123,7 +123,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     {
         $this->filter->setAllowWhiteSpace(true);
 
-        if (!static::$unicodeEnabled) {
+        if (! static::$unicodeEnabled) {
             // POSIX named classes are not supported, use alternative a-zA-Z match
             $valuesExpected = [
                 'abc123'  => 'abc123',
@@ -192,6 +192,6 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     {
         $filter = new AlnumFilter();
 
-        $this->assertEquals($input,  $filter->filter($input));
+        $this->assertEquals($input, $filter->filter($input));
     }
 }

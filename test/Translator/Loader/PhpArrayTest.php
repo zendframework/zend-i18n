@@ -21,7 +21,7 @@ class PhpArrayTest extends TestCase
 
     public function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
         }
 
@@ -52,8 +52,10 @@ class PhpArrayTest extends TestCase
     public function testLoaderFailsToLoadNonArray()
     {
         $loader = new PhpArrayLoader();
-        $this->setExpectedException('Zend\I18n\Exception\InvalidArgumentException',
-                                    'Expected an array, but received');
+        $this->setExpectedException(
+            'Zend\I18n\Exception\InvalidArgumentException',
+            'Expected an array, but received'
+        );
         $loader->load('en_EN', $this->testFilesDir . '/failed.php');
     }
 
