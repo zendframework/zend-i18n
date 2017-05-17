@@ -38,26 +38,44 @@ class LoaderPluginManagerFactoryTest extends TestCase
         $this->assertFalse($loaders->has('test'));
     }
 
-    public function testFactoryCanConfigurePluginManagerViaOptions()
+    public function provideLoader()
+    {
+        return [
+            ['gettext'],
+            ['getText'],
+            ['GetText'],
+            ['phparray'],
+            ['phpArray'],
+            ['PhpArray'],
+        ];
+    }
+
+    /**
+     * @dataProvider provideLoader
+     */
+    public function testFactoryCanConfigurePluginManagerViaOptions($loader)
     {
         $container = $this->prophesize(ContainerInterface::class)->reveal();
 
         $factory = new LoaderPluginManagerFactory();
         $loaders = $factory($container, 'TranslatorPluginManager', ['aliases' => [
-            'test' => 'phparray',
+            'test' => $loader,
         ]]);
         $this->assertInstanceOf(LoaderPluginManager::class, $loaders);
         $this->assertTrue($loaders->has('test'));
     }
 
-    public function testCreateServiceCanConfigurePluginManagerViaOptions()
+    /**
+     * @dataProvider provideLoader
+     */
+    public function testCreateServiceCanConfigurePluginManagerViaOptions($loader)
     {
         $container = $this->prophesize(ServiceLocatorInterface::class);
         $container->willImplement(ContainerInterface::class);
 
         $factory = new LoaderPluginManagerFactory();
         $factory->setCreationOptions(['aliases' => [
-            'test' => 'phparray',
+            'test' => $loader,
         ]]);
         $loaders = $factory->createService($container->reveal());
         $this->assertInstanceOf(LoaderPluginManager::class, $loaders);
