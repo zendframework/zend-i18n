@@ -54,6 +54,9 @@ All notable changes to this project will be documented in this file, in reverse 
 - [#62](https://github.com/zendframework/zend-i18n/pull/62) fixes an issue with
   how the gettext adapter resolves `PoEdit` source keywords when a text_domain is
   defined.
+- [#73](https://github.com/zendframework/zend-i18n/pull/73) provides a
+  workaround within the `CurrencyFormat` view helper for an ICU bug
+  (http://bugs.icu-project.org/trac/ticket/10997).
 
 ## 2.7.3 - 2016-06-07
 
