@@ -151,7 +151,9 @@ class CurrencyFormat extends AbstractHelper
 
         $formattedNumber = $this->formatters[$formatterId]->formatCurrency($number, $currencyCode);
 
-        return $this->correctionNeeded ? $this->correctICUBug($formattedNumber, $this->formatters[$formatterId]) : $formattedNumber;
+        return $this->correctionNeeded
+            ? $this->correctICUBug($formattedNumber, $this->formatters[$formatterId])
+            : $formattedNumber;
     }
 
     /**
