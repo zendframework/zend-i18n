@@ -19,7 +19,8 @@ class NumberParse extends AbstractLocale
     protected $options = [
         'locale' => null,
         'style'  => NumberFormatter::DEFAULT_STYLE,
-        'type'   => NumberFormatter::TYPE_DOUBLE
+        'type'   => NumberFormatter::TYPE_DOUBLE,
+        'decimals' => null,
     ];
 
     /**
@@ -100,6 +101,25 @@ class NumberParse extends AbstractLocale
     {
         return $this->options['type'];
     }
+    
+     /**
+     * @param int|null $iDecimals
+     * @return NumberFormat
+     */
+    public function setDecimals($decimals)
+    {
+        $this->options['decimals'] = $iDecimals;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     * @throws \LogicException
+     */
+    public function getDecimals()
+    {
+        return $this->options['decimals'];
+    }
 
     /**
      * @param  NumberFormatter $formatter
@@ -123,6 +143,12 @@ class NumberParse extends AbstractLocale
                 throw new Exception\RuntimeException(
                     'Can not create NumberFormatter instance; ' . intl_get_error_message()
                 );
+            }
+            // Check if some number of decimals defined in options
+            $decimals = $this->getDecimals();
+            if ($decimals !== null) {
+                $formatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, $decimals);
+                $formatter->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, $decimals);
             }
 
             $this->formatter = $formatter;
