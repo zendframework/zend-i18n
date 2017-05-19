@@ -19,8 +19,9 @@ use Zend\Stdlib\StringUtils;
 use Zend\Stdlib\StringWrapper\StringWrapperInterface;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
+use Zend\Validator\LocaleAwareValidatorInterface;
 
-class IsFloat extends AbstractValidator
+class IsFloat extends AbstractValidator implements LocaleAwareValidatorInterface
 {
     const INVALID   = 'floatInvalid';
     const NOT_FLOAT = 'notFloat';

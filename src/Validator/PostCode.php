@@ -16,8 +16,9 @@ use Zend\Stdlib\ArrayUtils;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Callback;
 use Zend\Validator\Exception;
+use Zend\Validator\LocaleAwareValidatorInterface;
 
-class PostCode extends AbstractValidator
+class PostCode extends AbstractValidator implements LocaleAwareValidatorInterface
 {
     const INVALID        = 'postcodeInvalid';
     const NO_MATCH       = 'postcodeNoMatch';
