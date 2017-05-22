@@ -58,7 +58,7 @@ class CurrencyFormatTest extends TestCase
             ['de_AT', 'EUR',       false, 1234.56,                 null,                       '€ 1.235'],
             ['de_AT', 'EUR',       false, 0.123,                   null,                       '€ 0'],
             ['de_DE', 'EUR',       false, 1234567.891234567890000, null,                       '1.234.568 €'],
-            ['de_DE', 'RUB',       false, 1234567.891234567890000, null,                       '1.234.567,89 RUB'],
+            ['de_DE', 'RUB',       false, 1234567.891234567890000, null,                       '1.234.567 RUB'],
             //array('ru_RU', 'EUR',     false,             1234567.891234567890000,  null, '1 234 568 €'),
             //array('ru_RU', 'RUR',     false,             1234567.891234567890000,  null, '1 234 567 р.'),
             //array('en_US', 'EUR',     false,             1234567.891234567890000,  null, '€1,234,568'),
@@ -66,6 +66,9 @@ class CurrencyFormatTest extends TestCase
             ['en_US', 'USD',       false, 1234567.891234567890000, null,                       '$1,234,568'],
             /* @see http://bugs.icu-project.org/trac/ticket/10997 */
             ['en_US', 'EUR',       false, 1234567.891234567890000, null,                       '€1,234,567'],
+            ['de_DE', 'USD',       false, 1234567.891234567890000, null,                       '1.234.567 $'],
+            ['en_US', 'PLN',       false, 1234567.891234567890000, null,                       'PLN 1,234,567'],
+            ['de_DE', 'PLN',       false, 1234567.891234567890000, null,                       '1.234.567 PLN'],
         ];
     }
 
