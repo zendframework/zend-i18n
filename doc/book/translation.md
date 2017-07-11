@@ -37,12 +37,6 @@ where the arguments are:
 - `$locale`: the language strings are translated from; this argument is only
   required for formats which contain translations for single locales.
 
-> ### Text domain and locale are related
->
-> For each text domain and locale combination, there can only be one file
-> loaded. Every successive file would override the translations which were
-> loaded prior.
-
 When storing one locale per file, you should specify those files via a pattern.
 This allows you to add new translations to the file system, without touching
 your code. Patterns are added with the `addTranslationFilePattern()` method:
