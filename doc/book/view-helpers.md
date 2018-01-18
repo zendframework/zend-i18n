@@ -426,7 +426,7 @@ The `xgettext` utility can be used to compile `*.po` files from PHP source files
 translate view helper.
 
 ```bash
-$ xgettext --language=php --add-location --keyword=translate my-view-file.phtml
+$ xgettext --language=php --add-location --keyword=translate --keyword=translatePlural:1,2 my-view-file.phtml
 ```
 
 See the [Gettext Wikipedia page](http://en.wikipedia.org/wiki/Gettext) for more information.
@@ -488,6 +488,17 @@ where:
 - `$locale`: Locale to which the message should be translated (locale name, e.g.
   `en_US`). If unset, it will use the default locale (return value of
   `Locale::getDefault()`).
+
+### Gettext
+
+The `xgettext` utility can be used to compile `*.po` files from PHP source files containing the
+translate view helper.
+
+```bash
+$ xgettext --language=php --add-location --keyword=translate --keyword=translatePlural:1,2 my-view-file.phtml
+```
+
+See the [Gettext Wikipedia page](http://en.wikipedia.org/wiki/Gettext) for more information.
 
 ### Public Methods
 
