@@ -1,7 +1,7 @@
 # zend-i18n
 
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-i18n.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-i18n)
-[![Coverage Status](https://coveralls.io/repos/zendframework/zend-i18n/badge.svg?branch=master)](https://coveralls.io/r/zendframework/zend-i18n?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-i18n/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-i18n?branch=master)
 
 `Zend\I18n` comes with a complete translation suite which supports all major
 formats and includes popular features like plural translations and text domains.
