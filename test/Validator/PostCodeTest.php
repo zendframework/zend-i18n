@@ -241,4 +241,21 @@ class PostCodeTest extends TestCase
         $this->assertTrue($validator->isValid('9910')); // BJØRNEVATN
         $this->assertFalse($validator->isValid('0000')); // Postal code 0000
     }
+
+    /**
+     * Postal codes in Latvia are 4 digit numeric and use a mandatory ISO 3166-1 alpha-2 country code (LV) in front,
+     * i.e. the format is “LV-NNNN”.
+     * To prevent BC break LV- prefix is optional
+     * https://en.wikipedia.org/wiki/Postal_codes_in_Latvia
+     */
+    public function testLvPostCodes()
+    {
+        $validator = $this->validator;
+        $validator->setLocale('en_LV');
+
+        $this->assertTrue($validator->isValid('LV-0000'));
+        $this->assertTrue($validator->isValid('0000'));
+        $this->assertFalse($validator->isValid('ABCD'));
+        $this->assertFalse($validator->isValid('LV-ABCD'));
+    }
 }
