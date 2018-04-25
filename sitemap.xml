@@ -3,8 +3,8 @@
 
     
     <url>
-     <loc>None/</loc>
-     <lastmod>2016-07-05</lastmod>
+     <loc>/</loc>
+     <lastmod>2018-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,26 +12,26 @@
     
         
     <url>
-     <loc>None/translation/</loc>
-     <lastmod>2016-07-05</lastmod>
+     <loc>/translation/</loc>
+     <lastmod>2018-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/view-helpers/</loc>
-     <lastmod>2016-07-05</lastmod>
+     <loc>/view-helpers/</loc>
+     <lastmod>2018-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/filters/</loc>
-     <lastmod>2016-07-05</lastmod>
+     <loc>/filters/</loc>
+     <lastmod>2018-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/validators/</loc>
-     <lastmod>2016-07-05</lastmod>
+     <loc>/validators/</loc>
+     <lastmod>2018-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

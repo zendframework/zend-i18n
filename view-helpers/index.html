@@ -1,39 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zend\I18n">  
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>View Helpers - zend-i18n</title>
 
-    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
-    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link href="../css/base.css" rel="stylesheet">
-    <link href="../css/zf-web.css" rel="stylesheet">
-    <link href="../css/zf.css" rel="stylesheet">
-    <link href="../css/prism-zf.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script>
-    WebFont.load({
-        google: {
-            families: ['Open Sans', 'PT Sans']
-        }
-    });
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/styles-288837cc22.css">
 
     
 </head>
@@ -57,8 +37,8 @@
 
             <!-- Main title -->
             <span class="navbar-brand">
-              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
-              <a href="..">zend-i18n</a>
+                <a class="logo-link" href="https://framework.zend.com/" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
+                <a href="..">zend-i18n</a>
             </span>
         </div>
 
@@ -69,9 +49,12 @@
                 <ul class="nav navbar-nav">
                 
                 
+                
                     <li >
-                        <a href="..">Home</a>
+                        <a href="..">zend-i18n</a>
                     </li>
+                
+                
                 
                 
                 
@@ -80,31 +63,40 @@
                         <ul class="dropdown-menu">
                         
                             
+
 <li >
     <a href="../translation/">Translation</a>
 </li>
 
+
                         
                             
+
 <li class="active">
     <a href="./">View Helpers</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../filters/">Filters</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../validators/">Validators</a>
 </li>
 
+
                         
                         </ul>
                     </li>
+                
                 
                 
                 </ul>
@@ -124,7 +116,7 @@
                 </li>
                 
                     <li>
-                        <a href="https://github.com/zendframework/zend-i18n">
+                        <a href="https://github.com/zendframework/zend-i18n/">
                             
                                 <i class="fa fa-github"></i>
                             
@@ -176,11 +168,11 @@
         <div class="col-md-9" role="main">
 
 <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="..">zend-i18n</a> &raquo;</li>
+  <li><a href="..">zend-i18n</a></li>
   
     
       
-        <li>Reference &raquo;</li>
+        <li>Reference</li>
       
     
   
@@ -218,7 +210,6 @@ echo $this-&gt;currencyFormat(12345678.90, 'EUR', true, 'de_DE', '#0.# kg');
 echo $this-&gt;currencyFormat(12345678.90, 'EUR', false, 'de_DE', '#0.# kg');
 // Returns: &quot;12345679 kg&quot;</code></pre>
 
-
 <h3 id="method-description">Method description</h3>
 <pre class="codehilite"><code class="language-php">currencyFormat(
     float $number [,
@@ -227,7 +218,6 @@ echo $this-&gt;currencyFormat(12345678.90, 'EUR', false, 'de_DE', '#0.# kg');
     string $locale = null [,
     string $pattern = null
 ] ] ] ]) : string</code></pre>
-
 
 <p>where:</p>
 <ul>
@@ -258,14 +248,11 @@ echo $this-&gt;currencyFormat(1234.56);
 echo $this-&gt;currencyFormat(5678.90);
 // This returns: &quot;$5,678.90&quot;</code></pre>
 
-
 <p>The method signatures are:</p>
 <pre class="codehilite"><code class="language-php">setCurrencyCode(string $currencyCode) : CurrencyFormat</code></pre>
 
-
 <p>where <code>$currencyCode</code> is the 3-letter ISO 4217 currency code, and</p>
 <pre class="codehilite"><code class="language-php">setLocale(string $locale) : CurrencyFormat</code></pre>
-
 
 <p>where <code>$locale</code> is the locale with which to format the number.</p>
 <h4 id="show-decimals">Show decimals</h4>
@@ -276,10 +263,8 @@ $this-&gt;plugin('currencyformat')-&gt;setShouldShowDecimals(false);
 echo $this-&gt;currencyFormat(1234.56, 'USD', null, 'en_US');
 // This returns: &quot;$1,235&quot;</code></pre>
 
-
 <p>with the following method signature:</p>
 <pre class="codehilite"><code class="language-php">setShouldShowDecimals(bool $showDecimals) : CurrencyFormat</code></pre>
-
 
 <p>where <code>$showDecimals</code> indicates whether or not decimal values will be displayed.</p>
 <h4 id="set-the-currency-pattern">Set the currency pattern</h4>
@@ -290,10 +275,8 @@ $this-&gt;plugin('currencyformat')-&gt;setCurrencyPattern('#0.# kg');
 echo $this-&gt;currencyFormat(12345678.90, 'EUR', null, 'de_DE');
 // This returns: &quot;12345678,90 kg&quot;</code></pre>
 
-
 <p>with the following method signature:</p>
 <pre class="codehilite"><code class="language-php">setCurrencyPattern(string $currencyPattern) : CurrencyFormat</code></pre>
-
 
 <p>where <code>$currencyPattern</code> is a valid <a href="http://www.icu-project.org/apiref/icu4c/classDecimalFormat.html#details">ICU DecimalFormat pattern</a>;
 see the <a href="http://php.net/manual/numberformatter.setpattern.php">NumberFormatter::setPattern() documentation</a>
@@ -332,7 +315,6 @@ echo $this-&gt;dateFormat(
 );
 // This returns: &quot;6:44 PM&quot;</code></pre>
 
-
 <h3 id="method-description_1">Method description</h3>
 <pre class="codehilite"><code class="language-php">dateFormat(
     mixed $date [,
@@ -340,7 +322,6 @@ echo $this-&gt;dateFormat(
     int $timeType = null [,
     string $locale = null
 ] ] ]) : string</code></pre>
-
 
 <p>where:</p>
 <ul>
@@ -370,7 +351,6 @@ $this-&gt;plugin('dateFormat')
 
 echo $this-&gt;dateFormat(new DateTime(), IntlDateFormatter::MEDIUM);  // &quot;Jul 2, 2012&quot;
 echo $this-&gt;dateFormat(new DateTime(), IntlDateFormatter::SHORT);   // &quot;7/2/12&quot;</code></pre>
-
 
 <h2 id="numberformat-helper">NumberFormat Helper</h2>
 <p>The <code>NumberFormat</code> view helper can be used to simplify rendering of
@@ -406,7 +386,6 @@ echo $this-&gt;numberFormat(
 );
 // This returns: &quot;1,23456789E-3&quot;</code></pre>
 
-
 <h3 id="method-description_2">Method description</h3>
 <pre class="codehilite"><code class="language-php">numberFormat(
     int|float $number [,
@@ -416,7 +395,6 @@ echo $this-&gt;numberFormat(
     int $decimals = null [,
     array $textAttributes = null
 ] ] ] ] ]) : string</code></pre>
-
 
 <p>where:</p>
 <ul>
@@ -449,7 +427,6 @@ $this-&gt;plugin(&quot;numberformat&quot;)
 echo $this-&gt;numberFormat(0.56);   // &quot;^ 56%&quot;
 echo $this-&gt;numberFormat(-0.90);  // &quot;v 90%&quot;</code></pre>
 
-
 <h2 id="plural-helper">Plural Helper</h2>
 <p>Most languages have specific rules for handling plurals. For instance, in
 English, we say "0 cars" and "2 cars" (plural) while we say "1 car" (singular).
@@ -481,7 +458,6 @@ $pluralHelper      = $viewHelperManager-&gt;get('Plural');
 // Here is the rule for French
 $pluralHelper-&gt;setPluralRule('nplurals=2; plural=(n==0 || n==1 ? 0 : 1)');</code></pre>
 
-
 <p>The string reads as follows:</p>
 <ol>
 <li>First, we specify how many plural forms we have. For French, only two (singular/plural).</li>
@@ -492,7 +468,6 @@ $pluralHelper-&gt;setPluralRule('nplurals=2; plural=(n==0 || n==1 ? 0 : 1)');</c
 plural. Here is how that would be declared:</p>
 <pre class="codehilite"><code class="language-php">// Here is the rule for English
 $pluralHelper-&gt;setPluralRule('nplurals=2; plural=(n==1 ? 0 : 1)');</code></pre>
-
 
 <p>Now that we have defined the rule, we can use it in our views:</p>
 <pre class="codehilite"><code class="language-php">// Within a view script...
@@ -505,7 +480,6 @@ echo $this-&gt;plural(array('car', 'cars'), 1); // prints &quot;car&quot;
 echo $this-&gt;plural(array('voiture', 'voitures'), 0); // prints &quot;voiture&quot;
 echo $this-&gt;plural(array('voiture', 'voitures'), 1); // prints &quot;voiture&quot;
 echo $this-&gt;plural(array('voiture', 'voitures'), 2); // prints &quot;voitures&quot;</code></pre>
-
 
 <h2 id="translate-helper">Translate Helper</h2>
 <p>The <code>Translate</code> view helper can be used to translate content. It acts as a
@@ -523,14 +497,12 @@ echo $this-&gt;translate(&quot;Translated text from a custom text domain.&quot;,
 echo sprintf($this-&gt;translate(&quot;The current time is %s.&quot;), $currentTime);
 echo $this-&gt;translate(&quot;Translate in a specific locale&quot;, &quot;default&quot;, &quot;de_DE&quot;);</code></pre>
 
-
 <h3 id="method-description_3">Method description</h3>
 <pre class="codehilite"><code class="language-php">translate(
     string $message [,
     string $textDomain = null [,
     string $locale = null
 ] ]) : string</code></pre>
-
 
 <p>where:</p>
 <ul>
@@ -545,7 +517,6 @@ echo $this-&gt;translate(&quot;Translate in a specific locale&quot;, &quot;defau
 <p>The <code>xgettext</code> utility can be used to compile <code>*.po</code> files from PHP source files containing the
 translate view helper.</p>
 <pre class="codehilite"><code class="language-bash">$ xgettext --language=php --add-location --keyword=translate my-view-file.phtml</code></pre>
-
 
 <p>See the <a href="http://en.wikipedia.org/wiki/Gettext">Gettext Wikipedia page</a> for more information.</p>
 <h3 id="public-methods_2">Public Methods</h3>
@@ -573,7 +544,6 @@ echo $this-&gt;translatePlural(&quot;monitor&quot;, &quot;monitors&quot;, $num, 
 // Change locale
 echo $this-&gt;translatePlural(&quot;locale&quot;, &quot;locales&quot;, $num, &quot;default&quot;, &quot;de_DE&quot;);</code></pre>
 
-
 <h3 id="method-description_4">Method description</h3>
 <pre class="codehilite"><code class="language-php">translatePlural(
     string $singular,
@@ -582,7 +552,6 @@ echo $this-&gt;translatePlural(&quot;locale&quot;, &quot;locales&quot;, $num, &q
     string $textDomain = null [,
     string $locale = null
 ] ]) : string</code></pre>
-
 
 <p>where:</p>
 <ul>
@@ -610,38 +579,31 @@ injection as well as text domain injection.</p>
     string $textDomain = null
 ] ) : void</code></pre>
 
-
 <p>Sets the <code>Zend\I18n\Translator\Translator</code> instance to use in the helper. The
 <code>$textDomain</code> argument is optional, and provided as a convenienct to allow
 setting both the translator and text domain simultaneously.</p>
 <h4 id="gettranslator">getTranslator()</h4>
 <pre class="codehilite"><code class="language-php">getTranslator() : Translator</code></pre>
 
-
 <p>Returns the <code>Zend\I18n\Translator\Translator</code> instance used by the helper.</p>
 <h4 id="hastranslator">hasTranslator()</h4>
 <pre class="codehilite"><code class="language-php">hasTranslator() : bool</code></pre>
-
 
 <p>Returns true if the helper composes a <code>Zend\I18n\Translator\Translator</code> instance.</p>
 <h4 id="settranslatorenabled">setTranslatorEnabled()</h4>
 <pre class="codehilite"><code class="language-php">setTranslatorEnabled(bool $enabled) : void</code></pre>
 
-
 <p>Sets whether or not translations are enabled.</p>
 <h4 id="istranslatorenabled">isTranslatorEnabled()</h4>
 <pre class="codehilite"><code class="language-php">isTranslatorEnabled() : bool</code></pre>
-
 
 <p>Returns true if translations are enabled.</p>
 <h4 id="settranslatortextdomain">setTranslatorTextDomain()</h4>
 <pre class="codehilite"><code class="language-php">setTranslatorTextDomain(string $textDomain) : void</code></pre>
 
-
 <p>Sets the default translation text domain to use with the helper.</p>
 <h4 id="gettranslatortextdomain">getTranslatorTextDomain()</h4>
 <pre class="codehilite"><code class="language-php">getTranslatorTextDomain() : string</code></pre>
-
 
 <p>Returns the current text domain used by the helper.</p>
 
@@ -669,7 +631,7 @@ setting both the translator and text domain simultaneously.</p>
             <div class="col-lg-3">
               <p>
                 <strong>Zend Framework</strong><br />
-                <a href="http://framework.zend.com/">framework.zend.com</a><br />
+                <a href="https://framework.zend.com/">framework.zend.com</a><br />
                 <a href="https://docs.zendframework.com">docs.zendframework.com</a><br />
                 <a href="https://packages.zendframework.com">packages.zendframework.com</a><br />
                 <a href="https://apigility.org">apigility.org</a><br />
@@ -690,14 +652,15 @@ setting both the translator and text domain simultaneously.</p>
                 <h4>Copyright</h4>
                 <div class="hline-w"></div>
 
-                <p>&copy; 2006-2016 by <a href="http://www.zend.com">Zend</a>, a <a href="http://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2017 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
             </div>
 
             <div class="col-lg-4">
                 <h4>Contacts</h4>
                 <div class="hline-w"></div>
                 <p>
-                    <a href="irc://irc.freenode.net/zftalk" class="btn-social btn-outline" alt="IRC" title="IRC"><i class="fa fa-comment"></i></a>
+                    <a href="https://discourse.zendframework.com" class="btn-social btn-outline" alt="Forum" title="Forum"><i class="fa fa-comments"></i></a>
+                    <a href="https://zendframework-slack.herokuapp.com" class="btn-social btn-outline" alt="Slack" title="Slack"><i class="fa fa-slack"></i></a>
                     <a href="https://github.com/zendframework" class="btn-social btn-outline" alt="Github" title="Github"><i class="fa fa-github"></i></a>
                     <a href="https://twitter.com/zfdevteam" class="btn-social btn-outline" alt="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
                 </p>
@@ -706,14 +669,13 @@ setting both the translator and text domain simultaneously.</p>
     </div>
 </div>
 
-
-    <script src="../js/jquery-1.10.2.min.js"></script>
-    <script src="../js/bootstrap-3.0.3.min.js"></script>
-    <script src="../js/prism-zf.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script>var base_url = '..';</script>
+    <script src="../js/scripts-0b6185f4a5.js"></script>
     <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
-    <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
@@ -745,7 +707,7 @@ setting both the translator and text domain simultaneously.</p>
     <div class="zf-components">
   <div class="zf-components-grid">
     <div class="zf-logo">
-      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
+      <a href="https://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
     </div>
 
     <div class="component-list"></div>
@@ -754,112 +716,7 @@ setting both the translator and text domain simultaneously.</p>
   </div>
 </div>
 
-    <script>
-  // Prepare the component list dropdown for display
-  $(function () {
-    var components = $(".zf-components"),
-        componentList = components.find(".component-list"),
-        sidebar = $(".bs-sidebar.affix"),
-        sidebarInitialPos = sidebar.css("position"),
-        hidden,
-        componentToggle = $(".component-toggle"),
-        navbar = $(".navbar-fixed-top"),
-        rollUpLink = $(".zf-components-rollup a");
+</body>
 
-    // Initial setup on document load
-    components.insertBefore(navbar);
-    $(".zf-logo a").tooltip();
-    componentToggle.tooltip();
-    rollUpLink.attr({ href: "#", alt: "Hide component list" });
-
-    // Cast initial sidebar position value
-    if (undefined === sidebarInitialPos) {
-      sidebarInitialPos = "fixed";
-    }
-
-    // Setup onclick events to toggle list
-    componentToggle.click(toggleComponentList);
-    rollUpLink.click(toggleComponentList);
-
-    // Toggle the component list display
-    function toggleComponentList(event) {
-      event.preventDefault();
-
-      if (hidden === undefined) {
-        // Not loaded yet; load and display.
-        loadComponentList();
-        return;
-      }
-
-      if (hidden) {
-        // Hidden; display.
-        showComponentList();
-        return;
-      }
-
-      // Currently visible; hide
-      hideComponentList();
-    }
-
-    // Show the component list
-    function showComponentList() {
-      navbar.css({position: "relative"});
-      sidebar.css({position: "relative"});
-      components
-        .css({"margin-top": "-" + components.outerHeight() + "px"})
-        .show()
-        .animate({"margin-top": 0}, {
-          complete: function () {
-            componentToggle
-              .data("placement", "top")
-              .attr("data-original-title", "Hide component list");
-            hidden = false;
-          },
-          queue: false
-        });
-    }
-
-    // Hide the component list
-    function hideComponentList() {
-      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
-        complete: function () {
-          navbar.css({position: "fixed"});
-          sidebar.css({position: sidebarInitialPos});
-          componentToggle
-            .data("placement", "bottom")
-            .attr("data-original-title", "Show component list");
-          components.hide();
-          hidden = true;
-        },
-        queue: false
-      });
-      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
-    }
-
-    // Inject a component into the componet list DOM.
-    function injectComponent(index, component) {
-      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
-    }
-
-    // Parse the component list, build the DOM, and display it.
-    function parseComponentList(components) {
-      $.each(components, injectComponent);
-      showComponentList();
-    }
-
-    // Fetch the component list and display it.
-    function loadComponentList () {
-      $.ajax({
-        url: "//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json",
-        dataType: "text json",
-        success: parseComponentList,
-        error: function (e) {
-          console.log("Error occurred with XHR call", e);
-        }
-      });
-    }
-  });
-</script>
-    </body>
 
 </html>

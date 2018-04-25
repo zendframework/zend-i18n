@@ -1,39 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zend\I18n">  
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Validators - zend-i18n</title>
 
-    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
-    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link href="../css/base.css" rel="stylesheet">
-    <link href="../css/zf-web.css" rel="stylesheet">
-    <link href="../css/zf.css" rel="stylesheet">
-    <link href="../css/prism-zf.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script>
-    WebFont.load({
-        google: {
-            families: ['Open Sans', 'PT Sans']
-        }
-    });
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/styles-288837cc22.css">
 
     
 </head>
@@ -57,8 +37,8 @@
 
             <!-- Main title -->
             <span class="navbar-brand">
-              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
-              <a href="..">zend-i18n</a>
+                <a class="logo-link" href="https://framework.zend.com/" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
+                <a href="..">zend-i18n</a>
             </span>
         </div>
 
@@ -69,9 +49,12 @@
                 <ul class="nav navbar-nav">
                 
                 
+                
                     <li >
-                        <a href="..">Home</a>
+                        <a href="..">zend-i18n</a>
                     </li>
+                
+                
                 
                 
                 
@@ -80,31 +63,40 @@
                         <ul class="dropdown-menu">
                         
                             
+
 <li >
     <a href="../translation/">Translation</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../view-helpers/">View Helpers</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../filters/">Filters</a>
 </li>
 
+
                         
                             
+
 <li class="active">
     <a href="./">Validators</a>
 </li>
 
+
                         
                         </ul>
                     </li>
+                
                 
                 
                 </ul>
@@ -124,7 +116,7 @@
                 </li>
                 
                     <li>
-                        <a href="https://github.com/zendframework/zend-i18n">
+                        <a href="https://github.com/zendframework/zend-i18n/">
                             
                                 <i class="fa fa-github"></i>
                             
@@ -153,28 +145,21 @@
         
             <li><a href="#isint">IsInt</a></li>
         
+            <li><a href="#postcode">PostCode</a></li>
+        
     
     </ul>
 
-    
-    <ul class="pager hidden-print">
-      <li class="previous">
-        <a rel="prev" href="../filters/"><i class="fa fa-arrow-left"></i> Previous</a>
-      </li>
-      <li class="next disabled ">
-        <a rel="next" >Next <i class="fa fa-arrow-right"></i></a>
-      </li>
-    </ul>
     
 </div></div>
         <div class="col-md-9" role="main">
 
 <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="..">zend-i18n</a> &raquo;</li>
+  <li><a href="..">zend-i18n</a></li>
   
     
       
-        <li>Reference &raquo;</li>
+        <li>Reference</li>
       
     
   
@@ -202,7 +187,6 @@ if ($validator-&gt;isValid('Abcd12')) {
     // false
 }</code></pre>
 
-
 <h3 id="using-whitespace">Using whitespace</h3>
 <p>By default, whitespace is not accepted as it is not part of the alphabet.
 However, if you want to validate complete sentences or phrases, you may need to
@@ -220,12 +204,11 @@ if ($validator-&gt;isValid('Abcd and 12')) {
     // false
 }</code></pre>
 
-
 <h3 id="using-different-languages">Using different languages</h3>
 <p>Several languages supported by ext/intl use alphabets where characters are
 formed from multiple bytes, including <em>Korean</em>, <em>Japanese</em>, and <em>Chinese</em>. Such
 languages therefore are unsupported with regards to the <code>Alnum</code> validator.</p>
-<p>When using the <code>Alnum</code> validator with these langauges, the input will be validated
+<p>When using the <code>Alnum</code> validator with these languages, the input will be validated
 using the English alphabet.</p>
 <h2 id="alpha">Alpha</h2>
 <p><code>Zend\I18n\Validator\Alpha</code> allows you to validate if a given value contains
@@ -246,7 +229,6 @@ if ($validator-&gt;isValid('Abcd')) {
     // false
 }</code></pre>
 
-
 <h3 id="using-whitespace_1">Using whitespace</h3>
 <p>By default, whitespace is not accepted as it is not part of the alphabet.
 However, if you want to validate complete sentences or phrases, you may need to
@@ -264,7 +246,6 @@ if ($validator-&gt;isValid('Abcd and efg')) {
     // false
 }</code></pre>
 
-
 <h3 id="using-different-languages_1">Using different languages</h3>
 <p>When using <code>Zend\I18n\Validator\Alpha</code>, the language provided by the user's
 browser will be used to set the allowed characters. For locales outside of
@@ -275,7 +256,7 @@ language defines its own set of characters.</p>
 <p>Three languages supported by ext/intl, however, define multibyte characters,
 which cannot be matched as alphabetic characters using normal string or regular
 expression options. These include <em>Korean</em>, <em>Japanese</em>, and <em>Chinese</em>.</p>
-<p>As a result, when using the <code>Alpha</code> validator with these langauges, the input
+<p>As a result, when using the <code>Alpha</code> validator with these languages, the input
 will be validated using the English alphabet.</p>
 <h2 id="isfloat">IsFloat</h2>
 <p><code>Zend\I18n\Validator\IsFloat</code> allows you to validate if a given value contains a
@@ -293,7 +274,6 @@ $validator-&gt;isValid(1234.5);    // returns true
 $validator-&gt;isValid('10a01');   // returns false
 $validator-&gt;isValid('1,234.5'); // returns true</code></pre>
 
-
 <p>(The above example assumes that the environment locale is set to <code>en</code>.)</p>
 <h3 id="localized-float-validation">Localized float validation</h3>
 <p>Float values are often written differently based on the country or region. For
@@ -306,7 +286,6 @@ limited to the locale you set. See the following code:</p>
 $validator-&gt;isValid(1234.5);    // returns true
 $validator-&gt;isValid(&quot;1 234,5&quot;); // returns false
 $validator-&gt;isValid(&quot;1.234&quot;);   // returns true</code></pre>
-
 
 <p>By using a locale, your input is validated based on the locale provided. Using a
 notation not specific to the locale results in a <code>false</code> evaulation.</p>
@@ -336,7 +315,6 @@ $validator-&gt;isValid(1234);    // returns true
 $validator-&gt;isValid(1234.5);  // returns false
 $validator-&gt;isValid('1,234'); // returns true</code></pre>
 
-
 <p>(The above example assumes that the environment locale is set to <code>en</code>.)</p>
 <h3 id="localized-integer-validation">Localized integer validation</h3>
 <p>Integer values are often written differently based on country or region. For
@@ -353,7 +331,6 @@ $validator-&gt;isValid(1234);    // returns true
 $validator-&gt;isValid(&quot;1,234&quot;); // returns false
 $validator-&gt;isValid(&quot;1.234&quot;); // returns true</code></pre>
 
-
 <p>By using a locale, your input is validated based on the locale provided. Using a
 notation not specific to the locale results in a <code>false</code> evaulation.</p>
 <p>The default validation locale can also be set after instantiation using
@@ -365,20 +342,73 @@ directly previously, you will now receive an <code>E_USER_DEPRECATED</code> noti
 instantiation. Please update your code to refer to the <code>IsInt</code> class instead.</p>
 <p>Users pulling their <code>Int</code> validator instance from the validator plugin manager
 receive an <code>IsInt</code> instance instead starting in 2.4.0.</p>
+<h2 id="postcode">PostCode</h2>
+<p><code>Zend\I18n\Validator\PostCode</code> allows you to determine if a given value is a
+valid postal code. Postal codes are specific to cities, and in some locales
+termed ZIP codes.</p>
+<p><code>Zend\I18n\Validator\PostCode</code> knows more than 160 different postal code
+formats. To select the correct format there are two ways. You can either use a
+fully qualified locale, or you can set your own format manually.</p>
+<h3 id="supported-options_4">Supported options</h3>
+<p>The following options are supported for <code>Zend\I18n\Validator\PostCode</code>:</p>
+<ul>
+<li><code>format</code>: Sets a postcode format which will be used for validation of the
+  input.</li>
+<li><code>locale</code>: Sets a locale from which the postcode will be taken from.</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<p>Using a locale is more convenient as zend-validator already knows the
+appropriate postal code format for each locale; however, you need to use the
+fully qualified locale (one containing a region specifier) to do so. For
+instance, the locale <code>de</code> is a locale but could not be used with
+<code>Zend\I18n\Validator\PostCode</code> as it does not include the region; <code>de_AT</code>,
+however, would be a valid locale, as it specifies the region code (<code>AT</code>, for
+Austria).</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode('de_AT');</code></pre>
+
+<p>When you don't set a locale yourself, then <code>Zend\I18n\Validator\PostCode</code> will
+use the application wide set locale, or, when there is none, the locale returned
+by <code>Locale</code>.</p>
+<pre class="codehilite"><code class="language-php">// application wide locale within your bootstrap
+Locale::setDefault('de_AT');
+
+$validator = new Zend\I18n\Validator\PostCode();</code></pre>
+
+<p>You can also change the locale afterwards by calling <code>setLocale()</code>. And of
+course you can get the actual used locale by calling <code>getLocale()</code>.</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode('de_AT');
+$validator-&gt;setLocale('en_GB');</code></pre>
+
+<p>Postal code formats are regular expression strings. When the international
+postal code format, which is used by setting the locale, does not fit your
+needs, then you can also manually set a format by calling <code>setFormat()</code>.</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode('de_AT');
+$validator-&gt;setFormat('AT-\d{5}');</code></pre>
+
+<blockquote>
+<h3 id="conventions-for-self-defined-formats">Conventions for self defined formats</h3>
+<p>When using self defined formats, you should omit the regex delimiters and
+anchors (<code>'/^'</code> and  <code>'$/'</code>). They are attached automatically.</p>
+<p>You should also be aware that postcode values will always be validated in a
+strict way. This means that they have to be written standalone without
+additional characters when they are not covered by the format.</p>
+</blockquote>
+<h3 id="constructor-options">Constructor options</h3>
+<p>At its most basic, you may pass a string representing a fully qualified locale
+to the constructor of <code>Zend\I18n\Validator\PostCode</code>.</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode('de_AT');</code></pre>
+
+<p>Additionally, you may pass either an array or a <code>Traversable</code> instance to the
+constructor. When you do so, you must include either the key <code>locale</code> or
+<code>format</code>; these will be used to set the appropriate values in the validator
+object.</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode([
+    'locale' =&gt; 'de_AT',
+    'format' =&gt; 'AT_\d+'
+]);</code></pre>
 
 <hr />
 
-
-<nav>
-  <ul class="pager hidden-print">
-    <li class="previous">
-      <a rel="prev" href="../filters/"><i class="fa fa-arrow-left"></i> Previous</a>
-    </li>
-    <li class="next disabled ">
-      <a rel="next" >Next <i class="fa fa-arrow-right"></i></a>
-    </li>
-  </ul>
-</nav>
 </div>
         
     </div>
@@ -390,7 +420,7 @@ receive an <code>IsInt</code> instance instead starting in 2.4.0.</p>
             <div class="col-lg-3">
               <p>
                 <strong>Zend Framework</strong><br />
-                <a href="http://framework.zend.com/">framework.zend.com</a><br />
+                <a href="https://framework.zend.com/">framework.zend.com</a><br />
                 <a href="https://docs.zendframework.com">docs.zendframework.com</a><br />
                 <a href="https://packages.zendframework.com">packages.zendframework.com</a><br />
                 <a href="https://apigility.org">apigility.org</a><br />
@@ -411,14 +441,15 @@ receive an <code>IsInt</code> instance instead starting in 2.4.0.</p>
                 <h4>Copyright</h4>
                 <div class="hline-w"></div>
 
-                <p>&copy; 2006-2016 by <a href="http://www.zend.com">Zend</a>, a <a href="http://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2017 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
             </div>
 
             <div class="col-lg-4">
                 <h4>Contacts</h4>
                 <div class="hline-w"></div>
                 <p>
-                    <a href="irc://irc.freenode.net/zftalk" class="btn-social btn-outline" alt="IRC" title="IRC"><i class="fa fa-comment"></i></a>
+                    <a href="https://discourse.zendframework.com" class="btn-social btn-outline" alt="Forum" title="Forum"><i class="fa fa-comments"></i></a>
+                    <a href="https://zendframework-slack.herokuapp.com" class="btn-social btn-outline" alt="Slack" title="Slack"><i class="fa fa-slack"></i></a>
                     <a href="https://github.com/zendframework" class="btn-social btn-outline" alt="Github" title="Github"><i class="fa fa-github"></i></a>
                     <a href="https://twitter.com/zfdevteam" class="btn-social btn-outline" alt="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
                 </p>
@@ -427,14 +458,13 @@ receive an <code>IsInt</code> instance instead starting in 2.4.0.</p>
     </div>
 </div>
 
-
-    <script src="../js/jquery-1.10.2.min.js"></script>
-    <script src="../js/bootstrap-3.0.3.min.js"></script>
-    <script src="../js/prism-zf.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script>var base_url = '..';</script>
+    <script src="../js/scripts-0b6185f4a5.js"></script>
     <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
-    <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
@@ -466,7 +496,7 @@ receive an <code>IsInt</code> instance instead starting in 2.4.0.</p>
     <div class="zf-components">
   <div class="zf-components-grid">
     <div class="zf-logo">
-      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
+      <a href="https://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
     </div>
 
     <div class="component-list"></div>
@@ -475,112 +505,7 @@ receive an <code>IsInt</code> instance instead starting in 2.4.0.</p>
   </div>
 </div>
 
-    <script>
-  // Prepare the component list dropdown for display
-  $(function () {
-    var components = $(".zf-components"),
-        componentList = components.find(".component-list"),
-        sidebar = $(".bs-sidebar.affix"),
-        sidebarInitialPos = sidebar.css("position"),
-        hidden,
-        componentToggle = $(".component-toggle"),
-        navbar = $(".navbar-fixed-top"),
-        rollUpLink = $(".zf-components-rollup a");
+</body>
 
-    // Initial setup on document load
-    components.insertBefore(navbar);
-    $(".zf-logo a").tooltip();
-    componentToggle.tooltip();
-    rollUpLink.attr({ href: "#", alt: "Hide component list" });
-
-    // Cast initial sidebar position value
-    if (undefined === sidebarInitialPos) {
-      sidebarInitialPos = "fixed";
-    }
-
-    // Setup onclick events to toggle list
-    componentToggle.click(toggleComponentList);
-    rollUpLink.click(toggleComponentList);
-
-    // Toggle the component list display
-    function toggleComponentList(event) {
-      event.preventDefault();
-
-      if (hidden === undefined) {
-        // Not loaded yet; load and display.
-        loadComponentList();
-        return;
-      }
-
-      if (hidden) {
-        // Hidden; display.
-        showComponentList();
-        return;
-      }
-
-      // Currently visible; hide
-      hideComponentList();
-    }
-
-    // Show the component list
-    function showComponentList() {
-      navbar.css({position: "relative"});
-      sidebar.css({position: "relative"});
-      components
-        .css({"margin-top": "-" + components.outerHeight() + "px"})
-        .show()
-        .animate({"margin-top": 0}, {
-          complete: function () {
-            componentToggle
-              .data("placement", "top")
-              .attr("data-original-title", "Hide component list");
-            hidden = false;
-          },
-          queue: false
-        });
-    }
-
-    // Hide the component list
-    function hideComponentList() {
-      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
-        complete: function () {
-          navbar.css({position: "fixed"});
-          sidebar.css({position: sidebarInitialPos});
-          componentToggle
-            .data("placement", "bottom")
-            .attr("data-original-title", "Show component list");
-          components.hide();
-          hidden = true;
-        },
-        queue: false
-      });
-      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
-    }
-
-    // Inject a component into the componet list DOM.
-    function injectComponent(index, component) {
-      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
-    }
-
-    // Parse the component list, build the DOM, and display it.
-    function parseComponentList(components) {
-      $.each(components, injectComponent);
-      showComponentList();
-    }
-
-    // Fetch the component list and display it.
-    function loadComponentList () {
-      $.ajax({
-        url: "//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json",
-        dataType: "text json",
-        success: parseComponentList,
-        error: function (e) {
-          console.log("Error occurred with XHR call", e);
-        }
-      });
-    }
-  });
-</script>
-    </body>
 
 </html>
