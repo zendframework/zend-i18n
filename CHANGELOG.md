@@ -2,9 +2,13 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.7.5 - TBD
+## 2.8.0 - TBD
 
 ### Added
+
+- Nothing.
+
+### Changed
 
 - Nothing.
 
