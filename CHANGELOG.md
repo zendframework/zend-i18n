@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#78](https://github.com/zendframework/zend-i18n/pull/78) and [#91](https://github.com/zendframework/zend-i18n/pull/91) add support for PHP 7.2.
 
 ### Changed
 
@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- Nothing.
+- [#78](https://github.com/zendframework/zend-i18n/pull/78) removes support for HHVM.
 
 ### Fixed
 
