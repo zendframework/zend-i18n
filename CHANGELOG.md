@@ -27,7 +27,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#75](https://github.com/zendframework/zend-i18n/pull/75) fixes an issue with formatting currency values where
+  the currency indicator is at the end of the value.
 
 ## 2.7.4 - 2017-05-17
 
