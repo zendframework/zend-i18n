@@ -191,6 +191,7 @@ locale provided.
 The following options are supported for `Zend\I18n\Validator\IsInt`:
 
 - `locale`: Sets the locale to use when validating localized integers.
+- `strict`: Sets whether or not the value's data type should be checked.
 
 ### Basic integer validation
 
@@ -205,6 +206,25 @@ $validator->isValid('1,234'); // returns true
 ```
 
 (The above example assumes that the environment locale is set to `en`.)
+
+### Strict validation
+
+By default, the value's data type is not enforced.
+
+```php
+$validator = new Zend\I18n\Validator\IsInt();
+
+$validator->isValid(1234);    // returns true
+$validator->isValid('1234');  // returns true
+```
+
+```php
+$validator = new Zend\I18n\Validator\IsInt();
+$validator->setStrict(true);
+
+$validator->isValid(1234);    // returns true
+$validator->isValid('1234');  // returns false
+```
 
 ### Localized integer validation
 
