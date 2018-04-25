@@ -15,6 +15,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Changed
 
+- [#81](https://github.com/zendframework/zend-i18n/pull/81) updates the list of allowed mobile prefixes for Chinese phones to match
+  current changes to their systems.
+
 - [#80](https://github.com/zendframework/zend-i18n/pull/80) updates the PostCode validator to allow prefixing Latvian postal
   codes using the string `LV-`, which is now mandatory within Latvia. For BC purposes, the
   prefix is considered optional.
