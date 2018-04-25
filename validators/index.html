@@ -306,6 +306,7 @@ locale provided.</p>
 <p>The following options are supported for <code>Zend\I18n\Validator\IsInt</code>:</p>
 <ul>
 <li><code>locale</code>: Sets the locale to use when validating localized integers.</li>
+<li><code>strict</code>: Sets whether or not the value's data type should be checked.</li>
 </ul>
 <h3 id="basic-integer-validation">Basic integer validation</h3>
 <p>When no locale is provided to the validator, it uses the system locale:</p>
@@ -316,6 +317,19 @@ $validator-&gt;isValid(1234.5);  // returns false
 $validator-&gt;isValid('1,234'); // returns true</code></pre>
 
 <p>(The above example assumes that the environment locale is set to <code>en</code>.)</p>
+<h3 id="strict-validation">Strict validation</h3>
+<p>By default, the value's data type is not enforced.</p>
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsInt();
+
+$validator-&gt;isValid(1234);    // returns true
+$validator-&gt;isValid('1234');  // returns true</code></pre>
+
+<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsInt();
+$validator-&gt;setStrict(true);
+
+$validator-&gt;isValid(1234);    // returns true
+$validator-&gt;isValid('1234');  // returns false</code></pre>
+
 <h3 id="localized-integer-validation">Localized integer validation</h3>
 <p>Integer values are often written differently based on country or region. For
 example, using English, you may write "1234" or "1,234"; both are integer
