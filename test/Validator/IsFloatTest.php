@@ -167,7 +167,7 @@ class IsFloatTest extends TestCase
             'ar'    => ['10.1', '66notflot.6'],
             'ru'    => ['10.1', '66notflot.6', '2,000.00', '2 00'],
             'en'    => ['10,1', '66notflot.6', '2.000,00', '2 000', '2,00'],
-            'fr-CH' => ['10,1', '66notflot.6', '2,000.00', "2'00"]
+            'fr-CH' => ['66notflot.6', '2,000.00', "2'00"]
         ];
 
         //Loop locales and examples for a more thorough set of "true" test data
