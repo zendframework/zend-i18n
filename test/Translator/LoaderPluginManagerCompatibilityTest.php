@@ -10,6 +10,7 @@
 namespace ZendTest\I18n\Translator;
 
 use PHPUnit\Framework\TestCase;
+use Zend\Filter\FilterInterface;
 use Zend\I18n\Exception\RuntimeException;
 use Zend\I18n\Translator\LoaderPluginManager;
 use Zend\ServiceManager\ServiceManager;
@@ -31,7 +32,7 @@ class LoaderPluginManagerCompatibilityTest extends TestCase
 
     protected function getInstanceOf()
     {
-        return Filter\FilterInterface::class;
+        return FilterInterface::class;
     }
 
     public function testInstanceOfMatches()
