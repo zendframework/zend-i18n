@@ -120,7 +120,7 @@ class IsInt extends AbstractValidator
      */
     public function setStrict($strict)
     {
-        if (!is_bool($strict)) {
+        if (! is_bool($strict)) {
             throw new Exception\InvalidArgumentException('Strict option must be a boolean');
         }
 

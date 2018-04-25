@@ -168,8 +168,7 @@ class IsIntTest extends TestCase
      */
     public function testSetStrictThrowsInvalidArgumentException($strict)
     {
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
-
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->validator->setStrict($strict);
     }
 
