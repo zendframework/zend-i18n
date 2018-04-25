@@ -41,7 +41,7 @@ class TranslatorServiceFactory implements FactoryInterface
      * Proxies to `__invoke()`.
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @returns Translator
+     * @return Translator
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
