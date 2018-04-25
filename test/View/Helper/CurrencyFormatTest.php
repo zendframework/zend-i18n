@@ -43,11 +43,6 @@ class CurrencyFormatTest extends TestCase
     {
         return [
             //    locale   currency     show decimals       number      currencyPattern             expected
-            ['de_AT', 'EUR',       true,               1234.56,    null,                       '€ 1.234,56'],
-            ['de_AT', 'EUR',       true,               0.123,      null,                       '€ 0,12'],
-            ['de_AT', 'EUR',       true,               0.123,      '#,##0.00 ¤',               '0,12 €'],
-            ['de_AT', 'EUR',       true,               -0.123,     '#,##0.00 ¤; ¤ - #,##0.00', ' € - 0,12'],
-            ['de_AT', 'EUR',       true,               -0.123,     '¤ #,##0.00; - ¤ #,##0.00', '- € 0,12'],
             ['de_DE', 'EUR',       true, 1234567.891234567890000,  null,                       '1.234.567,89 €'],
             ['de_DE', 'RUR',       true, 1234567.891234567890000,  null,                       '1.234.567,89 RUR'],
             ['ru_RU', 'EUR',       true, 1234567.891234567890000,  null,                       '1 234 567,89 €'],
@@ -55,8 +50,6 @@ class CurrencyFormatTest extends TestCase
             ['en_US', 'EUR',       true, 1234567.891234567890000,  null,                       '€1,234,567.89'],
             ['en_US', 'RUR',       true, 1234567.891234567890000,  null,                       'RUR1,234,567.89'],
             ['en_US', 'USD',       true, 1234567.891234567890000,  null,                       '$1,234,567.89'],
-            ['de_AT', 'EUR',       false, 1234.56,                 null,                       '€ 1.235'],
-            ['de_AT', 'EUR',       false, 0.123,                   null,                       '€ 0'],
             ['de_DE', 'EUR',       false, 1234567.891234567890000, null,                       '1.234.568 €'],
             ['de_DE', 'RUB',       false, 1234567.891234567890000, null,                       '1.234.567,89 RUB'],
             //array('ru_RU', 'EUR',     false,             1234567.891234567890000,  null, '1 234 568 €'),
