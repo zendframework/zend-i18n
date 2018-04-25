@@ -516,7 +516,7 @@ echo $this-&gt;translate(&quot;Translate in a specific locale&quot;, &quot;defau
 <h3 id="gettext">Gettext</h3>
 <p>The <code>xgettext</code> utility can be used to compile <code>*.po</code> files from PHP source files containing the
 translate view helper.</p>
-<pre class="codehilite"><code class="language-bash">$ xgettext --language=php --add-location --keyword=translate my-view-file.phtml</code></pre>
+<pre class="codehilite"><code class="language-bash">$ xgettext --language=php --add-location --keyword=translate --keyword=translatePlural:1,2 my-view-file.phtml</code></pre>
 
 <p>See the <a href="http://en.wikipedia.org/wiki/Gettext">Gettext Wikipedia page</a> for more information.</p>
 <h3 id="public-methods_2">Public Methods</h3>
@@ -564,6 +564,12 @@ echo $this-&gt;translatePlural(&quot;locale&quot;, &quot;locales&quot;, $num, &q
   <code>en_US</code>). If unset, it will use the default locale (return value of
   <code>Locale::getDefault()</code>).</li>
 </ul>
+<h3 id="gettext_1">Gettext</h3>
+<p>The <code>xgettext</code> utility can be used to compile <code>*.po</code> files from PHP source files containing the
+translate view helper.</p>
+<pre class="codehilite"><code class="language-bash">$ xgettext --language=php --add-location --keyword=translate --keyword=translatePlural:1,2 my-view-file.phtml</code></pre>
+
+<p>See the <a href="http://en.wikipedia.org/wiki/Gettext">Gettext Wikipedia page</a> for more information.</p>
 <h3 id="public-methods_3">Public Methods</h3>
 <p>Public methods for setting a <code>Zend\I18n\Translator\Translator</code> and a default
 text domain are inherited from the <a href="#abstract-translator-helper">AbstractTranslatorHelper</a>.</p>
