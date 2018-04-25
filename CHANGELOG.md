@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
+- [#71](https://github.com/zendframework/zend-i18n/pull/71) adds a new option to the `IsInt` validator, `strict`. When set to boolean
+  true, comparisons will use strict type validations. The default, `false`, retains the current
+  behavior of non-strict comparisons. The class also exposes a `setStrict($flag)` method for
+  enabling/disabling the behavior.
+
 - [#78](https://github.com/zendframework/zend-i18n/pull/78) and [#91](https://github.com/zendframework/zend-i18n/pull/91) add support for PHP 7.2.
 
 ### Changed
