@@ -562,15 +562,31 @@ class Translator implements TranslatorInterface
     }
 
     /**
-     * Get the cache identifier for the specific textDomain and locale.
+     * Get the cache identifier for a specific textDomain and locale.
      *
      * @param    string $textDomain
      * @param    string $locale
      * @return   string
      */
-    protected function getCacheId($textDomain, $locale)
+    public function getCacheId($textDomain, $locale)
     {
         return 'Zend_I18n_Translator_Messages_' . md5($textDomain . $locale);
+    }
+
+    /**
+     * Clears the cache for a specific textDomain and locale.
+     *
+     * @param $textDomain
+     * @param $locale
+     *
+     * @return bool
+     */
+    public function clearCache($textDomain, $locale)
+    {
+        if (null === ($cache = $this->getCache())) {
+            return false;
+        }
+        return $cache->removeItem($this->getCacheId($textDomain, $locale));
     }
 
     /**
