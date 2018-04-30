@@ -564,9 +564,9 @@ class Translator implements TranslatorInterface
     /**
      * Get the cache identifier for a specific textDomain and locale.
      *
-     * @param    string $textDomain
-     * @param    string $locale
-     * @return   string
+     * @param  string $textDomain
+     * @param  string $locale
+     * @return string
      */
     public function getCacheId($textDomain, $locale)
     {
@@ -576,9 +576,8 @@ class Translator implements TranslatorInterface
     /**
      * Clears the cache for a specific textDomain and locale.
      *
-     * @param $textDomain
-     * @param $locale
-     *
+     * @param  string $textDomain
+     * @param  string $locale
      * @return bool
      */
     public function clearCache($textDomain, $locale)
