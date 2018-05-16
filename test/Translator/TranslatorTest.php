@@ -11,6 +11,7 @@ namespace ZendTest\I18n\Translator;
 
 use PHPUnit\Framework\TestCase;
 use Locale;
+use Zend\Cache\StorageFactory as CacheFactory;
 use Zend\EventManager\EventInterface;
 use Zend\I18n\Translator\Translator;
 use Zend\I18n\Translator\TextDomain;
@@ -181,11 +182,11 @@ class TranslatorTest extends TestCase
 
     public function testTranslationsLoadedFromCache()
     {
-        $cache = \Zend\Cache\StorageFactory::factory(['adapter' => 'memory']);
+        $cache = CacheFactory::factory(['adapter' => 'memory']);
         $this->translator->setCache($cache);
 
         $cache->addItem(
-            'Zend_I18n_Translator_Messages_' . md5('default' . 'en_EN'),
+            $this->translator->getCacheId('default', 'en_EN'),
             new TextDomain(['foo' => 'bar'])
         );
 
@@ -194,7 +195,7 @@ class TranslatorTest extends TestCase
 
     public function testTranslationsAreStoredInCache()
     {
-        $cache = \Zend\Cache\StorageFactory::factory(['adapter' => 'memory']);
+        $cache = CacheFactory::factory(['adapter' => 'memory']);
         $this->translator->setCache($cache);
 
         $loader = new TestLoader();
@@ -207,9 +208,34 @@ class TranslatorTest extends TestCase
 
         $this->assertEquals('bar', $this->translator->translate('foo'));
 
-        $item = $cache->getItem('Zend_I18n_Translator_Messages_' . md5('default' . 'en_EN'));
+        $item = $cache->getItem($this->translator->getCacheId('default', 'en_EN'));
         $this->assertInstanceOf('Zend\I18n\Translator\TextDomain', $item);
         $this->assertEquals('bar', $item['foo']);
+    }
+
+    public function testTranslationsAreClearedFromCache()
+    {
+        $textDomain = 'default';
+        $locale     = 'en_EN';
+
+        $cache = CacheFactory::factory(['adapter' => 'memory']);
+        $this->translator->setCache($cache);
+
+        $cache->addItem(
+            $this->translator->getCacheId($textDomain, $locale),
+            new TextDomain(['foo' => 'bar'])
+        );
+
+        $this->assertTrue($this->translator->clearCache($textDomain, $locale));
+
+        $item = $cache->getItem($this->translator->getCacheId($textDomain, $locale), $success);
+        $this->assertNull($item);
+        $this->assertFalse($success);
+    }
+
+    public function testClearCacheReturnsFalseIfNoCacheIsPresent()
+    {
+        $this->assertFalse($this->translator->clearCache('default', 'en_EN'));
     }
 
     public function testTranslatePlurals()
@@ -415,7 +441,7 @@ class TranslatorTest extends TestCase
         );
 
         $allMessages = $this->translator->getAllMessages();
-        $this->assertInstanceOf('\Zend\I18n\Translator\TextDomain', $allMessages);
+        $this->assertInstanceOf(TextDomain::class, $allMessages);
         $this->assertEquals(7, count($allMessages));
         $this->assertEquals('Message 1 (en)', $allMessages['Message 1']);
     }
