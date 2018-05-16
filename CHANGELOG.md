@@ -6,7 +6,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#93](https://github.com/zendframework/zend-i18n/pull/93) adds two methods to `Translator`, `getCacheId(string $textDomain, string $locale)`,
+  and `clearCache(string $textDomain, string $locale)`.
 
 ### Changed
 
