@@ -11,20 +11,27 @@ namespace ZendTest\I18n\Translator;
 
 use Interop\Container\ContainerInterface;
 use PHPUnit\Framework\TestCase;
+use Zend\I18n\Translator\LoaderPluginManager;
 use Zend\I18n\Translator\TranslatorServiceFactory;
+use Zend\I18n\Translator\Translator;
 
 class TranslatorServiceFactoryTest extends TestCase
 {
     public function testCreateServiceWithNoTranslatorKeyDefined()
     {
-        $slContents = [['config', []]];
+        $pluginManagerMock = $this->createMock(LoaderPluginManager::class);
+        $slContents        = [
+            ['config', []],
+            ['TranslatorPluginManager', $pluginManagerMock]
+        ];
         $serviceLocator = $this->createMock(ContainerInterface::class);
-        $serviceLocator->expects($this->once())
+        $serviceLocator->expects($this->exactly(2))
                        ->method('get')
                        ->will($this->returnValueMap($slContents));
 
         $factory = new TranslatorServiceFactory();
-        $translator = $factory($serviceLocator, 'Zend\I18n\Translator\Translator');
-        $this->assertInstanceOf('Zend\I18n\Translator\Translator', $translator);
+        $translator = $factory($serviceLocator, Translator::class);
+        $this->assertInstanceOf(Translator::class, $translator);
+        $this->assertSame($pluginManagerMock, $translator->getPluginManager());
     }
 }
