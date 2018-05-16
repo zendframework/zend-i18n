@@ -32,7 +32,9 @@ class TranslatorServiceFactory implements FactoryInterface
         $config     = $container->get('config');
         $trConfig   = isset($config['translator']) ? $config['translator'] : [];
         $translator = Translator::factory($trConfig);
-        $translator->setPluginManager($container->get('TranslatorPluginManager'));
+        if ($container->has('TranslatorPluginManager')) {
+            $translator->setPluginManager($container->get('TranslatorPluginManager'));
+        }
         return $translator;
     }
 
