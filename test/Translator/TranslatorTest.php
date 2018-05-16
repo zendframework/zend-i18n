@@ -11,6 +11,7 @@ namespace ZendTest\I18n\Translator;
 
 use PHPUnit\Framework\TestCase;
 use Locale;
+use Zend\Cache\StorageFactory as CacheFactory;
 use Zend\EventManager\EventInterface;
 use Zend\I18n\Translator\Translator;
 use Zend\I18n\Translator\TextDomain;
@@ -181,7 +182,7 @@ class TranslatorTest extends TestCase
 
     public function testTranslationsLoadedFromCache()
     {
-        $cache = \Zend\Cache\StorageFactory::factory(['adapter' => 'memory']);
+        $cache = CacheFactory::factory(['adapter' => 'memory']);
         $this->translator->setCache($cache);
 
         $cache->addItem(
@@ -194,7 +195,7 @@ class TranslatorTest extends TestCase
 
     public function testTranslationsAreStoredInCache()
     {
-        $cache = \Zend\Cache\StorageFactory::factory(['adapter' => 'memory']);
+        $cache = CacheFactory::factory(['adapter' => 'memory']);
         $this->translator->setCache($cache);
 
         $loader = new TestLoader();
@@ -217,7 +218,7 @@ class TranslatorTest extends TestCase
         $textDomain = 'default';
         $locale     = 'en_EN';
 
-        $cache = \Zend\Cache\StorageFactory::factory(['adapter' => 'memory']);
+        $cache = CacheFactory::factory(['adapter' => 'memory']);
         $this->translator->setCache($cache);
 
         $cache->addItem(
@@ -440,7 +441,7 @@ class TranslatorTest extends TestCase
         );
 
         $allMessages = $this->translator->getAllMessages();
-        $this->assertInstanceOf('\Zend\I18n\Translator\TextDomain', $allMessages);
+        $this->assertInstanceOf(TextDomain::class, $allMessages);
         $this->assertEquals(7, count($allMessages));
         $this->assertEquals('Message 1 (en)', $allMessages['Message 1']);
     }
