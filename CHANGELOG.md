@@ -44,7 +44,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#96](https://github.com/zendframework/zend-i18n/pull/96) ensures that the `TranslatorServiceFactory` injects the configured `TranslatorPluginManager`,
+  if any, before returning it. This ensures that configured remote loaders can be utilized.
 
 ## 2.8.0 - 2018-04-25
 
