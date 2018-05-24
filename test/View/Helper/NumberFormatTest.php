@@ -102,8 +102,8 @@ class NumberFormatTest extends TestCase
                 NumberFormatter::TYPE_DOUBLE,
                 null,
                 [],
-                1234567.891234567890000,
-                '1,23456789123457E6'
+                1234567.891234560000,
+                '1,23456789123456E6'
             ],
             [
                 'ru_RU',
@@ -129,8 +129,8 @@ class NumberFormatTest extends TestCase
                 NumberFormatter::TYPE_DOUBLE,
                 null,
                 [],
-                1234567.891234567890000,
-                '1,23456789123457E6'
+                1234567.891234560000,
+                '1,23456789123456E6'
             ],
             [
                 'en_US',
@@ -156,8 +156,8 @@ class NumberFormatTest extends TestCase
                 NumberFormatter::TYPE_DOUBLE,
                 null,
                 [],
-                1234567.891234567890000,
-                '1.23456789123457E6'
+                1234567.891234560000,
+                '1.23456789123456E6'
             ],
             [
                 'en_US',
