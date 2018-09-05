@@ -24,12 +24,12 @@ use IntlDateFormatter;
  *
  * @example @var \Zend\View\Renderer\PhpRenderer|\Zend\I18n\View\HelperTrait $this
  *
- * @method string currencyFormat($number, $currencyCode = null, $showDecimals = null, $locale = null, $pattern = null)
- * @method string dateFormat($date, $dateType = IntlDateFormatter::NONE, $timeType = IntlDateFormatter::NONE, $locale = null, $pattern = null)
- * @method string numberFormat($number, $formatStyle = null, $formatType = null, $locale = null, $decimals = null, array $textAttributes = null)
- * @method string plural($strings, $number)
- * @method string translate($message, $textDomain = null, $locale = null)
- * @method string translatePlural($singular, $plural, $number, $textDomain = null, $locale = null)
+ * @method string currencyFormat(float $number, string|null $currencyCode = null, bool|null $showDecimals = null, string|null $locale = null, string|null $pattern = null)
+ * @method string dateFormat(\DateTime|int|array $date, int $dateType = IntlDateFormatter::NONE, int $timeType = IntlDateFormatter::NONE, string|null $locale = null, string|null $pattern = null)
+ * @method string numberFormat(int|float $number, int|null $formatStyle = null, int|null $formatType = null, string|null $locale = null, int|null $decimals = null, array|null $textAttributes = null)
+ * @method string plural(array|string $strings, int $number)
+ * @method string translate(string $message, string|null $textDomain = null, string|null $locale = null)
+ * @method string translatePlural(string $singular, string $plural, int $number, string|null $textDomain = null, string|null $locale = null)
  */
 trait HelperTrait
 {
