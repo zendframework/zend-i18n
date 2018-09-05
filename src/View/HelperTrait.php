@@ -5,6 +5,7 @@ namespace Zend\I18n\View;
 use IntlDateFormatter;
 
 // @codingStandardsIgnoreStart
+
 /**
  * Trait HelperTrait
  *
@@ -28,3 +29,4 @@ use IntlDateFormatter;
 trait HelperTrait
 {
 }
+// @codingStandardsIgnoreEnd
