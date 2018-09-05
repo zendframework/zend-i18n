@@ -20,7 +20,7 @@ use IntlDateFormatter;
  *
  * The base class is PhpRenderer, followed by the helper trait from
  * the zend-i18n component. However, multiple helper traits from different
- * Zend components can be chained afterwards.
+ * Zend Framework components can be chained afterwards.
  *
  * @example @var \Zend\View\Renderer\PhpRenderer|\Zend\I18n\View\HelperTrait $this
  *
