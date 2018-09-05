@@ -12,7 +12,7 @@ use IntlDateFormatter;
 // @codingStandardsIgnoreStart
 
 /**
- * Trait HelperTrait
+ * Helper trait for auto-completion of code in modern IDEs.
  *
  * The trait provides convenience methods for view helpers,
  * defined by the zend-i18n component. It is designed to be used
