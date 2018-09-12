@@ -22,7 +22,7 @@ the IDE can auto-suggest the default view helpers from `zend-view`. Next, chain
 the `HelperTrait` from `zend-i18n` with a pipe symbol (a.k.a. vertical bar) `|`:
 ```php
 /**
- * @var Zend\I18n\View\Helper\HelperTrait|Zend\I18n\View\Helper\HelperTrait $this
+ * @var Zend\View\Renderer\PhpRenderer|Zend\I18n\View\Helper\HelperTrait $this
  */
 ```
 
