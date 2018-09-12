@@ -9,9 +9,9 @@ for more information.
 
 > ### IDE auto-completion in templates
 >
-> The `Zend\I18n\View\Helper\HelperTrait` trait can be used to provide
-> auto-completion for modern IDEs. It defines the aliases of the view helpers in
-> a DocBlock as `@method` tags.
+> The `Zend\I18n\View\HelperTrait` trait can be used to provide auto-completion
+> for modern IDEs. It defines the aliases of the view helpers in a DocBlock as
+> `@method` tags.
 >
 > #### Usage
 >
@@ -23,8 +23,8 @@ for more information.
 > bar) `|`:
 > ```php
 > /**
-> * @var Zend\View\Renderer\PhpRenderer|Zend\I18n\View\Helper\HelperTrait $this
-> */
+>  * @var Zend\View\Renderer\PhpRenderer|Zend\I18n\View\HelperTrait $this
+>  */
 > ```
 >
 > You may chain as many `HelperTrait` traits as you like, depending on view
