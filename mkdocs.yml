@@ -2,6 +2,7 @@ docs_dir: docs/book
 site_dir: docs/html
 pages:
     - Home: index.md
+    - Introduction: introduction.md
     - Reference:
         - Translation: translation.md
         - 'View Helpers': view-helpers.md
