@@ -1,13 +1,12 @@
 docs_dir: docs/book
 site_dir: docs/html
 pages:
-    - index.md
+    - Home: index.md
     - Reference:
         - Translation: translation.md
         - 'View Helpers': view-helpers.md
         - Filters: filters.md
         - Validators: validators.md
 site_name: zend-i18n
-site_description: Zend\I18n
+site_description: 'Provide translations for your application, and filter and validate internationalized values.'
 repo_url: 'https://github.com/zendframework/zend-i18n'
-copyright: 'Copyright (c) 2005-2018 <a href="https://www.zend.com/">Zend Technologies USA Inc.</a>'
