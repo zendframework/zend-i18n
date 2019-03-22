@@ -417,7 +417,11 @@ class Translator implements TranslatorInterface
             );
         }
 
-        return $translation[$index];
+        if ($translation[$index] !== '') {
+            return $translation[$index];
+        }
+
+        return $index === 0 ? $singular : $plural;
     }
 
     /**
