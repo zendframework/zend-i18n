@@ -257,6 +257,44 @@ class TranslatorTest extends TestCase
         $this->assertEquals('Message 5 (en) Plural 2', $pl2);
     }
 
+	public function testTranslatePluralsNonExistantLocale()
+	{
+		$this->translator->addTranslationFilePattern(
+			'phparray',
+			$this->testFilesDir . '/testarray',
+			'translation-%s.php'
+		);
+
+		$this->translator->setLocale('es_ES');
+
+		$pl0 = $this->translator->translatePlural('Message 5', 'Message 5 Plural', 1);
+		$pl1 = $this->translator->translatePlural('Message 5', 'Message 5 Plural', 2);
+		$pl2 = $this->translator->translatePlural('Message 5', 'Message 5 Plural', 10);
+
+		$this->assertEquals('Message 5', $pl0);
+		$this->assertEquals('Message 5 Plural', $pl1);
+		$this->assertEquals('Message 5 Plural', $pl2);
+	}
+
+	public function testTranslatePluralsNonExistantTranslation()
+	{
+		$this->translator->addTranslationFilePattern(
+			'phparray',
+			$this->testFilesDir . '/testarray',
+			'translation-%s.php'
+		);
+
+		$this->translator->setLocale('de_DE');
+
+		$pl0 = $this->translator->translatePlural('Message 12', 'Message 12 Plural', 1);
+		$pl1 = $this->translator->translatePlural('Message 12', 'Message 12 Plural', 2);
+		$pl2 = $this->translator->translatePlural('Message 12', 'Message 12 Plural', 10);
+
+		$this->assertEquals('Message 12', $pl0);
+		$this->assertEquals('Message 12 Plural', $pl1);
+		$this->assertEquals('Message 12 Plural', $pl2);
+	}
+
     public function testTranslateNoPlurals()
     {
         // Some languages such as Japanese and Chinese does not have plural forms
@@ -297,6 +335,21 @@ class TranslatorTest extends TestCase
         $this->assertEquals('Message 1', $this->translator->translate('Message 1'));
         $this->assertEquals('Message 9', $this->translator->translate('Message 9'));
     }
+
+	public function testTranslateNonExistantTranslation()
+	{
+		$this->translator->addTranslationFilePattern(
+			'phparray',
+			$this->testFilesDir . '/testarray',
+			'translation-%s.php'
+		);
+
+		// Test that a locale without translations does not cause warnings
+
+		$this->translator->setLocale('de_DE');
+
+		$this->assertEquals('Message 13', $this->translator->translate('Message 13'));
+	}
 
     public function testEnableDisableEventManger()
     {
