@@ -402,18 +402,17 @@ class Translator implements TranslatorInterface
             return $translation[$index];
         }
 
-        if (
-            null !== ($fallbackLocale = $this->getFallbackLocale())
+        if (null !== ($fallbackLocale = $this->getFallbackLocale())
             && $locale !== $fallbackLocale
         ) {
-        return $this->translatePlural(
-            $singular,
-            $plural,
-            $number,
-            $textDomain,
-            $fallbackLocale
-        );
-    }
+            return $this->translatePlural(
+                $singular,
+                $plural,
+                $number,
+                $textDomain,
+                $fallbackLocale
+            );
+        }
 
         return $index === 0 ? $singular : $plural;
     }
