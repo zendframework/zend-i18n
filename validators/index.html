@@ -12,6 +12,7 @@
     <title>Validators - zend-i18n</title>
 
     <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-i18n</a>
+            <a href="">zend-i18n</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,7 +76,7 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-i18n</a>
+                        <a href="" class="subnavigation__link">zend-i18n</a>
                     </li>
                 
             
@@ -86,25 +87,25 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../translation/" class="subnavigation__link">Translation</a>
+        <a href="translation/" class="subnavigation__link">Translation</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../view-helpers/" class="subnavigation__link">View Helpers</a>
+        <a href="view-helpers/" class="subnavigation__link">View Helpers</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filters/" class="subnavigation__link">Filters</a>
+        <a href="filters/" class="subnavigation__link">Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Validators</a>
+        <a href="validators/" class="subnavigation__link">Validators</a>
     </li>
 
                             
@@ -188,7 +189,7 @@
         <li><a href="https://docs.zendframework.com/">Documentation</a></li>
 
         
-            <li><a href="..">zend-i18n</a></li>
+            <li><a href="">zend-i18n</a></li>
 
             
                 
@@ -354,8 +355,8 @@ limited to the locale you set. See the following code:</p>
 <pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsFloat(['locale' =&gt; 'de']);
 
 $validator-&gt;isValid(1234.5);    // returns true
-$validator-&gt;isValid(&quot;1 234,5&quot;); // returns false
-$validator-&gt;isValid(&quot;1.234&quot;);   // returns true</code></pre>
+$validator-&gt;isValid("1 234,5"); // returns false
+$validator-&gt;isValid("1.234");   // returns true</code></pre>
 
 <p>By using a locale, your input is validated based on the locale provided. Using a
 notation not specific to the locale results in a <code>false</code> evaulation.</p>
@@ -412,8 +413,8 @@ locale is used.</p>
 <pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsInt(['locale' =&gt; 'de']);
 
 $validator-&gt;isValid(1234);    // returns true
-$validator-&gt;isValid(&quot;1,234&quot;); // returns false
-$validator-&gt;isValid(&quot;1.234&quot;); // returns true</code></pre>
+$validator-&gt;isValid("1,234"); // returns false
+$validator-&gt;isValid("1.234"); // returns true</code></pre>
 
 <p>By using a locale, your input is validated based on the locale provided. Using a
 notation not specific to the locale results in a <code>false</code> evaulation.</p>
@@ -499,7 +500,7 @@ object.</p>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../filters/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="filters/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -539,7 +540,7 @@ object.</p>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-i18n</a>
+            <a href="">zend-i18n</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -548,7 +549,7 @@ object.</p>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-i18n</a>
+                        <a href="" class="subnavigation__link">zend-i18n</a>
                     </li>
                 
             
@@ -559,25 +560,25 @@ object.</p>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../translation/" class="subnavigation__link">Translation</a>
+        <a href="translation/" class="subnavigation__link">Translation</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../view-helpers/" class="subnavigation__link">View Helpers</a>
+        <a href="view-helpers/" class="subnavigation__link">View Helpers</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filters/" class="subnavigation__link">Filters</a>
+        <a href="filters/" class="subnavigation__link">Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Validators</a>
+        <a href="validators/" class="subnavigation__link">Validators</a>
     </li>
 
                             
@@ -659,9 +660,8 @@ object.</p>
         var base_url = '..',
             siteName = 'zend-i18n';
     </script>
-    <script src="../js/scripts-0bcb0a3bb3.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -690,6 +690,14 @@ object.</p>
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 

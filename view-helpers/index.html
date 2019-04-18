@@ -12,6 +12,7 @@
     <title>View Helpers - zend-i18n</title>
 
     <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-i18n</a>
+            <a href="">zend-i18n</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,7 +76,7 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-i18n</a>
+                        <a href="" class="subnavigation__link">zend-i18n</a>
                     </li>
                 
             
@@ -86,25 +87,25 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../translation/" class="subnavigation__link">Translation</a>
+        <a href="translation/" class="subnavigation__link">Translation</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">View Helpers</a>
+        <a href="view-helpers/" class="subnavigation__link">View Helpers</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filters/" class="subnavigation__link">Filters</a>
+        <a href="filters/" class="subnavigation__link">Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../validators/" class="subnavigation__link">Validators</a>
+        <a href="validators/" class="subnavigation__link">Validators</a>
     </li>
 
                             
@@ -188,7 +189,7 @@
         <li><a href="https://docs.zendframework.com/">Documentation</a></li>
 
         
-            <li><a href="..">zend-i18n</a></li>
+            <li><a href="">zend-i18n</a></li>
 
             
                 
@@ -258,22 +259,22 @@ internationalization extension (ext/intl).</p>
 <pre class="codehilite"><code class="language-php">// Within your view:
 
 echo $this-&gt;currencyFormat(1234.56, 'USD', null, 'en_US');
-// Returns: &quot;$1,234.56&quot;
+// Returns: "$1,234.56"
 
 echo $this-&gt;currencyFormat(1234.56, 'EUR', null, 'de_DE');
-// Returns: &quot;1.234,56 €&quot;
+// Returns: "1.234,56 €"
 
 echo $this-&gt;currencyFormat(1234.56, 'USD', true, 'en_US');
-// Returns: &quot;$1,234.56&quot;
+// Returns: "$1,234.56"
 
 echo $this-&gt;currencyFormat(1234.56, 'USD', false, 'en_US');
-// Returns: &quot;$1,235&quot;
+// Returns: "$1,235"
 
 echo $this-&gt;currencyFormat(12345678.90, 'EUR', true, 'de_DE', '#0.# kg');
-// Returns: &quot;12345678,90 kg&quot;
+// Returns: "12345678,90 kg"
 
 echo $this-&gt;currencyFormat(12345678.90, 'EUR', false, 'de_DE', '#0.# kg');
-// Returns: &quot;12345679 kg&quot;</code></pre>
+// Returns: "12345679 kg"</code></pre>
 
 <h3 id="method-description">Method description</h3>
 <pre class="codehilite"><code class="language-php">currencyFormat(
@@ -308,10 +309,10 @@ will be applied each time the helper is used:</p>
 $this-&gt;plugin('currencyformat')-&gt;setCurrencyCode('USD')-&gt;setLocale('en_US');
 
 echo $this-&gt;currencyFormat(1234.56);
-// This returns: &quot;$1,234.56&quot;
+// This returns: "$1,234.56"
 
 echo $this-&gt;currencyFormat(5678.90);
-// This returns: &quot;$5,678.90&quot;</code></pre>
+// This returns: "$5,678.90"</code></pre>
 
 <p>The method signatures are:</p>
 <pre class="codehilite"><code class="language-php">setCurrencyCode(string $currencyCode) : CurrencyFormat</code></pre>
@@ -326,7 +327,7 @@ echo $this-&gt;currencyFormat(5678.90);
 $this-&gt;plugin('currencyformat')-&gt;setShouldShowDecimals(false);
 
 echo $this-&gt;currencyFormat(1234.56, 'USD', null, 'en_US');
-// This returns: &quot;$1,235&quot;</code></pre>
+// This returns: "$1,235"</code></pre>
 
 <p>with the following method signature:</p>
 <pre class="codehilite"><code class="language-php">setShouldShowDecimals(bool $showDecimals) : CurrencyFormat</code></pre>
@@ -338,7 +339,7 @@ echo $this-&gt;currencyFormat(1234.56, 'USD', null, 'en_US');
 $this-&gt;plugin('currencyformat')-&gt;setCurrencyPattern('#0.# kg');
 
 echo $this-&gt;currencyFormat(12345678.90, 'EUR', null, 'de_DE');
-// This returns: &quot;12345678,90 kg&quot;</code></pre>
+// This returns: "12345678,90 kg"</code></pre>
 
 <p>with the following method signature:</p>
 <pre class="codehilite"><code class="language-php">setCurrencyPattern(string $currencyPattern) : CurrencyFormat</code></pre>
@@ -358,27 +359,27 @@ echo $this-&gt;dateFormat(
     new DateTime(),
     IntlDateFormatter::MEDIUM, // date
     IntlDateFormatter::MEDIUM, // time
-    &quot;en_US&quot;
+    "en_US"
 );
-// This returns: &quot;Jul 2, 2012 6:44:03 PM&quot;
+// This returns: "Jul 2, 2012 6:44:03 PM"
 
 // Date Only
 echo $this-&gt;dateFormat(
     new DateTime(),
     IntlDateFormatter::LONG, // date
     IntlDateFormatter::NONE, // time
-    &quot;en_US&quot;
+    "en_US"
 );
-// This returns: &quot;July 2, 2012&quot;
+// This returns: "July 2, 2012"
 
 // Time Only
 echo $this-&gt;dateFormat(
     new DateTime(),
     IntlDateFormatter::NONE,  // date
     IntlDateFormatter::SHORT, // time
-    &quot;en_US&quot;
+    "en_US"
 );
-// This returns: &quot;6:44 PM&quot;</code></pre>
+// This returns: "6:44 PM"</code></pre>
 
 <h3 id="method-description_1">Method description</h3>
 <pre class="codehilite"><code class="language-php">dateFormat(
@@ -414,8 +415,8 @@ $this-&gt;plugin('dateFormat')
     -&gt;setTimezone('America/New_York')
     -&gt;setLocale('en_US');
 
-echo $this-&gt;dateFormat(new DateTime(), IntlDateFormatter::MEDIUM);  // &quot;Jul 2, 2012&quot;
-echo $this-&gt;dateFormat(new DateTime(), IntlDateFormatter::SHORT);   // &quot;7/2/12&quot;</code></pre>
+echo $this-&gt;dateFormat(new DateTime(), IntlDateFormatter::MEDIUM);  // "Jul 2, 2012"
+echo $this-&gt;dateFormat(new DateTime(), IntlDateFormatter::SHORT);   // "7/2/12"</code></pre>
 
 <h2 id="numberformat-helper">NumberFormat Helper</h2>
 <p>The <code>NumberFormat</code> view helper can be used to simplify rendering of
@@ -431,7 +432,7 @@ echo $this-&gt;numberFormat(
     NumberFormatter::TYPE_DEFAULT,
     'de_DE'
 );
-// This returns: &quot;1.234.567,891&quot;
+// This returns: "1.234.567,891"
 
 // Example of Percent formatting:
 echo $this-&gt;numberFormat(
@@ -440,7 +441,7 @@ echo $this-&gt;numberFormat(
     NumberFormatter::TYPE_DEFAULT,
     'en_US'
 );
-// This returns: &quot;80%&quot;
+// This returns: "80%"
 
 // Example of Scientific notation formatting:
 echo $this-&gt;numberFormat(
@@ -449,7 +450,7 @@ echo $this-&gt;numberFormat(
     NumberFormatter::TYPE_DEFAULT,
     'fr_FR'
 );
-// This returns: &quot;1,23456789E-3&quot;</code></pre>
+// This returns: "1,23456789E-3"</code></pre>
 
 <h3 id="method-description_2">Method description</h3>
 <pre class="codehilite"><code class="language-php">numberFormat(
@@ -480,17 +481,17 @@ echo $this-&gt;numberFormat(
 options can be set prior to formatting and will be applied each time the helper
 is used.</p>
 <pre class="codehilite"><code class="language-php">// Within your view
-$this-&gt;plugin(&quot;numberformat&quot;)
+$this-&gt;plugin("numberformat")
             -&gt;setFormatStyle(NumberFormatter::PERCENT)
             -&gt;setFormatType(NumberFormatter::TYPE_DOUBLE)
-            -&gt;setLocale(&quot;en_US&quot;)
+            -&gt;setLocale("en_US")
             -&gt;setTextAttributes([
                 NumberFormatter::POSITIVE_PREFIX =&gt; '^ ',
                 NumberFormatter::NEGATIVE_PREFIX =&gt; 'v ',
             ]);
 
-echo $this-&gt;numberFormat(0.56);   // &quot;^ 56%&quot;
-echo $this-&gt;numberFormat(-0.90);  // &quot;v 90%&quot;</code></pre>
+echo $this-&gt;numberFormat(0.56);   // "^ 56%"
+echo $this-&gt;numberFormat(-0.90);  // "v 90%"</code></pre>
 
 <h2 id="plural-helper">Plural Helper</h2>
 <p>Most languages have specific rules for handling plurals. For instance, in
@@ -538,13 +539,13 @@ $pluralHelper-&gt;setPluralRule('nplurals=2; plural=(n==1 ? 0 : 1)');</code></pr
 <pre class="codehilite"><code class="language-php">// Within a view script...
 // If the rule defined in Module.php is the English one:
 
-echo $this-&gt;plural(array('car', 'cars'), 0); // prints &quot;cars&quot;
-echo $this-&gt;plural(array('car', 'cars'), 1); // prints &quot;car&quot;
+echo $this-&gt;plural(array('car', 'cars'), 0); // prints "cars"
+echo $this-&gt;plural(array('car', 'cars'), 1); // prints "car"
 
 // If the rule defined in Module.php is the French one:
-echo $this-&gt;plural(array('voiture', 'voitures'), 0); // prints &quot;voiture&quot;
-echo $this-&gt;plural(array('voiture', 'voitures'), 1); // prints &quot;voiture&quot;
-echo $this-&gt;plural(array('voiture', 'voitures'), 2); // prints &quot;voitures&quot;</code></pre>
+echo $this-&gt;plural(array('voiture', 'voitures'), 0); // prints "voiture"
+echo $this-&gt;plural(array('voiture', 'voitures'), 1); // prints "voiture"
+echo $this-&gt;plural(array('voiture', 'voitures'), 2); // prints "voitures"</code></pre>
 
 <h2 id="translate-helper">Translate Helper</h2>
 <p>The <code>Translate</code> view helper can be used to translate content. It acts as a
@@ -557,10 +558,10 @@ automatically for you.</p>
 <h3 id="basic-usage_4">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">// Within your view...
 
-echo $this-&gt;translate(&quot;Some translated text.&quot;);
-echo $this-&gt;translate(&quot;Translated text from a custom text domain.&quot;, &quot;customDomain&quot;);
-echo sprintf($this-&gt;translate(&quot;The current time is %s.&quot;), $currentTime);
-echo $this-&gt;translate(&quot;Translate in a specific locale&quot;, &quot;default&quot;, &quot;de_DE&quot;);</code></pre>
+echo $this-&gt;translate("Some translated text.");
+echo $this-&gt;translate("Translated text from a custom text domain.", "customDomain");
+echo sprintf($this-&gt;translate("The current time is %s."), $currentTime);
+echo $this-&gt;translate("Translate in a specific locale", "default", "de_DE");</code></pre>
 
 <h3 id="method-description_3">Method description</h3>
 <pre class="codehilite"><code class="language-php">translate(
@@ -601,13 +602,13 @@ with different rules.</p>
 automatically for you.</p>
 <h3 id="basic-usage_5">Basic Usage</h3>
 <pre class="codehilite"><code class="language-php">// Within your view
-echo $this-&gt;translatePlural(&quot;car&quot;, &quot;cars&quot;, $num);
+echo $this-&gt;translatePlural("car", "cars", $num);
 
 // Use a custom domain
-echo $this-&gt;translatePlural(&quot;monitor&quot;, &quot;monitors&quot;, $num, &quot;customDomain&quot;);
+echo $this-&gt;translatePlural("monitor", "monitors", $num, "customDomain");
 
 // Change locale
-echo $this-&gt;translatePlural(&quot;locale&quot;, &quot;locales&quot;, $num, &quot;default&quot;, &quot;de_DE&quot;);</code></pre>
+echo $this-&gt;translatePlural("locale", "locales", $num, "default", "de_DE");</code></pre>
 
 <h3 id="method-description_4">Method description</h3>
 <pre class="codehilite"><code class="language-php">translatePlural(
@@ -686,7 +687,7 @@ setting both the translator and text domain simultaneously.</p>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../translation/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="translation/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -695,7 +696,7 @@ setting both the translator and text domain simultaneously.</p>
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../filters/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="filters/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -730,7 +731,7 @@ setting both the translator and text domain simultaneously.</p>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-i18n</a>
+            <a href="">zend-i18n</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -739,7 +740,7 @@ setting both the translator and text domain simultaneously.</p>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-i18n</a>
+                        <a href="" class="subnavigation__link">zend-i18n</a>
                     </li>
                 
             
@@ -750,25 +751,25 @@ setting both the translator and text domain simultaneously.</p>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../translation/" class="subnavigation__link">Translation</a>
+        <a href="translation/" class="subnavigation__link">Translation</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">View Helpers</a>
+        <a href="view-helpers/" class="subnavigation__link">View Helpers</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../filters/" class="subnavigation__link">Filters</a>
+        <a href="filters/" class="subnavigation__link">Filters</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../validators/" class="subnavigation__link">Validators</a>
+        <a href="validators/" class="subnavigation__link">Validators</a>
     </li>
 
                             
@@ -850,9 +851,8 @@ setting both the translator and text domain simultaneously.</p>
         var base_url = '..',
             siteName = 'zend-i18n';
     </script>
-    <script src="../js/scripts-0bcb0a3bb3.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -881,6 +881,14 @@ setting both the translator and text domain simultaneously.</p>
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 
