@@ -132,7 +132,7 @@ class Translator implements TranslatorInterface
         if (isset($options['locale'])) {
             $locales = (array) $options['locale'];
             $translator->setLocale(array_shift($locales));
-            if (count($locales) > 0) {
+            if ($locales) {
                 $translator->setFallbackLocale(array_shift($locales));
             }
         }
