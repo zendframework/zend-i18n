@@ -286,4 +286,19 @@ class DateFormatTest extends TestCase
     {
         return new IntlDateFormatter($locale, $dateType, $timeType, $timezone, null, $pattern);
     }
+
+    public function testDifferentTimezone()
+    {
+        $helper = $this->helper;
+
+        date_default_timezone_set('America/Chicago');
+        $date = new DateTime('2018-01-01');
+
+        self::assertSame('Jan 1, 2018', $helper($date, IntlDateFormatter::MEDIUM));
+
+        date_default_timezone_set('America/New_York');
+        $date = new DateTime('2018-01-01');
+
+        self::assertSame('Jan 1, 2018', $helper($date, IntlDateFormatter::MEDIUM));
+    }
 }

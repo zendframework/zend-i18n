@@ -76,7 +76,7 @@ class DateFormat extends AbstractHelper
         }
 
         $timezone    = $this->getTimezone();
-        $formatterId = md5($dateType . "\0" . $timeType . "\0" . $locale ."\0" . $pattern);
+        $formatterId = md5($dateType . "\0" . $timeType . "\0" . $locale . "\0" . $pattern . "\0" . $timezone);
 
         if (! isset($this->formatters[$formatterId])) {
             $this->formatters[$formatterId] = new IntlDateFormatter(
