@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://docs.zendframework.com/zend-i18n/</loc>
-     <lastmod>2019-09-04</lastmod>
+     <lastmod>2019-09-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.zendframework.com/zend-i18n/introduction/</loc>
-     <lastmod>2019-09-04</lastmod>
+     <lastmod>2019-09-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.zendframework.com/zend-i18n/translation/</loc>
-     <lastmod>2019-09-04</lastmod>
+     <lastmod>2019-09-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.zendframework.com/zend-i18n/view-helpers/</loc>
-     <lastmod>2019-09-04</lastmod>
+     <lastmod>2019-09-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.zendframework.com/zend-i18n/filters/</loc>
-     <lastmod>2019-09-04</lastmod>
+     <lastmod>2019-09-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.zendframework.com/zend-i18n/validators/</loc>
-     <lastmod>2019-09-04</lastmod>
+     <lastmod>2019-09-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
