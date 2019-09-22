@@ -21,7 +21,7 @@ return [
         ],
         'possible' => [
             'general' => '/^\\d{8,11}$/',
-            'mobile' => '/^\\d{10,11}$/',
+            'mobile' => '/^\\d{11}$/',
             'shared' => '/^\\d{8}$/',
             'emergency' => '/^\\d{3}$/',
         ],

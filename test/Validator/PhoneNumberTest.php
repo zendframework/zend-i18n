@@ -402,7 +402,7 @@ class PhoneNumberTest extends TestCase
             'patterns' => [
                 'example' => [
                     'fixed'     => '1123456789',
-                    'mobile'    => '1161234567',
+                    'mobile'    => ['11961234567', '11991234567'],
                     'tollfree'  => '800123456',
                     'premium'   => '300123456',
                     'shared'    => '40041234',
