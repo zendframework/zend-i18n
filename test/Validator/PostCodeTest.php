@@ -258,4 +258,34 @@ class PostCodeTest extends TestCase
         $this->assertFalse($validator->isValid('ABCD'));
         $this->assertFalse($validator->isValid('LV-ABCD'));
     }
+
+    public function liPostCode()
+    {
+        yield 'Nendeln' => [9485];
+        yield 'Schaanwald' => [9486];
+        yield 'Gamprin-Bendern' => [9487];
+        yield 'Schellenberg' => [9488];
+        yield 'Vaduz-9489' => [9489];
+        yield 'Vaduz-9490' => [9490];
+        yield 'Ruggell' => [9491];
+        yield 'Eschen' => [9492];
+        yield 'Mauren' => [9493];
+        yield 'Schaan' => [9494];
+        yield 'Triesen' => [9495];
+        yield 'Balzers' => [9496];
+        yield 'Triesenberg' => [9497];
+        yield 'Planken' => [9498];
+    }
+
+    /**
+     * @dataProvider liPostCode
+     * @param int $postCode
+     */
+    public function testLiPostCodes($postCode)
+    {
+        $validator = $this->validator;
+        $validator->setLocale('de_LI');
+
+        $this->assertTrue($validator->isValid($postCode));
+    }
 }
