@@ -122,7 +122,7 @@ class Gettext extends AbstractFileLoader
                 fseek($this->file, $translationStringOffset);
                 $translationString = explode("\0", fread($this->file, $translationStringSize));
 
-                if (count($originalString) > 1 && count($translationString) > 1) {
+                if (isset($originalString[1], $translationString[1])) {
                     $textDomain[$originalString[0]] = $translationString;
 
                     array_shift($originalString);
