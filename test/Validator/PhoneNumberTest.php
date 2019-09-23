@@ -3123,6 +3123,10 @@ class PhoneNumberTest extends TestCase
 
                 $fullyQualifiedPlus = '+' . $code . $value;
                 $this->assertTrue($this->validator->isValid($fullyQualifiedPlus));
+
+                // check ^ and $ in regexp
+                $this->assertFalse($this->validator->isValid($value . '='));
+                $this->assertFalse($this->validator->isValid('=' . $value));
             }
         }
     }
@@ -3154,6 +3158,10 @@ class PhoneNumberTest extends TestCase
 
                 $fullyQualifiedPlus = '+' . $code . $value;
                 $this->assertTrue($this->validator->isValid($fullyQualifiedPlus), $fullyQualifiedPlus);
+
+                // check ^ and $ in regexp
+                $this->assertFalse($this->validator->isValid($value . '='));
+                $this->assertFalse($this->validator->isValid('=' . $value));
             }
         }
     }
