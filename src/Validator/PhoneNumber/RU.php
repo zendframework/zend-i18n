@@ -16,7 +16,7 @@ return [
             'mobile' => '/^9\\d{9}$/',
             'tollfree' => '/^80[04]\\d{7}$/',
             'premium' => '/^80[39]\\d{7}$/',
-            'emergency' => '/^0[123]|112$/',
+            'emergency' => '/^(?:0[123]|112)$/',
         ],
         'possible' => [
             'general' => '/^\\d{10}$/',
