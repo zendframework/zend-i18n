@@ -46,6 +46,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - [#114](https://github.com/zendframework/zend-i18n/pull/114) fixes PHP 7.4 compatibility.
 
+- [#116](https://github.com/zendframework/zend-i18n/pull/116) fixes DateTime formatter when changing timezone within the same instance.
+
 - [#100](https://github.com/zendframework/zend-i18n/pull/100) fixes regular expression in Liechtenstein postcode validator.
 
 ## 2.9.0 - 2018-05-16
