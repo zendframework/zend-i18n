@@ -18,7 +18,7 @@ return [
             'premium' => '/^1600\\d{6}$/',
             'personal' => '/^1700\\d{6}$/',
             'voip' => '/^154\\d{7}$/',
-            'emergency' => '/^112|999$/',
+            'emergency' => '/^(?:112|999)$/',
         ],
         'possible' => [
             'general' => '/^\\d{6,10}$/',
