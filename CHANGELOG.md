@@ -50,6 +50,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - [#100](https://github.com/zendframework/zend-i18n/pull/100) fixes regular expression in Liechtenstein postcode validator.
 
+- [#116](https://github.com/zendframework/zend-i18n/pull/116) fixes PhoneNumber validator to match the whole value.
+
 ## 2.9.0 - 2018-05-16
 
 ### Added
