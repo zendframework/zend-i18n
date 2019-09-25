@@ -36,6 +36,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - [#119](https://github.com/zendframework/zend-i18n/pull/119) fixes Kosovan PhoneNumber validator.
 
+- [#120](https://github.com/zendframework/zend-i18n/pull/120) fixes Luxembourgish PhoneNumber validator.
+
 ## 2.9.0 - 2018-05-16
 
 ### Added
