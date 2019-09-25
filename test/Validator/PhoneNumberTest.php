@@ -2977,6 +2977,20 @@ class PhoneNumberTest extends TestCase
                 ],
             ],
         ],
+        'XK' => [
+            'code' => '383',
+            'patterns' => [
+                'example' => [
+                    'fixed'     => '38550001',
+                    'mobile'    => '44430693',
+                    'tollfree'  => '80012345',
+                    'premium'   => '90012345',
+                    'uan'       => '700123456',
+                    'shortcode' => '18923',
+                    'emergency' => ['112', '192','193', '194'],
+                ],
+            ],
+        ],
         'YE' => [
             'code'     => '967',
             'patterns' => [
