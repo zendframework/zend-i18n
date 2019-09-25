@@ -56,6 +56,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - [#117](https://github.com/zendframework/zend-i18n/pull/117) fixes French PhoneNumber validator.
 
+- [#119](https://github.com/zendframework/zend-i18n/pull/119) fixes Kosovan PhoneNumber validator.
+
 ## 2.9.0 - 2018-05-16
 
 ### Added
