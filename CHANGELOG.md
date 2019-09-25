@@ -32,6 +32,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - [#103](https://github.com/zendframework/zend-i18n/pull/103) fixes Brazilian PhoneNumber validator.
 
+- [#117](https://github.com/zendframework/zend-i18n/pull/117) fixes French PhoneNumber validator.
+
 ## 2.9.0 - 2018-05-16
 
 ### Added
