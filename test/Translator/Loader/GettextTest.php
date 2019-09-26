@@ -17,7 +17,7 @@ class GettextTest extends TestCase
     protected $originalLocale;
     protected $originalIncludePath;
 
-    public function setUp()
+    protected function setUp()
     {
         if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
@@ -32,7 +32,7 @@ class GettextTest extends TestCase
         set_include_path($this->testFilesDir . PATH_SEPARATOR . $this->testFilesDir . '/translations.phar');
     }
 
-    public function tearDown()
+    protected function tearDown()
     {
         if (extension_loaded('intl')) {
             Locale::setDefault($this->originalLocale);

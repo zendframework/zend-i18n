@@ -16,7 +16,7 @@ class IniTest extends TestCase
     protected $originalLocale;
     protected $originalIncludePath;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->testFilesDir = realpath(__DIR__ . '/../_files');
 
@@ -24,7 +24,7 @@ class IniTest extends TestCase
         set_include_path($this->testFilesDir . PATH_SEPARATOR . $this->testFilesDir . '/translations.phar');
     }
 
-    public function tearDown()
+    protected function tearDown()
     {
         set_include_path($this->originalIncludePath);
     }

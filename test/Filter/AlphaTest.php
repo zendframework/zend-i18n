@@ -49,7 +49,7 @@ class AlphaTest extends TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');

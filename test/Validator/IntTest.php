@@ -26,7 +26,7 @@ class IntTest extends TestCase
      */
     protected $locale;
 
-    public function setUp()
+    protected function setUp()
     {
         if (version_compare(PHP_VERSION, '7.0', '>=')) {
             $this->markTestSkipped('Cannot test Int validator under PHP 7; reserved keyword');
@@ -39,7 +39,7 @@ class IntTest extends TestCase
         $this->locale = Locale::getDefault();
     }
 
-    public function tearDown()
+    protected function tearDown()
     {
         if (extension_loaded('intl')) {
             Locale::setDefault($this->locale);
@@ -48,7 +48,7 @@ class IntTest extends TestCase
 
     public function testConstructorRaisesDeprecationNotice()
     {
-        $this->setExpectedException('PHPUnit_Framework_Error_Deprecated');
+        $this->expectException('PHPUnit_Framework_Error_Deprecated');
         new IntValidator();
     }
 }

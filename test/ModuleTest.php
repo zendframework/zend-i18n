@@ -13,7 +13,7 @@ use Zend\I18n\Module;
 
 class ModuleTest extends TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         $this->module = new Module();
     }

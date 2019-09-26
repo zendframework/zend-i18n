@@ -27,7 +27,7 @@ class IsFloatTest extends TestCase
      */
     protected $locale;
 
-    public function setUp()
+    protected function setUp()
     {
         if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
@@ -37,7 +37,7 @@ class IsFloatTest extends TestCase
         $this->validator = new IsFloatValidator(['locale' => 'en']);
     }
 
-    public function tearDown()
+    protected function tearDown()
     {
         if (extension_loaded('intl')) {
             Locale::setDefault($this->locale);

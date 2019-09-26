@@ -3049,7 +3049,7 @@ class PhoneNumberTest extends TestCase
         ],
     ];
 
-    public function setUp()
+    protected function setUp()
     {
         $this->validator = new PhoneNumber();
     }

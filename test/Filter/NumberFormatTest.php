@@ -13,7 +13,7 @@ use NumberFormatter;
 
 class NumberFormatTest extends TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         if (! extension_loaded('intl')) {
             $this->markTestSkipped('ext/intl not enabled');
