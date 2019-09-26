@@ -106,11 +106,11 @@ NumberFormat([ string $locale [, int $style [, int $type ]]])
   (`Locale::getDefault()`). Methods for getting/setting the locale are also
   available (`getLocale()` and `setLocale()`).
 - `$style`: (Optional) Style of the formatting, one of the [`NumberFormatter`
-  format style constants](http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle).
+  format style constants](https://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle).
   If unset, it will use `NumberFormatter::DEFAULT_STYLE` as the default style.
   Methods for getting/setting the format style are also available (`getStyle()`
   and `setStyle()`).
-- `$type`: (Optional) The [`NumberFormatter` formatting type](http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.types)
+- `$type`: (Optional) The [`NumberFormatter` formatting type](https://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.types)
   to use. If unset, it will use `NumberFormatter::TYPE_DOUBLE` as the default
   type.  Methods for getting/setting the format type are also available
   (`getType()` and `setType()`).
@@ -148,11 +148,11 @@ NumberParse([ string $locale [, int $style [, int $type ]]])
   (locale name, e.g.  `en_US`). If unset, it will use the default locale
   (`Locale::getDefault()`). Methods for getting/setting the locale are also
   available (`getLocale()` and `setLocale()`).
-- `$style`: (Optional) Style of the parsing, one of the [`NumberFormatter` format style constants](http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle).
+- `$style`: (Optional) Style of the parsing, one of the [`NumberFormatter` format style constants](https://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle).
   If unset, it will use `NumberFormatter::DEFAULT_STYLE` as the default style.
   Methods for getting/setting the parse style are also available (`getStyle()`
   and `setStyle()`).
-- `$type`: (Optional) The [`NumberFormatter` parsing type](http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.types)
+- `$type`: (Optional) The [`NumberFormatter` parsing type](https://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.types)
   to use. If unset, it will use `NumberFormatter::TYPE_DOUBLE` as the default
   type.  Methods for getting/setting the parse type are also available
   (`getType()` and `setType()`).

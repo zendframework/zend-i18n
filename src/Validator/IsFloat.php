@@ -1,10 +1,8 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/zendframework/zend-i18n for the canonical source repository
+ * @copyright Copyright (c) 2005-2019 Zend Technologies USA Inc. (https://www.zend.com)
+ * @license   https://github.com/zendframework/zend-i18n/blob/master/LICENSE.md New BSD License
  */
 
 namespace Zend\I18n\Validator;
@@ -101,7 +99,7 @@ class IsFloat extends AbstractValidator
 
     /**
      * Returns true if and only if $value is a floating-point value. Uses the formal definition of a float as described
-     * in the PHP manual: {@link http://www.php.net/float}
+     * in the PHP manual: {@link https://www.php.net/float}
      *
      * @param  string $value
      * @return bool
@@ -214,7 +212,7 @@ class IsFloat extends AbstractValidator
          *       the integer and decimal notations so add that.  This also checks
          *       that a grouping sperator is not in the last GROUPING_SIZE graphemes
          *       of the string - i.e. 10,6 is not valid for en-US.
-         * @see http://www.php.net/float
+         * @see https://www.php.net/float
          */
 
         $lnum    = '[' . $numberRange . ']+';
