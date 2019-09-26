@@ -4,7 +4,7 @@ zend-i18n ships with a set of zend-view helper classes related to
 internationalization: e.g., formatting a date, formatting currency, or
 displaying translated content.
 
-See the [zend-view helpers documentation](http://framework.zend.com/manual/current/en/modules/zend.view.helpers.html#zend-view-helpers)
+See the [zend-view helpers documentation](https://docs.zendframework.com/zend-view/helpers/intro/)
 for more information.
 
 ## CurrencyFormat Helper
@@ -135,7 +135,7 @@ setCurrencyPattern(string $currencyPattern) : CurrencyFormat
 ```
 
 where `$currencyPattern` is a valid [ICU DecimalFormat pattern](http://www.icu-project.org/apiref/icu4c/classDecimalFormat.html#details);
-see the [NumberFormatter::setPattern() documentation](http://php.net/manual/numberformatter.setpattern.php)
+see the [NumberFormatter::setPattern() documentation](https://www.php.net/manual/numberformatter.setpattern.php)
 for more information.
 
 ## DateFormat Helper
@@ -194,10 +194,10 @@ where:
   representing a Unix timestamp value, or an array in the format returned by
   `localtime()`.
 - `$dateType`: Date type to use (none, short, medium, long, full). This is one
-  of the [IntlDateFormatter constants](http://www.php.net/manual/class.intldateformatter.php#intl.intldateformatter-constants).
+  of the [IntlDateFormatter constants](https://www.php.net/manual/class.intldateformatter.php#intl.intldateformatter-constants).
   Defaults to `IntlDateFormatter::NONE`.
 - `$timeType`: Time type to use (none, short, medium, long, full). This is one
-  of the [IntlDateFormatter constants](http://www.php.net/manual/class.intldateformatter.php#intl.intldateformatter-constants).
+  of the [IntlDateFormatter constants](https://www.php.net/manual/class.intldateformatter.php#intl.intldateformatter-constants).
   Defaults to `IntlDateFormatter::NONE`.
 - `$locale`: Locale in which the date would be formatted (locale name, e.g.
   `en_US`). If unset, it will use the default locale (return value of

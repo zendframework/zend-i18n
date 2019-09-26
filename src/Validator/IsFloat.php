@@ -99,7 +99,7 @@ class IsFloat extends AbstractValidator
 
     /**
      * Returns true if and only if $value is a floating-point value. Uses the formal definition of a float as described
-     * in the PHP manual: {@link http://www.php.net/float}
+     * in the PHP manual: {@link https://www.php.net/float}
      *
      * @param  string $value
      * @return bool
@@ -212,7 +212,7 @@ class IsFloat extends AbstractValidator
          *       the integer and decimal notations so add that.  This also checks
          *       that a grouping sperator is not in the last GROUPING_SIZE graphemes
          *       of the string - i.e. 10,6 is not valid for en-US.
-         * @see http://www.php.net/float
+         * @see https://www.php.net/float
          */
 
         $lnum    = '[' . $numberRange . ']+';
