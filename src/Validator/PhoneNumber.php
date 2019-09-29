@@ -89,11 +89,11 @@ class PhoneNumber extends AbstractValidator
             $this->setCountry($country);
         }
 
-        if (array_key_exists('allowed_types', $options)) {
+        if (isset($options['allowed_types'])) {
             $this->allowedTypes($options['allowed_types']);
         }
 
-        if (array_key_exists('allow_possible', $options)) {
+        if (isset($options['allow_possible'])) {
             $this->allowPossible($options['allow_possible']);
         }
 
