@@ -248,10 +248,10 @@ class PostCode extends AbstractValidator
         } else {
             $this->setLocale(Locale::getDefault());
         }
-        if (array_key_exists('format', $options)) {
+        if (isset($options['format'])) {
             $this->setFormat($options['format']);
         }
-        if (array_key_exists('service', $options)) {
+        if (isset($options['service'])) {
             $this->setService($options['service']);
         }
 
