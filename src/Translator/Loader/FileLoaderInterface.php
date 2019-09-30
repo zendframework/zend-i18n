@@ -7,6 +7,8 @@
 
 namespace Zend\I18n\Translator\Loader;
 
+use Zend\I18n\Translator\TextDomain;
+
 /**
  * File loader interface.
  */
@@ -17,7 +19,7 @@ interface FileLoaderInterface
      *
      * @param  string $locale
      * @param  string $filename
-     * @return \Zend\I18n\Translator\TextDomain|null
+     * @return TextDomain|null
      */
     public function load($locale, $filename);
 }
