@@ -60,8 +60,6 @@ class CurrencyFormat extends AbstractHelper
      */
     protected $correctionNeeded = false;
 
-
-
     /**
      * @throws Exception\ExtensionNotLoadedException if ext/intl is not present
      */
@@ -253,8 +251,6 @@ class CurrencyFormat extends AbstractHelper
         return $this->showDecimals;
     }
 
-
-
     /**
      * @param string          $formattedNumber
      * @param NumberFormatter $formatter
@@ -273,8 +269,6 @@ class CurrencyFormat extends AbstractHelper
 
         return preg_replace($pattern, '$1', $formattedNumber);
     }
-
-
 
     /**
      * @param string $locale
