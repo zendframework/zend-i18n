@@ -440,7 +440,7 @@ class TranslatorTest extends TestCase
 
         $allMessages = $this->translator->getAllMessages();
         $this->assertInstanceOf(TextDomain::class, $allMessages);
-        $this->assertEquals(7, count($allMessages));
+        $this->assertCount(7, $allMessages);
         $this->assertEquals('Message 1 (en)', $allMessages['Message 1']);
     }
 

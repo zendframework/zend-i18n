@@ -58,7 +58,7 @@ class TranslateTest extends TestCase
         $translatorMock->expects($this->once())
                        ->method('translate')
                        ->with($this->equalTo($input), $this->equalTo('default'), $this->equalTo(null))
-                       ->will($this->returnValue($expected));
+                       ->willReturn($expected);
 
         $this->helper->setTranslator($translatorMock);
 
@@ -76,7 +76,7 @@ class TranslateTest extends TestCase
         $translatorMock->expects($this->once())
                        ->method('translate')
                        ->with($this->equalTo($input), $this->equalTo($textDomain), $this->equalTo($locale))
-                       ->will($this->returnValue($expected));
+                       ->willReturn($expected);
 
         $this->helper->setTranslator($translatorMock);
 

@@ -25,14 +25,14 @@ class TranslatorServiceFactoryTest extends TestCase
 
         $serviceLocator = $this->createMock(ContainerInterface::class);
         $serviceLocator
-            ->expects($this->exactly(1))
+            ->expects($this->once())
             ->method('has')
             ->with($this->equalTo('TranslatorPluginManager'))
-            ->will($this->returnValue(true));
+            ->willReturn(true);
         $serviceLocator
             ->expects($this->exactly(2))
             ->method('get')
-            ->will($this->returnValueMap($slContents));
+            ->willReturnMap($slContents);
 
         $factory = new TranslatorServiceFactory();
         $translator = $factory($serviceLocator, Translator::class);
@@ -44,10 +44,10 @@ class TranslatorServiceFactoryTest extends TestCase
     {
         $serviceLocator = $this->createMock(ContainerInterface::class);
         $serviceLocator
-            ->expects($this->exactly(1))
+            ->expects($this->once())
             ->method('get')
             ->with($this->equalTo('config'))
-            ->will($this->returnValue([]));
+            ->willReturn([]);
 
         $factory = new TranslatorServiceFactory();
         $translator = $factory($serviceLocator, Translator::class);
