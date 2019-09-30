@@ -28,7 +28,7 @@ class FloatTest extends TestCase
 
     protected function setUp()
     {
-        if (version_compare(PHP_VERSION, '7.0', '>=')) {
+        if (PHP_VERSION_ID >= 70000) {
             $this->markTestSkipped('Cannot test Float validator under PHP 7; reserved keyword');
         }
 

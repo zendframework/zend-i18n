@@ -20,7 +20,7 @@ class Alpha extends Alnum
      *
      * @var AlphaFilter
      */
-    protected static $filter = null;
+    protected static $filter;
 
     /**
      * Validation failure message template definitions
@@ -28,9 +28,9 @@ class Alpha extends Alnum
      * @var string[]
      */
     protected $messageTemplates = [
-        self::INVALID      => "Invalid type given. String expected",
-        self::NOT_ALPHA    => "The input contains non alphabetic characters",
-        self::STRING_EMPTY => "The input is an empty string"
+        self::INVALID      => 'Invalid type given. String expected',
+        self::NOT_ALPHA    => 'The input contains non alphabetic characters',
+        self::STRING_EMPTY => 'The input is an empty string'
     ];
 
     /**

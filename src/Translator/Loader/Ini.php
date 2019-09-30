@@ -52,7 +52,7 @@ class Ini extends AbstractFileLoader
                     'Each INI row must be an array with message and translation'
                 );
             }
-            if (isset($message['message']) && isset($message['translation'])) {
+            if (isset($message['message'], $message['translation'])) {
                 $messages[$message['message']] = $message['translation'];
                 continue;
             }

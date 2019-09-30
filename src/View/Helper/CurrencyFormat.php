@@ -60,8 +60,6 @@ class CurrencyFormat extends AbstractHelper
      */
     protected $correctionNeeded = false;
 
-
-
     /**
      * @throws Exception\ExtensionNotLoadedException if ext/intl is not present
      */
@@ -253,8 +251,6 @@ class CurrencyFormat extends AbstractHelper
         return $this->showDecimals;
     }
 
-
-
     /**
      * @param string          $formattedNumber
      * @param NumberFormatter $formatter
@@ -267,13 +263,11 @@ class CurrencyFormat extends AbstractHelper
         $pattern = sprintf(
             '/\%s\d+(\s?%s)?$/u',
             $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL),
-            preg_quote($this->getCurrencySymbol($locale, $currencyCode))
+            preg_quote($this->getCurrencySymbol($locale, $currencyCode), '/')
         );
 
         return preg_replace($pattern, '$1', $formattedNumber);
     }
-
-
 
     /**
      * @param string $locale

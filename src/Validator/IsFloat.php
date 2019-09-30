@@ -29,8 +29,8 @@ class IsFloat extends AbstractValidator
      * @var string[]
      */
     protected $messageTemplates = [
-        self::INVALID   => "Invalid type given. String, integer or float expected",
-        self::NOT_FLOAT => "The input does not appear to be a float",
+        self::INVALID   => 'Invalid type given. String, integer or float expected',
+        self::NOT_FLOAT => 'The input does not appear to be a float',
     ];
 
     /**
@@ -151,15 +151,15 @@ class IsFloat extends AbstractValidator
         $decSeparator   = $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
 
         //NO-BREAK SPACE and ARABIC THOUSANDS SEPARATOR
-        if ($groupSeparator == "\xC2\xA0") {
+        if ($groupSeparator === "\xC2\xA0") {
             $value = str_replace(' ', $groupSeparator, $value);
-        } elseif ($groupSeparator == "\xD9\xAC") {
+        } elseif ($groupSeparator === "\xD9\xAC") {
             //NumberFormatter doesn't have grouping at all for Arabic-Indic
             $value = str_replace(['\'', $groupSeparator], '', $value);
         }
 
         //ARABIC DECIMAL SEPARATOR
-        if ($decSeparator == "\xD9\xAB") {
+        if ($decSeparator === "\xD9\xAB") {
             $value = str_replace(',', $decSeparator, $value);
         }
 
@@ -233,9 +233,7 @@ class IsFloat extends AbstractValidator
 
         // No strrpos() in wrappers yet. ICU 4.x doesn't have grouping size for
         // everything. ICU 52 has 3 for ALL locales.
-        $groupSize = ($formatter->getAttribute(NumberFormatter::GROUPING_SIZE))
-            ? $formatter->getAttribute(NumberFormatter::GROUPING_SIZE)
-            : 3;
+        $groupSize = $formatter->getAttribute(NumberFormatter::GROUPING_SIZE) ?: 3;
         $lastStringGroup = $this->wrapper->substr($value, -$groupSize);
 
         if ((preg_match($lnumSearch, $unGroupedValue)

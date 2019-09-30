@@ -88,7 +88,7 @@ class AlphaTest extends TestCase
             $this->assertEquals(
                 $result,
                 $this->validator->isValid($input),
-                "Expected '$input' to be considered " . ($result ? '' : 'in') . "valid"
+                "Expected '$input' to be considered " . ($result ? '' : 'in') . 'valid'
             );
         }
     }

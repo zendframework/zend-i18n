@@ -63,13 +63,15 @@ class Parser
     {
         // Ternary operators
         $this->registerSymbol('?', 20)->setLeftDenotationGetter(
-            function (Symbol $self, Symbol $left) {
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (Symbol $self, Symbol $left) {
                 $self->first  = $left;
                 $self->second = $self->parser->expression();
                 $self->parser->advance(':');
                 $self->third  = $self->parser->expression();
                 return $self;
             }
+            // @codingStandardsIgnoreEnd
         );
         $this->registerSymbol(':');
 
@@ -101,23 +103,29 @@ class Parser
 
         // Literals
         $this->registerSymbol('n')->setNullDenotationGetter(
-            function (Symbol $self) {
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (Symbol $self) {
                 return $self;
             }
+            // @codingStandardsIgnoreEnd
         );
         $this->registerSymbol('number')->setNullDenotationGetter(
-            function (Symbol $self) {
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (Symbol $self) {
                 return $self;
             }
+            // @codingStandardsIgnoreEnd
         );
 
         // Parentheses
         $this->registerSymbol('(')->setNullDenotationGetter(
-            function (Symbol $self) {
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (Symbol $self) {
                 $expression = $self->parser->expression();
                 $self->parser->advance(')');
                 return $expression;
             }
+            // @codingStandardsIgnoreEnd
         );
         $this->registerSymbol(')');
 
@@ -135,11 +143,13 @@ class Parser
     protected function registerLeftInfixSymbol($id, $leftBindingPower)
     {
         $this->registerSymbol($id, $leftBindingPower)->setLeftDenotationGetter(
-            function (Symbol $self, Symbol $left) use ($leftBindingPower) {
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (Symbol $self, Symbol $left) use ($leftBindingPower) {
                 $self->first  = $left;
                 $self->second = $self->parser->expression($leftBindingPower);
                 return $self;
             }
+            // @codingStandardsIgnoreEnd
         );
     }
 
@@ -153,11 +163,13 @@ class Parser
     protected function registerRightInfixSymbol($id, $leftBindingPower)
     {
         $this->registerSymbol($id, $leftBindingPower)->setLeftDenotationGetter(
-            function (Symbol $self, Symbol $left) use ($leftBindingPower) {
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (Symbol $self, Symbol $left) use ($leftBindingPower) {
                 $self->first  = $left;
                 $self->second = $self->parser->expression($leftBindingPower - 1);
                 return $self;
             }
+            // @codingStandardsIgnoreEnd
         );
     }
 
@@ -171,11 +183,13 @@ class Parser
     protected function registerPrefixSymbol($id, $leftBindingPower)
     {
         $this->registerSymbol($id, $leftBindingPower)->setNullDenotationGetter(
-            function (Symbol $self) use ($leftBindingPower) {
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (Symbol $self) use ($leftBindingPower) {
                 $self->first  = $self->parser->expression($leftBindingPower);
                 $self->second = null;
                 return $self;
             }
+            // @codingStandardsIgnoreEnd
         );
     }
 
