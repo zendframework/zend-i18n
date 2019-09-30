@@ -17,11 +17,11 @@ class TranslatePlural extends AbstractTranslatorHelper
     /**
      * Translate a plural message
      *
-     * @param  string  $singular
-     * @param  string  $plural
-     * @param  int $number
-     * @param  string  $textDomain
-     * @param  string  $locale
+     * @param  string      $singular
+     * @param  string      $plural
+     * @param  int         $number
+     * @param  string|null $textDomain
+     * @param  string|null $locale
      * @throws Exception\RuntimeException
      * @return string
      */

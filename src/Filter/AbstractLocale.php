@@ -30,7 +30,7 @@ abstract class AbstractLocale extends AbstractFilter
      * Sets the locale option
      *
      * @param  string|null $locale
-     * @return AbstractLocale
+     * @return $this
      */
     public function setLocale($locale = null)
     {

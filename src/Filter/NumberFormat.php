@@ -14,7 +14,7 @@ class NumberFormat extends NumberParse
     /**
      * Defined by Zend\Filter\FilterInterface
      *
-     * @see    Zend\Filter\FilterInterface::filter()
+     * @see    \Zend\Filter\FilterInterface::filter()
      * @param  mixed $value
      * @return mixed
      */
