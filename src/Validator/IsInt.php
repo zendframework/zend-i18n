@@ -180,7 +180,7 @@ class IsInt extends AbstractValidator
             $decimalSep => '.',
         ]);
 
-        if (strval($parsedInt) !== $valueFiltered) {
+        if ((string) $parsedInt !== $valueFiltered) {
             $this->error(self::NOT_INT);
             return false;
         }
