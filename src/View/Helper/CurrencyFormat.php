@@ -268,7 +268,7 @@ class CurrencyFormat extends AbstractHelper
         $pattern = sprintf(
             '/\%s\d+(\s?%s)?$/u',
             $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL),
-            preg_quote($this->getCurrencySymbol($locale, $currencyCode))
+            preg_quote($this->getCurrencySymbol($locale, $currencyCode), '/')
         );
 
         return preg_replace($pattern, '$1', $formattedNumber);
