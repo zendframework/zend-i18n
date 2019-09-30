@@ -26,9 +26,9 @@ class IsInt extends AbstractValidator
      * @var array
      */
     protected $messageTemplates = [
-        self::INVALID => "Invalid type given. String or integer expected",
-        self::NOT_INT => "The input does not appear to be an integer",
-        self::NOT_INT_STRICT => "The input is not strictly an integer",
+        self::INVALID        => 'Invalid type given. String or integer expected',
+        self::NOT_INT        => 'The input does not appear to be an integer',
+        self::NOT_INT_STRICT => 'The input is not strictly an integer',
     ];
 
     /**
@@ -155,10 +155,10 @@ class IsInt extends AbstractValidator
         try {
             $format = new NumberFormatter($locale, NumberFormatter::DECIMAL);
             if (intl_is_failure($format->getErrorCode())) {
-                throw new Exception\InvalidArgumentException("Invalid locale string given");
+                throw new Exception\InvalidArgumentException('Invalid locale string given');
             }
         } catch (IntlException $intlException) {
-            throw new Exception\InvalidArgumentException("Invalid locale string given", 0, $intlException);
+            throw new Exception\InvalidArgumentException('Invalid locale string given', 0, $intlException);
         }
 
         try {
