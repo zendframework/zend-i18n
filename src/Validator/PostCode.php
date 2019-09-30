@@ -23,7 +23,9 @@ class PostCode extends AbstractValidator
     const SERVICEFAILURE = 'postcodeServiceFailure';
 
     /**
-     * @var array
+     * Validation failure message template definitions
+     *
+     * @var string[]
      */
     protected $messageTemplates = [
         self::INVALID        => "Invalid type given. String or integer expected",
@@ -272,7 +274,7 @@ class PostCode extends AbstractValidator
      * Sets the locale to use
      *
      * @param  string|null $locale
-     * @return PostCode  Provides fluid interface
+     * @return $this
      */
     public function setLocale($locale)
     {
@@ -293,8 +295,8 @@ class PostCode extends AbstractValidator
     /**
      * Sets a self defined postal format as regex
      *
-     * @param  string $format
-     * @return PostCode  Provides fluid interface
+     * @param  string|null $format
+     * @return $this
      */
     public function setFormat($format)
     {
@@ -315,8 +317,8 @@ class PostCode extends AbstractValidator
     /**
      * Sets a new callback for service validation
      *
-     * @param mixed $service
-     * @return PostCode  Provides fluid interface
+     * @param mixed|null $service
+     * @return $this
      */
     public function setService($service)
     {
@@ -327,7 +329,7 @@ class PostCode extends AbstractValidator
     /**
      * Returns true if and only if $value is a valid postalcode
      *
-     * @param  string $value
+     * @param  string|int $value
      * @return bool
      * @throws Exception\InvalidArgumentException
      */

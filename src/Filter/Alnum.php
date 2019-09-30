@@ -43,7 +43,7 @@ class Alnum extends AbstractLocale
      * Sets the allowWhiteSpace option
      *
      * @param  bool $flag
-     * @return Alnum Provides a fluent interface
+     * @return $this
      */
     public function setAllowWhiteSpace($flag = true)
     {
