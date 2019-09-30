@@ -175,8 +175,10 @@ class IsInt extends AbstractValidator
         $decimalSep  = $format->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
         $groupingSep = $format->getSymbol(NumberFormatter::GROUPING_SEPARATOR_SYMBOL);
 
-        $valueFiltered = str_replace($groupingSep, '', $value);
-        $valueFiltered = str_replace($decimalSep, '.', $valueFiltered);
+        $valueFiltered = strtr($value, [
+            $groupingSep => '',
+            $decimalSep => '.',
+        ]);
 
         if (strval($parsedInt) !== $valueFiltered) {
             $this->error(self::NOT_INT);
