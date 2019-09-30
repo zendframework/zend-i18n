@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#122](https://github.com/zendframework/zend-i18n/pull/122) fixes PHP 7.4 compatibility.
 
 ## 2.9.1 - 2019-09-26
 
