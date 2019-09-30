@@ -68,9 +68,7 @@ class Ini extends AbstractFileLoader
 
         $textDomain = new TextDomain($messages);
 
-        if (array_key_exists('plural', $messagesNamespaced)
-            && isset($messagesNamespaced['plural']['plural_forms'])
-        ) {
+        if (isset($messagesNamespaced['plural']['plural_forms'])) {
             $textDomain->setPluralRule(
                 PluralRule::fromString($messagesNamespaced['plural']['plural_forms'])
             );

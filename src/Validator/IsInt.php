@@ -65,7 +65,7 @@ class IsInt extends AbstractValidator
             $options = ArrayUtils::iteratorToArray($options);
         }
 
-        if (array_key_exists('locale', $options)) {
+        if (isset($options['locale'])) {
             $this->setLocale($options['locale']);
         }
 
