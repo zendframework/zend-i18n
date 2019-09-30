@@ -325,9 +325,11 @@ class TranslatorTest extends TestCase
         $this->translator->enableEventManager();
         $this->translator->getEventManager()->attach(
             Translator::EVENT_MISSING_TRANSLATION,
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
             static function (EventInterface $event) use (&$actualEvent) {
                 $actualEvent = $event;
             }
+            // @codingStandardsIgnoreEnd
         );
 
         $this->translator->translate('foo', 'bar', 'baz');
@@ -356,15 +358,30 @@ class TranslatorTest extends TestCase
 
         $this->translator->enableEventManager();
         $events = $this->translator->getEventManager();
-        $events->attach(Translator::EVENT_MISSING_TRANSLATION, static function (EventInterface $event) use (&$trigger) {
-            $trigger = true;
-        });
-        $events->attach(Translator::EVENT_MISSING_TRANSLATION, static function (EventInterface $event) {
-            return 'EVENT TRIGGERED';
-        });
-        $events->attach(Translator::EVENT_MISSING_TRANSLATION, static function (EventInterface $event) use (&$doNotTrigger) {
-            $doNotTrigger = true;
-        });
+        $events->attach(
+            Translator::EVENT_MISSING_TRANSLATION,
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (EventInterface $event) use (&$trigger) {
+                $trigger = true;
+            }
+            // @codingStandardsIgnoreEnd
+        );
+        $events->attach(
+            Translator::EVENT_MISSING_TRANSLATION,
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (EventInterface $event) {
+                return 'EVENT TRIGGERED';
+            }
+            // @codingStandardsIgnoreEnd
+        );
+        $events->attach(
+            Translator::EVENT_MISSING_TRANSLATION,
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (EventInterface $event) use (&$doNotTrigger) {
+                $doNotTrigger = true;
+            }
+            // @codingStandardsIgnoreEnd
+        );
 
         $result = $this->translator->translate('foo', 'bar', 'baz');
         $this->assertTrue($trigger);
@@ -411,15 +428,30 @@ class TranslatorTest extends TestCase
 
         $this->translator->enableEventManager();
         $events = $this->translator->getEventManager();
-        $events->attach(Translator::EVENT_NO_MESSAGES_LOADED, static function (EventInterface $event) use (&$trigger) {
-            $trigger = true;
-        });
-        $events->attach(Translator::EVENT_NO_MESSAGES_LOADED, static function (EventInterface $event) use ($textDomain) {
-            return $textDomain;
-        });
-        $events->attach(Translator::EVENT_NO_MESSAGES_LOADED, static function (EventInterface $event) use (&$doNotTrigger) {
-            $doNotTrigger = true;
-        });
+        $events->attach(
+            Translator::EVENT_NO_MESSAGES_LOADED,
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (EventInterface $event) use (&$trigger) {
+                $trigger = true;
+            }
+            // @codingStandardsIgnoreEnd
+        );
+        $events->attach(
+            Translator::EVENT_NO_MESSAGES_LOADED,
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (EventInterface $event) use ($textDomain) {
+                return $textDomain;
+            }
+            // @codingStandardsIgnoreEnd
+        );
+        $events->attach(
+            Translator::EVENT_NO_MESSAGES_LOADED,
+            // @codingStandardsIgnoreStart Generic.WhiteSpace.ScopeIndent.IncorrectExact
+            static function (EventInterface $event) use (&$doNotTrigger) {
+                $doNotTrigger = true;
+            }
+            // @codingStandardsIgnoreEnd
+        );
 
         $result = $this->translator->translate('foo', 'bar', 'baz');
 
