@@ -21,7 +21,7 @@ class Alnum extends AbstractValidator
      *
      * @var AlnumFilter
      */
-    protected static $filter = null;
+    protected static $filter;
 
     /**
      * Validation failure message template definitions
@@ -29,9 +29,9 @@ class Alnum extends AbstractValidator
      * @var string[]
      */
     protected $messageTemplates = [
-        self::INVALID      => "Invalid type given. String, integer or float expected",
-        self::NOT_ALNUM    => "The input contains characters which are non alphabetic and no digits",
-        self::STRING_EMPTY => "The input is an empty string",
+        self::INVALID      => 'Invalid type given. String, integer or float expected',
+        self::NOT_ALNUM    => 'The input contains characters which are non alphabetic and no digits',
+        self::STRING_EMPTY => 'The input is an empty string',
     ];
 
     /**

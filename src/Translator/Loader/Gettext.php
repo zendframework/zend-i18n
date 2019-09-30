@@ -65,9 +65,9 @@ class Gettext extends AbstractFileLoader
         // Verify magic number
         $magic = fread($this->file, 4);
 
-        if ($magic == "\x95\x04\x12\xde") {
+        if ($magic === "\x95\x04\x12\xde") {
             $this->littleEndian = false;
-        } elseif ($magic == "\xde\x12\x04\x95") {
+        } elseif ($magic === "\xde\x12\x04\x95") {
             $this->littleEndian = true;
         } else {
             fclose($this->file);
@@ -143,7 +143,7 @@ class Gettext extends AbstractFileLoader
             foreach ($rawHeaders as $rawHeader) {
                 list($header, $content) = explode(':', $rawHeader, 2);
 
-                if (trim(strtolower($header)) === 'plural-forms') {
+                if (strtolower(trim($header)) === 'plural-forms') {
                     $textDomain->setPluralRule(PluralRule::fromString($content));
                 }
             }

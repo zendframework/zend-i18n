@@ -28,10 +28,10 @@ class PostCode extends AbstractValidator
      * @var string[]
      */
     protected $messageTemplates = [
-        self::INVALID        => "Invalid type given. String or integer expected",
-        self::NO_MATCH       => "The input does not appear to be a postal code",
-        self::SERVICE        => "The input does not appear to be a postal code",
-        self::SERVICEFAILURE => "An exception has been raised while validating the input",
+        self::INVALID        => 'Invalid type given. String or integer expected',
+        self::NO_MATCH       => 'The input does not appear to be a postal code',
+        self::SERVICE        => 'The input does not appear to be a postal code',
+        self::SERVICEFAILURE => 'An exception has been raised while validating the input',
     ];
 
     /**
@@ -348,14 +348,14 @@ class PostCode extends AbstractValidator
         if ((null === $format || '' === $format) && ! empty($locale)) {
             $region = Locale::getRegion($locale);
             if ('' === $region) {
-                throw new Exception\InvalidArgumentException("Locale must contain a region");
+                throw new Exception\InvalidArgumentException('Locale must contain a region');
             }
             if (isset(static::$postCodeRegex[$region])) {
                 $format = static::$postCodeRegex[$region];
             }
         }
         if (null === $format || '' === $format) {
-            throw new Exception\InvalidArgumentException("A postcode-format string has to be given for validation");
+            throw new Exception\InvalidArgumentException('A postcode-format string has to be given for validation');
         }
 
         if ($format[0] !== '/') {

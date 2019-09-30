@@ -171,12 +171,12 @@ class PostCodeTest extends TestCase
             'serviceFalse'  => null,
         ];
 
-        $serviceTrue  = function ($value) use ($params) {
+        $serviceTrue  = static function ($value) use ($params) {
             $params->serviceTrue = $value;
             return true;
         };
 
-        $serviceFalse = function ($value) use ($params) {
+        $serviceFalse = static function ($value) use ($params) {
             $params->serviceFalse = $value;
             return false;
         };

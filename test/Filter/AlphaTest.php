@@ -59,7 +59,7 @@ class AlphaTest extends TestCase
 
         $this->locale               = Locale::getDefault();
         $language                   = Locale::getPrimaryLanguage($this->locale);
-        self::$meansEnglishAlphabet = in_array($language, ['ja']);
+        self::$meansEnglishAlphabet = $language === 'ja';
         self::$unicodeEnabled       = (bool) @preg_match('/\pL/u', 'a');
     }
 

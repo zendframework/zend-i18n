@@ -62,7 +62,7 @@ class IsFloatTest extends TestCase
             $expected,
             $this->validator->isValid($value),
             'Failed expecting ' . $value . ' being ' . ($expected ? 'true' : 'false') .
-            sprintf(" (locale:%s, type:%s)", $locale, $type) . ', ICU Version:' . INTL_ICU_VERSION . '-' .
+            sprintf(' (locale:%s, type:%s)', $locale, $type) . ', ICU Version:' . INTL_ICU_VERSION . '-' .
             INTL_ICU_DATA_VERSION
         );
     }
@@ -117,7 +117,7 @@ class IsFloatTest extends TestCase
         $this->assertEquals(
             $expected,
             $this->validator->isValid($value),
-            'Failed expecting ' . $value . ' being ' . ($expected ? 'true' : 'false') . sprintf(" (locale:%s)", $locale)
+            'Failed expecting ' . $value . ' being ' . ($expected ? 'true' : 'false') . sprintf(' (locale:%s)', $locale)
         );
     }
 
@@ -154,7 +154,7 @@ class IsFloatTest extends TestCase
         $this->assertEquals(
             $expected,
             $this->validator->isValid($value),
-            'Failed expecting ' . $value . ' being ' . ($expected ? 'true' : 'false') . sprintf(" (locale:%s)", $locale)
+            'Failed expecting ' . $value . ' being ' . ($expected ? 'true' : 'false') . sprintf(' (locale:%s)', $locale)
         );
     }
 
