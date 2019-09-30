@@ -7,6 +7,9 @@
 
 namespace Zend\I18n\Validator;
 
+use Traversable;
+use Zend\I18n\Exception;
+
 /**
  * Stub class for backwards compatibility.
  *

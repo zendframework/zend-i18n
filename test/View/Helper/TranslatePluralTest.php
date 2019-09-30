@@ -66,7 +66,7 @@ class TranslatePluralTest extends TestCase
                            $this->equalTo('default'),
                            $this->equalTo(null)
                        )
-                       ->will($this->returnValue($expected));
+                       ->willReturn($expected);
 
         $this->helper->setTranslator($translatorMock);
 
@@ -92,7 +92,7 @@ class TranslatePluralTest extends TestCase
                            $this->equalTo($textDomain),
                            $this->equalTo($locale)
                        )
-                       ->will($this->returnValue($expected));
+                       ->willReturn($expected);
 
         $this->helper->setTranslator($translatorMock);
 

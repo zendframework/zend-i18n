@@ -28,9 +28,9 @@ class IsInt extends AbstractValidator
      * @var string[]
      */
     protected $messageTemplates = [
-        self::INVALID => "Invalid type given. String or integer expected",
-        self::NOT_INT => "The input does not appear to be an integer",
-        self::NOT_INT_STRICT => "The input is not strictly an integer",
+        self::INVALID        => 'Invalid type given. String or integer expected',
+        self::NOT_INT        => 'The input does not appear to be an integer',
+        self::NOT_INT_STRICT => 'The input is not strictly an integer',
     ];
 
     /**
@@ -159,10 +159,10 @@ class IsInt extends AbstractValidator
         try {
             $format = new NumberFormatter($locale, NumberFormatter::DECIMAL);
             if (intl_is_failure($format->getErrorCode())) {
-                throw new Exception\InvalidArgumentException("Invalid locale string given");
+                throw new Exception\InvalidArgumentException('Invalid locale string given');
             }
         } catch (IntlException $intlException) {
-            throw new Exception\InvalidArgumentException("Invalid locale string given", 0, $intlException);
+            throw new Exception\InvalidArgumentException('Invalid locale string given', 0, $intlException);
         }
 
         try {
@@ -179,10 +179,12 @@ class IsInt extends AbstractValidator
         $decimalSep  = $format->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
         $groupingSep = $format->getSymbol(NumberFormatter::GROUPING_SEPARATOR_SYMBOL);
 
-        $valueFiltered = str_replace($groupingSep, '', $value);
-        $valueFiltered = str_replace($decimalSep, '.', $valueFiltered);
+        $valueFiltered = strtr($value, [
+            $groupingSep => '',
+            $decimalSep => '.',
+        ]);
 
-        if (strval($parsedInt) !== $valueFiltered) {
+        if ((string) $parsedInt !== $valueFiltered) {
             $this->error(self::NOT_INT);
             return false;
         }

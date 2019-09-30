@@ -26,8 +26,8 @@ class DateTime extends AbstractValidator
      * @var string[]
      */
     protected $messageTemplates = [
-        self::INVALID          => "Invalid type given. String expected",
-        self::INVALID_DATETIME => "The input does not appear to be a valid datetime",
+        self::INVALID          => 'Invalid type given. String expected',
+        self::INVALID_DATETIME => 'The input does not appear to be a valid datetime',
     ];
 
     /**
@@ -128,9 +128,9 @@ class DateTime extends AbstractValidator
     {
         if ($this->formatter && ! $this->invalidateFormatter) {
             return $this->getIntlDateFormatter()->getCalendar();
-        } else {
-            return $this->calendar;
         }
+
+        return $this->calendar;
     }
 
     /**
@@ -179,9 +179,9 @@ class DateTime extends AbstractValidator
     {
         if ($this->formatter && ! $this->invalidateFormatter) {
             return $this->getIntlDateFormatter()->getPattern();
-        } else {
-            return $this->pattern;
         }
+
+        return $this->pattern;
     }
 
     /**
@@ -230,9 +230,9 @@ class DateTime extends AbstractValidator
     {
         if ($this->formatter && ! $this->invalidateFormatter) {
             return $this->getIntlDateFormatter()->getTimeZoneId();
-        } else {
-            return $this->timezone;
         }
+
+        return $this->timezone;
     }
 
     /**

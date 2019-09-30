@@ -5,4 +5,4 @@
  * @license   https://github.com/zendframework/zend-i18n/blob/master/LICENSE.md New BSD License
  */
 
-return "noarray";
+return 'noarray';
