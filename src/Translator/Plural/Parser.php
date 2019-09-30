@@ -63,7 +63,7 @@ class Parser
     {
         // Ternary operators
         $this->registerSymbol('?', 20)->setLeftDenotationGetter(
-            function (Symbol $self, Symbol $left) {
+            static function (Symbol $self, Symbol $left) {
                 $self->first  = $left;
                 $self->second = $self->parser->expression();
                 $self->parser->advance(':');
@@ -101,19 +101,19 @@ class Parser
 
         // Literals
         $this->registerSymbol('n')->setNullDenotationGetter(
-            function (Symbol $self) {
+            static function (Symbol $self) {
                 return $self;
             }
         );
         $this->registerSymbol('number')->setNullDenotationGetter(
-            function (Symbol $self) {
+            static function (Symbol $self) {
                 return $self;
             }
         );
 
         // Parentheses
         $this->registerSymbol('(')->setNullDenotationGetter(
-            function (Symbol $self) {
+            static function (Symbol $self) {
                 $expression = $self->parser->expression();
                 $self->parser->advance(')');
                 return $expression;
@@ -135,7 +135,7 @@ class Parser
     protected function registerLeftInfixSymbol($id, $leftBindingPower)
     {
         $this->registerSymbol($id, $leftBindingPower)->setLeftDenotationGetter(
-            function (Symbol $self, Symbol $left) use ($leftBindingPower) {
+            static function (Symbol $self, Symbol $left) use ($leftBindingPower) {
                 $self->first  = $left;
                 $self->second = $self->parser->expression($leftBindingPower);
                 return $self;
@@ -153,7 +153,7 @@ class Parser
     protected function registerRightInfixSymbol($id, $leftBindingPower)
     {
         $this->registerSymbol($id, $leftBindingPower)->setLeftDenotationGetter(
-            function (Symbol $self, Symbol $left) use ($leftBindingPower) {
+            static function (Symbol $self, Symbol $left) use ($leftBindingPower) {
                 $self->first  = $left;
                 $self->second = $self->parser->expression($leftBindingPower - 1);
                 return $self;
@@ -171,7 +171,7 @@ class Parser
     protected function registerPrefixSymbol($id, $leftBindingPower)
     {
         $this->registerSymbol($id, $leftBindingPower)->setNullDenotationGetter(
-            function (Symbol $self) use ($leftBindingPower) {
+            static function (Symbol $self) use ($leftBindingPower) {
                 $self->first  = $self->parser->expression($leftBindingPower);
                 $self->second = null;
                 return $self;

@@ -91,7 +91,7 @@ class LoaderPluginManagerFactoryTest extends TestCase
                     'test' => PhpArray::class,
                 ],
                 'factories' => [
-                    'test-too' => function ($container) use ($translator) {
+                    'test-too' => static function ($container) use ($translator) {
                         return $translator;
                     },
                 ],
@@ -124,7 +124,7 @@ class LoaderPluginManagerFactoryTest extends TestCase
                     'test' => PhpArray::class,
                 ],
                 'factories' => [
-                    'test-too' => function ($container) use ($translator) {
+                    'test-too' => static function ($container) use ($translator) {
                         return $translator;
                     },
                 ],

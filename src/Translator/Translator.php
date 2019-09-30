@@ -465,7 +465,7 @@ class Translator implements TranslatorInterface
         }
 
         if ($this->isEventManagerEnabled()) {
-            $until = function ($r) {
+            $until = static function ($r) {
                 return is_string($r);
             };
 
@@ -621,7 +621,7 @@ class Translator implements TranslatorInterface
         if (! $messagesLoaded) {
             $discoveredTextDomain = null;
             if ($this->isEventManagerEnabled()) {
-                $until = function ($r) {
+                $until = static function ($r) {
                     return ($r instanceof TextDomain);
                 };
 
