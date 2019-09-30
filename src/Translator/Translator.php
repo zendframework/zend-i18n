@@ -483,7 +483,7 @@ class Translator implements TranslatorInterface
             }
         }
 
-        return;
+        return null;
     }
 
     /**
