@@ -23,7 +23,9 @@ class IsInt extends AbstractValidator
     const NOT_INT_STRICT = 'notIntStrict';
 
     /**
-     * @var array
+     * Validation failure message template definitions
+     *
+     * @var string[]
      */
     protected $messageTemplates = [
         self::INVALID => "Invalid type given. String or integer expected",
@@ -78,6 +80,8 @@ class IsInt extends AbstractValidator
 
     /**
      * Returns the set locale
+     *
+     * @return string|null
      */
     public function getLocale()
     {
@@ -90,8 +94,8 @@ class IsInt extends AbstractValidator
     /**
      * Sets the locale to use
      *
-     * @param  string $locale
-     * @return Int
+     * @param  string|null $locale
+     * @return $this
      */
     public function setLocale($locale)
     {
@@ -113,7 +117,7 @@ class IsInt extends AbstractValidator
      * Sets the strict option mode
      *
      * @param bool $strict
-     * @return self
+     * @return $this
      * @throws Exception\InvalidArgumentException
      */
     public function setStrict($strict)
@@ -129,7 +133,7 @@ class IsInt extends AbstractValidator
     /**
      * Returns true if and only if $value is a valid integer
      *
-     * @param  string|int $value
+     * @param  string|int|float $value
      * @return bool
      * @throws Exception\InvalidArgumentException
      */

@@ -75,7 +75,7 @@ class Plural extends AbstractHelper
      * Set the plural rule to use
      *
      * @param  PluralRule|string $pluralRule
-     * @return Plural
+     * @return $this
      */
     public function setPluralRule($pluralRule)
     {
@@ -89,7 +89,7 @@ class Plural extends AbstractHelper
     }
 
     /**
-     * Get the plural rule to  use
+     * Get the plural rule to use
      *
      * @return PluralRule
      */
