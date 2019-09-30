@@ -21,7 +21,7 @@ class Alnum extends AbstractValidator
      *
      * @var AlnumFilter
      */
-    protected static $filter = null;
+    protected static $filter;
 
     /**
      * Validation failure message template definitions

@@ -20,7 +20,7 @@ class Alpha extends Alnum
      *
      * @var AlphaFilter
      */
-    protected static $filter = null;
+    protected static $filter;
 
     /**
      * Validation failure message template definitions

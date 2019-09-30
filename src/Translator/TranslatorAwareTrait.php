@@ -12,7 +12,7 @@ trait TranslatorAwareTrait
     /**
      * @var TranslatorInterface
      */
-    protected $translator = null;
+    protected $translator;
 
     /**
      * @var bool

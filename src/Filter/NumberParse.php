@@ -23,7 +23,7 @@ class NumberParse extends AbstractLocale
     /**
      * @var NumberFormatter
      */
-    protected $formatter = null;
+    protected $formatter;
 
     /**
      * @param array|Traversable|string|null $localeOrOptions
