@@ -9,6 +9,7 @@ namespace Zend\I18n\Filter;
 
 use Locale;
 use Traversable;
+use Zend\Stdlib\StringUtils;
 
 class Alnum extends AbstractLocale
 {
@@ -78,7 +79,7 @@ class Alnum extends AbstractLocale
         $whiteSpace = $this->options['allow_white_space'] ? '\s' : '';
         $language   = Locale::getPrimaryLanguage($this->getLocale());
 
-        if (! static::hasPcreUnicodeSupport()) {
+        if (! StringUtils::hasPcreUnicodeSupport()) {
             // POSIX named classes are not supported, use alternative a-zA-Z0-9 match
             $pattern = '/[^a-zA-Z0-9' . $whiteSpace . ']/';
         } elseif ($language == 'ja'|| $language == 'ko' || $language == 'zh') {
