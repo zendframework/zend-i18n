@@ -32,7 +32,7 @@ class Alpha extends Alnum
         if (! StringUtils::hasPcreUnicodeSupport()) {
             // POSIX named classes are not supported, use alternative [a-zA-Z] match
             $pattern = '/[^a-zA-Z' . $whiteSpace . ']/';
-        } elseif ($language == 'ja' || $language == 'ko' || $language == 'zh') {
+        } elseif (in_array($language, ['ja', 'ko', 'zh'], true)) {
             // Use english alphabet
             $pattern = '/[^a-zA-Z'  . $whiteSpace . ']/u';
         } else {

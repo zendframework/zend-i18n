@@ -82,7 +82,7 @@ class Alnum extends AbstractLocale
         if (! StringUtils::hasPcreUnicodeSupport()) {
             // POSIX named classes are not supported, use alternative a-zA-Z0-9 match
             $pattern = '/[^a-zA-Z0-9' . $whiteSpace . ']/';
-        } elseif ($language == 'ja'|| $language == 'ko' || $language == 'zh') {
+        } elseif (in_array($language, ['ja', 'ko', 'zh'], true)) {
             // Use english alphabet
             $pattern = '/[^a-zA-Z0-9'  . $whiteSpace . ']/u';
         } else {

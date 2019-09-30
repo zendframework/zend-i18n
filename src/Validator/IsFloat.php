@@ -149,15 +149,15 @@ class IsFloat extends AbstractValidator
         $decSeparator   = $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
 
         //NO-BREAK SPACE and ARABIC THOUSANDS SEPARATOR
-        if ($groupSeparator == "\xC2\xA0") {
+        if ($groupSeparator === "\xC2\xA0") {
             $value = str_replace(' ', $groupSeparator, $value);
-        } elseif ($groupSeparator == "\xD9\xAC") {
+        } elseif ($groupSeparator === "\xD9\xAC") {
             //NumberFormatter doesn't have grouping at all for Arabic-Indic
             $value = str_replace(['\'', $groupSeparator], '', $value);
         }
 
         //ARABIC DECIMAL SEPARATOR
-        if ($decSeparator == "\xD9\xAB") {
+        if ($decSeparator === "\xD9\xAB") {
             $value = str_replace(',', $decSeparator, $value);
         }
 

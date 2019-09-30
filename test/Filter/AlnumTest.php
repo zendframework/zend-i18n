@@ -59,7 +59,7 @@ class AlnumTest extends TestCase
 
         $this->locale               = Locale::getDefault();
         $language                   = Locale::getPrimaryLanguage($this->locale);
-        static::$meansEnglishAlphabet = in_array($language, ['ja']);
+        static::$meansEnglishAlphabet = $language === 'ja';
         static::$unicodeEnabled       = (bool) @preg_match('/\pL/u', 'a');
     }
 

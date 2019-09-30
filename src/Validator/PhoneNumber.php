@@ -229,7 +229,7 @@ class PhoneNumber extends AbstractValidator
 
         // check against allowed types strict match:
         foreach ($countryPattern['patterns']['national'] as $type => $pattern) {
-            if (in_array($type, $this->allowedTypes)) {
+            if (in_array($type, $this->allowedTypes, true)) {
                 // check pattern:
                 if (preg_match($pattern, $value)) {
                     return true;
@@ -245,7 +245,7 @@ class PhoneNumber extends AbstractValidator
         // check for possible match:
         if ($this->allowPossible()) {
             foreach ($countryPattern['patterns']['possible'] as $type => $pattern) {
-                if (in_array($type, $this->allowedTypes)) {
+                if (in_array($type, $this->allowedTypes, true)) {
                     // check pattern:
                     if (preg_match($pattern, $value)) {
                         return true;
