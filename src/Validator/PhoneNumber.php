@@ -233,7 +233,9 @@ class PhoneNumber extends AbstractValidator
                 // check pattern:
                 if (preg_match($pattern, $value)) {
                     return true;
-                } elseif (isset($valueNoCountry) && preg_match($pattern, $valueNoCountry)) {
+                }
+
+                if (isset($valueNoCountry) && preg_match($pattern, $valueNoCountry)) {
                     // this handles conditions where the country code and prefix are the same
                     return true;
                 }
@@ -247,7 +249,9 @@ class PhoneNumber extends AbstractValidator
                     // check pattern:
                     if (preg_match($pattern, $value)) {
                         return true;
-                    } elseif (isset($valueNoCountry) && preg_match($pattern, $valueNoCountry)) {
+                    }
+
+                    if (isset($valueNoCountry) && preg_match($pattern, $valueNoCountry)) {
                         // this handles conditions where the country code and prefix are the same
                         return true;
                     }

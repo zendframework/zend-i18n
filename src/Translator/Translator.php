@@ -401,7 +401,9 @@ class Translator implements TranslatorInterface
             }
 
             return ($number == 1 ? $singular : $plural);
-        } elseif (is_string($translation)) {
+        }
+
+        if (is_string($translation)) {
             $translation = [$translation];
         }
 

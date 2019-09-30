@@ -127,9 +127,9 @@ class DateTime extends AbstractValidator
     {
         if ($this->formatter && ! $this->invalidateFormatter) {
             return $this->getIntlDateFormatter()->getCalendar();
-        } else {
-            return $this->calendar;
         }
+
+        return $this->calendar;
     }
 
     /**
@@ -178,9 +178,9 @@ class DateTime extends AbstractValidator
     {
         if ($this->formatter && ! $this->invalidateFormatter) {
             return $this->getIntlDateFormatter()->getPattern();
-        } else {
-            return $this->pattern;
         }
+
+        return $this->pattern;
     }
 
     /**
@@ -229,9 +229,9 @@ class DateTime extends AbstractValidator
     {
         if ($this->formatter && ! $this->invalidateFormatter) {
             return $this->getIntlDateFormatter()->getTimeZoneId();
-        } else {
-            return $this->timezone;
         }
+
+        return $this->timezone;
     }
 
     /**
