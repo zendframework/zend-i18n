@@ -26,7 +26,7 @@ class Alnum extends AbstractValidator
     /**
      * Validation failure message template definitions
      *
-     * @var array
+     * @var string[]
      */
     protected $messageTemplates = [
         self::INVALID      => "Invalid type given. String, integer or float expected",
@@ -46,7 +46,7 @@ class Alnum extends AbstractValidator
     /**
      * Sets default option values for this instance
      *
-     * @param bool $allowWhiteSpace
+     * @param array|bool $allowWhiteSpace
      */
     public function __construct($allowWhiteSpace = false)
     {
@@ -72,7 +72,7 @@ class Alnum extends AbstractValidator
      * Sets the allowWhiteSpace option
      *
      * @param  bool $allowWhiteSpace
-     * @return AlnumFilter Provides a fluent interface
+     * @return $this
      */
     public function setAllowWhiteSpace($allowWhiteSpace)
     {
@@ -83,7 +83,7 @@ class Alnum extends AbstractValidator
     /**
      * Returns true if and only if $value contains only alphabetic and digit characters
      *
-     * @param  string $value
+     * @param  int|float|string $value
      * @return bool
      */
     public function isValid($value)

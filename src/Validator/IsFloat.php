@@ -24,7 +24,9 @@ class IsFloat extends AbstractValidator
     const NOT_FLOAT = 'notFloat';
 
     /**
-     * @var array
+     * Validation failure message template definitions
+     *
+     * @var string[]
      */
     protected $messageTemplates = [
         self::INVALID   => "Invalid type given. String, integer or float expected",
@@ -89,7 +91,7 @@ class IsFloat extends AbstractValidator
      * Sets the locale to use
      *
      * @param string|null $locale
-     * @return Float
+     * @return $this
      */
     public function setLocale($locale)
     {
@@ -101,7 +103,7 @@ class IsFloat extends AbstractValidator
      * Returns true if and only if $value is a floating-point value. Uses the formal definition of a float as described
      * in the PHP manual: {@link https://www.php.net/float}
      *
-     * @param  string $value
+     * @param  float|int|string $value
      * @return bool
      * @throws Exception\InvalidArgumentException
      */

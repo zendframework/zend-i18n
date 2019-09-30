@@ -78,11 +78,11 @@ class CurrencyFormat extends AbstractHelper
     /**
      * Format a number
      *
-     * @param  float  $number
-     * @param  string $currencyCode
-     * @param  bool   $showDecimals
-     * @param  string $locale
-     * @param  string $pattern
+     * @param  float       $number
+     * @param  string|null $currencyCode
+     * @param  bool|null   $showDecimals
+     * @param  string|null $locale
+     * @param  string|null $pattern
      * @return string
      */
     public function __invoke(
@@ -165,7 +165,7 @@ class CurrencyFormat extends AbstractHelper
      * The 3-letter ISO 4217 currency code indicating the currency to use
      *
      * @param  string $currencyCode
-     * @return CurrencyFormat
+     * @return $this
      */
     public function setCurrencyCode($currencyCode)
     {
@@ -187,7 +187,7 @@ class CurrencyFormat extends AbstractHelper
      * Set the currency pattern
      *
      * @param  string $currencyPattern
-     * @return CurrencyFormat
+     * @return $this
      */
     public function setCurrencyPattern($currencyPattern)
     {
@@ -209,7 +209,7 @@ class CurrencyFormat extends AbstractHelper
      * Set locale to use instead of the default
      *
      * @param  string $locale
-     * @return CurrencyFormat
+     * @return $this
      */
     public function setLocale($locale)
     {
@@ -220,7 +220,7 @@ class CurrencyFormat extends AbstractHelper
     /**
      * Get the locale to use
      *
-     * @return string|null
+     * @return string
      */
     public function getLocale()
     {
@@ -235,7 +235,7 @@ class CurrencyFormat extends AbstractHelper
      * Set if the view helper should show two decimals
      *
      * @param  bool $showDecimals
-     * @return CurrencyFormat
+     * @return $this
      */
     public function setShouldShowDecimals($showDecimals)
     {
@@ -260,7 +260,6 @@ class CurrencyFormat extends AbstractHelper
      * @param NumberFormatter $formatter
      * @param string          $locale
      * @param string          $currencyCode
-     *
      * @return string
      */
     private function fixICUBugForNoDecimals($formattedNumber, NumberFormatter $formatter, $locale, $currencyCode)
@@ -279,7 +278,6 @@ class CurrencyFormat extends AbstractHelper
     /**
      * @param string $locale
      * @param string $currencyCode
-     *
      * @return string
      */
     private function getCurrencySymbol($locale, $currencyCode)

@@ -22,7 +22,7 @@ class PhpArray extends AbstractFileLoader
      * @see    FileLoaderInterface::load()
      * @param  string $locale
      * @param  string $filename
-     * @return TextDomain|null
+     * @return TextDomain
      * @throws Exception\InvalidArgumentException
      */
     public function load($locale, $filename)

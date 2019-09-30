@@ -21,7 +21,7 @@ class PhoneNumber extends AbstractValidator
     /**
      * Validation failure message template definitions
      *
-     * @var array
+     * @var string[]
      */
     protected $messageTemplates = [
         self::NO_MATCH    => 'The input does not match a phone number format',
@@ -54,7 +54,7 @@ class PhoneNumber extends AbstractValidator
     /**
      * Allowed Types
      *
-     * @var array
+     * @var string[]
      */
     protected $allowedTypes = [
         'general',
@@ -103,8 +103,8 @@ class PhoneNumber extends AbstractValidator
     /**
      * Allowed Types
      *
-     * @param  array|null $types
-     * @return self|array
+     * @param  string[]|null $types
+     * @return $this|string[]
      */
     public function allowedTypes(array $types = null)
     {
@@ -121,7 +121,7 @@ class PhoneNumber extends AbstractValidator
      * Allow Possible
      *
      * @param  bool|null $possible
-     * @return self|bool
+     * @return $this|bool
      */
     public function allowPossible($possible = null)
     {
@@ -148,7 +148,7 @@ class PhoneNumber extends AbstractValidator
      * Set Country
      *
      * @param  string $country
-     * @return self
+     * @return $this
      */
     public function setCountry($country)
     {
@@ -184,8 +184,8 @@ class PhoneNumber extends AbstractValidator
     /**
      * Returns true if and only if $value matches phone number format
      *
-     * @param  string $value
-     * @param  array  $context
+     * @param  string|null $value
+     * @param  array|null  $context
      * @return bool
      */
     public function isValid($value = null, $context = null)

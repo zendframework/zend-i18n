@@ -53,7 +53,7 @@ class NumberParse extends AbstractLocale
 
     /**
      * @param  string|null $locale
-     * @return NumberFormat
+     * @return $this
      */
     public function setLocale($locale = null)
     {
@@ -64,7 +64,7 @@ class NumberParse extends AbstractLocale
 
     /**
      * @param  int $style
-     * @return NumberFormat
+     * @return $this
      */
     public function setStyle($style)
     {
@@ -83,7 +83,7 @@ class NumberParse extends AbstractLocale
 
     /**
      * @param  int $type
-     * @return NumberFormat
+     * @return $this
      */
     public function setType($type)
     {
@@ -101,7 +101,7 @@ class NumberParse extends AbstractLocale
 
     /**
      * @param  NumberFormatter $formatter
-     * @return NumberFormat
+     * @return $this
      */
     public function setFormatter(NumberFormatter $formatter)
     {
@@ -132,7 +132,7 @@ class NumberParse extends AbstractLocale
     /**
      * Defined by Zend\Filter\FilterInterface
      *
-     * @see    Zend\Filter\FilterInterface::filter()
+     * @see    \Zend\Filter\FilterInterface::filter()
      * @param  mixed $value
      * @return mixed
      */

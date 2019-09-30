@@ -25,7 +25,7 @@ class Alpha extends Alnum
     /**
      * Validation failure message template definitions
      *
-     * @var array
+     * @var string[]
      */
     protected $messageTemplates = [
         self::INVALID      => "Invalid type given. String expected",
