@@ -41,7 +41,7 @@ class Parser
     /**
      * Table of symbols.
      *
-     * @var array
+     * @var Symbol[]
      */
     protected $symbolTable = [];
 
@@ -220,6 +220,7 @@ class Parser
      * Get a new symbol.
      *
      * @param string $id
+     * @return Symbol
      */
     protected function getSymbol($id)
     {
@@ -287,7 +288,7 @@ class Parser
     /**
      * Get the next token.
      *
-     * @return array
+     * @return Symbol
      * @throws Exception\ParseException
      */
     protected function getNextToken()
