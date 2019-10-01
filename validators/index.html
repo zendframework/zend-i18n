@@ -276,27 +276,26 @@ capabilities.</p>
 <p><code>Zend\I18n\Validator\Alnum</code> allows you to validate if a given value contains
 only alphabetical characters and digits. There is no length limitation for the
 input you want to validate.</p>
-<h3 id="supported-options">Supported options</h3>
+<h3>Supported options</h3>
 <p>The following options are supported for <code>Zend\I18n\Validator\Alnum</code>:</p>
 <ul>
 <li><code>allowWhiteSpace</code>: Whether or not whitespace characters are allowed. This
   option defaults to <code>FALSE</code>.</li>
 </ul>
-<h3 id="basic-usage">Basic usage</h3>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\Alnum();
+<h3>Basic usage</h3>
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\Alnum();
 if ($validator-&gt;isValid('Abcd12')) {
     // value contains only allowed chars
 } else {
     // false
-}</code></pre>
-
-<h3 id="using-whitespace">Using whitespace</h3>
+}</code></pre></p>
+<h3>Using whitespace</h3>
 <p>By default, whitespace is not accepted as it is not part of the alphabet.
 However, if you want to validate complete sentences or phrases, you may need to
 allow whitespace; this can be done via the <code>allowWhiteSpace</code> option, either at
 instantiation or afterwards via the <code>setAllowWhiteSpace()</code> method.</p>
 <p>To get the current state of the flag, use the <code>getAllowWhiteSpace()</code> method.</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\Alnum(['allowWhiteSpace' =&gt; true]);
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\Alnum(['allowWhiteSpace' =&gt; true]);
 
 // or set it via method call:
 $validator-&gt;setAllowWhiteSpace(true);
@@ -305,9 +304,8 @@ if ($validator-&gt;isValid('Abcd and 12')) {
     // value contains only allowed chars
 } else {
     // false
-}</code></pre>
-
-<h3 id="using-different-languages">Using different languages</h3>
+}</code></pre></p>
+<h3>Using different languages</h3>
 <p>Several languages supported by ext/intl use alphabets where characters are
 formed from multiple bytes, including <em>Korean</em>, <em>Japanese</em>, and <em>Chinese</em>. Such
 languages therefore are unsupported with regards to the <code>Alnum</code> validator.</p>
@@ -318,27 +316,26 @@ using the English alphabet.</p>
 only alphabetical characters. There is no length limitation for the input you
 want to validate. This validator is identical to the <code>Zend\I18n\Validator\Alnum</code>
 validator with the exception that it does not accept digits.</p>
-<h3 id="supported-options_1">Supported options</h3>
+<h3>Supported options</h3>
 <p>The following options are supported for <code>Zend\I18n\Validator\Alpha</code>:</p>
 <ul>
 <li><code>allowWhiteSpace</code>: Whether or not whitespace characters are allowed. This
   option defaults to <code>FALSE</code>.</li>
 </ul>
-<h3 id="basic-usage_1">Basic usage</h3>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\Alpha();
+<h3>Basic usage</h3>
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\Alpha();
 if ($validator-&gt;isValid('Abcd')) {
     // value contains only allowed chars
 } else {
     // false
-}</code></pre>
-
-<h3 id="using-whitespace_1">Using whitespace</h3>
+}</code></pre></p>
+<h3>Using whitespace</h3>
 <p>By default, whitespace is not accepted as it is not part of the alphabet.
 However, if you want to validate complete sentences or phrases, you may need to
 allow whitespace; this can be done via the <code>allowWhiteSpace</code> option, either at
 instantiation or afterwards via the <code>setAllowWhiteSpace()</code> method.</p>
 <p>To get the current state of the flag, use the <code>getAllowWhiteSpace()</code> method.</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\Alpha(['allowWhiteSpace' =&gt; true]);
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\Alpha(['allowWhiteSpace' =&gt; true]);
 
 // or set it via method call:
 $validator-&gt;setAllowWhiteSpace(true);
@@ -347,9 +344,8 @@ if ($validator-&gt;isValid('Abcd and efg')) {
     // value contains only allowed chars
 } else {
     // false
-}</code></pre>
-
-<h3 id="using-different-languages_1">Using different languages</h3>
+}</code></pre></p>
+<h3>Using different languages</h3>
 <p>When using <code>Zend\I18n\Validator\Alpha</code>, the language provided by the user's
 browser will be used to set the allowed characters. For locales outside of
 English, this means that additional alphabetic characters may be used
@@ -364,37 +360,35 @@ will be validated using the English alphabet.</p>
 <h2 id="isfloat">IsFloat</h2>
 <p><code>Zend\I18n\Validator\IsFloat</code> allows you to validate if a given value contains a
 floating-point value. This validator takes into account localized input.</p>
-<h3 id="supported-options_2">Supported options</h3>
+<h3>Supported options</h3>
 <p>The following options are supported for <code>Zend\I18n\Validator\IsFloat</code>:</p>
 <ul>
 <li><code>locale</code>: Sets the locale to use when validating localized float values.</li>
 </ul>
-<h3 id="basic-float-validation">Basic float validation</h3>
+<h3>Basic float validation</h3>
 <p>By default, if no locale is provided, <code>IsFloat</code> will use the system locale.</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsFloat();
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\IsFloat();
 
 $validator-&gt;isValid(1234.5);    // returns true
 $validator-&gt;isValid('10a01');   // returns false
-$validator-&gt;isValid('1,234.5'); // returns true</code></pre>
-
+$validator-&gt;isValid('1,234.5'); // returns true</code></pre></p>
 <p>(The above example assumes that the environment locale is set to <code>en</code>.)</p>
-<h3 id="localized-float-validation">Localized float validation</h3>
+<h3>Localized float validation</h3>
 <p>Float values are often written differently based on the country or region. For
 example, using English, you might write <code>1.5</code>, whereas in german you would write
 <code>1,5</code>, and in other languages you might use grouping.</p>
 <p><code>Zend\I18n\Validator\IsFloat</code> is able to validate such notations. However, it is
 limited to the locale you set. See the following code:</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsFloat(['locale' =&gt; 'de']);
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\IsFloat(['locale' =&gt; 'de']);
 
 $validator-&gt;isValid(1234.5);    // returns true
-$validator-&gt;isValid("1 234,5"); // returns false
-$validator-&gt;isValid("1.234");   // returns true</code></pre>
-
+$validator-&gt;isValid(&quot;1 234,5&quot;); // returns false
+$validator-&gt;isValid(&quot;1.234&quot;);   // returns true</code></pre></p>
 <p>By using a locale, your input is validated based on the locale provided. Using a
 notation not specific to the locale results in a <code>false</code> evaulation.</p>
 <p>The default validation locale can also be set after instantiation using
 <code>setLocale()</code>, and retrieved using <code>getLocale()</code>.</p>
-<h3 id="migration-from-20-23-to-24">Migration from 2.0-2.3 to 2.4+</h3>
+<h3>Migration from 2.0-2.3 to 2.4+</h3>
 <p>Version 2.4 adds support for PHP 7. In PHP 7, <code>float</code> is a reserved keyword,
 which required renaming the <code>Float</code> validator. If you were using the <code>Float</code>
 validator directly previously, you will now receive an <code>E_USER_DEPRECATED</code>
@@ -405,35 +399,32 @@ receive an <code>IsFloat</code> instance instead starting in 2.4.0.</p>
 <h2 id="isint">IsInt</h2>
 <p><code>Zend\I18n\Validator\IsInt</code> validates if a given value is an integer, using the
 locale provided.</p>
-<h3 id="supported-options_3">Supported Options</h3>
+<h3>Supported Options</h3>
 <p>The following options are supported for <code>Zend\I18n\Validator\IsInt</code>:</p>
 <ul>
 <li><code>locale</code>: Sets the locale to use when validating localized integers.</li>
 <li><code>strict</code>: Sets whether or not the value's data type should be checked.</li>
 </ul>
-<h3 id="basic-integer-validation">Basic integer validation</h3>
+<h3>Basic integer validation</h3>
 <p>When no locale is provided to the validator, it uses the system locale:</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsInt();
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\IsInt();
 
 $validator-&gt;isValid(1234);    // returns true
 $validator-&gt;isValid(1234.5);  // returns false
-$validator-&gt;isValid('1,234'); // returns true</code></pre>
-
+$validator-&gt;isValid('1,234'); // returns true</code></pre></p>
 <p>(The above example assumes that the environment locale is set to <code>en</code>.)</p>
-<h3 id="strict-validation">Strict validation</h3>
+<h3>Strict validation</h3>
 <p>By default, the value's data type is not enforced.</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsInt();
+<div class=md-fenced-code-tabs id=tab-tab-group-7><ul class="nav nav-tabs"><li class="nav-item active"><a href=#tab-group-7-0_php role=tab data-toggle=tab data-lang=php>Php</a></li><li class="nav-item "><a href=#tab-group-7-1_php role=tab data-toggle=tab data-lang=php>Php</a></li></ul><div class=tab-content><div id=tab-group-7-0_php class="tab-pane active" role=tabpanel><pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\IsInt();
 
 $validator-&gt;isValid(1234);    // returns true
-$validator-&gt;isValid('1234');  // returns true</code></pre>
-
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsInt();
+$validator-&gt;isValid('1234');  // returns true</code></pre></div><div id=tab-group-7-1_php class="tab-pane " role=tabpanel><pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\IsInt();
 $validator-&gt;setStrict(true);
 
 $validator-&gt;isValid(1234);    // returns true
-$validator-&gt;isValid('1234');  // returns false</code></pre>
+$validator-&gt;isValid('1234');  // returns false</code></pre></div></div></div>
 
-<h3 id="localized-integer-validation">Localized integer validation</h3>
+<h3>Localized integer validation</h3>
 <p>Integer values are often written differently based on country or region. For
 example, using English, you may write "1234" or "1,234"; both are integer
 values, but the grouping is optional. In German, you'd write "1.234", and in
@@ -442,17 +433,16 @@ French, "1 234".</p>
 validity of an integer value. In such cases, it doesn't simply strip the
 validator, but instead validates that the correct separator as defined by the
 locale is used.</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\IsInt(['locale' =&gt; 'de']);
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\IsInt(['locale' =&gt; 'de']);
 
 $validator-&gt;isValid(1234);    // returns true
-$validator-&gt;isValid("1,234"); // returns false
-$validator-&gt;isValid("1.234"); // returns true</code></pre>
-
+$validator-&gt;isValid(&quot;1,234&quot;); // returns false
+$validator-&gt;isValid(&quot;1.234&quot;); // returns true</code></pre></p>
 <p>By using a locale, your input is validated based on the locale provided. Using a
 notation not specific to the locale results in a <code>false</code> evaulation.</p>
 <p>The default validation locale can also be set after instantiation using
 <code>setLocale()</code>, and retrieved using <code>getLocale()</code>.</p>
-<h3 id="migration-from-20-23-to-24_1">Migration from 2.0-2.3 to 2.4+</h3>
+<h3>Migration from 2.0-2.3 to 2.4+</h3>
 <p>Version 2.4 adds support for PHP 7. In PHP 7, <code>int</code> is a reserved keyword, which
 required renaming the <code>Int</code> validator. If you were using the <code>Int</code> validator
 directly previously, you will now receive an <code>E_USER_DEPRECATED</code> notice on
@@ -466,14 +456,14 @@ termed ZIP codes.</p>
 <p><code>Zend\I18n\Validator\PostCode</code> knows more than 160 different postal code
 formats. To select the correct format there are two ways. You can either use a
 fully qualified locale, or you can set your own format manually.</p>
-<h3 id="supported-options_4">Supported options</h3>
+<h3>Supported options</h3>
 <p>The following options are supported for <code>Zend\I18n\Validator\PostCode</code>:</p>
 <ul>
 <li><code>format</code>: Sets a postcode format which will be used for validation of the
   input.</li>
 <li><code>locale</code>: Sets a locale from which the postcode will be taken from.</li>
 </ul>
-<h3 id="usage">Usage</h3>
+<h3>Usage</h3>
 <p>Using a locale is more convenient as zend-validator already knows the
 appropriate postal code format for each locale; however, you need to use the
 fully qualified locale (one containing a region specifier) to do so. For
@@ -481,48 +471,43 @@ instance, the locale <code>de</code> is a locale but could not be used with
 <code>Zend\I18n\Validator\PostCode</code> as it does not include the region; <code>de_AT</code>,
 however, would be a valid locale, as it specifies the region code (<code>AT</code>, for
 Austria).</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode('de_AT');</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\PostCode('de_AT');</code></pre></p>
 <p>When you don't set a locale yourself, then <code>Zend\I18n\Validator\PostCode</code> will
 use the application wide set locale, or, when there is none, the locale returned
 by <code>Locale</code>.</p>
-<pre class="codehilite"><code class="language-php">// application wide locale within your bootstrap
+<p> <pre class=codehilite><code class=language-php>// application wide locale within your bootstrap
 Locale::setDefault('de_AT');
 
-$validator = new Zend\I18n\Validator\PostCode();</code></pre>
-
+$validator = new Zend\I18n\Validator\PostCode();</code></pre></p>
 <p>You can also change the locale afterwards by calling <code>setLocale()</code>. And of
 course you can get the actual used locale by calling <code>getLocale()</code>.</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode('de_AT');
-$validator-&gt;setLocale('en_GB');</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\PostCode('de_AT');
+$validator-&gt;setLocale('en_GB');</code></pre></p>
 <p>Postal code formats are regular expression strings. When the international
 postal code format, which is used by setting the locale, does not fit your
 needs, then you can also manually set a format by calling <code>setFormat()</code>.</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode('de_AT');
-$validator-&gt;setFormat('AT-\d{5}');</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\PostCode('de_AT');
+$validator-&gt;setFormat('AT-\d{5}');</code></pre></p>
 <blockquote>
-<h3 id="conventions-for-self-defined-formats">Conventions for self defined formats</h3>
+<h3>Conventions for self defined formats</h3>
 <p>When using self defined formats, you should omit the regex delimiters and
 anchors (<code>'/^'</code> and  <code>'$/'</code>). They are attached automatically.</p>
 <p>You should also be aware that postcode values will always be validated in a
 strict way. This means that they have to be written standalone without
 additional characters when they are not covered by the format.</p>
 </blockquote>
-<h3 id="constructor-options">Constructor options</h3>
+<h3>Constructor options</h3>
 <p>At its most basic, you may pass a string representing a fully qualified locale
 to the constructor of <code>Zend\I18n\Validator\PostCode</code>.</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode('de_AT');</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\PostCode('de_AT');</code></pre></p>
 <p>Additionally, you may pass either an array or a <code>Traversable</code> instance to the
 constructor. When you do so, you must include either the key <code>locale</code> or
 <code>format</code>; these will be used to set the appropriate values in the validator
 object.</p>
-<pre class="codehilite"><code class="language-php">$validator = new Zend\I18n\Validator\PostCode([
+<p> <pre class=codehilite><code class=language-php>$validator = new Zend\I18n\Validator\PostCode([
     'locale' =&gt; 'de_AT',
     'format' =&gt; 'AT_\d+'
-]);</code></pre>
+]);</code></pre></p>
 
 
 
@@ -552,7 +537,7 @@ object.</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-i18n/edit/master/docs/validators.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-i18n/edit/master/docs/book/validators.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>
