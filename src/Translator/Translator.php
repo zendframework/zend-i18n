@@ -387,37 +387,34 @@ class Translator implements TranslatorInterface
         $locale      = $locale ?: $this->getLocale();
         $translation = $this->getTranslatedMessage($singular, $locale, $textDomain);
 
-        if ($translation === null || $translation === '') {
-            if (null !== ($fallbackLocale = $this->getFallbackLocale())
-                && $locale !== $fallbackLocale
-            ) {
-                return $this->translatePlural(
-                    $singular,
-                    $plural,
-                    $number,
-                    $textDomain,
-                    $fallbackLocale
-                );
-            }
-
-            return ($number == 1 ? $singular : $plural);
-        }
-
         if (is_string($translation)) {
             $translation = [$translation];
         }
 
-        $index = $this->messages[$textDomain][$locale]
-                      ->getPluralRule()
-                      ->evaluate($number);
+        $index = ($number === 1) ? 0 : 1; // en_EN Plural rule
+        if ($this->messages[$textDomain][$locale] instanceof TextDomain) {
+            $index = $this->messages[$textDomain][$locale]
+                ->getPluralRule()
+                ->evaluate($number);
+        }
 
-        if (! isset($translation[$index])) {
-            throw new Exception\OutOfBoundsException(
-                sprintf('Provided index %d does not exist in plural array', $index)
+        if (isset($translation[$index]) && $translation[$index] !== '' && $translation[$index] !== null) {
+            return $translation[$index];
+        }
+
+        if (null !== ($fallbackLocale = $this->getFallbackLocale())
+            && $locale !== $fallbackLocale
+        ) {
+            return $this->translatePlural(
+                $singular,
+                $plural,
+                $number,
+                $textDomain,
+                $fallbackLocale
             );
         }
 
-        return $translation[$index];
+        return $index === 0 ? $singular : $plural;
     }
 
     /**

@@ -2,15 +2,17 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.9.3 - TBD
+## 2.10.0 - 2019-11-18
 
 ### Added
 
-- Nothing.
+- [#102](https://github.com/zendframework/zend-i18n/pull/102) adds `Zend\I18n\View\HelperTrait`, which provides annotations describing the various helpers zend-i18n provides to a zend-view renderer. The trait can be used in combination with `Zend\View\Renderer\PhpRenderer` in annotations on the `$this` variable within view scripts to provide IDE autocompletion for helper-provided methods.
 
 ### Changed
 
-- Nothing.
+- [#110](https://github.com/zendframework/zend-i18n/pull/110) modifies how `translatePlural()` works when a msgid is present, but no translations are present. It now properly returns the source-code if unable to translate the message, instead of returning an empty string (which is the behavior under `translate()` as well).
+
+- [#126](https://github.com/zendframework/zend-i18n/pull/126) modifies the package definition to put an explicit requirement on ext-intl, as it is required for the majority of functionality. Users have indicated multiple times confusion about why the component does not work after installation, when attempting to use intl functionality; requiring the extension resolves that issue.
 
 ### Deprecated
 
