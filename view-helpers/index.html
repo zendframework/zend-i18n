@@ -283,6 +283,23 @@ internationalization: e.g., formatting a date, formatting currency, or
 displaying translated content.</p>
 <p>See the <a href="https://docs.zendframework.com/zend-view/helpers/intro/">zend-view helpers documentation</a>
 for more information.</p>
+<blockquote>
+<h3>IDE auto-completion in templates</h3>
+<p>The <code>Zend\I18n\View\HelperTrait</code> trait can be used to provide auto-completion
+for modern IDEs. It defines the aliases of the view helpers in a DocBlock as
+<code>@method</code> tags.</p>
+<h4>Usage</h4>
+<p>In order to allow auto-completion in templates, <code>$this</code> variable should be
+type-hinted via a DocBlock at the top of your template. It is recommended that
+you always add the <code>Zend\View\Renderer\PhpRenderer</code> as the first type, so that
+the IDE can auto-suggest the default view helpers from <code>zend-view</code>. Next,
+chain the <code>HelperTrait</code> from <code>zend-i18n</code> with a pipe symbol (a.k.a. vertical
+bar) <code>|</code>:
+$$$$FENCED_CODE_BLOCK_5dd30177dbeee5.57896957</p>
+<p>You may chain as many <code>HelperTrait</code> traits as you like, depending on view
+helpers from which Zend Framework component you are using and would like to
+provide auto-completion for.</p>
+</blockquote>
 <h2 id="currencyformat-helper">CurrencyFormat Helper</h2>
 <p>The <code>CurrencyFormat</code> view helper can be used to simplify rendering of localized
 currency values. It acts as a wrapper for the <code>NumberFormatter</code> class within the
