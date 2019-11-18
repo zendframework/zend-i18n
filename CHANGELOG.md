@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Changed
 
+- [#110](https://github.com/zendframework/zend-i18n/pull/110) modifies how `translatePlural()` works when a msgid is present, but no translations are present. It now properly returns the source-code if unable to translate the message, instead of returning an empty string (which is the behavior under `translate()` as well).
+
 - [#126](https://github.com/zendframework/zend-i18n/pull/126) modifies the package definition to put an explicit requirement on ext-intl, as it is required for the majority of functionality. Users have indicated multiple times confusion about why the component does not work after installation, when attempting to use intl functionality; requiring the extension resolves that issue.
 
 ### Deprecated
