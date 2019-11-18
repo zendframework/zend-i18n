@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Changed
 
-- Nothing.
+- [#126](https://github.com/zendframework/zend-i18n/pull/126) modifies the package definition to put an explicit requirement on ext-intl, as it is required for the majority of functionality. Users have indicated multiple times confusion about why the component does not work after installation, when attempting to use intl functionality; requiring the extension resolves that issue.
 
 ### Deprecated
 
