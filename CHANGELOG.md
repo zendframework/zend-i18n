@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#102](https://github.com/zendframework/zend-i18n/pull/102) adds `Zend\I18n\View\HelperTrait`, which provides annotations describing the various helpers zend-i18n provides to a zend-view renderer. The trait can be used in combination with `Zend\View\Renderer\PhpRenderer` in annotations on the `$this` variable within view scripts to provide IDE autocompletion for helper-provided methods.
 
 ### Changed
 
