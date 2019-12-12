@@ -9,6 +9,7 @@ namespace ZendTest\I18n\View\Helper;
 
 use PHPUnit\Framework\TestCase;
 use Zend\I18n\View\Helper\Translate as TranslateHelper;
+use Zend\I18n\Translator\Translator;
 
 /**
  * @group      Zend_View
@@ -54,13 +55,12 @@ class TranslateTest extends TestCase
         $input    = 'input';
         $expected = 'translated';
 
-        $translatorMock = $this->createMock('Zend\I18n\Translator\Translator');
-        $translatorMock->expects($this->once())
-                       ->method('translate')
-                       ->with($this->equalTo($input), $this->equalTo('default'), $this->equalTo(null))
-                       ->willReturn($expected);
+        $translatorMock = $this->prophesize(Translator::class);
+        $translatorMock->translate($input, 'default', null)
+            ->willReturn($expected)
+            ->shouldBeCalledTimes(1);
 
-        $this->helper->setTranslator($translatorMock);
+        $this->helper->setTranslator($translatorMock->reveal());
 
         $this->assertEquals($expected, $this->helper->__invoke($input));
     }
@@ -72,13 +72,12 @@ class TranslateTest extends TestCase
         $textDomain = 'textDomain';
         $locale     = 'en_US';
 
-        $translatorMock = $this->createMock('Zend\I18n\Translator\Translator');
-        $translatorMock->expects($this->once())
-                       ->method('translate')
-                       ->with($this->equalTo($input), $this->equalTo($textDomain), $this->equalTo($locale))
-                       ->willReturn($expected);
+        $translatorMock = $this->prophesize(Translator::class);
+        $translatorMock->translate($input, $textDomain, $locale)
+            ->willReturn($expected)
+            ->shouldBeCalledTimes(1);
 
-        $this->helper->setTranslator($translatorMock);
+        $this->helper->setTranslator($translatorMock->reveal());
 
         $this->assertEquals($expected, $this->helper->__invoke($input, $textDomain, $locale));
     }

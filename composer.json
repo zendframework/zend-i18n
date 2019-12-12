@@ -31,6 +31,9 @@
         "zendframework/zend-validator": "^2.6",
         "zendframework/zend-view": "^2.6.3"
     },
+    "conflict": {
+        "phpspec/prophecy": "<1.9.0"
+    },
     "suggest": {
         "zendframework/zend-cache": "Zend\\Cache component",
         "zendframework/zend-config": "Zend\\Config component",

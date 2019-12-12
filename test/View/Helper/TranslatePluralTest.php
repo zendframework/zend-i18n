@@ -9,6 +9,7 @@ namespace ZendTest\I18n\View\Helper;
 
 use PHPUnit\Framework\TestCase;
 use Zend\I18n\View\Helper\TranslatePlural as TranslatePluralHelper;
+use Zend\I18n\Translator\Translator;
 
 /**
  * @group      Zend_View
@@ -56,19 +57,12 @@ class TranslatePluralTest extends TestCase
         $numberInput   = 1;
         $expected      = 'translated';
 
-        $translatorMock = $this->createMock('Zend\I18n\Translator\Translator');
-        $translatorMock->expects($this->once())
-                       ->method('translatePlural')
-                       ->with(
-                           $this->equalTo($singularInput),
-                           $this->equalTo($pluralInput),
-                           $this->equalTo($numberInput),
-                           $this->equalTo('default'),
-                           $this->equalTo(null)
-                       )
-                       ->willReturn($expected);
+        $translatorMock = $this->prophesize(Translator::class);
+        $translatorMock->translatePlural($singularInput, $pluralInput, $numberInput, 'default', null)
+            ->willReturn($expected)
+            ->shouldBeCalledTimes(1);
 
-        $this->helper->setTranslator($translatorMock);
+        $this->helper->setTranslator($translatorMock->reveal());
 
         $this->assertEquals($expected, $this->helper->__invoke($singularInput, $pluralInput, $numberInput));
     }
@@ -82,19 +76,12 @@ class TranslatePluralTest extends TestCase
         $textDomain    = 'textDomain';
         $locale        = 'en_US';
 
-        $translatorMock = $this->createMock('Zend\I18n\Translator\Translator');
-        $translatorMock->expects($this->once())
-                       ->method('translatePlural')
-                       ->with(
-                           $this->equalTo($singularInput),
-                           $this->equalTo($pluralInput),
-                           $this->equalTo($numberInput),
-                           $this->equalTo($textDomain),
-                           $this->equalTo($locale)
-                       )
-                       ->willReturn($expected);
+        $translatorMock = $this->prophesize(Translator::class);
+        $translatorMock->translatePlural($singularInput, $pluralInput, $numberInput, $textDomain, $locale)
+            ->willReturn($expected)
+            ->shouldBeCalledTimes(1);
 
-        $this->helper->setTranslator($translatorMock);
+        $this->helper->setTranslator($translatorMock->reveal());
 
         $this->assertEquals($expected, $this->helper->__invoke(
             $singularInput,
