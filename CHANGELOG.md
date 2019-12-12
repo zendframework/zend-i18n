@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#129](https://github.com/zendframework/zend-i18n/pull/129) fixes Hungarian PhoneNumber validator (mobile numbers starting from 50).
 
 ## 2.10.0 - 2019-11-18
 
