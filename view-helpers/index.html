@@ -295,11 +295,11 @@ you always add the <code>Zend\View\Renderer\PhpRenderer</code> as the first type
 the IDE can auto-suggest the default view helpers from <code>zend-view</code>. Next,
 chain the <code>HelperTrait</code> from <code>zend-i18n</code> with a pipe symbol (a.k.a. vertical
 bar) <code>|</code>:</p>
-<p><pre class=codehilite><code class=language-php>
+<pre class=codehilite><code class=language-php>
 /**
  * @var Zend\View\Renderer\PhpRenderer|Zend\I18n\View\HelperTrait $this
  */
-</code></pre></p>
+</code></pre>
 <p>You may chain as many <code>HelperTrait</code> traits as you like, depending on view
 helpers from which Zend Framework component you are using and would like to
 provide auto-completion for.</p>
@@ -309,7 +309,7 @@ provide auto-completion for.</p>
 currency values. It acts as a wrapper for the <code>NumberFormatter</code> class within the
 internationalization extension (ext/intl).</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>// Within your view:
+<pre class=codehilite><code class=language-php>// Within your view:
 
 echo $this-&gt;currencyFormat(1234.56, 'USD', null, 'en_US');
 // Returns: &quot;$1,234.56&quot;
@@ -327,15 +327,15 @@ echo $this-&gt;currencyFormat(12345678.90, 'EUR', true, 'de_DE', '#0.# kg');
 // Returns: &quot;12345678,90 kg&quot;
 
 echo $this-&gt;currencyFormat(12345678.90, 'EUR', false, 'de_DE', '#0.# kg');
-// Returns: &quot;12345679 kg&quot;</code></pre></p>
+// Returns: &quot;12345679 kg&quot;</code></pre>
 <h3>Method description</h3>
-<p> <pre class=codehilite><code class=language-php>currencyFormat(
+<pre class=codehilite><code class=language-php>currencyFormat(
     float $number [,
     string $currencyCode = null [,
     bool $showDecimals = null [,
     string $locale = null [,
     string $pattern = null
-] ] ] ]) : string</code></pre></p>
+] ] ] ]) : string</code></pre>
 <p>where:</p>
 <ul>
 <li><code>$number</code>: the numeric currency value.</li>
@@ -355,7 +355,7 @@ echo $this-&gt;currencyFormat(12345678.90, 'EUR', false, 'de_DE', '#0.# kg');
 <h4>Set the currency code and the locale</h4>
 <p>The <code>$currencyCode</code> and <code>$locale</code> options can be set prior to formatting and
 will be applied each time the helper is used:</p>
-<p> <pre class=codehilite><code class=language-php>// Within your view
+<pre class=codehilite><code class=language-php>// Within your view
 
 $this-&gt;plugin('currencyformat')-&gt;setCurrencyCode('USD')-&gt;setLocale('en_US');
 
@@ -363,31 +363,31 @@ echo $this-&gt;currencyFormat(1234.56);
 // This returns: &quot;$1,234.56&quot;
 
 echo $this-&gt;currencyFormat(5678.90);
-// This returns: &quot;$5,678.90&quot;</code></pre></p>
+// This returns: &quot;$5,678.90&quot;</code></pre>
 <p>The method signatures are:</p>
-<p> <pre class=codehilite><code class=language-php>setCurrencyCode(string $currencyCode) : CurrencyFormat</code></pre></p>
+<pre class=codehilite><code class=language-php>setCurrencyCode(string $currencyCode) : CurrencyFormat</code></pre>
 <p>where <code>$currencyCode</code> is the 3-letter ISO 4217 currency code, and</p>
-<p> <pre class=codehilite><code class=language-php>setLocale(string $locale) : CurrencyFormat</code></pre></p>
+<pre class=codehilite><code class=language-php>setLocale(string $locale) : CurrencyFormat</code></pre>
 <p>where <code>$locale</code> is the locale with which to format the number.</p>
 <h4>Show decimals</h4>
-<p> <pre class=codehilite><code class=language-php>// Within your view
+<pre class=codehilite><code class=language-php>// Within your view
 
 $this-&gt;plugin('currencyformat')-&gt;setShouldShowDecimals(false);
 
 echo $this-&gt;currencyFormat(1234.56, 'USD', null, 'en_US');
-// This returns: &quot;$1,235&quot;</code></pre></p>
+// This returns: &quot;$1,235&quot;</code></pre>
 <p>with the following method signature:</p>
-<p> <pre class=codehilite><code class=language-php>setShouldShowDecimals(bool $showDecimals) : CurrencyFormat</code></pre></p>
+<pre class=codehilite><code class=language-php>setShouldShowDecimals(bool $showDecimals) : CurrencyFormat</code></pre>
 <p>where <code>$showDecimals</code> indicates whether or not decimal values will be displayed.</p>
 <h4>Set the currency pattern</h4>
-<p> <pre class=codehilite><code class=language-php>// Within your view
+<pre class=codehilite><code class=language-php>// Within your view
 
 $this-&gt;plugin('currencyformat')-&gt;setCurrencyPattern('#0.# kg');
 
 echo $this-&gt;currencyFormat(12345678.90, 'EUR', null, 'de_DE');
-// This returns: &quot;12345678,90 kg&quot;</code></pre></p>
+// This returns: &quot;12345678,90 kg&quot;</code></pre>
 <p>with the following method signature:</p>
-<p> <pre class=codehilite><code class=language-php>setCurrencyPattern(string $currencyPattern) : CurrencyFormat</code></pre></p>
+<pre class=codehilite><code class=language-php>setCurrencyPattern(string $currencyPattern) : CurrencyFormat</code></pre>
 <p>where <code>$currencyPattern</code> is a valid <a href="http://www.icu-project.org/apiref/icu4c/classDecimalFormat.html#details">ICU DecimalFormat pattern</a>;
 see the <a href="https://www.php.net/manual/numberformatter.setpattern.php">NumberFormatter::setPattern() documentation</a>
 for more information.</p>
@@ -396,7 +396,7 @@ for more information.</p>
 date/time values. It acts as a wrapper for the <code>IntlDateFormatter</code> class within
 ext/intl.</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>// Within your view
+<pre class=codehilite><code class=language-php>// Within your view
 
 // Date and Time
 echo $this-&gt;dateFormat(
@@ -423,14 +423,14 @@ echo $this-&gt;dateFormat(
     IntlDateFormatter::SHORT, // time
     &quot;en_US&quot;
 );
-// This returns: &quot;6:44 PM&quot;</code></pre></p>
+// This returns: &quot;6:44 PM&quot;</code></pre>
 <h3>Method description</h3>
-<p> <pre class=codehilite><code class=language-php>dateFormat(
+<pre class=codehilite><code class=language-php>dateFormat(
     mixed $date [,
     int $dateType = null [,
     int $timeType = null [,
     string $locale = null
-] ] ]) : string</code></pre></p>
+] ] ]) : string</code></pre>
 <p>where:</p>
 <ul>
 <li><code>$date</code>: The value to format. This may be a <code>DateTime</code> instance, an integer
@@ -452,19 +452,19 @@ method and will be applied each time the helper is used.</p>
 <p>By default, the system's default timezone will be used when formatting. This
 overrides any timezone that may be set inside a <code>DateTime</code> object. To change the
 timezone when formatting, use the <code>setTimezone()</code> method.</p>
-<p> <pre class=codehilite><code class=language-php>// Within your view
+<pre class=codehilite><code class=language-php>// Within your view
 $this-&gt;plugin('dateFormat')
     -&gt;setTimezone('America/New_York')
     -&gt;setLocale('en_US');
 
 echo $this-&gt;dateFormat(new DateTime(), IntlDateFormatter::MEDIUM);  // &quot;Jul 2, 2012&quot;
-echo $this-&gt;dateFormat(new DateTime(), IntlDateFormatter::SHORT);   // &quot;7/2/12&quot;</code></pre></p>
+echo $this-&gt;dateFormat(new DateTime(), IntlDateFormatter::SHORT);   // &quot;7/2/12&quot;</code></pre>
 <h2 id="numberformat-helper">NumberFormat Helper</h2>
 <p>The <code>NumberFormat</code> view helper can be used to simplify rendering of
 locale-specific number and/or percentage strings. It acts as a wrapper for the
 <code>NumberFormatter</code> class within ext/intl.</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>// Within your view
+<pre class=codehilite><code class=language-php>// Within your view
 
 // Example of Decimal formatting:
 echo $this-&gt;numberFormat(
@@ -491,16 +491,16 @@ echo $this-&gt;numberFormat(
     NumberFormatter::TYPE_DEFAULT,
     'fr_FR'
 );
-// This returns: &quot;1,23456789E-3&quot;</code></pre></p>
+// This returns: &quot;1,23456789E-3&quot;</code></pre>
 <h3>Method description</h3>
-<p> <pre class=codehilite><code class=language-php>numberFormat(
+<pre class=codehilite><code class=language-php>numberFormat(
     int|float $number [,
     int $formatStyle = null [,
     int $formatType = null [,
     string $locale = null [,
     int $decimals = null [,
     array $textAttributes = null
-] ] ] ] ]) : string</code></pre></p>
+] ] ] ] ]) : string</code></pre>
 <p>where:</p>
 <ul>
 <li><code>$number</code>: the number to format.</li>
@@ -519,7 +519,7 @@ echo $this-&gt;numberFormat(
 <p>Each of the <code>$formatStyle</code>, <code>$formatType</code>, <code>$locale</code>, and <code>$textAttributes</code>
 options can be set prior to formatting and will be applied each time the helper
 is used.</p>
-<p> <pre class=codehilite><code class=language-php>// Within your view
+<pre class=codehilite><code class=language-php>// Within your view
 $this-&gt;plugin(&quot;numberformat&quot;)
             -&gt;setFormatStyle(NumberFormatter::PERCENT)
             -&gt;setFormatType(NumberFormatter::TYPE_DOUBLE)
@@ -530,7 +530,7 @@ $this-&gt;plugin(&quot;numberformat&quot;)
             ]);
 
 echo $this-&gt;numberFormat(0.56);   // &quot;^ 56%&quot;
-echo $this-&gt;numberFormat(-0.90);  // &quot;v 90%&quot;</code></pre></p>
+echo $this-&gt;numberFormat(-0.90);  // &quot;v 90%&quot;</code></pre>
 <h2 id="plural-helper">Plural Helper</h2>
 <p>Most languages have specific rules for handling plurals. For instance, in
 English, we say "0 cars" and "2 cars" (plural) while we say "1 car" (singular).
@@ -554,13 +554,13 @@ here are some links with up-to-date plural rules for tons of languages:</p>
 <h3>Basic Usage</h3>
 <p>First, define a rule. As an example, you could add the following code in your
 <code>Module</code> class:</p>
-<p> <pre class=codehilite><code class=language-php>// Get the ViewHelperPlugin Manager from the ServiceManager, so we can fetch the
+<pre class=codehilite><code class=language-php>// Get the ViewHelperPlugin Manager from the ServiceManager, so we can fetch the
 // Plural helper and add the plural rule for the application's language:
 $viewHelperManager = $serviceManager-&gt;get('ViewHelperManager');
 $pluralHelper      = $viewHelperManager-&gt;get('Plural');
 
 // Here is the rule for French
-$pluralHelper-&gt;setPluralRule('nplurals=2; plural=(n==0 || n==1 ? 0 : 1)');</code></pre></p>
+$pluralHelper-&gt;setPluralRule('nplurals=2; plural=(n==0 || n==1 ? 0 : 1)');</code></pre>
 <p>The string reads as follows:</p>
 <ol>
 <li>First, we specify how many plural forms we have. For French, only two (singular/plural).</li>
@@ -569,10 +569,10 @@ $pluralHelper-&gt;setPluralRule('nplurals=2; plural=(n==0 || n==1 ? 0 : 1)');</c
 </ol>
 <p>As noted earlier earlier, English considers "1" as singular and "0/other" as
 plural. Here is how that would be declared:</p>
-<p> <pre class=codehilite><code class=language-php>// Here is the rule for English
-$pluralHelper-&gt;setPluralRule('nplurals=2; plural=(n==1 ? 0 : 1)');</code></pre></p>
+<pre class=codehilite><code class=language-php>// Here is the rule for English
+$pluralHelper-&gt;setPluralRule('nplurals=2; plural=(n==1 ? 0 : 1)');</code></pre>
 <p>Now that we have defined the rule, we can use it in our views:</p>
-<p> <pre class=codehilite><code class=language-php>// Within a view script...
+<pre class=codehilite><code class=language-php>// Within a view script...
 // If the rule defined in Module.php is the English one:
 
 echo $this-&gt;plural(array('car', 'cars'), 0); // prints &quot;cars&quot;
@@ -581,7 +581,7 @@ echo $this-&gt;plural(array('car', 'cars'), 1); // prints &quot;car&quot;
 // If the rule defined in Module.php is the French one:
 echo $this-&gt;plural(array('voiture', 'voitures'), 0); // prints &quot;voiture&quot;
 echo $this-&gt;plural(array('voiture', 'voitures'), 1); // prints &quot;voiture&quot;
-echo $this-&gt;plural(array('voiture', 'voitures'), 2); // prints &quot;voitures&quot;</code></pre></p>
+echo $this-&gt;plural(array('voiture', 'voitures'), 2); // prints &quot;voitures&quot;</code></pre>
 <h2 id="translate-helper">Translate Helper</h2>
 <p>The <code>Translate</code> view helper can be used to translate content. It acts as a
 wrapper for the <code>Zend\I18n\Translator\Translator</code> class.</p>
@@ -591,18 +591,18 @@ wrapper for the <code>Zend\I18n\Translator\Translator</code> class.</p>
 <code>Zend\View\HelperPluginManager</code> to invoke the view helper, this will be done
 automatically for you.</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>// Within your view...
+<pre class=codehilite><code class=language-php>// Within your view...
 
 echo $this-&gt;translate(&quot;Some translated text.&quot;);
 echo $this-&gt;translate(&quot;Translated text from a custom text domain.&quot;, &quot;customDomain&quot;);
 echo sprintf($this-&gt;translate(&quot;The current time is %s.&quot;), $currentTime);
-echo $this-&gt;translate(&quot;Translate in a specific locale&quot;, &quot;default&quot;, &quot;de_DE&quot;);</code></pre></p>
+echo $this-&gt;translate(&quot;Translate in a specific locale&quot;, &quot;default&quot;, &quot;de_DE&quot;);</code></pre>
 <h3>Method description</h3>
-<p> <pre class=codehilite><code class=language-php>translate(
+<pre class=codehilite><code class=language-php>translate(
     string $message [,
     string $textDomain = null [,
     string $locale = null
-] ]) : string</code></pre></p>
+] ]) : string</code></pre>
 <p>where:</p>
 <ul>
 <li><code>$message</code>: The message to translate.</li>
@@ -615,7 +615,7 @@ echo $this-&gt;translate(&quot;Translate in a specific locale&quot;, &quot;defau
 <h3>Gettext</h3>
 <p>The <code>xgettext</code> utility can be used to compile <code>*.po</code> files from PHP source files containing the
 translate view helper.</p>
-<p> <pre class=codehilite><code class=language-bash>$ xgettext --language=php --add-location --keyword=translate --keyword=translatePlural:1,2 my-view-file.phtml</code></pre></p>
+<pre class=codehilite><code class=language-bash>$ xgettext --language=php --add-location --keyword=translate --keyword=translatePlural:1,2 my-view-file.phtml</code></pre>
 <p>See the <a href="http://en.wikipedia.org/wiki/Gettext">Gettext Wikipedia page</a> for more information.</p>
 <h3>Public Methods</h3>
 <p>Public methods for setting a <code>Zend\I18n\Translator\Translator</code> and a default
@@ -633,22 +633,22 @@ with different rules.</p>
 <code>Zend\View\HelperPluginManager</code> to invoke the view helper, this will be done
 automatically for you.</p>
 <h3>Basic Usage</h3>
-<p> <pre class=codehilite><code class=language-php>// Within your view
+<pre class=codehilite><code class=language-php>// Within your view
 echo $this-&gt;translatePlural(&quot;car&quot;, &quot;cars&quot;, $num);
 
 // Use a custom domain
 echo $this-&gt;translatePlural(&quot;monitor&quot;, &quot;monitors&quot;, $num, &quot;customDomain&quot;);
 
 // Change locale
-echo $this-&gt;translatePlural(&quot;locale&quot;, &quot;locales&quot;, $num, &quot;default&quot;, &quot;de_DE&quot;);</code></pre></p>
+echo $this-&gt;translatePlural(&quot;locale&quot;, &quot;locales&quot;, $num, &quot;default&quot;, &quot;de_DE&quot;);</code></pre>
 <h3>Method description</h3>
-<p> <pre class=codehilite><code class=language-php>translatePlural(
+<pre class=codehilite><code class=language-php>translatePlural(
     string $singular,
     string $plural,
     int $number [,
     string $textDomain = null [,
     string $locale = null
-] ]) : string</code></pre></p>
+] ]) : string</code></pre>
 <p>where:</p>
 <ul>
 <li><code>$singular</code>: The message to use for singular values.</li>
@@ -663,7 +663,7 @@ echo $this-&gt;translatePlural(&quot;locale&quot;, &quot;locales&quot;, $num, &q
 <h3>Gettext</h3>
 <p>The <code>xgettext</code> utility can be used to compile <code>*.po</code> files from PHP source files containing the
 translate view helper.</p>
-<p> <pre class=codehilite><code class=language-bash>$ xgettext --language=php --add-location --keyword=translate --keyword=translatePlural:1,2 my-view-file.phtml</code></pre></p>
+<pre class=codehilite><code class=language-bash>$ xgettext --language=php --add-location --keyword=translate --keyword=translatePlural:1,2 my-view-file.phtml</code></pre>
 <p>See the <a href="http://en.wikipedia.org/wiki/Gettext">Gettext Wikipedia page</a> for more information.</p>
 <h3>Public Methods</h3>
 <p>Public methods for setting a <code>Zend\I18n\Translator\Translator</code> and a default
@@ -675,30 +675,30 @@ the <code>Zend\I18n\Translator\TranslatorAwareInterface</code>, allowing transla
 injection as well as text domain injection.</p>
 <h3>Public Methods</h3>
 <h4>setTranslator()</h4>
-<p> <pre class=codehilite><code class=language-php>setTranslator(
+<pre class=codehilite><code class=language-php>setTranslator(
     Translator $translator [ ,
     string $textDomain = null
-] ) : void</code></pre></p>
+] ) : void</code></pre>
 <p>Sets the <code>Zend\I18n\Translator\Translator</code> instance to use in the helper. The
 <code>$textDomain</code> argument is optional, and provided as a convenienct to allow
 setting both the translator and text domain simultaneously.</p>
 <h4>getTranslator()</h4>
-<p> <pre class=codehilite><code class=language-php>getTranslator() : Translator</code></pre></p>
+<pre class=codehilite><code class=language-php>getTranslator() : Translator</code></pre>
 <p>Returns the <code>Zend\I18n\Translator\Translator</code> instance used by the helper.</p>
 <h4>hasTranslator()</h4>
-<p> <pre class=codehilite><code class=language-php>hasTranslator() : bool</code></pre></p>
+<pre class=codehilite><code class=language-php>hasTranslator() : bool</code></pre>
 <p>Returns true if the helper composes a <code>Zend\I18n\Translator\Translator</code> instance.</p>
 <h4>setTranslatorEnabled()</h4>
-<p> <pre class=codehilite><code class=language-php>setTranslatorEnabled(bool $enabled) : void</code></pre></p>
+<pre class=codehilite><code class=language-php>setTranslatorEnabled(bool $enabled) : void</code></pre>
 <p>Sets whether or not translations are enabled.</p>
 <h4>isTranslatorEnabled()</h4>
-<p> <pre class=codehilite><code class=language-php>isTranslatorEnabled() : bool</code></pre></p>
+<pre class=codehilite><code class=language-php>isTranslatorEnabled() : bool</code></pre>
 <p>Returns true if translations are enabled.</p>
 <h4>setTranslatorTextDomain()</h4>
-<p> <pre class=codehilite><code class=language-php>setTranslatorTextDomain(string $textDomain) : void</code></pre></p>
+<pre class=codehilite><code class=language-php>setTranslatorTextDomain(string $textDomain) : void</code></pre>
 <p>Sets the default translation text domain to use with the helper.</p>
 <h4>getTranslatorTextDomain()</h4>
-<p> <pre class=codehilite><code class=language-php>getTranslatorTextDomain() : string</code></pre></p>
+<pre class=codehilite><code class=language-php>getTranslatorTextDomain() : string</code></pre>
 <p>Returns the current text domain used by the helper.</p>
 
 
