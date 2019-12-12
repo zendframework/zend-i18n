@@ -1226,7 +1226,7 @@ class PhoneNumberTest extends TestCase
             'patterns' => [
                 'example' => [
                     'fixed'     => '12345678',
-                    'mobile'    => '201234567',
+                    'mobile'    => ['201234567', '501234567', '701234567', '301234567', '311234567'],
                     'tollfree'  => '80123456',
                     'premium'   => '90123456',
                     'shared'    => '40123456',
