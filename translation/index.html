@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Provide translations for your application, and filter and validate internationalized values.">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-i18n/translation/">
+    <link rel="canonical" href="https://docs.zendframework.com/translation/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Translation - zend-i18n - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -187,9 +187,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-i18n/">laminas/laminas-i18n.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -286,10 +286,12 @@ nothing but return all messages verbatim.</p>
   file per locale.</li>
 </ul>
 <p>To add a single file to the translator, use the <code>addTranslationFile()</code> method:</p>
-<pre class=codehilite><code class=language-php>use Zend\I18n\Translator\Translator;
+<pre><code class="language-php">use Zend\I18n\Translator\Translator;
 
 $translator = new Translator();
-$translator-&gt;addTranslationFile($type, $filename, $textDomain, $locale);</code></pre>
+$translator-&gt;addTranslationFile($type, $filename, $textDomain, $locale);
+</code></pre>
+
 <p>where the arguments are:</p>
 <ul>
 <li><code>$type</code>: the name of the format loader to use; see the next section for
@@ -303,10 +305,12 @@ $translator-&gt;addTranslationFile($type, $filename, $textDomain, $locale);</cod
 <p>When storing one locale per file, you should specify those files via a pattern.
 This allows you to add new translations to the file system, without touching
 your code. Patterns are added with the <code>addTranslationFilePattern()</code> method:</p>
-<pre class=codehilite><code class=language-php>use Zend\I18n\Translator\Translator;
+<pre><code class="language-php">use Zend\I18n\Translator\Translator;
 
 $translator = new Translator();
-$translator-&gt;addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);</code></pre>
+$translator-&gt;addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);
+</code></pre>
+
 <p>where the arguments are roughly the same as for <code>addTranslationFile()</code>, with a
 few differences:</p>
 <ul>
@@ -342,7 +346,9 @@ pass it to the <code>setFallbackLocale()</code> method.</p>
 <h2 id="translating-messages">Translating messages</h2>
 <p>Translating messages is accomplished by calling the <code>translate()</code> method of the
 translator:</p>
-<pre class=codehilite><code class=language-php>$translator-&gt;translate($message, $textDomain, $locale);</code></pre>
+<pre><code class="language-php">$translator-&gt;translate($message, $textDomain, $locale);
+</code></pre>
+
 <p>The message is the message identifier to translate. If it does not exist in the
 loader, or is empty, the original message ID will be returned. The text domain
 parameter is the one you specified when adding translations. If omitted, the
@@ -353,7 +359,9 @@ the translator.</p>
 works similarly to <code>translate()</code>, but instead of a single message, it takes a
 singular value, a plural value, and an additional integer number on which the
 returned plural form is based:</p>
-<pre class=codehilite><code class=language-php>$translator-&gt;translatePlural($singular, $plural, $number, $textDomain, $locale);</code></pre>
+<pre><code class="language-php">$translator-&gt;translatePlural($singular, $plural, $number, $textDomain, $locale);
+</code></pre>
+
 <p>Plural translations are only available if the underlying format supports the
 translation of plural messages and plural rule definitions.</p>
 <h2 id="caching">Caching</h2>
@@ -515,7 +523,7 @@ pass a <code>null</code> value to the method.</p>
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -523,10 +531,10 @@ pass a <code>null</code> value to the method.</p>
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -534,27 +542,28 @@ pass a <code>null</code> value to the method.</p>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-i18n';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
